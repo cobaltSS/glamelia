@@ -1,5 +1,13 @@
+function c(obj){
+    console.log(obj)
+}
+
 $(document).ready(function(){
+
+
+
     //Таймер
+
     if($("#timer")){
         /*$("#timer").countdown({
             date: "12:00 september 26, 2013",
@@ -57,11 +65,11 @@ $(document).ready(function(){
     //Слайдер расписания
     if($(".scheduleSlider").size()>0){
         $(".scheduleSlider").carouFredSel({
-            auto   : false,
+            auto   : true,
             scroll : {
                     items : 1,
-                    duration : 500,
-                    pauseDuration : 5000
+                    duration : 400,
+                    pauseDuration : 6000
             },
             prev : ".scheduleLeft",
             next : ".scheduleRight"
@@ -80,9 +88,11 @@ $(document).ready(function(){
                 $('.menu > li > a.active').removeClass('active');
             }
             $(this).addClass('active').next('.dopMenu').addClass('open').stop().slideDown(500);
+            
         }
-        
+
     },function(){
+
         if($(this).next('.dopMenu').size() > 0){
             timeOff = setTimeout(function(){
                 $('.dopMenu').removeClass('open').stop().slideUp('normal', function(){$('.menu > li > a.active').removeClass('active');});
@@ -90,34 +100,46 @@ $(document).ready(function(){
         }else{
             $(this).removeClass('active');
         }
-        
+
     });
     $('.dopMenu').hover(function(){
         clearTimeout(timeOff);
     },function(){
         timeOff = setTimeout(function(){
             $('.dopMenu').removeClass('open').slideUp('normal',function(){$('.menu > li > a.active').removeClass('active');});
-            
+            $('.dopMenu').find('.open_ul').slideUp('normal').removeClass('open_ul')
         },300);
     });
 
-    //Войти
-    $('#enter').click(function(){
-        if($('.enter').is(':hidden')){
-            $('#enter span').css('border','none');
-            $('.mask').show();
-            $('.enter').stop().fadeIn();
-        }else{
-            $('.mask').hide();
-            $('.enter').stop().fadeOut('normal',function(){$('#enter span').css('border-bottom','');});
+    //Подпункты в выпадающих списках меню
+    $('a.main_link').click(function () {
+        var $this = $(this),
+             current_block_ul = $this.parent().find('.dopMenuUl')
+        if (current_block_ul.hasClass('open_ul')) {
+            current_block_ul.slideUp('800').removeClass('open_ul')
+        } else {
+            $this.parents('.dopMenu').find('.open_ul').slideUp('800').removeClass('open_ul')
+            current_block_ul.slideDown('800').addClass('open_ul')
         }
-        return false;
-    });
-    $('.mask').click(function(){
-        if(!$('.enter').is(':hidden')){
-            $('#enter').click();
-        }
-    });
+    })
+
+//    //Войти
+//    $('#enter').click(function(){
+//        if($('.enter').is(':hidden')){
+//            $('#enter span').css('border','none');
+//            $('.mask').show();
+//            $('.enter').stop().fadeIn();
+//        }else{
+//            $('.mask').hide();
+//            $('.enter').stop().fadeOut('normal',function(){$('#enter span').css('border-bottom','');});
+//        }
+//        return false;
+//    });
+//    $('.mask').click(function(){
+//        if(!$('.enter').is(':hidden')){
+//            $('#enter').click();
+//        }
+//    });
 
     //Переключение типа поля
     $('.eye').click(function(){

@@ -8,18 +8,15 @@
 
                 <ul class="dopMenu">
                     <?php foreach ($page->pages as $subpage): ?>
-                        <li <?php echo ($subpage->isActive() ? 'class="active"' : ''); ?>>
-                            <a href="<?php echo $subpage->getHref(); ?>"><?php echo $subpage->getLabel(); ?></a>
+                        <li>
+                            <a href="javascript:void(0)" class="main_link"><?php echo $subpage->getLabel(); ?></a>
                             
                            <?php if (!empty($subpage->pages)): ?>
 
-                            <ul class="dopMenuUl">
+                            <ul class="dopMenuUl" style="display:none;">
                                                 <?php foreach ($subpage->pages as $subsubpage): ?>
-                                                    <li <?php echo ($subsubpage->isActive() ? 'class="active"' : ''); ?>>
+                                                    <li>
                                                         <a href="<?php echo $subsubpage->getHref(); ?>"><?php echo $subsubpage->getLabel(); ?></a>
-
-
-
                                                     </li>
                                                 <?php endforeach; ?>
                                             </ul>
