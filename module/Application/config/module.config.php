@@ -96,26 +96,31 @@ return array(
     'navigation' => array(
         'public_navigation' => array(
             array(
-                'label' => 'Главная',
+                'label' => 'ГЛАВНАЯ',
                 'route' => 'home',
             ),
             array(
-                'label' => 'Магазины',
+                'label' => 'НАШИ МАГАЗИНЫ',
                 'route' => 'shops',
                 'action' => 'shops',
             ),
             array(
-                'label' => 'Каталог работ',
+                'label' => 'КАТАЛОГ',
                 'route' => 'category',
             ),
+            
             array(
-                'label' => 'О нас',
+                'label' => 'НОВОСТИ',
                 'route' => 'item',
             ),
             array(
-                'label' => 'Отзывы',
+                'label' => 'ОТЗЫВЫ',
                 'route' => 'review',
                 'action' => 'review',
+            ),
+            array(
+                'label' => 'О НАС',
+                'route' => 'item',
             ),
         ),
         'admin_navigation' => array(
