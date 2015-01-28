@@ -41,20 +41,27 @@ class CityTable {
     }
 
     public function getCityList() {
-         $resultSet = $this->tableGateway->select();
-         return $resultSet->toArray();
+        $resultSet = $this->tableGateway->select();
+        return $resultSet->toArray();
     }
-    
-    public function getCity2Shop()
-    {
-     
+
+    public function getCity2Shop() {
+
         $select = new Select;
         $select->from('city');
-        $select->join('shop', "shop.city_id = city.id", array('address'));
-        $select->group("city.id");
+        $select->join('shop', "shop.city_id = city.id", array('address', 'shop_id' => 'id'));
         $rowset = $this->tableGateway->selectWith($select);
-
-        return  $rowset->toArray();
+        $result = array();
+        foreach ($rowset->toArray() as $elem) {
+            $key = $elem['id'];
+            if (isset($result[$key])) {
+                $result[$key]['address'] .= ':' . $elem['address'];
+                $result[$key]['shop_id'] .= ':' . $elem['shop_id'];
+            } else {
+                $result[$key] = $elem;
+            }
+        }
+        return $result;
     }
 
     public function getCity($id) {
