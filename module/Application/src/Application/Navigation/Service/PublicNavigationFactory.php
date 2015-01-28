@@ -36,7 +36,7 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
                                     'label' => $shop,
                                     'route' => $row['route'],
                                     'action' => $row['route'],
-                                    'id' => $shop_id[$key],
+                                    'params'     => array('id' => $shop_id[$key]),
                                 );
                             }
                             $j++;
