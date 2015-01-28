@@ -1,5 +1,6 @@
 <?php
-echo $this->headScript()
+
+echo $this->inlineScript()
         ->prependFile("https://maps.googleapis.com/maps/api/js?v=3.exp&key=" . $key_map . "&sensor=false&libraries=places")
         ->prependFile($this->basePath() . '/js/map.js')
 ;
