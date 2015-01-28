@@ -1,0 +1,59 @@
+<?php
+$title = 'Редактировать товар';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('item', array(
+            'action' => 'edit',
+            'id' => $this->id,
+                )
+));
+$form->prepare();
+?>
+<section>
+    <dl class="zend_form">
+
+        <?php echo $this->form()->openTag($form); ?>
+        <?php echo $this->formHidden($form->get('id')); ?>
+
+        <dt><?php echo $this->formLabel($form->get('category_id')); ?></dt>
+        <dd>
+            <?php echo $this->formElement($form->get('category_id')); ?>
+            <?php echo $this->formElementErrors($form->get('category_id')); ?>
+        </dd>  
+        
+         <dt><?php echo $this->formLabel($form->get('shop_id')); ?></dt>
+        <dd>
+            <?php echo $this->formElement($form->get('shop_id')); ?>
+            <?php echo $this->formElementErrors($form->get('shop_id')); ?>
+        </dd>
+
+
+        <dt><?php echo $this->formLabel($form->get('name')); ?></dt>
+        <dd>
+            <?php echo $this->formElement($form->get('name')); ?>
+            <?php echo $this->formElementErrors($form->get('name')); ?>
+        </dd>
+
+        <dt><?php echo $this->formLabel($form->get('id_photo')); ?></dt>
+        <dd>
+            <?php echo $this->formElement($form->get('id_photo')); ?>
+            <?php echo $this->formElementErrors($form->get('id_photo')); ?>
+        </dd>
+        
+        <dt><?php echo $this->formRow($form->get('status')); ?></dt>
+        
+        <?php foreach ($photos as $photo) : ?>
+           <span>
+                <img src ="<?php echo '/images/item/small_' . $this->escapeHtml(trim($photo)) ?>">  
+                <img  onClick="DelPhoto(this,'<?php echo $this->url('item', array('controller'=>'item', 'action'=>'deletephoto')); ?>','<?php echo $photo ?>')" src ="<?php echo '/img/backet.png' ?>">  
+                </span>
+        <?php endforeach ?>
+
+        <dd><p> <?php echo $this->formSubmit($form->get('submit')); ?></p></dd>
+        <?php echo $this->form()->closeTag(); ?>
+
+    </dl>
+</section>

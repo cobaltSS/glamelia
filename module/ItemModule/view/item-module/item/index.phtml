@@ -1,0 +1,40 @@
+<?php
+$title = 'Товары';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('item', array('action' => 'add')); ?>">Добавить новый товар</a>
+</p>
+<table class="table">
+    <tr>
+        <th>Наименование</th>
+        <th></th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($this->paginator as $item) : ?>
+        <tr>
+            
+            <td><?php echo $this->escapeHtml($item->name); ?></td>
+            <td></td>
+            <td>
+                <a href="<?php echo $this->url('item', array('action' => 'edit', 'id' => $item->id));
+        ?>">Редактировать</a>
+                <a href="<?php echo $this->url('item', array('action' => 'delete', 'id' => $item->id));
+        ?>">Удалить</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+<?php
+echo $this->paginationControl(
+// the paginator object
+        $this->paginator,
+// the scrolling style
+        'sliding',
+// the partial to use to render the control
+        array('partial/paginator.phtml', 'Item'),
+// the route to link to when a user clicks a control link
+        array(    'route' => 'item'
+        )
+);
