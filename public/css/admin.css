@@ -1,0 +1,103 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.zf-green {
+    color: #68b604;
+}
+
+.btn-success {
+    background-color: #57a900;
+    background-image: -moz-linear-gradient(top, #70d900, #57a900);
+    background-image: -ms-linear-gradient(top, #70d900, #57a900);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#70d900), to(#57a900));
+    background-image: -webkit-linear-gradient(top, #70d900, #57a900);
+    background-image: -o-linear-gradient(top, #70d900, #57a900);
+    background-image: linear-gradient(top, #70d900, #57a900);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#70d900', endColorstr='#57a900', GradientType=0);
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+    background-color: #57a900;
+}
+
+.btn-success:active, .btn-success.active {
+    background-color: #57a900;
+}
+
+div.container a.brand {
+    background: url("../img/zf2-logo.png") no-repeat scroll 0 10px transparent;
+    margin-left: 0;
+    padding: 8px 20px 12px 40px;
+}
+
+.admin {
+    padding: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: #eeeeee;
+}
+
+#container .admin {
+    border-radius: 6px;
+}
+.admin #container {
+    max-width: 100%;
+}
+
+.admin h1,
+.admin .h1 {
+    line-height: 1;
+    color: inherit;
+    font-size:20px;
+}
+
+.admin p {
+    line-height: 1.4;
+}
+input[type="text"],input[type="password"],textarea{
+    box-sizing: content-box;
+}
+
+
+.button {
+    display:inline-block;
+    font-size: 14px;
+    width: 100px;
+    margin-top: 4px;
+    height: 36px;
+    text-decoration: none;
+    border: medium none;
+    background: none repeat scroll 0% 0% #000;
+    color: #FFF;
+    text-align: center;
+    padding: 5px 0px;
+    line-height: 16px;
+    cursor: pointer;
+    outline: medium none;
+}
+
+#map_canvas { height: 100% }
+
+.map-view-book{
+    width: 40%;
+    height: 300px;
+    display: inline-block;
+    float:left;
+}
+
+.infoshop{
+    width:50%;
+    float:left;
+
+}
+
+
+
+
+

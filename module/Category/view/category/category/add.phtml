@@ -1,0 +1,34 @@
+<?php
+$title = 'Добавить новую категорию';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form->setAttribute('action', $this->url('category', array('action' => 'add')));
+$form->prepare();?>
+
+<section>
+    <dl class="zend_form">
+        <?php
+        echo $this->form()->openTag($form);
+        echo $this->formHidden($form->get('id'));
+        ?>
+
+        <dt><?php echo $this->formLabel($form->get('name')); ?></dt>
+        <dd>
+            <?php echo $this->formElement($form->get('name')); ?>
+            <?php echo $this->formElementErrors($form->get('name')); ?>
+        </dd>
+
+        <dt><?php echo $this->formLabel($form->get('description')); ?></dt>
+        <dd>
+            <?php echo $this->formElement($form->get('description')); ?>
+            <?php echo $this->formElementErrors($form->get('description')); ?>
+        </dd>
+
+        <dt><?php echo $this->formRow($form->get('status')); ?></dt>
+        <dd> <?php echo $this->formSubmit($form->get('submit')); ?></dd>
+        <?php echo $this->form()->closeTag(); ?>
+
+    </dl>
+</section>
