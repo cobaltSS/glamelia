@@ -16,21 +16,30 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
         if (null === $this->pages) {
             $fetchMenu = $serviceLocator->get('Config');
             $configuration['navigation'][$this->getName()] = $fetchMenu['navigation'][$this->getName()];
-            $i=0;
+            $i = 0;
+            $j = 0;
             foreach ($fetchMenu['navigation'][$this->getName()] as $key => $row) {
                 switch ($row['route']) {
                     case 'shops':
-                       // $cities = $serviceLocator->get('ShopModule\Model\CityTable')->fetchAll();
-                         $cities = $serviceLocator->get('ShopModule\Model\CityTable')->getCity2Shop();
+                        // $cities = $serviceLocator->get('ShopModule\Model\CityTable')->fetchAll();
+                        $cities = $serviceLocator->get('ShopModule\Model\CityTable')->getCity2Shop();
                         foreach ($cities as $city) {
-                            $configuration['navigation'][$this->getName()][$i]['pages'][] = array(
+                            $configuration['navigation'][$this->getName()][$i]['pages'][$j] = array(
                                 'label' => $city['name'],
                                 'route' => $row['route'],
                             );
-                        
-                            
-                            
-                            
+                            $address = explode(':', $city['address']);
+                            $shop_id = explode(':', $city['shop_id']);
+
+                            foreach ($address as $key => $shop) {
+                                $configuration['navigation'][$this->getName()][$i]['pages'][$j]['pages'][] = array(
+                                    'label' => $shop,
+                                    'route' => $row['route'],
+                                    'action' => $row['route'],
+                                    'id' => $shop_id[$key],
+                                );
+                            }
+                            $j++;
                         }
                         break;
                     default:

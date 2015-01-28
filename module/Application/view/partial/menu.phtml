@@ -10,6 +10,23 @@
                     <?php foreach ($page->pages as $subpage): ?>
                         <li <?php echo ($subpage->isActive() ? 'class="active"' : ''); ?>>
                             <a href="<?php echo $subpage->getHref(); ?>"><?php echo $subpage->getLabel(); ?></a>
+                            
+                           <?php if (!empty($subpage->pages)): ?>
+
+                            <ul class="dopMenuUl">
+                                                <?php foreach ($subpage->pages as $subsubpage): ?>
+                                                    <li <?php echo ($subsubpage->isActive() ? 'class="active"' : ''); ?>>
+                                                        <a href="<?php echo $subsubpage->getHref(); ?>"><?php echo $subsubpage->getLabel(); ?></a>
+
+
+
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+
+                                        <?php endif; ?>
+                            
+                            
                         </li>
                     <?php endforeach; ?>
                 </ul>
