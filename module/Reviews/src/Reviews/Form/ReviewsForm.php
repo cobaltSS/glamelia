@@ -20,6 +20,10 @@ class ReviewsForm extends Form {
             'options' => array(
                 'label' => 'Имя',
             ),
+            'attributes' => array(
+                'class' => 'form-control',
+                'placeholder' => 'Ваше имя',
+            ),
         ));
         
         $this->add(array(
@@ -28,13 +32,21 @@ class ReviewsForm extends Form {
             'options' => array(
                 'label' => 'Телефон',
             ),
+            'attributes' => array(
+                'class' => 'form-control',
+                'placeholder' => 'Контактный номер телефона',
+            ),
         ));
         
         $this->add(array(
             'name' => 'email',
-            'type' => 'Text',
+            'type' => 'Email',
             'options' => array(
                 'label' => 'Email',
+            ),
+            'attributes' => array(
+                'class' => 'form-control',
+                'placeholder' => 'Электронный адрес',
             ),
         ));
         
@@ -43,6 +55,10 @@ class ReviewsForm extends Form {
             'type' => 'Zend\Form\Element\Textarea',
             'options' => array(
                 'label' => 'Отзыв',
+            ),
+            'attributes' => array(
+                'class' => 'form-control',
+                'placeholder' => 'Оставьте здесь ваш отзыв',
             ),
         ));
         $this->add(array(
@@ -60,6 +76,9 @@ class ReviewsForm extends Form {
             'attributes' => array(
                 'value' => 'Сохранить',
                 'id' => 'submitbutton',
+            ),
+            'attributes' => array(
+                'class' => 'btn btn-danger',
             ),
         ));
     }
