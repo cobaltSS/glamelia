@@ -37,7 +37,7 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
                                     'label' => $shop,
                                     'route' => $row['route'],
                                     'action' => $row['route'],
-                                    'params' => array('id_sub' => $shop_id[$key]),
+                                    'params' => array('id' => $shop_id[$key]),
                                 );
                             }
                             $j++;
@@ -59,7 +59,7 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
                                     'label' => $sub,
                                     'route' => $row['route'],
                                     'action' => $row['route'],
-                                    'params' => array('id' => $subcategory_id[$key]),
+                                    'params' => array('id_sub' => $subcategory_id[$key]),
                                 );
                             }
                             $k++;
