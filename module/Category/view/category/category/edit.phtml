@@ -14,26 +14,64 @@ $form->prepare();
 ?>
 <section>
     <dl class="zend_form">
-        <?php
-        echo $this->form()->openTag($form);
-        echo $this->formHidden($form->get('id'));
-        ?>
+        <div class="leftblock">
 
-        <dt><?php echo $this->formLabel($form->get('name')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('name')); ?>
-            <?php echo $this->formElementErrors($form->get('name')); ?>
-        </dd>
+            <?php
+            echo $this->form()->openTag($form);
+            echo $this->formHidden($form->get('id'));
+            ?>
 
-        <dt><?php echo $this->formLabel($form->get('description')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('description')); ?>
-            <?php echo $this->formElementErrors($form->get('description')); ?>
-        </dd>
+            <dt><?php echo $this->formLabel($form->get('name')); ?></dt>
+            <dd>
+                <?php echo $this->formElement($form->get('name')); ?>
+                <?php echo $this->formElementErrors($form->get('name')); ?>
+            </dd>
 
-        <dt><?php echo $this->formRow($form->get('status')); ?></dt>
-        <dd> <?php echo $this->formSubmit($form->get('submit')); ?></dd>
-        <?php echo $this->form()->closeTag(); ?>
+            <dt><?php echo $this->formLabel($form->get('description')); ?></dt>
+            <dd>
+                <?php echo $this->formElement($form->get('description')); ?>
+                <?php echo $this->formElementErrors($form->get('description')); ?>
+            </dd>
 
+            <dt><?php echo $this->formRow($form->get('status')); ?></dt>
+            <dd> <?php echo $this->formSubmit($form->get('submit')); ?></dd>
+            <?php echo $this->form()->closeTag(); ?>
+
+
+        </div>   
+
+        <div class="rightblock">
+            <a OnClick="ShowAddSubcat()" > Добавить подкатегорию</a>
+            <div id="subcategory">
+                <?php
+                foreach ($subcategories as $subcategory) {
+                    ?>
+                    <div class="list">
+                        <div class="error"></div>
+                        <input type=text value="<?php echo $subcategory['name'] ?>">   
+                        <img  onClick="DelSubcat(this, '<?php echo $this->url('category', array('action' => 'deletesubcat')); ?>', '<?php echo $subcategory['id'] ?>')" src ="<?php echo '/img/backet.png' ?>">  
+                        <img  onClick="EditSubcat(this, '<?php echo $this->url('category', array('action' => 'addsubcat')); ?>', '<?php echo $subcategory['id'] ?>','<?php echo $subcategory['id_category'] ?>')" src ="<?php echo '/img/ico/edit.png' ?>">  
+                    </div>
+                    <?php
+                }
+                ?>
+
+            </div>     
+        </div>
+        <div class="clear"></div>
     </dl>
 </section>
+
+<div id="overlay-bg"></div>
+
+<div id="subcat" class="popup roundbox">
+    <a class="btn-close" href="javascript:void(0)" style="margin-top: 8px;"></a>
+    <div class="title">Добавить подкатегрию</div>
+    <div class="row-1">
+        <div class="error"></div>
+        <input  id="sub_val" class=" txtfield" type="text" placeholder="Название подкатегории" value="">
+    </div>
+    <div class="row-1 text-center">
+        <input  OnClick="AddSubcat('<?php echo $this->id ?>', '<?php echo $this->url('category', array('action' => 'addsubcat')); ?>')" class ="roundbox button btn-popup" type="button" value=" Добавить подкатегорию"   />
+    </div>
+</div>

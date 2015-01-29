@@ -4,6 +4,8 @@ namespace ItemModule;
 
 use ItemModule\Model\Item;
 use ItemModule\Model\ItemTable;
+use Category\Model\Subcategory;
+use Category\Model\SubcategoryTable;
 use ItemModule\Model\PhotoItem;
 use ItemModule\Model\PhotoItemTable;
 use ItemModule\Model\Items2Shop;
@@ -86,6 +88,11 @@ class Module {
                     $resultSetPrototype->setArrayObjectPrototype(new Category());
                     return new TableGateway('category', $dbAdapter, null, $resultSetPrototype);
                 },
+                'Category\Model\SubcategoryTable' => function($sm) {
+                    $tableGateway = $sm->get('SubcategoryTableGateway');
+                    $table = new SubcategoryTable($tableGateway);
+                    return $table;
+                },
                 'PhotoItemTableGateway' => function ($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
@@ -97,6 +104,12 @@ class Module {
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Items2Shop());
                     return new TableGateway('items2shop', $dbAdapter, null, $resultSetPrototype);
+                },
+                'SubcategoryTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Subcategory());
+                    return new TableGateway('subcategory', $dbAdapter, null, $resultSetPrototype);
                 },
             ),
         );

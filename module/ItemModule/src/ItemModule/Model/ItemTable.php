@@ -64,6 +64,7 @@ class ItemTable {
         $data = array(
             'name' => $item->name,
             'category_id' => $item->category_id,
+            'subcategory_id'=> $item->subcategory_id,
             'status' => $item->status,
             'cost' => $item->cost,
             'id_photo' => $item->id_photo,
@@ -84,6 +85,23 @@ class ItemTable {
 
     public function deleteItem($id) {
         $this->tableGateway->delete(array('id' => (int) $id));
+    }
+    
+    public function getItems2Category($id) {
+        $id = (int) $id;
+        $select = new Select;
+        $select->from('item');
+        $select->quantifier('DISTINCT');
+        $select->join('item_photo', "item_photo.id_item = item.id", array('patch' => new Expression("GROUP_CONCAT(DISTINCT `item_photo`.`patch` SEPARATOR ', ')")), 'left');
+        $select->join('items2shop', "items2shop.id_item = item.id", array('id_shop' => new Expression("GROUP_CONCAT(DISTINCT `items2shop`.`id_shop` SEPARATOR ', ')")), 'left');
+        $select->group("item.id");
+        $select->having("item.id = " . $id);
+        $rowset = $this->tableGateway->selectWith($select);
+        $row = $rowset->current();
+        if (!$row) {
+            throw new \Exception("Could not find row $id");
+        }
+        return $row;
     }
     
    

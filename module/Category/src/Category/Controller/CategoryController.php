@@ -6,11 +6,13 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Category\Model\Category;
 use Category\Form\CategoryForm;
-use Category\Form\CategoryTable;
+use Zend\View\Model\JsonModel;
+use Zend\Mvc\Controller\Plugin\Url;
 
 class CategoryController extends AbstractActionController {
 
     protected $categoryTable;
+    protected $subcategoryTable;
 
     public function indexAction() {
 
@@ -67,7 +69,7 @@ class CategoryController extends AbstractActionController {
         $form = new CategoryForm();
         $form->bind($category);
         $form->get('submit')->setAttribute('value', 'Редактировать');
-
+        $subcategories = $this->getSubcategoryTable()->getSubcategories($id);
         $request = $this->getRequest();
         if ($request->isPost()) {
             $form->setInputFilter($category->getInputFilter());
@@ -84,7 +86,19 @@ class CategoryController extends AbstractActionController {
         return array(
             'id' => $id,
             'form' => $form,
+            'subcategories' => $subcategories,
         );
+    }
+    
+    public function getsubcatAction()
+    {
+        $request = $this->getRequest();
+        $id_category = $request->getPost('id_category');
+        $subcat = $this->getSubcategoryTable()->getSubcategories($id_category);
+        $result = new JsonModel(array(
+            'subcat' => $subcat
+        ));
+        return $result;
     }
 
     public function deleteAction() {
@@ -109,6 +123,54 @@ class CategoryController extends AbstractActionController {
             'id' => $id,
             'category' => $this->getCategoryTable()->getCategory($id)
         );
+    }
+
+    public function deletesubcatAction() {
+        $request = $this->getRequest();
+        $id = $request->getPost('qString');
+        $this->getSubcategoryTable()->deleteSubcategory($id);
+        $text = "successfully processed";
+        $result = new JsonModel(array(
+            'text' => $text
+        ));
+        return $result;
+    }
+
+    public function addsubcatAction() {
+
+        $request = $this->getRequest();
+        
+        $id_category = $request->getPost('id_cat');
+        $id = $request->getPost('id');
+        $name = $request->getPost('name');
+        
+        $data = array(
+            'id_category' => $id_category,
+            'name' => $name,
+            'id' => $id
+        );
+        
+        $id=$this->getsubcategoryTable()->saveSubcategory($data);
+
+        #do something with the data
+        $text = $text . "successfully processed";
+        $result = new JsonModel(array(
+            'id_sub' => (int) $id,
+            'urldel'=>'/admin/category/deletesubcat',
+            'urledit'=>'/admin/category/addsubcat'
+        ));
+        return $result;
+    }
+    
+    
+
+    public function getsubcategoryTable() {
+
+        if (!$this->subcategoryTable) {
+            $sm = $this->getServiceLocator();
+            $this->subcategoryTable = $sm->get('Category\Model\SubcategoryTable');
+        }
+        return $this->subcategoryTable;
     }
 
     public function getCategoryTable() {

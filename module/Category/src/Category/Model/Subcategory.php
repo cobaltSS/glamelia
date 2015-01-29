@@ -6,23 +6,19 @@ use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
 
-class Category implements InputFilterAwareInterface {
+class Subcategory implements InputFilterAwareInterface {
 
     public $id;
     public $name;
-    public $description;
+    public $id_category;
     public $status;
-    public $subname;
-    public $subcategory_id;
     protected $inputFilter;
 
     public function exchangeArray($data) {
         $this->id = (!empty($data['id'])) ? $data['id'] : null;
+        $this->id_category = (!empty($data['id_category'])) ? $data['id_category'] : null;
         $this->name = (!empty($data['name'])) ? $data['name'] : null;
-        $this->description = (!empty($data['description'])) ? $data['description'] : null;
         $this->status = (!empty($data['status'])) ? $data['status'] : null;
-        $this->subname = (!empty($data['subname'])) ? $data['subname'] : null;
-        $this->subcategory_id = (!empty($data['subcategory_id'])) ? $data['subcategory_id'] : null;
     }
 
     public function getArrayCopy() {

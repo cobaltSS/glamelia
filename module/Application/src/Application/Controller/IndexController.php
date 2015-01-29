@@ -14,6 +14,11 @@ class IndexController extends AbstractActionController {
     protected $cityTable;
     protected $photoShopTable;
     protected $reviewsTable;
+    protected $categoryTable;
+    protected $subcategoryTable;
+    protected $items2shopTable;
+    protected $itemTable;
+    protected $photoItemTable;
 
     public function indexAction() {
         return new ViewModel();
@@ -46,13 +51,46 @@ class IndexController extends AbstractActionController {
             $patch = explode(',', $shop->patch);
         }
 
-
-
         return array(
             'id' => $id,
             'form' => $form,
             'photos' => $patch,
             'key_map' => $this->getkeyApiLocation(),
+        );
+    }
+
+    // Show Shop
+    // return array
+
+    public function categoriesAction() {
+        $id_cat = (int) $this->params()->fromRoute('id_cat', 0);
+        $id_sub = (int) $this->params()->fromRoute('id_sub', 0);
+        if (!$id_cat && !$id_sub) {
+            return $this->redirect()->toRoute('home', array(
+            ));
+        }
+
+        try {
+            if ($id_cat)
+                $items = $this->getItemTable()->getItems2Category($id_cat);
+            if ($id_sub)
+                $items = $this->getItemTable()->getItems2SubCategory($id_sub);
+        } catch (\Exception $ex) {
+            return $this->redirect()->toRoute('home', array(
+            ));
+        }
+
+        $form = new ItemForm();
+        $form->bind($items);
+
+        if ($items->patch) {
+            $patch = explode(',', $items->patch);
+        }
+
+        return array(
+            'id' => $id,
+            'form' => $form,
+            'photos' => $patch,
         );
     }
 
@@ -98,6 +136,46 @@ class IndexController extends AbstractActionController {
         return $this->cityTable;
     }
 
+    public function getItemTable() {
+        if (!$this->itemTable) {
+            $sm = $this->getServiceLocator();
+            $this->itemTable = $sm->get('ItemModule\Model\ItemTable');
+        }
+        return $this->itemTable;
+    }
+
+    public function getItems2ShopTable() {
+        if (!$this->items2shopTable) {
+            $sm = $this->getServiceLocator();
+            $this->items2shopTable = $sm->get('ItemModule\Model\Items2ShopTable');
+        }
+        return $this->items2shopTable;
+    }
+
+    public function getCategoryTable() {
+        if (!$this->categoryTable) {
+            $sm = $this->getServiceLocator();
+            $this->categoryTable = $sm->get('Category\Model\CategoryTable');
+        }
+        return $this->categoryTable;
+    }
+
+    public function getSubcategoryTable() {
+        if (!$this->subcategoryTable) {
+            $sm = $this->getServiceLocator();
+            $this->subcategoryTable = $sm->get('Category\Model\SubcategoryTable');
+        }
+        return $this->subcategoryTable;
+    }
+
+    public function getPhotoItemTable() {
+        if (!$this->photoItemTable) {
+            $sm = $this->getServiceLocator();
+            $this->photoItemTable = $sm->get('ItemModule\Model\PhotoItemTable');
+        }
+        return $this->photoItemTable;
+    }
+
     // add review
     public function reviewAction() {
         $form = new ReviewsForm();
@@ -117,9 +195,9 @@ class IndexController extends AbstractActionController {
         }
         return array('form' => $form);
     }
-    
+
     // connect Reviews table
-     public function getReviewsTable() {
+    public function getReviewsTable() {
         if (!$this->reviewsTable) {
             $sm = $this->getServiceLocator();
             $this->reviewsTable = $sm->get('Reviews\Model\ReviewsTable');

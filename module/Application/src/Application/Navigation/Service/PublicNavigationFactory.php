@@ -18,6 +18,7 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
             $configuration['navigation'][$this->getName()] = $fetchMenu['navigation'][$this->getName()];
             $i = 0;
             $j = 0;
+            $k = 0;
             foreach ($fetchMenu['navigation'][$this->getName()] as $key => $row) {
                 switch ($row['route']) {
                     case 'shops':
@@ -36,34 +37,61 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
                                     'label' => $shop,
                                     'route' => $row['route'],
                                     'action' => $row['route'],
-                                    'params'     => array('id' => $shop_id[$key]),
+                                    'params' => array('id_sub' => $shop_id[$key]),
                                 );
                             }
                             $j++;
                         }
                         break;
+
+                    case 'categories':
+                        $categories = $serviceLocator->get('Category\Model\CategoryTable')->getCategory2Sub();
+                        foreach ($categories as $category) {
+                            $configuration['navigation'][$this->getName()][$i]['pages'][$k] = array(
+                                'label' => $category['name'],
+                                'route' => $row['route'],
+                            );
+                            $name_sub = explode(':', $category['subname']);
+                            $subcategory_id = explode(':', $category['subcategory_id']);
+
+                            foreach ($name_sub as $key => $sub) {
+                                $configuration['navigation'][$this->getName()][$i]['pages'][$k]['pages'][] = array(
+                                    'label' => $sub,
+                                    'route' => $row['route'],
+                                    'action' => $row['route'],
+                                    'params' => array('id' => $subcategory_id[$key]),
+                                );
+                            }
+                            $k++;
+                        }
+                        break;
+
+
                     default:
                         break;
                 }
+
                 $i++;
             }
-            if (!isset($configuration['navigation'])) {
-                throw new Exception\InvalidArgumentException('Could not find navigation configuration key');
-            }
-            if (!isset($configuration['navigation'][$this->getName()])) {
-                throw new Exception\InvalidArgumentException(sprintf(
-                        'Failed to find a navigation container by the name "%s"', $this->getName()
-                ));
-            }
-
-            $application = $serviceLocator->get('Application');
-            $routeMatch = $application->getMvcEvent()->getRouteMatch();
-            $router = $application->getMvcEvent()->getRouter();
-            $pages = $this->getPagesFromConfig($configuration['navigation'][$this->getName()]);
-
-            $this->pages = $this->injectComponents($pages, $routeMatch, $router);
         }
-        return $this->pages;
-    }
+        if (!isset($configuration['navigation'])) {
+            throw new Exception\InvalidArgumentException('Could not find navigation configuration key');
+        }
+        if (!isset($configuration['navigation'][$this->getName()])) {
+            throw new Exception\InvalidArgumentException(sprintf(
+            'Failed to find a navigation container by the name "%s"', $this->getName()
+            ));
+        }
+
+        $application = $serviceLocator->get('Application');
+        $routeMatch = $application->getMvcEvent()->getRouteMatch();
+        $router = $application->getMvcEvent()->getRouter();
+        $pages = $this->getPagesFromConfig($configuration['navigation'][$this->getName()]);
+
+        $this->pages = $this->injectComponents($pages, $routeMatch, $router);
+    
+    return $this->pages;
+}
+
 
 }

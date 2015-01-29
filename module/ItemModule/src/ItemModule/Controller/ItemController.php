@@ -15,6 +15,7 @@ class ItemController extends AbstractActionController {
     protected $shopTable;
     protected $items2shopTable;
     protected $categoryTable;
+    protected $subcategoryTable;
 
     public function indexAction() {
 
@@ -119,6 +120,11 @@ class ItemController extends AbstractActionController {
         $options = $this->GetListCategory($item->category_id);
         $form->get('category_id')->setAttribute('options', $options);
 
+        $options_sub = $this->GetListSubcategory($item->subcategory_id);
+        $form->get('subcategory_id')->setAttribute('options', $options_sub);
+
+
+
         $options2shop = $this->GetListShop($item);
         $form->get('shop_id')->setValueOptions($options2shop);
 
@@ -172,6 +178,24 @@ class ItemController extends AbstractActionController {
             'form' => $form,
             'photos' => $patch,
         );
+    }
+
+    public function GetListSubcategory($subcategory_id) {
+        $subcategories = $this->getSubcategoryTable()->getSubcategoryList();
+        for ($i = 0; $i < sizeof($subcategories); $i++) {
+            if ($subcategories[$i]['id'] == $subcategory_id) {
+                $selected = true;
+            } else {
+                $selected = false;
+            }
+            $options[] = (
+                    array(
+                        'value' => $subcategories[$i]['id'],
+                        'label' => $subcategories[$i]['name'],
+                        'selected' => $selected,
+            ));
+        }
+        return $options;
     }
 
     public function GetListCategory($category_id) {
@@ -288,6 +312,14 @@ class ItemController extends AbstractActionController {
             $this->categoryTable = $sm->get('Category\Model\CategoryTable');
         }
         return $this->categoryTable;
+    }
+
+    public function getSubcategoryTable() {
+        if (!$this->subcategoryTable) {
+            $sm = $this->getServiceLocator();
+            $this->subcategoryTable = $sm->get('Category\Model\SubcategoryTable');
+        }
+        return $this->subcategoryTable;
     }
 
     public function getPhotoItemTable() {

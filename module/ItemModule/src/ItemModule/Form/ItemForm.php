@@ -31,10 +31,23 @@ class ItemForm extends Form {
             'type' => 'Zend\Form\Element\Select',
             'attributes' => array(
                 'id' => 'category_id',
+                'OnChange'=>'ShowSubcat(this)'
             ),
             'options' => array(
                     'label' => 'Категория',
                     'empty_option' => 'Пожалуйста выберите категорию',
+                ),
+        ));
+        
+         $this->add(array(
+            'name' => 'subcategory_id',
+            'type' => 'Zend\Form\Element\Select',
+            'attributes' => array(
+                'id' => 'subcategory_id',
+            ),
+            'options' => array(
+                    'label' => 'Подкатегория',
+                    'empty_option' => 'Пожалуйста выберите подкатегорию',
                 ),
         ));
         

@@ -12,6 +12,7 @@ class Item implements InputFilterAwareInterface {
     public $id;
     public $name;
     public $category_id;
+    public $subcategory_id;
     public $cost;
     public $status;
     public $id_photo;
@@ -22,6 +23,7 @@ class Item implements InputFilterAwareInterface {
         $this->id = (!empty($data['id'])) ? $data['id'] : null;
         $this->name = (!empty($data['name'])) ? $data['name'] : null;
         $this->category_id = (!empty($data['category_id'])) ? $data['category_id'] : null;
+        $this->subcategory_id = (!empty($data['subcategory_id'])) ? $data['subcategory_id'] : null;
         $this->cost = (!empty($data['cost'])) ? $data['cost'] : null;
         $this->status = (!empty($data['status'])) ? $data['status'] : null;
         $this->id_photo = (!empty($data['id_photo'])) ? $data['id_photo'] : null;
@@ -56,8 +58,12 @@ class Item implements InputFilterAwareInterface {
                     array('name' => 'Int'),
                 ),
             ));
-
-            
+           
+           $inputFilter->add(array(
+                'name' => 'subcategory_id',
+                'required' => false,
+            ));
+           
             $inputFilter->add(array(
                 'name' => 'name',
                 'required' => true,

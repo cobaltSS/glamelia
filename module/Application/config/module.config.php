@@ -34,6 +34,23 @@ return array(
                     ),
                 ),
             ),
+            
+            'categories' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/[:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            
+            
             'review' => array(
                 'type' => 'segment',
                 'options' => array(
@@ -106,7 +123,7 @@ return array(
             ),
             array(
                 'label' => 'КАТАЛОГ',
-                'route' => 'category',
+                'route' => 'categories',
             ),
             
             array(

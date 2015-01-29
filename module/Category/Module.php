@@ -4,6 +4,8 @@ namespace Category;
 
 use Category\Model\Category;
 use Category\Model\CategoryTable;
+use Category\Model\Subcategory;
+use Category\Model\SubcategoryTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\ModuleManager\ModuleManager;
@@ -40,11 +42,22 @@ class Module {
                     $table = new CategoryTable($tableGateway);
                     return $table;
                 },
+                'Category\Model\SubcategoryTable' => function($sm) {
+                    $tableGateway = $sm->get('SubcategoryTableGateway');
+                    $table = new SubcategoryTable($tableGateway);
+                    return $table;
+                },
                 'CategoryTableGateway' => function ($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Category());
                     return new TableGateway('category', $dbAdapter, null, $resultSetPrototype);
+                },
+                'SubcategoryTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Subcategory());
+                    return new TableGateway('subcategory', $dbAdapter, null, $resultSetPrototype);
                 },
             ),
         );

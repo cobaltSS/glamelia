@@ -34,7 +34,7 @@ class ShopForm extends Form {
             ),
             'options' => array(
                     'label' => 'Gender',
-                    'empty_option' => 'Please choose your city',
+                    'empty_option' => 'Пожалуйста выберите город',
                 ),
         ));
         
@@ -42,7 +42,7 @@ class ShopForm extends Form {
             'name' => 'address',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Address',
+                'label' => 'Адрес',
             ),
             'attributes' => array(
                 'id' => 'end',
@@ -76,7 +76,7 @@ class ShopForm extends Form {
             'name' => 'id_photo',
             'type' => 'Zend\Form\Element\File',
             'options' => array(
-                'label' => 'Upload Photo',
+                'label' => 'Загрузить фото',
             ),
             'attributes' => array(
                 'id' => 'id_photo',

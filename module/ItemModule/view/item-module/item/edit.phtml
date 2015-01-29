@@ -24,6 +24,12 @@ $form->prepare();
             <?php echo $this->formElementErrors($form->get('category_id')); ?>
         </dd>  
         
+        <dt><?php echo $this->formLabel($form->get('subcategory_id')); ?></dt>
+        <dd>
+            <?php echo $this->formElement($form->get('subcategory_id')); ?>
+            <?php echo $this->formElementErrors($form->get('subcategory_id')); ?>
+        </dd>  
+        
          <dt><?php echo $this->formLabel($form->get('shop_id')); ?></dt>
         <dd>
             <?php echo $this->formElement($form->get('shop_id')); ?>

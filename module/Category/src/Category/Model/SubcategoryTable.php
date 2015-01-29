@@ -8,7 +8,7 @@ use Zend\Db\Sql\Select;
 use Zend\Paginator\Adapter\DbSelect;
 use Zend\Paginator\Paginator;
 
-class CategoryTable {
+class SubcategoryTable {
 
     protected $tableGateway;
 
@@ -19,17 +19,17 @@ class CategoryTable {
     public function fetchAll($paginated = false) {
         if ($paginated) {
             // create a new Select object for the table album
-            $select = new Select('category');
+            $select = new Select('subcategory');
             // create a new result set based on the Album entity
             $resultSetPrototype = new ResultSet();
-            $resultSetPrototype->setArrayObjectPrototype(new Category());
+            $resultSetPrototype->setArrayObjectPrototype(new Subcategory());
             // create a new pagination adapter object
             $paginatorAdapter = new DbSelect(
-                    // our configured select object
+            // our configured select object
                     $select,
-                    // the adapter to run it against
+            // the adapter to run it against
                     $this->tableGateway->getAdapter(),
-                    // the result set to hydrate
+            // the result set to hydrate
                     $resultSetPrototype
             );
             $paginator = new Paginator($paginatorAdapter);
@@ -39,7 +39,7 @@ class CategoryTable {
         return $resultSet;
     }
 
-    public function getCategory($id) {
+    public function getSubcategory($id) {
         $id = (int) $id;
         $rowset = $this->tableGateway->select(array('id' => $id));
         $row = $rowset->current();
@@ -48,53 +48,43 @@ class CategoryTable {
         }
         return $row;
     }
+    
+    public function getSubcategories($id) {
+        $id_category = (int) $id;
+        $rowset = $this->tableGateway->select(array('id_category' => $id_category));
+        $rows = $rowset->toArray();
+        return $rows;
+    }
 
-    public function saveCategory(Category $category) {
+    public function saveSubcategory($subcategory) {
         $data = array(
-            'name' => $category->name,
-            'description' => $category->description,
-            'status' => $category->status,
+            'name' => $subcategory['name'],
+            'id_category' => $subcategory['id_category'],
+            'status' => $subcategory['status'],
         );
 
 
-        $id = (int) $category->id;
+        $id = (int) $subcategory['id'];
         if ($id == 0) {
             $this->tableGateway->insert($data);
+            return $this->tableGateway->getLastInsertValue();
         } else {
-            if ($this->getCategory($id)) {
+            if ($this->getSubcategory($id)) {
                 $this->tableGateway->update($data, array('id' => $id));
+                return $id;
             } else {
-                throw new \Exception('Category id does not exist');
+                throw new \Exception('Subcategory id does not exist');
             }
         }
     }
 
-    public function deleteCategory($id) {
+    public function deleteSubcategory($id) {
         $this->tableGateway->delete(array('id' => (int) $id));
     }
-
-    public function getCategoryList() {
-        $resultSet = $this->tableGateway->select();
-        return $resultSet->toArray();
-    }
-
-    public function getCategory2Sub() {
-
-        $select = new Select;
-        $select->from('category');
-        $select->join('subcategory', "subcategory.id_category = category.id", array('subname' => 'name', 'subcategory_id' => 'id'), 'left');
-        $rowset = $this->tableGateway->selectWith($select);
-        $result = array();
-        foreach ($rowset->toArray() as $elem) {
-            $key = $elem['id'];
-            if (isset($result[$key])) {
-                $result[$key]['subname'] .= ':' . $elem['subname'];
-                $result[$key]['subcategory_id'] .= ':' . $elem['subcategory_id'];
-            } else {
-                $result[$key] = $elem;
-            }
-        }
-        return $result;
+    
+    public function getSubcategoryList() {
+         $resultSet = $this->tableGateway->select();
+         return $resultSet->toArray();
     }
 
 }

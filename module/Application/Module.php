@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -11,34 +12,32 @@ namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
-
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
-
 use ShopModule\Model\Shop;
 use ShopModule\Model\ShopTable;
 use ShopModule\Model\City;
 use ShopModule\Model\CityTable;
 use ShopModule\Model\PhotoShop;
 use ShopModule\Model\PhotoShopTable;
+use Category\Model\Category;
+use Category\Model\CategoryTable;
+use Category\Model\Subcategory;
+use Category\Model\SubcategoryTable;
 
+class Module {
 
-class Module
-{
-    public function onBootstrap(MvcEvent $e)
-    {
-        $eventManager        = $e->getApplication()->getEventManager();
+    public function onBootstrap(MvcEvent $e) {
+        $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
     }
 
-    public function getConfig()
-    {
+    public function getConfig() {
         return include __DIR__ . '/config/module.config.php';
     }
 
-    public function getAutoloaderConfig()
-    {
+    public function getAutoloaderConfig() {
         return array(
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
@@ -47,8 +46,8 @@ class Module
             ),
         );
     }
-    
-     public function getServiceConfig() {
+
+    public function getServiceConfig() {
         return array(
             'factories' => array(
                 'ShopModule\Model\ShopTable' => function($sm) {
@@ -84,9 +83,30 @@ class Module
                     $resultSetPrototype->setArrayObjectPrototype(new PhotoShop());
                     return new TableGateway('shop_photo', $dbAdapter, null, $resultSetPrototype);
                 },
+                'Category\Model\CategoryTable' => function($sm) {
+                    $tableGateway = $sm->get('CategoryTableGateway');
+                    $table = new CategoryTable($tableGateway);
+                    return $table;
+                },
+                'Category\Model\SubcategoryTable' => function($sm) {
+                    $tableGateway = $sm->get('SubcategoryTableGateway');
+                    $table = new SubcategoryTable($tableGateway);
+                    return $table;
+                },
+                'CategoryTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Category());
+                    return new TableGateway('category', $dbAdapter, null, $resultSetPrototype);
+                },
+                'SubcategoryTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Subcategory());
+                    return new TableGateway('subcategory', $dbAdapter, null, $resultSetPrototype);
+                },
             ),
         );
     }
-    
-  
+
 }
