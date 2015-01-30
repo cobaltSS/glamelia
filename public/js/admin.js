@@ -23,7 +23,7 @@ function DelPhoto(el, url, photo)
                 },
                 success: function ()
                 {
-                    this.hide();
+                   // this.hide();
                 }});
 
 }

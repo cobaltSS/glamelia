@@ -25,11 +25,11 @@ class ReviewsTable {
             $resultSetPrototype->setArrayObjectPrototype(new Reviews());
             // create a new pagination adapter object
             $paginatorAdapter = new DbSelect(
-            // our configured select object
+                    // our configured select object
                     $select,
-            // the adapter to run it against
+                    // the adapter to run it against
                     $this->tableGateway->getAdapter(),
-            // the result set to hydrate
+                    // the result set to hydrate
                     $resultSetPrototype
             );
             $paginator = new Paginator($paginatorAdapter);
@@ -56,6 +56,7 @@ class ReviewsTable {
             'email' => $reviews->email,
             'description' => $reviews->description,
             'status' => $reviews->status,
+            'date' => date("Y-m-d H:i:s"),
         );
 
 
@@ -74,10 +75,21 @@ class ReviewsTable {
     public function deleteReviews($id) {
         $this->tableGateway->delete(array('id' => (int) $id));
     }
-    
+
     public function getReviewsList() {
-         $resultSet = $this->tableGateway->select();
-         return $resultSet->toArray();
+        $resultSet = $this->tableGateway->select();
+        return $resultSet->toArray();
+    }
+
+    public function getReviewsRandom($limit) {
+
+        $select = new Select;
+        $select->from('reviews');
+        $select->order('RAND()');
+        $select->limit($limit);
+        $resultSet = $this->tableGateway->select($select);
+
+        return $resultSet->toArray();
     }
 
 }

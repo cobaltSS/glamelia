@@ -31,39 +31,39 @@ class ItemForm extends Form {
             'type' => 'Zend\Form\Element\Select',
             'attributes' => array(
                 'id' => 'category_id',
-                'OnChange'=>'ShowSubcat(this)'
+                'OnChange' => 'ShowSubcat(this)'
             ),
             'options' => array(
-                    'label' => 'Категория',
-                    'empty_option' => 'Пожалуйста выберите категорию',
-                ),
+                'label' => 'Категория',
+                'empty_option' => 'Пожалуйста выберите категорию',
+            ),
         ));
-        
-         $this->add(array(
+
+        $this->add(array(
             'name' => 'subcategory_id',
             'type' => 'Zend\Form\Element\Select',
             'attributes' => array(
                 'id' => 'subcategory_id',
             ),
             'options' => array(
-                    'label' => 'Подкатегория',
-                    'empty_option' => 'Пожалуйста выберите подкатегорию',
-                ),
+                'label' => 'Подкатегория',
+                'empty_option' => 'Пожалуйста выберите подкатегорию',
+            ),
         ));
-        
-         $this->add(array(
+
+        $this->add(array(
             'name' => 'shop_id',
             'type' => 'Zend\Form\Element\MultiCheckbox',
             'attributes' => array(
                 'id' => 'shop_id',
             ),
             'options' => array(
-                    'label' => 'Магазин',
-                ),
+                'label' => 'Магазин',
+            ),
         ));
-        
-        
-         $this->add(array(
+
+
+        $this->add(array(
             'name' => 'status',
             'type' => 'Zend\Form\Element\Checkbox',
             'options' => array(
@@ -72,7 +72,27 @@ class ItemForm extends Form {
                 'unchecked_value' => '0',
             ),
         ));
-        
+
+        $this->add(array(
+            'name' => 'action',
+            'type' => 'Zend\Form\Element\Checkbox',
+            'options' => array(
+                'label' => 'Товар на акции:',
+                'checked_value' => '1',
+                'unchecked_value' => '0',
+            ),
+        ));
+
+        $this->add(array(
+            'name' => 'percentage',
+            'type' => 'Text',
+            'options' => array(
+                'label' => 'Процент скидки',
+            ),
+        ));
+
+
+
         $this->add(array(
             'name' => 'id_photo',
             'type' => 'Zend\Form\Element\File',
@@ -83,7 +103,7 @@ class ItemForm extends Form {
                 'id' => 'id_photo',
             ),
         ));
-        
+
         $this->add(array(
             'name' => 'photo',
             'type' => 'Zend\Form\Element\Image',
@@ -91,8 +111,8 @@ class ItemForm extends Form {
                 'id' => 'photo',
             ),
         ));
-        
-        
+
+
         $this->add(array(
             'name' => 'submit',
             'type' => 'Submit',
@@ -101,7 +121,6 @@ class ItemForm extends Form {
                 'id' => 'submitbutton',
             ),
         ));
-
     }
 
 }

@@ -17,6 +17,9 @@ class Item implements InputFilterAwareInterface {
     public $status;
     public $id_photo;
     public $patch;
+    
+    public $action;
+    public $percentage;
     protected $inputFilter;
     
     public function exchangeArray($data) {
@@ -29,6 +32,8 @@ class Item implements InputFilterAwareInterface {
         $this->id_photo = (!empty($data['id_photo'])) ? $data['id_photo'] : null;
         $this->patch = (!empty($data['patch'])) ? $data['patch'] : null;
         $this->id_shop = (!empty($data['id_shop'])) ? $data['id_shop'] : null;
+        $this->action = (!empty($data['action'])) ? $data['action'] : null;
+        $this->percentage = (!empty($data['percentage'])) ? $data['percentage'] : null;
     }
 
     public function getArrayCopy() {

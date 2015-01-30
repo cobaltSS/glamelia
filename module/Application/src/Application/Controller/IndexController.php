@@ -3,7 +3,6 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
 use ShopModule\Form\ShopForm;
 use Reviews\Model\Reviews;
 use Reviews\Form\ReviewsForm;
@@ -19,9 +18,18 @@ class IndexController extends AbstractActionController {
     protected $items2shopTable;
     protected $itemTable;
     protected $photoItemTable;
+    protected $limit=5;
 
     public function indexAction() {
-        return new ViewModel();
+        $reviews=$this->getReviewsTable()->getReviewsRandom($this->limit);
+        $action_items=$this->getItemTable()->getActionItemsRandom(array('action'=>'1'),$this->limit);
+        $items=$this->getItemTable()->getItems('RAND()',$this->limit);
+
+        return array(
+            'reviews' => $reviews,
+            'action_items'=> $action_items,
+            'items'=>$items,
+        );
     }
 
     // Show Shop

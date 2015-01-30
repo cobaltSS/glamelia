@@ -46,6 +46,16 @@ $form->prepare();
             <?php echo $this->formElement($form->get('id_photo')); ?>
             <?php echo $this->formElementErrors($form->get('id_photo')); ?>
         </dd>
+        
+         <dt><?php echo $this->formRow($form->get('action')); ?></dt>
+         <dt><?php echo $this->formLabel($form->get('percentage')); ?></dt>
+        <dd>
+            <?php echo $this->formElement($form->get('percentage')); ?>
+            <?php echo $this->formElementErrors($form->get('percentage')); ?>
+        </dd>
+        
+        
+        
         <dd> <?php echo $this->formSubmit($form->get('submit')); ?>
         
         <a href="/admin/item" class="button">Назад</a>

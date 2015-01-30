@@ -263,12 +263,13 @@ class ShopController extends AbstractActionController {
         $filename = $uploadPath . '/' . $name;
         $small_filename = $uploadPath . '/small_' . $name;
         $big_filename = $uploadPath . '/big_' . $name;
-        $cmd = "/usr/bin/convert -resize 150 {$filename} {$small_filename}";
+                
+        $cmd = "/usr/bin/convert -resize 140x140! -gravity center  -crop 140x140+0+0 +repage    {$filename} {$small_filename}";
         exec($cmd . " 2>&1", $out, $retVal);
 
-        $cmd = "/usr/bin/convert -resize 800 {$filename} {$big_filename}";
+        $cmd = "/usr/bin/convert -resize 700x280! -gravity center  -crop 700x280+0+0 +repage    {$filename} {$big_filename}";
         exec($cmd . " 2>&1", $out, $retVal);
-
+        
         $cmd = "/usr/bin/convert -resize 500 {$filename} {$filename}";
         exec($cmd . " 2>&1", $out, $retVal);
     }

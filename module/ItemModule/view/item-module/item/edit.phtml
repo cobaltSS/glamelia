@@ -51,6 +51,17 @@ $form->prepare();
         
         <dt><?php echo $this->formRow($form->get('status')); ?></dt>
         
+        
+       <dt><?php echo $this->formRow($form->get('action')); ?></dt>
+       
+         <dt><?php echo $this->formLabel($form->get('percentage')); ?></dt>
+        <dd>
+            <?php echo $this->formElement($form->get('percentage')); ?>
+            <?php echo $this->formElementErrors($form->get('percentage')); ?>
+        </dd>
+        
+        
+        
         <?php foreach ($photos as $photo) : ?>
            <span>
                 <img src ="<?php echo '/images/item/small_' . $this->escapeHtml(trim($photo)) ?>">  

@@ -64,10 +64,12 @@ class ItemTable {
         $data = array(
             'name' => $item->name,
             'category_id' => $item->category_id,
-            'subcategory_id'=> $item->subcategory_id,
+            'subcategory_id' => $item->subcategory_id,
             'status' => $item->status,
             'cost' => $item->cost,
             'id_photo' => $item->id_photo,
+            'action' => $item->action,
+            'percentage' => $item->percentage,
         );
         $id = (int) $item->id;
         if ($id == 0) {
@@ -86,7 +88,7 @@ class ItemTable {
     public function deleteItem($id) {
         $this->tableGateway->delete(array('id' => (int) $id));
     }
-    
+
     public function getItems2Category($id) {
         $id = (int) $id;
         $select = new Select;
@@ -103,6 +105,29 @@ class ItemTable {
         }
         return $row;
     }
+
+    public function getActionItemsRandom($where , $limit) {
+        $select = new Select;
+        $select->from($this->table);
+        $select->where($where);
+        $select->order('RAND()');
+        $select->limit($limit);
+        $resultSet = $this->tableGateway->select($select);
+
+        return $resultSet->toArray();
+    }
     
-   
+     public function getItems($order=null,$limit=null) {
+        $id = (int) $id;
+        $select = new Select;
+        $select->from('item');
+        $select->quantifier('DISTINCT');
+        $select->join('item_photo', "item_photo.id_item = item.id", array('patch'), 'left');
+       // $select->order($order);
+        $select->limit($limit);
+
+        $rowset = $this->tableGateway->selectWith($select);
+        return $rowset->toArray();
+    }
+
 }

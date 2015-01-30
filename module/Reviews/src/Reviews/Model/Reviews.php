@@ -23,6 +23,7 @@ class Reviews implements InputFilterAwareInterface {
         $this->email = (!empty($data['email'])) ? $data['email'] : null;
         $this->description = (!empty($data['description'])) ? $data['description'] : null;
         $this->status = (!empty($data['status'])) ? $data['status'] : null;
+        $this->date = (!empty($data['date'])) ? $data['date'] : null;
     }
 
     public function getArrayCopy() {
