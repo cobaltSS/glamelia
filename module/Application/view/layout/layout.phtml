@@ -35,11 +35,12 @@
         ?>
 
     </head>
-    <body class="index">
+    <body >
         <div id="body">
+            <div class="blackSquad"></div>
             <div id="header">
-                <div class="center">
-
+                <div class="redLine"></div>
+                <div class="center">               
                     <?php
                     /*  echo $this->navigation('public_navigation')->menu()->setMinDepth(0)
                       ->setMaxDepth(50)
@@ -57,14 +58,16 @@
                     ->setOnlyActiveBranch(true)
                     ->setPartial($partial)
                     ->render();
-
                     ?>
+                    </div>
+            </div>
+           
                     <!--<div id="content" class="center">-->
 <?php echo $this->content; ?>
                         <!-- /container -->
                     <!--</div>-->
-                </div>
-            </div>
+                
+            
         </div>
 
         <footer>

@@ -79,6 +79,7 @@ $(document).ready(function(){
     //Меню
     var timeOff;
     $('#catalog .dopMenu .dopMenuUl').each(function(){if($(this).find('li').size()>0){$(this).parent().find('img.showCategory').show()}})
+    $('#shops .dopMenu .dopMenuUl li a').each(function(){var $this=$(this); $this.text($this.text().split(',')[0])})
     $('.menu > li > a').hover(function(){
         clearTimeout(timeOff);
         if(!$(this).next('.dopMenu').hasClass('open') || !$(this).hasClass('active')){
