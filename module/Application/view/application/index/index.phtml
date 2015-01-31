@@ -75,10 +75,11 @@
                 foreach ($shops as $shop) {
                     ?>
                     <div class="slide">
-                        <?php 
-                         $patchs=explode(',',$shop['patch']);
-                        foreach ($patchs as $patch) { ?>
-                            <img src ="<?php echo '/images/shop/big_' .trim($patch) ?>">
+                        <?php
+                        $patchs = explode(',', $shop['patch']);
+                        foreach ($patchs as $patch) {
+                            ?>
+                            <img src ="<?php echo '/images/shop/big_' . trim($patch) ?>">
                             <a href="#" class="slideText">
                                 <span>
                                     <span>
@@ -128,7 +129,13 @@
         foreach ($items as $item) {
             ?>
             <div class="flowers">
-                <img src ="<?php echo '/images/item/small_' . $item['patch'] ?>">
+                <?php
+                if ($item['patch']) {
+                    ?>
+                    <img src ="<?php echo '/images/item/small_' . trim($item['patch']) ?>">
+                <?php } else { ?>
+                    <img src ="<?php echo '/img/small_item.png' ?>">
+                <?php } ?>
                 <a href="#"><?php echo $item['name'] ?></a>
             </div>
             <?php
