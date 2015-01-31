@@ -51,7 +51,7 @@ class ShopTable {
         $select->join('shop_photo', "shop_photo.id_shop = shop.id", array('patch' => new Expression("GROUP_CONCAT(DISTINCT `shop_photo`.`patch` SEPARATOR ', ')")), 'left');
         $select->group("shop.id");
         $select->having("shop.id = " . $id);
-        
+
         $rowset = $this->tableGateway->selectWith($select);
         $row = $rowset->current();
         if (!$row) {
@@ -66,7 +66,6 @@ class ShopTable {
             'address' => $shop->address,
             'status' => $shop->status,
             'city_id' => $shop->city_id,
-            'id_photo' => $shop->id_photo,
         );
 
 
@@ -86,11 +85,23 @@ class ShopTable {
     public function deleteShop($id) {
         $this->tableGateway->delete(array('id' => (int) $id));
     }
-    
-        public function getShopList() {
-         $resultSet = $this->tableGateway->select();
-         return $resultSet->toArray();
+
+    public function getShopList() {
+        $resultSet = $this->tableGateway->select();
+        return $resultSet->toArray();
     }
-    
-   
+
+    public function getShops() {
+        $rand = new \Zend\Db\Sql\Expression('RAND()');
+        $select = new Select;
+        $select->from('shop');
+        $select->quantifier('DISTINCT');
+        $select->join('shop_photo', "shop_photo.id_shop = shop.id", array('patch' => new Expression("GROUP_CONCAT(DISTINCT `shop_photo`.`patch` SEPARATOR ', ')")), 'left');
+        $select->group("shop.id");
+        $select->order($rand);
+
+        $rowset = $this->tableGateway->selectWith($select);
+        return $rowset->toArray();
+    }
+
 }

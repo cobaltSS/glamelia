@@ -106,27 +106,29 @@ class ItemTable {
         return $row;
     }
 
-    public function getActionItemsRandom($where , $limit) {
+    public function getActionItemsRandom($where, $limit) {
+        $rand = new \Zend\Db\Sql\Expression('RAND()');
         $select = new Select;
         $select->from($this->table);
         $select->where($where);
-        $select->order('RAND()');
-        $select->limit($limit);
-        $resultSet = $this->tableGateway->select($select);
+        $select->limit((int)$limit);
+        $select->order($rand);
+        
+        $resultSet = $this->tableGateway->selectWith($select);
 
         return $resultSet->toArray();
     }
-    
-     public function getItems($order=null,$limit=null) {
-        $id = (int) $id;
+
+    public function getItems($limit) {
+        $rand = new \Zend\Db\Sql\Expression('RAND()');
         $select = new Select;
         $select->from('item');
         $select->quantifier('DISTINCT');
+        $select->limit((int)$limit);
         $select->join('item_photo', "item_photo.id_item = item.id", array('patch'), 'left');
-       // $select->order($order);
-        $select->limit($limit);
-
+        $select->order($rand);
         $rowset = $this->tableGateway->selectWith($select);
+
         return $rowset->toArray();
     }
 
