@@ -48,6 +48,7 @@ class ShopController extends AbstractActionController {
                     // Сохранение выгруженного файла
                     $adapter = new \Zend\File\Transfer\Adapter\Http();
                     $adapter->addValidator('Size', false, array('max' => '15242880'));
+
                     if (!$adapter->isValid()) {
                         $dataError = $adapter->getMessages();
                         $error = array();
@@ -112,13 +113,15 @@ class ShopController extends AbstractActionController {
             $form->setData($request->getPost());
 
             if ($form->isValid()) {
+
                 $uploadFile = $this->params()->fromFiles('id_photo');
                 $uploadPath = $this->getFileUploadLocation();
 
-                if ($uploadFile) {
+                if ($uploadFile['tmp_name']) {
+
                     // Сохранение выгруженного файла
                     $adapter = new \Zend\File\Transfer\Adapter\Http();
-                    $adapter->addValidator('Size', false, array('max' => '15242880'));
+                    $adapter->addValidator('Size', false, array('max' => '25000000'));
                     if (!$adapter->isValid()) {
                         $dataError = $adapter->getMessages();
                         $error = array();
@@ -128,22 +131,24 @@ class ShopController extends AbstractActionController {
                         $form->setMessages(array('fileupload' => $error));
                     } else {
                         $adapter->setDestination($uploadPath);
+
                         if ($adapter->receive($uploadFile['name'])) {
                             $this->resizePhoto($uploadFile['name']);
+
                             $data = array(
                                 'id_shop' => $id,
                                 'patch' => $uploadFile['name'],
                                 'status' => $shop->status,
                             );
-                            $shop->id_photo = $this->getPhotoShopTable()->savePhoto($data);
+                            $this->getPhotoShopTable()->savePhoto($data);
                         }
                     }
                 }
                 $this->getShopTable()->saveShop($shop);
-
-                // Redirect to list of $shops
-                return $this->redirect()->toRoute('shop');
+                 // Redirect to list of $shops
+            return $this->redirect()->toRoute('shop');
             }
+           
         }
         if ($shop->patch) {
             $patch = explode(',', $shop->patch);
@@ -255,23 +260,23 @@ class ShopController extends AbstractActionController {
     public function getFileUploadLocation() {
         // Получение конфигурации из конфигурационных данных модуля
         $config = $this->getServiceLocator()->get('config');
-        return $config['module_config']['upload_location'];
+        return $config['module_config']['upload_shop_location'];
     }
 
-    public function resizePhoto($name) {
+     public function resizePhoto($name) {
         $uploadPath = $this->getFileUploadLocation();
         $filename = $uploadPath . '/' . $name;
         $small_filename = $uploadPath . '/small_' . $name;
         $big_filename = $uploadPath . '/big_' . $name;
-                
-        $cmd = "/usr/bin/convert -resize 140x140! -gravity center  -crop 140x140+0+0 +repage    {$filename} {$small_filename}";
+        
+        $cmd = "/usr/bin/convert -resize 200 -gravity center  -crop 140x140+0+0 +repage    {$filename} {$small_filename}";
         exec($cmd . " 2>&1", $out, $retVal);
 
-        $cmd = "/usr/bin/convert -resize 700x280! -gravity center  -crop 700x280+0+0 +repage    {$filename} {$big_filename}";
+        $cmd = "/usr/bin/convert -resize 700 -gravity center  -crop 700x280+0+0 +repage    {$filename} {$big_filename}";
         exec($cmd . " 2>&1", $out, $retVal);
-        
-        $cmd = "/usr/bin/convert -resize 500 {$filename} {$filename}";
-        exec($cmd . " 2>&1", $out, $retVal);
+
+       /* $cmd = "/usr/bin/convert -resize 500 {$filename} {$filename}";
+        exec($cmd . " 2>&1", $out, $retVal);*/
     }
 
 }

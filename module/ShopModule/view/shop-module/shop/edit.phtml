@@ -50,7 +50,7 @@ $form->prepare();
         <?php foreach ($photos as $photo) : ?>
            <span>
                 <img src ="<?php echo '/images/shop/small_' . $this->escapeHtml(trim($photo)) ?>">  
-                <img  onClick="DelPhoto(this,'<?php echo $this->url('shop', array('controller'=>'shop', 'action'=>'deletephoto')); ?>','<?php echo $photo ?>')" src ="<?php echo '/img/backet.png' ?>">  
+                <img  onClick="DelPhoto(this,'<?php echo $this->url('shop', array('controller'=>'shop', 'action'=>'deletephoto')); ?>','<?php echo trim($photo) ?>')" src ="<?php echo '/img/backet.png' ?>">  
                 </span>
         <?php endforeach ?>
 

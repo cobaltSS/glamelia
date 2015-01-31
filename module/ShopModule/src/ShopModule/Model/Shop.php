@@ -15,7 +15,6 @@ class Shop implements InputFilterAwareInterface {
     public $address;
     public $status;
     public $citys;
-    public $id_photo;
      public $patch;
     protected $inputFilter;
     
@@ -25,7 +24,7 @@ class Shop implements InputFilterAwareInterface {
         $this->work_time = (!empty($data['work_time'])) ? $data['work_time'] : null;
         $this->address = (!empty($data['address'])) ? $data['address'] : null;
         $this->status = (!empty($data['status'])) ? $data['status'] : null;
-        $this->id_photo = (!empty($data['id_photo'])) ? $data['id_photo'] : null;
+    //    $this->id_photo = (!empty($data['id_photo'])) ? $data['id_photo'] : null;
         $this->patch = (!empty($data['patch'])) ? $data['patch'] : null;
     }
 
@@ -55,6 +54,21 @@ class Shop implements InputFilterAwareInterface {
                 'filters' => array(
                     array('name' => 'Int'),
                 ),
+            ));
+           
+            $inputFilter->add(array(
+                'name' => 'status',
+                'required' => false,
+            ));
+            
+             $inputFilter->add(array(
+                'name' => 'id_photo',
+                'required' => false,
+            ));
+             
+              $inputFilter->add(array(
+                'name' => 'photo',
+                'required' => false,
             ));
 
             

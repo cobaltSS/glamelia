@@ -82,12 +82,14 @@ class ReviewsTable {
     }
 
     public function getReviewsRandom($limit) {
+        $rand = new \Zend\Db\Sql\Expression('RAND()');
 
         $select = new Select;
         $select->from('reviews');
-        $select->order('RAND()');
-        $select->limit($limit);
-        $resultSet = $this->tableGateway->select($select);
+        $select->limit((int)$limit);
+        $select->order($rand);
+        
+        $resultSet = $this->tableGateway->selectWith($select);
 
         return $resultSet->toArray();
     }

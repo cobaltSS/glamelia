@@ -33,7 +33,7 @@ class ShopForm extends Form {
                 'id' => 'city_id',
             ),
             'options' => array(
-                    'label' => 'Gender',
+                    'label' => 'Город',
                     'empty_option' => 'Пожалуйста выберите город',
                 ),
         ));

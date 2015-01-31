@@ -18,17 +18,19 @@ class IndexController extends AbstractActionController {
     protected $items2shopTable;
     protected $itemTable;
     protected $photoItemTable;
-    protected $limit=5;
+    public $limit = '5';
 
     public function indexAction() {
-        $reviews=$this->getReviewsTable()->getReviewsRandom($this->limit);
-        $action_items=$this->getItemTable()->getActionItemsRandom(array('action'=>'1'),$this->limit);
-        $items=$this->getItemTable()->getItems('RAND()',$this->limit);
+        $reviews = $this->getReviewsTable()->getReviewsRandom($this->limit);
+        $action_items = $this->getItemTable()->getActionItemsRandom(array('action' => '1'), $this->limit);
+        $items = $this->getItemTable()->getItems('12');
+        $shops=$this->getShopTable()->getShops('5');
 
         return array(
             'reviews' => $reviews,
-            'action_items'=> $action_items,
-            'items'=>$items,
+            'action_items' => $action_items,
+            'items' => $items,
+            'shops'=>$shops,
         );
     }
 
