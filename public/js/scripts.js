@@ -78,6 +78,7 @@ $(document).ready(function(){
 
     //Меню
     var timeOff;
+    $('#catalog .dopMenu .dopMenuUl').each(function(){if($(this).find('li').size()>0){$(this).parent().find('img.showCategory').show()}})
     $('.menu > li > a').hover(function(){
         clearTimeout(timeOff);
         if(!$(this).next('.dopMenu').hasClass('open') || !$(this).hasClass('active')){
@@ -106,20 +107,24 @@ $(document).ready(function(){
         clearTimeout(timeOff);
     },function(){
         timeOff = setTimeout(function(){
-            $('.dopMenu').removeClass('open').slideUp('normal',function(){$('.menu > li > a.active').removeClass('active');});
-            $('.dopMenu').find('.open_ul').slideUp('normal').removeClass('open_ul')
+            //$('.dopMenu').removeClass('open').slideUp('normal',function(){$('.menu > li > a.active').removeClass('active');});
+            //$('.dopMenu').find('.open_ul').slideUp('normal').removeClass('open_ul')
         },300);
     });
 
     //Подпункты в выпадающих списках меню
-    $('a.main_link').click(function () {
+    $('.main_link').click(function () {
+
         var $this = $(this),
              current_block_ul = $this.parent().find('.dopMenuUl')
         if (current_block_ul.hasClass('open_ul')) {
+            $(this).find('.transform').removeClass('transform')
             current_block_ul.slideUp('800').removeClass('open_ul')
         } else {
             $this.parents('.dopMenu').find('.open_ul').slideUp('800').removeClass('open_ul')
+            $this.parents('.dopMenu').find('.transform').removeClass('transform')
             current_block_ul.slideDown('800').addClass('open_ul')
+            $this.find('img').addClass('transform')
         }
     })
 
