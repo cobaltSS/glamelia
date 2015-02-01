@@ -52,8 +52,6 @@ class NewsTable {
     public function saveNews(News $news) {
         $data = array(
             'name' => $news->name,
-            'phone' => $news->phone,
-            'email' => $news->email,
             'description' => $news->description,
             'status' => $news->status,
             'date' => date("Y-m-d H:i:s"),

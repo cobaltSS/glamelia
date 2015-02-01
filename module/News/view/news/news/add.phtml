@@ -1,10 +1,10 @@
 <?php
-$title = 'Добавить новый отзыв';
+$title = 'Добавить новость';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <?php
-$form->setAttribute('action', $this->url('reviews', array('action' => 'add')));
+$form->setAttribute('action', $this->url('listnews', array('action' => 'add')));
 $form->prepare();?>
 
 <section>
@@ -20,18 +20,6 @@ $form->prepare();?>
             <?php echo $this->formElementErrors($form->get('name')); ?>
         </dd>
         
-        <dt><?php echo $this->formLabel($form->get('phone')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('phone')); ?>
-            <?php echo $this->formElementErrors($form->get('phone')); ?>
-        </dd>
-        
-        <dt><?php echo $this->formLabel($form->get('email')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('email')); ?>
-            <?php echo $this->formElementErrors($form->get('email')); ?>
-        </dd>
-
         <dt><?php echo $this->formLabel($form->get('description')); ?></dt>
         <dd>
             <?php echo $this->formElement($form->get('description')); ?>

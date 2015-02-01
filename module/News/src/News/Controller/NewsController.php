@@ -37,7 +37,7 @@ class NewsController extends AbstractActionController {
                 $this->getNewsTable()->saveNews($news);
 
                 // Redirect to list of news
-                return $this->redirect()->toRoute('news');
+                return $this->redirect()->toRoute('listnews');
             }
         }
         return array('form' => $form);
@@ -46,7 +46,7 @@ class NewsController extends AbstractActionController {
     public function editAction() {
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
-            return $this->redirect()->toRoute('news', array(
+            return $this->redirect()->toRoute('listnews', array(
                         'action' => 'add'
             ));
         }
@@ -56,7 +56,7 @@ class NewsController extends AbstractActionController {
         try {
             $news = $this->getNewsTable()->getNews($id);
         } catch (\Exception $ex) {
-            return $this->redirect()->toRoute('news', array(
+            return $this->redirect()->toRoute('listnews', array(
                         'action' => 'index'
             ));
         }
@@ -74,7 +74,7 @@ class NewsController extends AbstractActionController {
                 $this->getNewsTable()->saveNews($news);
 
 // Redirect to list of $newss
-                return $this->redirect()->toRoute('news');
+                return $this->redirect()->toRoute('listnews');
             }
         }
 
@@ -87,7 +87,7 @@ class NewsController extends AbstractActionController {
     public function deleteAction() {
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
-            return $this->redirect()->toRoute('news');
+            return $this->redirect()->toRoute('listnews');
         }
 
         $request = $this->getRequest();
@@ -100,7 +100,7 @@ class NewsController extends AbstractActionController {
             }
 
 // Redirect to list of albums
-            return $this->redirect()->toRoute('news');
+            return $this->redirect()->toRoute('listnews');
         }
         return array(
             'id' => $id,

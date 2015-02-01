@@ -1,11 +1,11 @@
 <?php
-$title = 'Редактировать отзыв';
+$title = 'Редактировать новость';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <?php
 $form = $this->form;
-$form->setAttribute('action', $this->url('reviews', array(
+$form->setAttribute('action', $this->url('listnews', array(
             'action' => 'edit',
             'id' => $this->id,
                 )
