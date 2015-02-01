@@ -69,7 +69,7 @@ function initialize() {
     directionsService = new google.maps.DirectionsService();
     // Create a map
     var myOptions = {
-        zoom: 8,
+        zoom: 12,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);

@@ -1,150 +1,105 @@
 <script type="text/javascript" src="/js/map.js"></script>
- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<?php echo $key_map ?>&sensor=false&libraries=places""></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<?php echo $key_map ?>&sensor=false&libraries=places""></script>
 <?php
-
 $title = 'Mагазин';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
-<?php
-$form = $this->form;
-$form->setAttribute('action', $this->url('shop', array(
-            'action' => 'edit',
-            'id' => $this->id,
-                )
-));
-$form->prepare();
-?>
+
+
 <div id="content">
-            <div class="center">
-                <div class="twoCol">
-                    <div class="leftCol">
-                        <ul class="navigation">
+    <div class="center">
+        <div class="twoCol">
+            <div class="leftCol">
+                <ul class="navigation">
+                    <li>
+                        <a href="#">Принять участие <i class="arrow"></i></a>
+                    </li>
+                    <li  class="active">
+                        <a href="#">номинации <i class="arrow"></i></a>
+                        <ul class="dropMenu">
                             <li>
-                                <a href="#">Принять участие <i class="arrow"></i></a>
-                            </li>
-                            <li  class="active">
-                                <a href="#">номинации <i class="arrow"></i></a>
-                                <ul class="dropMenu">
-                                    <li>
-                                        <a href="#" class="withSymbol active"><span class="symbol">A</span>Телевизионная и кинореклама <i class="arrow"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="withSymbol"><span class="symbol">B</span>Печатная реклама <i class="arrow"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="withSymbol"><span class="symbol">C</span>Видеомастерство <i class="arrow"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="withSymbol"><span class="symbol">D</span>Этикетка и упаковка <i class="arrow"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="withSymbol"><span class="symbol">E</span>Телевизионная и кинореклама <i class="arrow"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="withSymbol"><span class="symbol">F</span>Печатная реклама <i class="arrow"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="withSymbol"><span class="symbol">A</span>Видеомастерство <i class="arrow"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="withSymbol"><span class="symbol">B</span>Этикетка и упаковка <i class="arrow"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="withSymbol"><span class="symbol">C</span>Медиапроекты <i class="arrow"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="withSymbol"><span class="symbol">D</span>Red Apple Awards (интернет): международные номинации <i class="arrow"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="withSymbol"><span class="symbol">E</span>Этикетка и упаковка <i class="arrow"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="withSymbol"><span class="symbol">F</span>Медиапроекты <i class="arrow"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="withSymbol"><span class="symbol">A</span>Red Apple Awards (интернет): международные номинации <i class="arrow"></i></a>
-                                    </li>
-                                    
-                                </ul>
+                                <a href="#" class="withSymbol active"><span class="symbol">A</span>Телевизионная и кинореклама <i class="arrow"></i></a>
                             </li>
                             <li>
-                                <a href="#">правила подачи работ <i class="arrow"></i></a>
+                                <a href="#" class="withSymbol"><span class="symbol">B</span>Печатная реклама <i class="arrow"></i></a>
                             </li>
                             <li>
-                                <a href="#">награды <i class="arrow"></i></a>
+                                <a href="#" class="withSymbol"><span class="symbol">C</span>Видеомастерство <i class="arrow"></i></a>
                             </li>
                             <li>
-                                <a href="#">победители прошлых лет <i class="arrow"></i></a>
+                                <a href="#" class="withSymbol"><span class="symbol">D</span>Этикетка и упаковка <i class="arrow"></i></a>
                             </li>
                             <li>
-                                <a href="#">молодые креаторы <i class="arrow"></i></a>
+                                <a href="#" class="withSymbol"><span class="symbol">E</span>Телевизионная и кинореклама <i class="arrow"></i></a>
                             </li>
+                            <li>
+                                <a href="#" class="withSymbol"><span class="symbol">F</span>Печатная реклама <i class="arrow"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="withSymbol"><span class="symbol">A</span>Видеомастерство <i class="arrow"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="withSymbol"><span class="symbol">B</span>Этикетка и упаковка <i class="arrow"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="withSymbol"><span class="symbol">C</span>Медиапроекты <i class="arrow"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="withSymbol"><span class="symbol">D</span>Red Apple Awards (интернет): международные номинации <i class="arrow"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="withSymbol"><span class="symbol">E</span>Этикетка и упаковка <i class="arrow"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="withSymbol"><span class="symbol">F</span>Медиапроекты <i class="arrow"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="withSymbol"><span class="symbol">A</span>Red Apple Awards (интернет): международные номинации <i class="arrow"></i></a>
+                            </li>
+
                         </ul>
-                    </div>
-                    <div class="rightCol">
-                        <div class="shop_title">
-                        <h1><?php echo $this->escapeHtml($title); ?></h1>
-                        </div>
-                        <p class="bigLine"></p>
-                        
-                    </div>
-                </div>
-                
-                
-                
-                
+                    </li>
+                    <li>
+                        <a href="#">правила подачи работ <i class="arrow"></i></a>
+                    </li>
+                    <li>
+                        <a href="#">награды <i class="arrow"></i></a>
+                    </li>
+                    <li>
+                        <a href="#">победители прошлых лет <i class="arrow"></i></a>
+                    </li>
+                    <li>
+                        <a href="#">молодые креаторы <i class="arrow"></i></a>
+                    </li>
+                </ul>
             </div>
-            
-            
+            <div class="rightCol">
+                <div class="shop_title">
+                    <h1><?php echo $this->escapeHtml($title); ?></h1>
+                </div>
+                <p class="bigLine"></p>
+                
+                
+                
+                
+                
+                <input type="hidden" id="end" value="<?php echo $shop->address?>">
+
+                <div class="map-view-book">
+                    <input id="location"   type="hidden" value="" />
+                    <div id="map_canvas"></div>
+                </div>
+
+            </div>
         </div>
-        
-   <!--<section>
-    <div class="infoshop">
-        <dl class="zend_form">
 
-            <?php echo $this->form()->openTag($form); ?>
-            <?php echo $this->formHidden($form->get('id')); ?>
 
-            <dt><?php echo $this->formLabel($form->get('city_id')); ?></dt>
-            <dd>
-                <?php echo $this->formElement($form->get('city_id')); ?>
-                <?php echo $this->formElementErrors($form->get('city_id')); ?>
-            </dd>  
 
-            <dt><?php echo $this->formLabel($form->get('address')); ?></dt>
-            <dd>
-                <?php echo $this->formElement($form->get('address')); ?>
-                <?php echo $this->formElementErrors($form->get('address')); ?>
-            </dd>
 
-            <dt><?php echo $this->formLabel($form->get('work_time')); ?></dt>
-            <dd>
-                <?php echo $this->formElement($form->get('work_time')); ?>
-                <?php echo $this->formElementErrors($form->get('work_time')); ?>
-            </dd>
-
-            <?php foreach ($photos as $photo) : ?>
-                <span>
-                    <img src ="<?php echo '/images/shop/small_' . $this->escapeHtml(trim($photo)) ?>">  
-                </span>
-            <?php endforeach ?>
-            <?php echo $this->form()->closeTag(); ?>
-
-        </dl>
     </div>
-     MAP 
-    <div class="map-view-book">
-        <input id="location"   type="hidden" value="" />
-        <dt><?php echo $this->formLabel($form->get('start')); ?></dt>
 
-        <dd>
-            <?php echo $this->formElement($form->get('start')); ?>
-            <?php echo $this->formElementErrors($form->get('start')); ?>
-        </dd>
-        <div id="map_canvas"></div>
-    </div>
-    <div class="clear"></div>
-</section>-->
+
+</div>
+
 
 

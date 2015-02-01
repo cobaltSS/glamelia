@@ -58,7 +58,21 @@ li{display: inline-block;}
 .reviewsTitle{height: 0px;padding-top: 65px;}
 form#reviews{}
 
-.shop_title{margin-top: 50px}
+.shop_title{padding-top: 50px}
+
+#map_canvas { height: 100% }
+
+.map-view-book{
+    width: 40%;
+    height: 300px;
+    display: inline-block;
+    float:left;
+}
+
+.infoshop{
+    width:50%;
+    float:left;
+}
 
 
 form#reviews textarea{width: 97%;}
