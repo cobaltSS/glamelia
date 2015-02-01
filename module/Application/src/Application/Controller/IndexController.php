@@ -24,14 +24,15 @@ class IndexController extends AbstractActionController {
         $reviews = $this->getReviewsTable()->getReviewsRandom($this->limit);
         $action_items = $this->getItemTable()->getActionItemsRandom(array('action' => '1'), $this->limit);
         $items = $this->getItemTable()->getItems('12');
-        $shops=$this->getShopTable()->getShops('5');
+        $shops = $this->getShopTable()->getShops('5');
 
         return array(
             'reviews' => $reviews,
             'action_items' => $action_items,
             'items' => $items,
-            'shops'=>$shops,
+            'shops' => $shops,
         );
+ 
     }
 
     // Show Shop
@@ -68,6 +69,30 @@ class IndexController extends AbstractActionController {
             'key_map' => $this->getkeyApiLocation(),
         );
     }
+    
+    
+    // Show Item
+    // return array
+
+    public function itemsAction() {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('home', array(
+            ));
+        }
+
+        try {
+            $item = $this->getItemTable()->getItem($id);
+        } catch (\Exception $ex) {
+            return $this->redirect()->toRoute('home', array(
+            ));
+        }
+
+
+        return array(
+            'item' => $item,
+        );
+    }
 
     // Show Shop
     // return array
@@ -79,28 +104,24 @@ class IndexController extends AbstractActionController {
             return $this->redirect()->toRoute('home', array(
             ));
         }
-
         try {
-            if ($id_cat)
+            if ($id_cat && !$id_sub)
                 $items = $this->getItemTable()->getItems2Category($id_cat);
-            if ($id_sub)
+            else if ($id_sub)
                 $items = $this->getItemTable()->getItems2SubCategory($id_sub);
         } catch (\Exception $ex) {
             return $this->redirect()->toRoute('home', array(
             ));
         }
 
-        $form = new ItemForm();
-        $form->bind($items);
-
-        if ($items->patch) {
-            $patch = explode(',', $items->patch);
-        }
-
+      /*  foreach ($items as $item) {
+            if ($item['patch']) {
+                $item['patch'] = explode(',', $item['patch']);
+                $item['id_shop'] = explode(',', $item['id_shop']);
+            }
+        }*/
         return array(
-            'id' => $id,
-            'form' => $form,
-            'photos' => $patch,
+            'items' => $items,
         );
     }
 

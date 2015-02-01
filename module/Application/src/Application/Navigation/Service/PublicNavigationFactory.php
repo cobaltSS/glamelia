@@ -50,17 +50,22 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
                             $configuration['navigation'][$this->getName()][$i]['pages'][$k] = array(
                                 'label' => $category['name'],
                                 'route' => $row['route'],
+                                'action' => $row['route'],
+                                'params' => array('id_cat' => $category['id']),
                             );
-                            $name_sub = explode(':', $category['subname']);
-                            $subcategory_id = explode(':', $category['subcategory_id']);
 
-                            foreach ($name_sub as $key => $sub) {
-                                $configuration['navigation'][$this->getName()][$i]['pages'][$k]['pages'][] = array(
-                                    'label' => $sub,
-                                    'route' => $row['route'],
-                                    'action' => $row['route'],
-                                    'params' => array('id_sub' => $subcategory_id[$key]),
-                                );
+                            if ($category['subname']) {
+                                $name_sub = explode(':', $category['subname']);
+                                $subcategory_id = explode(':', $category['subcategory_id']);
+
+                                foreach ($name_sub as $key => $sub) {
+                                    $configuration['navigation'][$this->getName()][$i]['pages'][$k]['pages'][] = array(
+                                        'label' => $sub,
+                                        'route' => $row['route'],
+                                        'action' => $row['route'],
+                                        'params' => array('id_cat' => $category['id'],'id_sub' => $subcategory_id[$key]),
+                                    );
+                                }
                             }
                             $k++;
                         }
@@ -79,7 +84,7 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
         }
         if (!isset($configuration['navigation'][$this->getName()])) {
             throw new Exception\InvalidArgumentException(sprintf(
-            'Failed to find a navigation container by the name "%s"', $this->getName()
+                    'Failed to find a navigation container by the name "%s"', $this->getName()
             ));
         }
 
@@ -89,9 +94,8 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
         $pages = $this->getPagesFromConfig($configuration['navigation'][$this->getName()]);
 
         $this->pages = $this->injectComponents($pages, $routeMatch, $router);
-    
-    return $this->pages;
-}
 
+        return $this->pages;
+    }
 
 }

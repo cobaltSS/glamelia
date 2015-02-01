@@ -120,10 +120,9 @@ class ItemController extends AbstractActionController {
         $options = $this->GetListCategory($item->category_id);
         $form->get('category_id')->setAttribute('options', $options);
 
-        $options_sub = $this->GetListSubcategory($item->subcategory_id);
+        $options_sub = $this->GetListSubcategory($item->subcategory_id,$item->category_id);
+        if($options_sub)
         $form->get('subcategory_id')->setAttribute('options', $options_sub);
-
-
 
         $options2shop = $this->GetListShop($item);
         $form->get('shop_id')->setValueOptions($options2shop);
@@ -180,8 +179,8 @@ class ItemController extends AbstractActionController {
         );
     }
 
-    public function GetListSubcategory($subcategory_id) {
-        $subcategories = $this->getSubcategoryTable()->getSubcategoryList();
+    public function GetListSubcategory($subcategory_id,$cat_id) {
+        $subcategories = $this->getSubcategoryTable()->getSubcategories($cat_id);
         for ($i = 0; $i < sizeof($subcategories); $i++) {
             if ($subcategories[$i]['id'] == $subcategory_id) {
                 $selected = true;

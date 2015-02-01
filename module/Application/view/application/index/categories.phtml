@@ -1,1 +1,29 @@
-Categories
+<div class="index">
+    <div id="content" class="center ">
+
+<?php
+
+$title = 'Товары';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<div class="indexContent clear">
+ <?php
+        foreach ($items as $item) {
+            ?>
+            <div class="flowers">
+                <?php
+                if ($item['patch']) {
+                    ?>
+                    <img src ="<?php echo '/images/item/small_' . trim($item['patch']) ?>">
+                <?php } else { ?>
+                    <img src ="<?php echo '/img/small_item.png' ?>">
+                <?php } ?>
+                <a href="<?php echo $this->url('items', array('action'=>'items','id' => $item['id'])); ?>"><?php echo $item['name'] ?></a>
+            </div>
+            <?php
+        }
+        ?>
+ </div>
+    </div>
+</div>

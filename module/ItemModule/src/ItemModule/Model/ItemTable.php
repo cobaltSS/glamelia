@@ -94,16 +94,26 @@ class ItemTable {
         $select = new Select;
         $select->from('item');
         $select->quantifier('DISTINCT');
-        $select->join('item_photo', "item_photo.id_item = item.id", array('patch' => new Expression("GROUP_CONCAT(DISTINCT `item_photo`.`patch` SEPARATOR ', ')")), 'left');
+        $select->join('item_photo', "item_photo.id_item = item.id", array('patch'), 'left');
         $select->join('items2shop', "items2shop.id_item = item.id", array('id_shop' => new Expression("GROUP_CONCAT(DISTINCT `items2shop`.`id_shop` SEPARATOR ', ')")), 'left');
         $select->group("item.id");
-        $select->having("item.id = " . $id);
+        $select->having("item.category_id = " . $id);
         $rowset = $this->tableGateway->selectWith($select);
-        $row = $rowset->current();
-        if (!$row) {
-            throw new \Exception("Could not find row $id");
-        }
-        return $row;
+        return $rowset->toArray();
+    }
+    
+    public function getItems2SubCategory($id) {
+        $id = (int) $id;
+        $select = new Select;
+        $select->from('item');
+        $select->quantifier('DISTINCT');
+        $select->join('item_photo', "item_photo.id_item = item.id", array('patch'), 'left');
+        $select->join('items2shop', "items2shop.id_item = item.id", array('id_shop' => new Expression("GROUP_CONCAT(DISTINCT `items2shop`.`id_shop` SEPARATOR ', ')")), 'left');
+        $select->group("item.id");
+        $select->having("item.subcategory_id = " . $id);
+        $rowset = $this->tableGateway->selectWith($select);
+        
+        return $rowset->toArray();
     }
 
     public function getActionItemsRandom($where, $limit) {
