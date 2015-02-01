@@ -58,7 +58,7 @@ li{display: inline-block;}
 .reviewsTitle{height: 0px;padding-top: 65px;}
 form#reviews{}
 
-.buble{min-height: 100px; min-width: 100px;background: pink;}
+.shop_title{margin-top: 50px}
 
 
 form#reviews textarea{width: 97%;}
