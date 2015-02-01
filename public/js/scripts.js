@@ -134,7 +134,8 @@ $(document).ready(function(){
         if($('.review_form_add').hasClass('bounceIn')){
             $('.review_form_add').removeClass('bounceIn').addClass('bounceOut')
             }
-        else{$('.review_form_add').removeClass('bounceOut').addClass('bounceIn').show()}
+        else{$('.review_form_add').removeClass('bounceOut').addClass('bounceIn').show().focus();
+            if($('.review_form_add').is(":visible"))$('.review_form_add').click(); c('zlp')}
     })
 //    //Войти
 //    $('#enter').click(function(){
