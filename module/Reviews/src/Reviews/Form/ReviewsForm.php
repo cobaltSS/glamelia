@@ -22,6 +22,7 @@ class ReviewsForm extends Form {
             ),
             'attributes' => array(
                 'class' => 'form-control',
+                'id' => 'name',
                 'placeholder' => 'Ваше имя',
             ),
         ));

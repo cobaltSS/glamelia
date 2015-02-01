@@ -128,7 +128,14 @@ $(document).ready(function(){
             $this.find('img').addClass('transform')
         }
     })
-
+    //Отзывы
+    $('button.showReviewsForm').click(function(){
+        var $this = $(this)
+        if($('.review_form_add').hasClass('bounceIn')){
+            $('.review_form_add').removeClass('bounceIn').addClass('bounceOut')
+            }
+        else{$('.review_form_add').removeClass('bounceOut').addClass('bounceIn').show()}
+    })
 //    //Войти
 //    $('#enter').click(function(){
 //        if($('.enter').is(':hidden')){

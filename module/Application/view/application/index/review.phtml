@@ -1,130 +1,53 @@
+        <?php
+            $title ='Отзыв';
+            $this->headTitle($title);?>
+        <?php
+            $form->setAttribute('action', $this->url('review', array('action' => 'review')));
+            $form->prepare();?>
         <div id="content">
-            <div class="center">
-                <?php
-                $title ='Оставить отзыв';
-                $this->headTitle($title);
-                ?>
-                <h1><?php echo $this->escapeHtml($title); ?></h1>
-                <?php
-                $form->setAttribute('action', $this->url('review', array('action' => 'review')));
-                $form->prepare();?>
-
-
+            <div class="center">               
                 <div class="twoCol">
-                    <div class="leftCol">
-                        <ul class="navigation">
-                            <li>
-                                <a href="#">Личные данные <i class="arrow"></i></a>
-                                <ul class="dropMenu">
-                                    <li>
-                                        <a href="#">Подать работу <i class="arrow"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Подать серию работ <i class="arrow"></i></a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li  class="active">
-                                <a href="#">мои работы <i class="arrow"></i></a>
-                                <ul class="dropMenu">
-                                    <li>
-                                        <a href="#" class="active">Подать работу <i class="arrow"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Подать серию работ <i class="arrow"></i></a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Мои билеты <i class="arrow"></i></a>
-                            </li>
-                            <li>
-                                <a href="#">мои счета <i class="arrow"></i></a>
-                            </li>
-                        </ul>
-                    </div>
                     <div class="rightCol">
-                        <div class="crumbs">
-                            <a href="#"><span>Главная</span></a>  –  <a href="#"><span>Профиль</span></a>  –  <a href="#"><span>Личные данные</span></a>
+                        <h1 class="reviewsTitle"><?php echo $this->escapeHtml($title); ?></h1>
+                        <p class="bigLine"></p><button class="btn btn-default showReviewsForm">+</button>
+                        <div class="review_form_add animated">
+                            <section>
+
+                                    <?php
+                                    echo $this->form()->openTag($form);
+                                    echo $this->formHidden($form->get('id'));
+                                    ?>
+                                    <div class="form-group">
+                                        <?php echo $this->formLabel($form->get('name')); ?>
+                                        <?php echo $this->formElement($form->get('name')); ?>
+                                        <?php echo $this->formElementErrors($form->get('name')); ?>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <?php echo $this->formLabel($form->get('phone')); ?>
+                                        <?php echo $this->formElement($form->get('phone')); ?>
+                                        <?php echo $this->formElementErrors($form->get('phone')); ?>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <?php echo $this->formLabel($form->get('email')); ?>
+                                        <?php echo $this->formElement($form->get('email')); ?>
+                                        <?php echo $this->formElementErrors($form->get('email')); ?>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <?php echo $this->formLabel($form->get('description')); ?>
+                                        <?php echo $this->formElement($form->get('description')); ?>
+                                        <?php echo $this->formElementErrors($form->get('description')); ?>
+                                    </div>
+                                        <?php echo $this->formSubmit($form->get('submit')); ?>
+                                    <?php echo $this->form()->closeTag(); ?>
+
+
+                            </section>  
                         </div>
-                        <h1>мои работы</h1>
-                        <p class="bigLine"></p>
-                        <div class="padding100">
-                            <p>
-                                Оригинал работы загрузить на FTP фестиваля в соответствующую папку: <strong>ftp.festival.ru</strong><br />
-                                Логин: ftpupload Пароль: ftpupload
-                            </p>
-                            <h2>Список работ</h2>
-                            <table class="works">
-                                <thead>
-                                    <tr>
-                                        <th class="clearCol"></th>
-                                        <th class="numberCol">Номер</th>
-                                        <th class="categoryCol">Категория</th>
-                                        <th>Название</th>
-                                        <th class="statusCol">Статус</th>
-                                        <th class="actionCol">Действия</th>
-                                        <th class="clearCol"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="clearCol"></td>
-                                        <td colspan="5" class="noWork">Пока у вас не загружено ни одной работы</td>
-                                        <td class="clearCol"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <p>
-                                <input type="submit" class="bigButton" value="Подать работу" />
-                            </p>
-                            
-                            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                        </div>
+                        <div class="publick_reviews"></div>
                     </div>
                 </div>
-                
-                
-                
-         
-        
-                <section>
-                    <dl class="zend_form">
-                        <?php
-                        echo $this->form()->openTag($form);
-                        echo $this->formHidden($form->get('id'));
-                        ?>
-
-                        <dt><?php echo $this->formLabel($form->get('name')); ?></dt>
-                        <dd>
-                            <?php echo $this->formElement($form->get('name')); ?>
-                            <?php echo $this->formElementErrors($form->get('name')); ?>
-                        </dd>
-
-                        <dt><?php echo $this->formLabel($form->get('phone')); ?></dt>
-                        <dd>
-                            <?php echo $this->formElement($form->get('phone')); ?>
-                            <?php echo $this->formElementErrors($form->get('phone')); ?>
-                        </dd>
-
-                        <dt><?php echo $this->formLabel($form->get('email')); ?></dt>
-                        <dd>
-                            <?php echo $this->formElement($form->get('email')); ?>
-                            <?php echo $this->formElementErrors($form->get('email')); ?>
-                        </dd>
-
-                        <dt><?php echo $this->formLabel($form->get('description')); ?></dt>
-                        <dd>
-                            <?php echo $this->formElement($form->get('description')); ?>
-                            <?php echo $this->formElementErrors($form->get('description')); ?>
-                        </dd>
-                        <input type="hidden" value="0" name="status">
-                        <dd> <?php echo $this->formSubmit($form->get('submit')); ?></dd>
-                        <?php echo $this->form()->closeTag(); ?>
-
-                    </dl>
-                </section>
-   
-       
             </div>
         </div>
