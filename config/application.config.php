@@ -12,6 +12,8 @@ return array(
         'Category',
         'ItemModule',
         'Reviews',
+        'About',
+        'News',
     ),
     'module_listener_options' => array(
         'module_paths' => array(
