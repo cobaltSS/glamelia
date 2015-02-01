@@ -3,14 +3,14 @@
                
                     <div class="slide">
                         <?php
-                        $patchs = explode(',', $item['patch']);
+                        $patchs = explode(',', $item->patch);
                         foreach ($patchs as $patch) {
                             ?>
-                            <img src ="<?php echo '/images/image/big_' . trim($patch) ?>">
+                            <img src ="<?php echo '/images/item/big_' . trim($patch) ?>">
                             <a href="#" class="slideText">
                                 <span>
                                     <span>
-                                        <?php echo $item['name'] ?>
+                                        <?php echo $item->name ?>
                                     </span>
                                 </span>
                             </a>

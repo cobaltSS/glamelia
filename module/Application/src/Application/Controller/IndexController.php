@@ -88,7 +88,6 @@ class IndexController extends AbstractActionController {
             ));
         }
 
-
         return array(
             'item' => $item,
         );
@@ -98,7 +97,7 @@ class IndexController extends AbstractActionController {
     // return array
 
     public function categoriesAction() {
-        $id_cat = (int) $this->params()->fromRoute('id_cat', 0);
+        $id_cat = (int) $this->params()->fromRoute('id', 0);
         $id_sub = (int) $this->params()->fromRoute('id_sub', 0);
         if (!$id_cat && !$id_sub) {
             return $this->redirect()->toRoute('home', array(
