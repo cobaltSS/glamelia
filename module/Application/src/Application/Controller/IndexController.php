@@ -3,10 +3,8 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use ShopModule\Form\ShopForm;
 use Reviews\Model\Reviews;
 use Reviews\Form\ReviewsForm;
-use About\Model\About;
 use About\Form\AboutForm;
 
 class IndexController extends AbstractActionController {
@@ -114,7 +112,7 @@ class IndexController extends AbstractActionController {
     
      public function newsAction() {
         try {
-            $news = $this->getNewsTable()->getNews();
+            $news = $this->getNewsTable()->fetchAll(true);
         } catch (\Exception $ex) {
             return $this->redirect()->toRoute('home', array(
             ));
@@ -284,6 +282,15 @@ class IndexController extends AbstractActionController {
             $this->aboutTable = $sm->get('About\Model\AboutTable');
         }
         return $this->aboutTable;
+    }
+    
+    // connect Reviews table
+    public function getNewsTable() {
+        if (!$this->newsTable) {
+            $sm = $this->getServiceLocator();
+            $this->newsTable = $sm->get('News\Model\NewsTable');
+        }
+        return $this->newsTable;
     }
 
 }
