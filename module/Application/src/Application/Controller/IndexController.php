@@ -19,6 +19,10 @@ class IndexController extends AbstractActionController {
     protected $subcategoryTable;
     protected $items2shopTable;
     protected $itemTable;
+    protected $aboutTable;
+    protected $newsTable;
+    
+    
     protected $photoItemTable;
     public $limit = '5';
 
@@ -53,11 +57,7 @@ class IndexController extends AbstractActionController {
             ));
         }
 
-        $form = new ShopForm();
-        $form->bind($shop);
 
-        $options = $this->GetListCity($shop->city_id);
-        $form->get('city_id')->setAttribute('options', $options);
 
         if ($shop->patch) {
             $patch = explode(',', $shop->patch);
@@ -65,7 +65,7 @@ class IndexController extends AbstractActionController {
 
         return array(
             'id' => $id,
-            'form' => $form,
+            'shop' => $shop,
             'photos' => $patch,
             'key_map' => $this->getkeyApiLocation(),
         );

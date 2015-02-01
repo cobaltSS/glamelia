@@ -6,6 +6,8 @@ $(document).ready(function (e)
         unfadeBG();
         return false;
     });
+    CKEDITOR.replace('description');
+   // $('#redaktor').redactor();
 });
 
 
@@ -170,6 +172,8 @@ function alignPopup(selector)
     }
     $(selector).css('left', Math.ceil($(window).width() / 2) - Math.ceil($(selector).width() / 2));
 }
+
+
 
 
 

@@ -18,48 +18,25 @@ class NewsForm extends Form {
             'name' => 'name',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Имя',
+                'label' => 'Название статьи',
             ),
             'attributes' => array(
                 'class' => 'form-control',
                 'id' => 'name',
-                'placeholder' => 'Ваше имя',
+                'placeholder' => 'Название статьи',
             ),
         ));
         
-        $this->add(array(
-            'name' => 'phone',
-            'type' => 'Text',
-            'options' => array(
-                'label' => 'Телефон',
-            ),
-            'attributes' => array(
-                'class' => 'form-control',
-                'placeholder' => 'Контактный номер телефона',
-            ),
-        ));
-        
-        $this->add(array(
-            'name' => 'email',
-            'type' => 'Email',
-            'options' => array(
-                'label' => 'Email',
-            ),
-            'attributes' => array(
-                'class' => 'form-control',
-                'placeholder' => 'Электронный адрес',
-            ),
-        ));
-        
+      
+      
         $this->add(array(
             'name' => 'description',
             'type' => 'Zend\Form\Element\Textarea',
             'options' => array(
-                'label' => 'Отзыв',
+                'label' => 'Текст',
             ),
             'attributes' => array(
-                'class' => 'form-control',
-                'placeholder' => 'Оставьте здесь ваш отзыв',
+                'id'=>'description',
             ),
         ));
         $this->add(array(

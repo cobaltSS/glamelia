@@ -4,11 +4,11 @@ $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <p>
-    <a href="<?php echo $this->url('news', array('action' => 'add')); ?>">
+    <a href="<?php echo $this->url('listnews', array('action' => 'add')); ?>">
         Добавить новость</a>
 </p>
 <p>
-    <a href="<?php echo $this->url('news', array('action' => 'index','status'=>1)); ?>">
+    <a href="<?php echo $this->url('listnews', array('action' => 'index','status'=>1)); ?>">
        Показать неопубликованные</a>
 </p>
 <table class="table">
@@ -18,15 +18,15 @@ $this->headTitle($title);
         <th>Статус</th> 
         <th>&nbsp;</th>
     </tr>
-    <?php foreach ($this->paginator as $reviews) : ?>
+    <?php foreach ($this->paginator as $news) : ?>
         <tr>
-            <td><?php echo $this->escapeHtml($reviews->name); ?></td>
-            <td><?php echo $this->escapeHtml($reviews->description); ?></td>
-            <td><?php echo $this->escapeHtml($reviews->status) ? 'опублекован' :'не обубликован' ?></td>
+            <td><?php echo $this->escapeHtml($news->name); ?></td>
+            <td><?php echo $this->escapeHtml($news->description); ?></td>
+            <td><?php echo $this->escapeHtml($news->status) ? 'опублекован' :'не обубликован' ?></td>
             <td>
-                <a href="<?php echo $this->url('news', array('action' => 'edit', 'id' => $reviews->id));
+                <a href="<?php echo $this->url('listnews', array('action' => 'edit', 'id' => $news->id));
         ?>">Редактировать</a>
-                <a href="<?php echo $this->url('news', array('action' => 'delete', 'id' => $reviews->id));
+                <a href="<?php echo $this->url('listnews', array('action' => 'delete', 'id' => $news->id));
         ?>">Удалить</a>
             </td>
         </tr>

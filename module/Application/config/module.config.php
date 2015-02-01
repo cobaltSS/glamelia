@@ -262,6 +262,27 @@ return array(
                     ),
                 ),
             ),
+                        array(
+                'label' => 'Новости',
+                'route' => 'listnews',
+                'pages' => array(
+                    array(
+                        'label' => 'Add',
+                        'route' => 'listnews',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'Edit',
+                        'route' => 'listnews',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete',
+                        'route' => 'listnews',
+                        'action' => 'delete',
+                    ),
+                ),
+            ),
             array(
                 'label' => 'Отзывы',
                 'route' => 'reviews',
@@ -286,27 +307,6 @@ return array(
             array(
                 'label' => 'О нас',
                 'route' => 'abouts',
-            ),
-            array(
-                'label' => 'Новости',
-                'route' => 'listnews',
-                'pages' => array(
-                    array(
-                        'label' => 'Add',
-                        'route' => 'news',
-                        'action' => 'add',
-                    ),
-                    array(
-                        'label' => 'Edit',
-                        'route' => 'news',
-                        'action' => 'edit',
-                    ),
-                    array(
-                        'label' => 'Delete',
-                        'route' => 'reviews',
-                        'action' => 'delete',
-                    ),
-                ),
             ),
         ),
     ),
