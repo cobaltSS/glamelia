@@ -34,8 +34,7 @@ return array(
                     ),
                 ),
             ),
-            
-             'items' => array(
+            'items' => array(
                 'type' => 'segment',
                 'options' => array(
                     'route' => '/[:action][/:id]',
@@ -49,7 +48,6 @@ return array(
                     ),
                 ),
             ),
-            
             'news' => array(
                 'type' => 'segment',
                 'options' => array(
@@ -64,11 +62,10 @@ return array(
                     ),
                 ),
             ),
-            
-             'about' => array(
+            'about' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/[:action][/:id]',
+                    'route' => '/[:action]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
@@ -79,13 +76,10 @@ return array(
                     ),
                 ),
             ),
-            
-            
-            
             'categories' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/[:action][/:id_cat][/:id_sub]',
+                    'route' => '/[:action][/:id][/:id_sub]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
@@ -96,7 +90,6 @@ return array(
                     ),
                 ),
             ),
-            
             'item' => array(
                 'type' => 'segment',
                 'options' => array(
@@ -111,8 +104,6 @@ return array(
                     ),
                 ),
             ),
-            
-            
             'review' => array(
                 'type' => 'segment',
                 'options' => array(
@@ -187,7 +178,6 @@ return array(
                 'label' => 'КАТАЛОГ',
                 'route' => 'categories',
             ),
-            
             array(
                 'label' => 'НОВОСТИ',
                 'route' => 'news',
@@ -284,6 +274,31 @@ return array(
                     array(
                         'label' => 'Edit',
                         'route' => 'reviews',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete',
+                        'route' => 'reviews',
+                        'action' => 'delete',
+                    ),
+                ),
+            ),
+            array(
+                'label' => 'О нас',
+                'route' => 'abouts',
+            ),
+            array(
+                'label' => 'Новости',
+                'route' => 'listnews',
+                'pages' => array(
+                    array(
+                        'label' => 'Add',
+                        'route' => 'news',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'Edit',
+                        'route' => 'news',
                         'action' => 'edit',
                     ),
                     array(

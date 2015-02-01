@@ -14,8 +14,6 @@ class Reviews implements InputFilterAwareInterface {
     public $email;
     public $description;
     public $status;
-    public $date;
-    
     protected $inputFilter;
 
     public function exchangeArray($data) {
@@ -46,11 +44,6 @@ class Reviews implements InputFilterAwareInterface {
                 'filters' => array(
                     array('name' => 'Int'),
                 ),
-            ));
-            
-            $inputFilter->add(array(
-                'name' => 'date',
-                'required' => false,
             ));
 
             $inputFilter->add(array(

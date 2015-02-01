@@ -51,7 +51,7 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
                                 'label' => $category['name'],
                                 'route' => $row['route'],
                                 'action' => $row['route'],
-                                'params' => array('id_cat' => $category['id']),
+                                'params' => array('id' => $category['id']),
                             );
 
                             if ($category['subname']) {
@@ -63,7 +63,7 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
                                         'label' => $sub,
                                         'route' => $row['route'],
                                         'action' => $row['route'],
-                                        'params' => array('id_cat' => $category['id'],'id_sub' => $subcategory_id[$key]),
+                                        'params' => array('id' => $category['id'],'id_sub' => $subcategory_id[$key]),
                                     );
                                 }
                             }

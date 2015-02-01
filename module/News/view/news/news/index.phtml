@@ -1,0 +1,48 @@
+<?php
+$title = 'Отзывы';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('reviews', array('action' => 'add')); ?>">
+        Добавить отзыв</a>
+</p>
+<p>
+    <a href="<?php echo $this->url('reviews', array('action' => 'index','status'=>1)); ?>">
+       Показать неопубликованные</a>
+</p>
+<table class="table">
+    <tr>
+        <th>Имя</th>
+        <th>Телефон</th>
+        <th>Отзыв</th>
+        <th>Статус</th> 
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($this->paginator as $reviews) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($reviews->name); ?></td>
+            <td><?php echo $this->escapeHtml($reviews->phone); ?></td>
+            <td><?php echo $this->escapeHtml($reviews->description); ?></td>
+            <td><?php echo $this->escapeHtml($reviews->status) ? 'опублекован' :'не обубликован' ?></td>
+            <td>
+                <a href="<?php echo $this->url('reviews', array('action' => 'edit', 'id' => $reviews->id));
+        ?>">Редактировать</a>
+                <a href="<?php echo $this->url('reviews', array('action' => 'delete', 'id' => $reviews->id));
+        ?>">Удалить</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+<?php
+echo $this->paginationControl(
+// the paginator object
+        $this->paginator,
+// the scrolling style
+        'sliding',
+// the partial to use to render the control
+        array('partial/paginator.phtml', 'Reviews'),
+// the route to link to when a user clicks a control link
+        array('route' => 'reviews'
+        )
+);

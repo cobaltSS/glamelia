@@ -1,0 +1,21 @@
+<?php
+$title = 'Удалить отзыв';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>Вы уверенны что хотите удалить отзыв -
+    '<?php echo $this->escapeHtml($reviews->description);?>'?
+</p>
+<?php
+$url = $this->url('reviews', array(
+    'action' => 'delete',
+    'id' => $this->id,
+        ));
+?>
+<form action="<?php echo $url; ?>" method="post">
+    <div>
+        <input type="hidden" name="id" value="<?php echo (int) $reviews->id; ?>" />
+        <input type="submit" name="del" value="Да" />
+        <input type="submit" name="del" value="Нет" />
+    </div>
+</form>

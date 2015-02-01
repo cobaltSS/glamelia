@@ -6,6 +6,8 @@ use Zend\Mvc\Controller\AbstractActionController;
 use ShopModule\Form\ShopForm;
 use Reviews\Model\Reviews;
 use Reviews\Form\ReviewsForm;
+use About\Model\About;
+use About\Form\AboutForm;
 
 class IndexController extends AbstractActionController {
 
@@ -32,7 +34,6 @@ class IndexController extends AbstractActionController {
             'items' => $items,
             'shops' => $shops,
         );
- 
     }
 
     // Show Shop
@@ -69,8 +70,7 @@ class IndexController extends AbstractActionController {
             'key_map' => $this->getkeyApiLocation(),
         );
     }
-    
-    
+
     // Show Item
     // return array
 
@@ -88,9 +88,40 @@ class IndexController extends AbstractActionController {
             ));
         }
 
-
         return array(
             'item' => $item,
+        );
+    }
+    
+    public function newAction() {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('home', array(
+            ));
+        }
+
+        try {
+            $new = $this->getNewsTable()->getNew($id);
+        } catch (\Exception $ex) {
+            return $this->redirect()->toRoute('home', array(
+            ));
+        }
+
+        return array(
+            'new' => $new,
+        );
+    }
+    
+     public function newsAction() {
+        try {
+            $news = $this->getNewsTable()->getNews();
+        } catch (\Exception $ex) {
+            return $this->redirect()->toRoute('home', array(
+            ));
+        }
+
+        return array(
+            'news' => $news,
         );
     }
 
@@ -98,7 +129,7 @@ class IndexController extends AbstractActionController {
     // return array
 
     public function categoriesAction() {
-        $id_cat = (int) $this->params()->fromRoute('id_cat', 0);
+        $id_cat = (int) $this->params()->fromRoute('id', 0);
         $id_sub = (int) $this->params()->fromRoute('id_sub', 0);
         if (!$id_cat && !$id_sub) {
             return $this->redirect()->toRoute('home', array(
@@ -114,12 +145,12 @@ class IndexController extends AbstractActionController {
             ));
         }
 
-      /*  foreach ($items as $item) {
-            if ($item['patch']) {
-                $item['patch'] = explode(',', $item['patch']);
-                $item['id_shop'] = explode(',', $item['id_shop']);
-            }
-        }*/
+        /*  foreach ($items as $item) {
+          if ($item['patch']) {
+          $item['patch'] = explode(',', $item['patch']);
+          $item['id_shop'] = explode(',', $item['id_shop']);
+          }
+          } */
         return array(
             'items' => $items,
         );
@@ -234,6 +265,25 @@ class IndexController extends AbstractActionController {
             $this->reviewsTable = $sm->get('Reviews\Model\ReviewsTable');
         }
         return $this->reviewsTable;
+    }
+
+    public function aboutAction() {
+
+        $about = $this->getAboutTable()->getAbout();
+        $form = new AboutForm();
+        $form->bind($about);
+        return array(
+            'form' => $form,
+        );
+    }
+
+    // connect Reviews table
+    public function getAboutTable() {
+        if (!$this->aboutTable) {
+            $sm = $this->getServiceLocator();
+            $this->aboutTable = $sm->get('About\Model\AboutTable');
+        }
+        return $this->aboutTable;
     }
 
 }
