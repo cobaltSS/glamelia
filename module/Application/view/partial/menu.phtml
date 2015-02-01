@@ -1,6 +1,5 @@
 <?php $ids = array("КАТАЛОГ" => "catalog", "НАШИ МАГАЗИНЫ" => "shops");?>
 <ul class="menu">
-
     <?php foreach ($this->container as $page): ?>
     <li <?php if(array_key_exists($page->getLabel(), $ids)):?> id="<?php echo $ids[$page->getLabel()] ?>" <?php endif;?>>
             <a href="<?php echo $page->getHref(); ?>" <?php echo ($page->isActive() ? 'class="active"' : ''); ?>><?php echo $page->getLabel(); ?></a>
@@ -10,7 +9,7 @@
                         <li>
                             <?php if($page->getLabel() == "КАТАЛОГ"):?>
                             <span class='main_link'><img src="img/next.png" class="showCategory"></span>
-                                <a href="<?php ?>" class="mainCategory" ><?php echo $subpage->getLabel(); ?></a>
+                                <a href="<?php echo $subpage->getHref()?>" class="mainCategory" ><?php echo $subpage->getLabel(); ?></a>
                             <?php else:?>
                                 <a href="javascript:void(0)" class="main_link"><?php echo $subpage->getLabel(); ?></a>
                             <?php endif ?>

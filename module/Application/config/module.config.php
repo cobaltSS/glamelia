@@ -35,7 +35,69 @@ return array(
                 ),
             ),
             
+             'items' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/[:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            
+            'news' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/[:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            
+             'about' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/[:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            
+            
+            
             'categories' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/[:action][/:id_cat][/:id_sub]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            
+            'item' => array(
                 'type' => 'segment',
                 'options' => array(
                     'route' => '/[:action][/:id]',
@@ -128,7 +190,8 @@ return array(
             
             array(
                 'label' => 'НОВОСТИ',
-                'route' => 'item',
+                'route' => 'news',
+                'action' => 'news',
             ),
             array(
                 'label' => 'ОТЗЫВЫ',
@@ -137,7 +200,8 @@ return array(
             ),
             array(
                 'label' => 'О НАС',
-                'route' => 'item',
+                'route' => 'about',
+                'action' => 'about',
             ),
         ),
         'admin_navigation' => array(

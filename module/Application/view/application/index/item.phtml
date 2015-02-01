@@ -1,0 +1,22 @@
+ <div class="slider">
+            <div class="slides">
+               
+                    <div class="slide">
+                        <?php
+                        $patchs = explode(',', $item['patch']);
+                        foreach ($patchs as $patch) {
+                            ?>
+                            <img src ="<?php echo '/images/image/big_' . trim($patch) ?>">
+                            <a href="#" class="slideText">
+                                <span>
+                                    <span>
+                                        <?php echo $item['name'] ?>
+                                    </span>
+                                </span>
+                            </a>
+                            <?php
+                        }
+                        ?>
+                    </div>
+                 </div>
+      </div>

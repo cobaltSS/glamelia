@@ -46,7 +46,7 @@
                         ?>
                         <div class="scheduleSmall">
                             <p><span>-<?php echo $item['percentage'] ?></span></p>
-                            <a href="#"><?php echo $item['name'] ?></a>
+                            <a href="<?php echo $this->url('items', array('action'=>'items','id' => $item['id'])); ?>"><?php echo $item['name'] ?></a>
                         </div>
                         <?php
                     }
@@ -56,97 +56,74 @@
             <div class="right scheduleRight"></div>
             <div class="left scheduleLeft"></div>
         </div>
-        
-  
-    <div id="bigSlider">
-        <div class="slideBack"></div>
-        <div class="slideNext">
-            <img class="previewPhoto" src="" alt="" />
-            <div class="smallMask"></div>
-            <span class="next"></span>
-            <div class="nextText">
-                <span>Наши магазины</span>
-            </div>
-        </div>
 
-        <div class="slider">
-            <div class="slides">
-                <?php
-                foreach ($shops as $shop) {
-                    ?>
-                    <div class="slide">
-                        <?php
-                        $patchs = explode(',', $shop['patch']);
-                        foreach ($patchs as $patch) {
-                            ?>
-                            <img src ="<?php echo '/images/shop/big_' . trim($patch) ?>">
-                            <a href="#" class="slideText">
-                                <span>
-                                    <span>
-                                        <?php echo $shop['address'] ?>
-                                    </span>
-                                </span>
-                            </a>
-                            <?php
-                        }
-                        ?>
-                    </div>
+
+        <div id="bigSlider">
+            <div class="slideBack"></div>
+            <div class="slideNext">
+                <img class="previewPhoto" src="" alt="" />
+                <div class="smallMask"></div>
+                <span class="next"></span>
+                <div class="nextText">
+                    <span>Наши магазины</span>
+                </div>
+            </div>
+
+            <div class="slider">
+                <div class="slides">
                     <?php
-                }
-                ?>
+                    foreach ($shops as $shop) {
+                        ?>
+                        <div class="slide">
+                            <?php
+                            $patchs = explode(',', $shop['patch']);
+                            foreach ($patchs as $patch) {
+                                ?>
+                                <img src ="<?php echo '/images/shop/big_' . trim($patch) ?>">
+                                <a href="<?php echo $this->url('shops', array('action'=>'shops','id' => $shop['id'])); ?>" class="slideText">
+                                    <span>
+                                        <span>
+                                            <?php echo $shop['address'] ?>
+                                        </span>
+                                    </span>
+                                </a>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <?php
+                    }
+                    ?>
 
-                <!--  
-                 
-                      <div class="slide">
-                          <img src="img/slider/big/01.jpg" alt="" />
-                          <a href="#" class="slideText">
-                              <span>
-                                  <span>
-                                      Россия и страны СНГ в Международном жюри фестиваля Red Apple
-                                  </span>
-                              </span>
-                          </a>
-                      </div>
-                      <div class="slide">
-                          <img src="img/slider/big/02.jpg" alt="" />
-                          <a href="#" class="slideText">
-                              <span>
-                                  <span>
-                                      Азия в Международном жюри фестиваля Red Apple
-                                  </span>
-                              </span>
-                          </a>
-                      </div>
-                -->
+                </div>
             </div>
         </div>
-    </div>
-    <div class="indexContent clear">
-        <!--     <div class="hits">
-              хиты продах
-          </div>-->
-        <?php
-        foreach ($items as $item) {
-            ?>
-            <div class="flowers">
-                <?php
-                if ($item['patch']) {
-                    ?>
-                    <img src ="<?php echo '/images/item/small_' . trim($item['patch']) ?>">
-                <?php } else { ?>
-                    <img src ="<?php echo '/img/small_item.png' ?>">
-                <?php } ?>
-                <a href="#"><?php echo $item['name'] ?></a>
-            </div>
+        <div class="indexContent clear">
+            <!--     <div class="hits">
+                  хиты продах
+              </div>-->
             <?php
-        }
-        ?>
-        <!--  <div class="apply">
-              <a href="#">
-                  Наши <br/><span>Акции</span>
-              </a>
-          </div>
-        -->
-    </div>
+            foreach ($items as $item) {
+                ?>
+                <div class="flowers">
+                    <?php
+                    if ($item['patch']) {
+                        ?>
+                        <img src ="<?php echo '/images/item/small_' . trim($item['patch']) ?>">
+                    <?php } else { ?>
+                        <img src ="<?php echo '/img/small_item.png' ?>">
+                    <?php } ?>
+                    <a href="<?php echo $this->url('items', array('action'=>'items','id' => $item['id'])); ?>"><?php echo $item['name'] ?></a>
+                </div>
+                <?php
+            }
+            ?>
+            <!--  <div class="apply">
+                  <a href="#">
+                      Наши <br/><span>Акции</span>
+                  </a>
+              </div>
+            -->
+        </div>
     </div>
 </div>
