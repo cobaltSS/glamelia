@@ -18,7 +18,12 @@ class ItemController extends AbstractActionController {
     protected $subcategoryTable;
 
     public function indexAction() {
-
+ $request = $this->getRequest();
+ if($request)
+ {
+ print_r($request->getPost());
+ }
+        
         // grab the paginator from the ItemTable
         $paginator = $this->getItemTable()->fetchAll(true);
         // set the current page to what has been passed in query string, or to 1 if none set
@@ -92,6 +97,7 @@ class ItemController extends AbstractActionController {
         }
         return array('form' => $form);
     }
+
 
     public function editAction() {
         $id = (int) $this->params()->fromRoute('id', 0);

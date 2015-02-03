@@ -2,9 +2,23 @@
 $title = 'Товары';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
+ <h3><?php echo $this->escapeHtml($title); ?></h3> 
+<form class="panel form-inline" method="POST" action="/admin/item/">
+    <div class=" panel-body" >
+       
+        <div class="form-group">
+            <label for="exampleInputName2">Name</label>
+            <input type="text" class="form-control" placeholder="Наименование товара">
+        </div>
+        <button type="submit" class="btn btn-default">Поиск</button>
+    </div>
+</form>
+
+
+
+
 <p>
-    <a href="<?php echo $this->url('item', array('action' => 'add')); ?>">Добавить новый товар</a>
+    <a class="btn btn-info" href="<?php echo $this->url('item', array('action' => 'add')); ?>">Добавить новый товар</a>
 </p>
 <table class="table">
     <tr>
@@ -14,14 +28,17 @@ $this->headTitle($title);
     </tr>
     <?php foreach ($this->paginator as $item) : ?>
         <tr>
-            
+
             <td><?php echo $this->escapeHtml($item->name); ?></td>
             <td></td>
             <td>
-                <a href="<?php echo $this->url('item', array('action' => 'edit', 'id' => $item->id));
-        ?>">Редактировать</a>
-                <a href="<?php echo $this->url('item', array('action' => 'delete', 'id' => $item->id));
-        ?>">Удалить</a>
+                <a class="btn btn-info" href="<?php echo $this->url('item', array('action' => 'edit', 'id' => $item->id));
+        ?>">
+                    <img alt="Редактировать" src ="<?php echo '/img/ico/edit.png' ?>"/>    
+                </a>
+                <a class="btn btn-info" href="<?php echo $this->url('item', array('action' => 'delete', 'id' => $item->id)); ?>">
+                    <img alt="Удалить" src ="<?php echo '/img/ico/del.png' ?>"/>
+                </a>
             </td>
         </tr>
     <?php endforeach; ?>
@@ -35,6 +52,6 @@ echo $this->paginationControl(
 // the partial to use to render the control
         array('partial/paginator.phtml', 'Item'),
 // the route to link to when a user clicks a control link
-        array(    'route' => 'item'
+        array('route' => 'item'
         )
 );
