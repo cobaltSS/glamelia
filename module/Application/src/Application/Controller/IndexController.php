@@ -57,16 +57,17 @@ class IndexController extends AbstractActionController {
         }
 
 
-
+$patch=array();
         if ($shop->patch) {
             $patch = explode(',', $shop->patch);
         }
-
+        
         return array(
             'id' => $id,
             'shop' => $shop,
             'photos' => $patch,
             'key_map' => $this->getkeyApiLocation(),
+
         );
     }
 
