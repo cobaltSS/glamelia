@@ -129,10 +129,11 @@ class ItemTable {
         return $resultSet->toArray();
     }
 
-    public function getItems($limit) {
+    public function getItems($limit,$where=array()) {
         $rand = new \Zend\Db\Sql\Expression('RAND()');
         $select = new Select;
         $select->from('item');
+        $select->where($where);
         $select->quantifier('DISTINCT');
         $select->limit((int)$limit);
         $select->join('item_photo', "item_photo.id_item = item.id", array('patch'), 'left');

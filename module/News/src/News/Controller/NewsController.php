@@ -116,4 +116,5 @@ class NewsController extends AbstractActionController {
         return $this->newsTable;
     }
 
+    
 }

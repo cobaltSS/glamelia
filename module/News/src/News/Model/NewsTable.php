@@ -16,10 +16,11 @@ class NewsTable {
         $this->tableGateway = $tableGateway;
     }
 
-    public function fetchAll($paginated = false) {
+    public function fetchAll($paginated = false,$where=array()) {
         if ($paginated) {
             // create a new Select object for the table album
             $select = new Select('news');
+            $select->where($where);
             // create a new result set based on the Album entity
             $resultSetPrototype = new ResultSet();
             $resultSetPrototype->setArrayObjectPrototype(new News());
@@ -35,7 +36,7 @@ class NewsTable {
             $paginator = new Paginator($paginatorAdapter);
             return $paginator;
         }
-        $resultSet = $this->tableGateway->select();
+        $resultSet = $this->tableGateway->select($where);
         return $resultSet;
     }
 

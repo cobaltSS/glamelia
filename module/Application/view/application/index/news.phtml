@@ -1,1 +1,33 @@
-Новости
+<?php
+$title = 'Новости';
+$this->headTitle($title);
+?>
+<div id="content">
+    <div class="center">               
+        <div class="twoCol">
+            <div class="rightCol">
+                <div class="publick_reviews">
+
+                    <?php foreach ($this->paginator as $news) : ?>
+                        <div class="hentry otzivi">
+                            <div class="otziv">
+                                <h3>
+                                    <p><?php echo $this->escapeHtml($news->name); ?></p>
+                                </h3>
+                                <?php echo $this->escapeHtml($news->description); ?>
+                            </div>
+
+
+                        </div>      
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+</div>
+</div>

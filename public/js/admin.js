@@ -6,8 +6,9 @@ $(document).ready(function (e)
         unfadeBG();
         return false;
     });
+    
+    if(CKEDITOR)
     CKEDITOR.replace('description');
-   // $('#redaktor').redactor();
 });
 
 

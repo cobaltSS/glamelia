@@ -1,11 +1,10 @@
 <?php echo $this->doctype(); ?>
 
-<html lang="en">
+<html lang="ru">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('ZF2 ' . $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
-
-        <?php
+        <?php echo $this->headTitle('GLAMELIA ' . $this->translate(''))->setSeparator(' - ')->setAutoEscape(false) ?>
+                <?php
         echo $this->headMeta()
                 ->appendName('viewport', 'width=device-width, initial-scale=1.0')
                 ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
@@ -16,7 +15,7 @@
         echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
                 ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
                 ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
-                ->prependStylesheet($this->basePath() . '/css/styles.css')
+               // ->prependStylesheet($this->basePath() . '/css/styles.css')
                 ->prependStylesheet($this->basePath() . '/css/style.css')
                 ->prependStylesheet($this->basePath() . '/css/ie.css')
                 ->prependStylesheet($this->basePath() . '/css/admin.css')

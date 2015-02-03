@@ -19,11 +19,11 @@ class ShopTable {
         $this->tableGateway = $tableGateway;
     }
 
-    public function fetchAll($paginated = false) {
+    public function fetchAll($paginated = false,$where=array()) {
         if ($paginated) {
             // create a new Select object for the table shop
             $select = new Select('shop');
-
+            $select->where($where);
             // create a new result set based on the Shop entity
             $resultSetPrototype = new ResultSet();
             $resultSetPrototype->setArrayObjectPrototype(new Shop());
@@ -39,7 +39,7 @@ class ShopTable {
             $paginator = new Paginator($paginatorAdapter);
             return $paginator;
         }
-        $resultSet = $this->tableGateway->select();
+        $resultSet = $this->tableGateway->select($where);
         return $resultSet;
     }
 
@@ -91,12 +91,13 @@ class ShopTable {
         return $resultSet->toArray();
     }
 
-    public function getShops() {
+    public function getShops($where=array()) {
         $rand = new \Zend\Db\Sql\Expression('RAND()');
         $select = new Select;
         $select->from('shop');
         $select->quantifier('DISTINCT');
         $select->join('shop_photo', "shop_photo.id_shop = shop.id", array('patch' => new Expression("GROUP_CONCAT(DISTINCT `shop_photo`.`patch` SEPARATOR ', ')")), 'left');
+        $select->where($where);
         $select->group("shop.id");
         $select->order($rand);
 

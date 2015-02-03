@@ -26,10 +26,10 @@ class IndexController extends AbstractActionController {
     public $limit = '5';
 
     public function indexAction() {
-        $reviews = $this->getReviewsTable()->getReviewsRandom($this->limit);
+        $reviews = $this->getReviewsTable()->getReviewsRandom($this->limit,array('status'=>1));
         $action_items = $this->getItemTable()->getActionItemsRandom(array('action' => '1'), $this->limit);
-        $items = $this->getItemTable()->getItems('12');
-        $shops = $this->getShopTable()->getShops('5');
+        $items = $this->getItemTable()->getItems('12',array('item.status'=>1));
+        $shops = $this->getShopTable()->getShops(array('shop.status'=>'1'));
 
         return array(
             'reviews' => $reviews,
@@ -112,16 +112,15 @@ class IndexController extends AbstractActionController {
     }
     
      public function newsAction() {
-        try {
-            $news = $this->getNewsTable()->fetchAll(true);
-        } catch (\Exception $ex) {
-            return $this->redirect()->toRoute('home', array(
-            ));
-        }
-
-        return array(
-            'news' => $news,
-        );
+       $where=array('status'=>1);
+       $paginator = $this->getNewsTable()->fetchAll(true,$where);
+        // set the current page to what has been passed in query string, or to 1 if none set
+        $paginator->setCurrentPageNumber((int) $this->params()->fromQuery('page', 1));
+        // set the number of items per page to 10
+        $paginator->setItemCountPerPage(10);
+        return new ViewModel(array(
+            'paginator' => $paginator,
+        ));
     }
 
     // Show Shop
@@ -254,8 +253,8 @@ class IndexController extends AbstractActionController {
                 return $this->redirect()->toRoute('review');
             }
         }
-        
-        $paginator = $this->getReviewsTable()->fetchAll(true);
+        $where=array('status'=>1);
+        $paginator = $this->getReviewsTable()->fetchAll(true,$where);
         // set the current page to what has been passed in query string, or to 1 if none set
         $paginator->setCurrentPageNumber((int) $this->params()->fromQuery('page', 1));
         // set the number of items per page to 10
@@ -304,5 +303,7 @@ class IndexController extends AbstractActionController {
         }
         return $this->newsTable;
     }
+    
+    
 
 }
