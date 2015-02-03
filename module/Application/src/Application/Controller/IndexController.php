@@ -6,6 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Reviews\Model\Reviews;
 use Reviews\Form\ReviewsForm;
 use About\Form\AboutForm;
+use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController {
 
@@ -253,7 +254,18 @@ class IndexController extends AbstractActionController {
                 return $this->redirect()->toRoute('review');
             }
         }
-        return array('form' => $form);
+        
+        $paginator = $this->getReviewsTable()->fetchAll(true);
+        // set the current page to what has been passed in query string, or to 1 if none set
+        $paginator->setCurrentPageNumber((int) $this->params()->fromQuery('page', 1));
+        // set the number of items per page to 10
+        $paginator->setItemCountPerPage(10);
+        return new ViewModel(array(
+            'paginator' => $paginator,
+            'form' => $form
+        ));
+        
+        //return array('form' => $form);
     }
 
     // connect Reviews table

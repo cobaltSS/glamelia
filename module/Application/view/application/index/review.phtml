@@ -1,57 +1,77 @@
-        <?php
-            $title ='Отзывы';
-            $this->headTitle($title);?>
-        <?php
-            $form->setAttribute('action', $this->url('review', array('action' => 'review')));
-            $form->prepare();?>
-        <div id="content">
-            <div class="center">               
-                <div class="twoCol">
-                    <div class="rightCol">
-                        <div class="row" >
-                            <div class="col-lg-2 col-md-2 col-sm-2 reviewsTitle"><h1><?php echo $this->escapeHtml($title); ?></h1></div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-md-offset-5 col-sm-offset-2 col-lg-offset-7"><button class="btn btn-default showReviewsForm">Добавить +</button></div>
+<?php
+$title = 'Отзывы';
+$this->headTitle($title);
+?>
+<?php
+$form->setAttribute('action', $this->url('review', array('action' => 'review')));
+$form->prepare();
+?>
+<div id="content">
+    <div class="center">               
+        <div class="twoCol">
+            <div class="rightCol">
+                <div class="row" >
+                    <div class="col-lg-2 col-md-2 col-sm-2 reviewsTitle"><h1><?php echo $this->escapeHtml($title); ?></h1></div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-md-offset-5 col-sm-offset-2 col-lg-offset-7"><button class="btn btn-default showReviewsForm">Добавить +</button></div>
+                </div>
+                <p class="bigLine"></p>
+                <div class="review_form_add animated" style="position: absolute;">
+                    <section>
+
+                        <?php
+                        echo $this->form()->openTag($form);
+                        echo $this->formHidden($form->get('id'));
+                        ?>
+                        <div class="form-group">
+                            <?php echo $this->formLabel($form->get('name')); ?>
+<?php echo $this->formElement($form->get('name')); ?>
+<?php echo $this->formElementErrors($form->get('name')); ?>
+
                         </div>
-                        <p class="bigLine"></p>
-                        <div class="review_form_add animated" style="position: absolute;">
-                            <section>
+                        <div class="form-group">
+                            <?php echo $this->formLabel($form->get('phone')); ?>
+<?php echo $this->formElement($form->get('phone')); ?>
+<?php echo $this->formElementErrors($form->get('phone')); ?>
 
-                                    <?php
-                                    echo $this->form()->openTag($form);
-                                    echo $this->formHidden($form->get('id'));
-                                    ?>
-                                    <div class="form-group">
-                                        <?php echo $this->formLabel($form->get('name')); ?>
-                                        <?php echo $this->formElement($form->get('name')); ?>
-                                        <?php echo $this->formElementErrors($form->get('name')); ?>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <?php echo $this->formLabel($form->get('phone')); ?>
-                                        <?php echo $this->formElement($form->get('phone')); ?>
-                                        <?php echo $this->formElementErrors($form->get('phone')); ?>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <?php echo $this->formLabel($form->get('email')); ?>
-                                        <?php echo $this->formElement($form->get('email')); ?>
-                                        <?php echo $this->formElementErrors($form->get('email')); ?>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <?php echo $this->formLabel($form->get('description')); ?>
-                                        <?php echo $this->formElement($form->get('description')); ?>
-                                        <?php echo $this->formElementErrors($form->get('description')); ?>
-                                    </div>
-                                        <?php echo $this->formSubmit($form->get('submit')); ?>
-                                    <?php echo $this->form()->closeTag(); ?>
-
-
-                            </section>  
                         </div>
-                        <div class="publick_reviews">
+                        <div class="form-group">
+                            <?php echo $this->formLabel($form->get('email')); ?>
+<?php echo $this->formElement($form->get('email')); ?>
+<?php echo $this->formElementErrors($form->get('email')); ?>
+
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <?php echo $this->formLabel($form->get('description')); ?>
+                        <?php echo $this->formElement($form->get('description')); ?>
+                        <?php echo $this->formElementErrors($form->get('description')); ?>
+                        </div>
+<?php echo $this->formSubmit($form->get('submit')); ?>
+<?php echo $this->form()->closeTag(); ?>
+
+
+                    </section>  
+                </div>
+                <div class="publick_reviews">
+
+                    <?php foreach ($this->paginator as $reviews) : ?>
+                    <div class="hentry otzivi">
+                        <div class="otziv">
+                                          <?php echo $this->escapeHtml($reviews->description); ?>
+                            </div>
+                        <div class="otziv_bot"></div>
+                        <h3>
+                            <p><?php echo $this->escapeHtml($reviews->name); ?></p>
+                        </h3>
+                        
+                  </div>      
+                    <?php endforeach; ?>
                 </div>
             </div>
+
+
         </div>
+
+
+
+    </div>
+</div>
