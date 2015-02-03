@@ -6,9 +6,9 @@ $(document).ready(function (e)
         unfadeBG();
         return false;
     });
-    
-    if(CKEDITOR)
-    CKEDITOR.replace('description');
+ 
+  if ($('#description').length)
+       CKEDITOR.replace('description');
 });
 
 
