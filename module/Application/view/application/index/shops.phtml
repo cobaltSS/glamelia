@@ -3,12 +3,14 @@
 <?php
 $title = 'Mагазин';
 $this->headTitle($title);
+print_r($shop)
 ?>
 
 
 <div id="content">
     <div class="center">
         <div class="twoCol">
+            <div class="shop_block" style="height: 1000px;">
             <div class="leftCol">
                 <ul class="navigation">
                     <li>
@@ -78,18 +80,37 @@ $this->headTitle($title);
                     <h1><?php echo $this->escapeHtml($title); ?></h1>
                 </div>
                 <p class="bigLine"></p>
-                
-                
-                
-                
-                
-                <input type="hidden" id="end" value="<?php echo $shop->address?>">
 
-                <div class="map-view-book">
-                    <input id="location"   type="hidden" value="" />
-                    <div id="map_canvas"></div>
+                <div id="bigSlider">
+                    
+
+                    <div class="slider">
+                        <div class="slides">
+                            <?php
+                            foreach ($photos as $patch) {
+                                ?>
+                                <div class="slide">
+                                    <img src ="<?php echo '/images/shop/big_' . trim($patch) ?>">
+                                </div>
+                                <?php
+                            }
+                            ?>
+
+                        </div>
+                    </div>
+                </div>
+                <label>Наш адрес: <?php echo $shop->address ?></label>
+                <label>Время работы: <?php echo $shop->work_time ?></label>
+                <h3> Схема проезда</h3>
+                <div class="map_block">
+                    <input type="hidden" id="end" value="<?php echo $shop->address ?>">
+                    <div class="map-view-book">
+                        <input id="location"   type="hidden" value="" />
+                        <div id="map_canvas"></div>
+                    </div>
                 </div>
 
+            </div>
             </div>
         </div>
 

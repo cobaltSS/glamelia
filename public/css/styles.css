@@ -59,15 +59,13 @@ li{display: inline-block;}
 form#reviews{}
 
 .shop_title{padding-top: 50px}
+.shop_block{height: 1000px;}
+.shop_block h3{margin: 30px 0 10px 65px;}
+.map_block{margin: 10px 50px 50px 50px;}
 
 #map_canvas { height: 100% }
 
-.map-view-book{
-    width: 40%;
-    height: 300px;
-    display: inline-block;
-    float:left;
-}
+.map-view-book{border: ridge; border-radius: 5px;width: 80%;height: 400px;display: inline-block;float:left;}
 
 .infoshop{
     width:50%;
