@@ -7,9 +7,6 @@ use Zend\View\Model\ViewModel;
 use ItemModule\Model\Item;
 use ItemModule\Form\ItemForm;
 use Zend\View\Model\JsonModel;
-use ZendSearch\Lucene;
-use ZendSearch\Lucene\Document;
-use ZendSearch\Lucene\Index;
 
 class ItemController extends AbstractActionController {
 
@@ -23,17 +20,19 @@ class ItemController extends AbstractActionController {
     public function indexAction() {
 
         $request = $this->getRequest();
+        $where = array();
         if ($request->isPost()) {
-            $queryText = $request->getPost()->get('query');
-            $searchIndexLocation = $this->getIndexLocation();
-            $index = Lucene\Lucene::open($searchIndexLocation);
-            
-            $searchResults = $index->find($queryText);
-           
+            $search = $request->getPost()->get('data');
+            foreach ($search as $key => $query) {
+                if ($key == 'status')
+                    $where[$key] = (int) $query;
+                else
+                    $where[$key . ' LIKE ?'] = '%' . $query . '%';
+            }
         }
 
         // grab the paginator from the ItemTable
-        $paginator = $this->getItemTable()->fetchAll(true);
+        $paginator = $this->getItemTable()->fetchAll(true, $where);
 // set the current page to what has been passed in query string, or to 1 if none set
         $paginator->setCurrentPageNumber((int) $this->params()->fromQuery('page', 1));
 // set the number of items per page to 10
@@ -41,6 +40,7 @@ class ItemController extends AbstractActionController {
 
         return new ViewModel(array(
             'paginator' => $paginator,
+            'search' => $search
         ));
     }
 

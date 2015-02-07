@@ -1,8 +1,13 @@
 <?php $ids = array("КАТАЛОГ" => "catalog", "НАШИ МАГАЗИНЫ" => "shops");?>
 <ul class="navigation">
     <?php foreach ($this->container as $page): ?>
-    <li>
-        <a href="<?php echo $page->getHref(); ?>" ><?php echo $page->getLabel(); ?><i class="arrow"></i></a>
+    <?php
+    
+    print_r($page);
+die();
+    ?>
+    <li <?php if(array_key_exists($page->getLabel(), $ids)):?> id="<?php echo $ids[$page->getLabel()] ?>" <?php endif;?>>
+            <a href="<?php echo $page->getHref(); ?>" <?php echo ($page->isActive() ? 'class="active"' : ''); ?>><?php echo $page->getLabel(); ?></a>
             <?php if (!empty($page->pages)): ?>
                 <ul class="dopMenu">
                     <?php foreach ($page->pages as $subpage): ?>

@@ -19,10 +19,11 @@ class ItemTable {
         $this->tableGateway = $tableGateway;
     }
 
-    public function fetchAll($paginated = false) {
+    public function fetchAll($paginated = false,$where=array()) {
         if ($paginated) {
             // create a new Select object for the table item
             $select = new Select('item');
+            $select->where($where);
 
             // create a new result set based on the Item entity
             $resultSetPrototype = new ResultSet();
