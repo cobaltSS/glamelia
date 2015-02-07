@@ -23,10 +23,27 @@ return array(
                     ),
                 ),
             ),
+            
+            'search' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/admin/[search][/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'ItemModule\Controller\Search',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            
         ),
     ),
     'module_config' => array(
         'upload_location' => __DIR__ . '/../../../public/images/item',
+        'search_index' => __DIR__ . '/../data/search_index'
     ),
     'view_manager' => array(
         'template_path_stack' => array(
@@ -34,5 +51,4 @@ return array(
         ),
         'strategies' => array('ViewJsonStrategy'),
     ),
-    
 );
