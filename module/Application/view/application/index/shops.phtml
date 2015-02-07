@@ -3,7 +3,8 @@
 <?php
 $title = 'Mагазин';
 $this->headTitle($title);
-print_r($shop)
+
+print_r($this->container);
 ?>
 
 
@@ -13,11 +14,13 @@ print_r($shop)
             <div class="shop_block" style="height: 1000px;">
             <div class="leftCol">
                 <ul class="navigation">
+                    <?php foreach ($this->container as $page): ?>
                     <li>
+                        <a href="<?php echo $page->getHref(); ?>" ><?php echo $page->getLabel(); ?><i class="arrow"></i></a>
                         <a href="#">Принять участие <i class="arrow"></i></a>
                     </li>
-                    <li  class="active">
-                        <a href="#">номинации <i class="arrow"></i></a>
+                    <li <?php echo ($page->isActive() ? 'class="active"' : ''); ?> class="active">
+                        <a href="#"><i class="arrow"></i></a>
                         <ul class="dropMenu">
                             <li>
                                 <a href="#" class="withSymbol active"><span class="symbol">A</span>Телевизионная и кинореклама <i class="arrow"></i></a>
@@ -73,6 +76,7 @@ print_r($shop)
                     <li>
                         <a href="#">молодые креаторы <i class="arrow"></i></a>
                     </li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
             <div class="rightCol">
@@ -99,8 +103,12 @@ print_r($shop)
                         </div>
                     </div>
                 </div>
-                <label>Наш адрес: <?php echo $shop->address ?></label>
-                <label>Время работы: <?php echo $shop->work_time ?></label>
+                <p><label>Наш адрес: </label> <?php echo $shop->address ?></p>
+                <div><label>Режим работы: </label>
+                    <?php for ($i=0; $i<7; $i++)
+                    echo '<div class="work_day" title="' . $shop->work_time .'"></div>'
+                    ?>
+                </div>
                 <h3> Схема проезда</h3>
                 <div class="map_block">
                     <input type="hidden" id="end" value="<?php echo $shop->address ?>">

@@ -71,7 +71,7 @@ form#reviews{}
     width:50%;
     float:left;
 }
-
+.work_day{background-color:green; width: 15px; height: 15px; display: inline-block; margin-left: 5px; }
 
 form#reviews textarea{width: 97%;}
 form#reviews label{font-weight: bold}
