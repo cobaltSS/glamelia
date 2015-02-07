@@ -4,7 +4,15 @@
 $title = 'Mагазин';
 $this->headTitle($title);
 
-print_r($this->container);
+$partial = array('partial/category_menu.phtml', 'default');
+                    echo $this->navigation('public_navigation')->menu()
+                    ->setMinDepth(1)
+                    ->setMaxDepth(4)
+                    ->setRenderParents(false)
+                    ->setOnlyActiveBranch(true)
+                    ->setPartial($partial)
+                    ->render();
+                    ?>
 ?>
 
 
