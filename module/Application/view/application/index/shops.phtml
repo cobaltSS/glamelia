@@ -4,15 +4,7 @@
 $title = 'Mагазин';
 $this->headTitle($title);
 
-$partial = array('partial/category_menu.phtml', 'default');
-                    echo $this->navigation('public_navigation')->menu()
-                    ->setMinDepth(1)
-                    ->setMaxDepth(4)
-                    ->setRenderParents(false)
-                    ->setOnlyActiveBranch(true)
-                    ->setPartial($partial)
-                    ->render();
-                    ?>
+
 ?>
 
 
@@ -21,7 +13,16 @@ $partial = array('partial/category_menu.phtml', 'default');
         <div class="twoCol">
             <div class="shop_block" style="height: 1000px;">
             <div class="leftCol">
-                <ul class="navigation">
+               <?php $partial = array('partial/category_menu.phtml', 'default');
+                    echo $this->navigation('public_navigation')->menu()
+                    ->setMinDepth(1)
+                    ->setMaxDepth(4)
+                    ->setRenderParents(false)
+                    ->setOnlyActiveBranch(true)
+                    ->setPartial($partial)
+                    ->render();
+                    ?>
+<!--                <ul class="navigation">
                     <?php foreach ($this->container as $page): ?>
                     <li>
                         <a href="<?php echo $page->getHref(); ?>" ><?php echo $page->getLabel(); ?><i class="arrow"></i></a>
@@ -85,7 +86,7 @@ $partial = array('partial/category_menu.phtml', 'default');
                         <a href="#">молодые креаторы <i class="arrow"></i></a>
                     </li>
                     <?php endforeach; ?>
-                </ul>
+                </ul>-->
             </div>
             <div class="rightCol">
                 <div class="shop_title">
