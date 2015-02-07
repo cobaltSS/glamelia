@@ -1,6 +1,11 @@
 <?php $ids = array("КАТАЛОГ" => "catalog", "НАШИ МАГАЗИНЫ" => "shops");?>
 <ul class="menu">
     <?php foreach ($this->container as $page): ?>
+    <?php
+    
+    print_r($page);
+die();
+    ?>
     <li <?php if(array_key_exists($page->getLabel(), $ids)):?> id="<?php echo $ids[$page->getLabel()] ?>" <?php endif;?>>
             <a href="<?php echo $page->getHref(); ?>" <?php echo ($page->isActive() ? 'class="active"' : ''); ?>><?php echo $page->getLabel(); ?></a>
             <?php if (!empty($page->pages)): ?>

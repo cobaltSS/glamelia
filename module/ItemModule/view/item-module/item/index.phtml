@@ -1,19 +1,26 @@
 <?php
 $title = 'Товары';
 $this->headTitle($title);
+print_r($search);
 ?>
  <h3><?php echo $this->escapeHtml($title); ?></h3> 
 <form class="panel form-inline" method="POST" action="<?php echo $this->url('item'); ?>">
     <div class=" panel-body" >
-       <input type="hidden" name="fast" value="true">
         <div class="form-group">
             <label for="exampleInputName2">Наименование</label>
-            <input type="text" class="form-control" name="query" placeholder="Наименование товара">
+            <input type="text" class="form-control" value="<?php echo $search['name']?>" name="data[name]" placeholder="Наименование товара">
+            
+            <label for="exampleInputName2">Статус</label>
+            <select name="data[status]">
+                <option >Все</option>
+                <option <?php echo ($search['status']=='1' ? 'selected' : '' )?> value="1">Показывать на сайте</option>
+                <option <?php echo ($search['status']=='0'? 'selected' : '' )?> value="0">Не отображать на сайте</option>
+            </select>
+            
         </div>
         <button type="submit" class="btn btn-default">Поиск</button>
     </div>
 </form>
-
 
 
 

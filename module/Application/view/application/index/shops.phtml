@@ -4,15 +4,17 @@
 $title = 'Mагазин';
 $this->headTitle($title);
 
-$partial = array('partial/category_menu.phtml', 'default');
-                    echo $this->navigation('public_navigation')->menu()
-                    ->setMinDepth(1)
-                    ->setMaxDepth(4)
-                    ->setRenderParents(false)
-                    ->setOnlyActiveBranch(true)
-                    ->setPartial($partial)
-                    ->render();
-                    ?>
+$catalog = $this->navigation('public_navigation')->findOneByLabel('КАТАЛОГ');
+$options = array(
+   //'indent'  => 16,
+    //'ulClass' => 'dopMenu',
+);
+$partial = array('partial/menu.phtml', 'default');
+echo $this->navigation('public_navigation')
+          ->menu()
+          ->setPartial($partial)
+          ->renderMenu($catalog,$options);
+
 ?>
 
 

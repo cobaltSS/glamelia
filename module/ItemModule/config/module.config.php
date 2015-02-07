@@ -43,7 +43,6 @@ return array(
     ),
     'module_config' => array(
         'upload_location' => __DIR__ . '/../../../public/images/item',
-        'search_index' => __DIR__ . '/../data/search_index'
     ),
     'view_manager' => array(
         'template_path_stack' => array(
