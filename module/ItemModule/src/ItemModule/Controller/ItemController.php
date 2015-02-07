@@ -7,6 +7,9 @@ use Zend\View\Model\ViewModel;
 use ItemModule\Model\Item;
 use ItemModule\Form\ItemForm;
 use Zend\View\Model\JsonModel;
+use ZendSearch\Lucene;
+use ZendSearch\Lucene\Document;
+use ZendSearch\Lucene\Index;
 
 class ItemController extends AbstractActionController {
 
@@ -18,22 +21,40 @@ class ItemController extends AbstractActionController {
     protected $subcategoryTable;
 
     public function indexAction() {
- $request = $this->getRequest();
- if($request)
- {
- print_r($request->getPost());
- }
-        
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $queryText = $request->getPost()->get('query');
+            $searchIndexLocation = $this->getIndexLocation();
+            $index = Lucene\Lucene::open($searchIndexLocation);
+            
+            $searchResults = $index->find($queryText);
+           
+        }
+
         // grab the paginator from the ItemTable
         $paginator = $this->getItemTable()->fetchAll(true);
-        // set the current page to what has been passed in query string, or to 1 if none set
+// set the current page to what has been passed in query string, or to 1 if none set
         $paginator->setCurrentPageNumber((int) $this->params()->fromQuery('page', 1));
-        // set the number of items per page to 10
+// set the number of items per page to 10
         $paginator->setItemCountPerPage(10);
 
         return new ViewModel(array(
-            'paginator' => $paginator
+            'paginator' => $paginator,
         ));
+    }
+
+    public function getIndexLocation() {
+// выборка конфигурации из конфигурационных данных модуля
+        $config = $this->getServiceLocator()->get('config');
+        if ($config instanceof Traversable) {
+            $config = ArrayUtils::iteratorToArray($config);
+        }
+        if (!empty($config['module_config']['search_index'])) {
+            return $config['module_config']['search_index'];
+        } else {
+            return FALSE;
+        }
     }
 
     public function addAction() {
@@ -61,7 +82,7 @@ class ItemController extends AbstractActionController {
                 $uploadFile = $this->params()->fromFiles('id_photo');
                 if ($uploadFile) {
                     $uploadPath = $this->getFileUploadLocation();
-                    // Сохранение выгруженного файла
+// Сохранение выгруженного файла
                     $adapter = new \Zend\File\Transfer\Adapter\Http();
                     $adapter->addValidator('Size', false, array('max' => '15242880'));
 
@@ -91,13 +112,12 @@ class ItemController extends AbstractActionController {
                 $shop = $form->get('shop_id')->getValueOptions();
                 $this->getItems2ShopTable()->saveItem2Shop($item->id, $shop);
 
-                // Redirect to list of item
+// Redirect to list of item
                 return $this->redirect()->toRoute('item');
             }
         }
         return array('form' => $form);
     }
-
 
     public function editAction() {
         $id = (int) $this->params()->fromRoute('id', 0);
@@ -109,8 +129,8 @@ class ItemController extends AbstractActionController {
             ));
         }
 
-        // Get the Item with the specified id. An exception is thrown
-        // if it cannot be found, in which case go to the index page.
+// Get the Item with the specified id. An exception is thrown
+// if it cannot be found, in which case go to the index page.
         try {
             $item = $this->getItemTable()->getItem($id);
         } catch (\Exception $ex) {
@@ -126,9 +146,9 @@ class ItemController extends AbstractActionController {
         $options = $this->GetListCategory($item->category_id);
         $form->get('category_id')->setAttribute('options', $options);
 
-        $options_sub = $this->GetListSubcategory($item->subcategory_id,$item->category_id);
-        if($options_sub)
-        $form->get('subcategory_id')->setAttribute('options', $options_sub);
+        $options_sub = $this->GetListSubcategory($item->subcategory_id, $item->category_id);
+        if ($options_sub)
+            $form->get('subcategory_id')->setAttribute('options', $options_sub);
 
         $options2shop = $this->GetListShop($item);
         $form->get('shop_id')->setValueOptions($options2shop);
@@ -143,7 +163,7 @@ class ItemController extends AbstractActionController {
                 $uploadPath = $this->getFileUploadLocation();
 
                 if ($uploadFile) {
-                    // Сохранение выгруженного файла
+// Сохранение выгруженного файла
                     $adapter = new \Zend\File\Transfer\Adapter\Http();
                     $adapter->addValidator('Size', false, array('max' => '15242880'));
                     if (!$adapter->isValid()) {
@@ -170,7 +190,7 @@ class ItemController extends AbstractActionController {
                 $shop = $form->get('shop_id')->getValue();
                 $this->getItems2ShopTable()->saveItem2Shop($item->id, $shop);
 
-                // Redirect to list of $items
+// Redirect to list of $items
                 return $this->redirect()->toRoute('item');
             }
         }
@@ -185,7 +205,7 @@ class ItemController extends AbstractActionController {
         );
     }
 
-    public function GetListSubcategory($subcategory_id,$cat_id) {
+    public function GetListSubcategory($subcategory_id, $cat_id) {
         $subcategories = $this->getSubcategoryTable()->getSubcategories($cat_id);
         for ($i = 0; $i < sizeof($subcategories); $i++) {
             if ($subcategories[$i]['id'] == $subcategory_id) {
@@ -255,7 +275,7 @@ class ItemController extends AbstractActionController {
         } catch (Exception $ex) {
             
         }
-        #do something with the data
+#do something with the data
         $text = $text . "successfully processed";
         $result = new JsonModel(array(
             'text' => $text
@@ -278,7 +298,7 @@ class ItemController extends AbstractActionController {
                 $this->getItemTable()->deleteItem($id);
             }
 
-            // Redirect to list of item
+// Redirect to list of item
             return $this->redirect()->toRoute('item');
         }
         return array(
@@ -336,7 +356,7 @@ class ItemController extends AbstractActionController {
     }
 
     public function getFileUploadLocation() {
-        // Получение конфигурации из конфигурационных данных модуля
+// Получение конфигурации из конфигурационных данных модуля
         $config = $this->getServiceLocator()->get('config');
         return $config['module_config']['upload_location'];
     }
@@ -346,8 +366,8 @@ class ItemController extends AbstractActionController {
         $filename = $uploadPath . '/' . $name;
         $small_filename = $uploadPath . '/small_' . $name;
         $big_filename = $uploadPath . '/big_' . $name;
-        
-         $cmd = "/usr/bin/convert -resize 200 -gravity center  -crop 140x140+0+0 +repage    {$filename} {$small_filename}";
+
+        $cmd = "/usr/bin/convert -resize 200 -gravity center  -crop 140x140+0+0 +repage    {$filename} {$small_filename}";
         exec($cmd . " 2>&1", $out, $retVal);
 
         $cmd = "/usr/bin/convert -resize 700 -gravity center  -crop 700x280+0+0 +repage    {$filename} {$big_filename}";
