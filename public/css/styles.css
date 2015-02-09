@@ -255,7 +255,7 @@ h2{font: normal 24px/20px 'helvetica-bold'; margin: 26px 0 15px;}
 .seriesName span{display: inline-block; font-size: 11px; color: #898889; background: #e3e2e3; padding: 4px 10px 2px;}
 .works td.noWork{padding: 25px 0; color: #909090;}
 
-.navigation{margin: 0;}
+.navigation{margin: 0; border-bottom: 1px solid #dd8083;}
 .navigation li{display: block; margin: 0; padding: 0;}
 .navigation a{display: block; position: relative;}
 .navigation .arrow{width: 8px; height: 15px; position: absolute; background: url("../img/arrow.png") no-repeat 0 center; left: 100%; top: 50%; margin: -8px 0 0 0; display: none;}
