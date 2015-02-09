@@ -2,7 +2,12 @@
 $title = 'Редактировать товар';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<h1>
+    <p class="text-center"><?php echo $this->escapeHtml($title); ?>
+    </p>
+</h1>
+
 <?php
 $form = $this->form;
 $form->setAttribute('action', $this->url('item', array(
@@ -13,87 +18,97 @@ $form->setAttribute('action', $this->url('item', array(
 $form->prepare();
 ?>
 <section>
-    <dl class="zend_form">
-
-        <?php echo $this->form()->openTag($form); ?>
-        <?php echo $this->formHidden($form->get('id')); ?>
-
-        <div class="row">
-            <div class="col-xs-1"><?php echo $this->formLabel($form->get('category_id')); ?></div> 
-
-            <div class="col-xs-1"><?php echo $this->formElement($form->get('category_id')); ?></div> 
-            <div class="col-xs-1"><?php echo $this->formElementErrors($form->get('category_id')); ?></div> 
-        </div>  
-
-        <div class="row">
-            <div class="col-xs-1"><?php echo $this->formLabel($form->get('subcategory_id')); ?></div>
-
-            <div class="col-xs-1"><?php echo $this->formElement($form->get('subcategory_id')); ?></div>
-            <div class="col-xs-1"><?php echo $this->formElementErrors($form->get('subcategory_id')); ?></div>
-        </div>   
-
-        <div class="row">
-            <div class="col-xs-1"><?php echo $this->formLabel($form->get('shop_id')); ?>
-            </div>
-
-            <div class="col-xs-1"><?php echo $this->formElement($form->get('shop_id')); ?>
-            </div>
-            <div class="col-xs-1"><?php echo $this->formElementErrors($form->get('shop_id')); ?>
-            </div>
-        </div> 
 
 
-        <div class="row">
-            <div class="col-xs-1"><?php echo $this->formLabel($form->get('name')); ?>
-            </div>
-            <div class="col-xs-1"><?php echo $this->formElement($form->get('name')); ?>
-            </div>
-            <div class="col-xs-1"><?php echo $this->formElementErrors($form->get('name')); ?>
-            </div>
-        </div> 
+    <?php echo $this->form()->openTag($form); ?>
+    <?php echo $this->formHidden($form->get('id')); ?>
 
-        <div class="row">
-            <div class="col-xs-1"><?php echo $this->formLabel($form->get('id_photo')); ?>
-            </div>
-            <div class="col-xs-1"><?php echo $this->formElement($form->get('id_photo')); ?>
-            </div>
-            <div class="col-xs-1"><?php echo $this->formElementErrors($form->get('id_photo')); ?>
-            </div>
+    <div class="row">
+        <div class="col-xs-2"><?php echo $this->formLabel($form->get('category_id')); ?></div> 
+
+        <div class="col-xs-6"><?php echo $this->formElement($form->get('category_id')); ?></div> 
+        <div class="col-xs-6"><?php echo $this->formElementErrors($form->get('category_id')); ?></div> 
+    </div>  
+
+    <div class="row">
+        <div class="col-xs-2"><?php echo $this->formLabel($form->get('subcategory_id')); ?></div>
+
+        <div class="col-xs-6"><?php echo $this->formElement($form->get('subcategory_id')); ?></div>
+        <div class="col-xs-6"><?php echo $this->formElementErrors($form->get('subcategory_id')); ?></div>
+    </div>   
+
+    <div class="row">
+        <div class="col-xs-2"><?php echo $this->formLabel($form->get('shop_id')); ?>
         </div>
 
-        <div class="row">
-            <div class="col-xs-1"><?php echo $this->formRow($form->get('status')); ?>
-            </div>
+        <div class="col-xs-6"><?php echo $this->formElement($form->get('shop_id')); ?>
+        </div>
+        <div class="col-xs-2"><?php echo $this->formElementErrors($form->get('shop_id')); ?>
+        </div>
+    </div> 
+
+
+    <div class="row">
+        <div class="col-xs-2"><?php echo $this->formLabel($form->get('name')); ?>
+        </div>
+        <div class="col-xs-6"><?php echo $this->formElement($form->get('name')); ?>
+        </div>
+        <div class="col-xs-6"><?php echo $this->formElementErrors($form->get('name')); ?>
+        </div>
+    </div> 
+
+    <div class="row">
+        <div class="col-xs-2"><?php echo $this->formLabel($form->get('id_photo')); ?>
+        </div>
+        <div class="col-xs-6"><?php echo $this->formElement($form->get('id_photo')); ?>
+        </div>
+        <div class="col-xs-6"><?php echo $this->formElementErrors($form->get('id_photo')); ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-2"><?php echo $this->formLabel($form->get('status')); ?>
+        </div>
+        <div class="col-xs-6">
+            <?php echo $this->formElement($form->get('status')); ?>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-2">
+            <?php echo $this->formLabel($form->get('action')); ?>
+        </div>
+        <div class="col-xs-6">
+            <?php echo $this->formElement($form->get('action')); ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-2"> <?php echo $this->formLabel($form->get('percentage')); ?>
         </div>
 
 
-        <div class="row">
-            <div class="col-xs-1"> <?php echo $this->formRow($form->get('action')); ?>
-            </div>
+        <div class="col-xs-6"><?php echo $this->formElement($form->get('percentage')); ?>
         </div>
-
-        <div class="row">
-            <div class="col-xs-1"> <?php echo $this->formLabel($form->get('percentage')); ?>
-            </div>
-
-
-            <div class="col-xs-1"><?php echo $this->formElement($form->get('percentage')); ?>
-            </div>
-            <div class="col-xs-1"><?php echo $this->formElementErrors($form->get('percentage')); ?>
-            </div>
+        <div class="col-xs-2"><?php echo $this->formElementErrors($form->get('percentage')); ?>
         </div>
+    </div>
 
 
-
+    <div class="row">
         <?php foreach ($photos as $photo) : ?>
-            <span>
                 <img src ="<?php echo '/images/item/small_' . $this->escapeHtml(trim($photo)) ?>">  
                 <img  onClick="DelPhoto(this, '<?php echo $this->url('item', array('controller' => 'item', 'action' => 'deletephoto')); ?>', '<?php echo $photo ?>')" src ="<?php echo '/img/backet.png' ?>">  
-            </span>
         <?php endforeach ?>
+    </div>
 
-        <dd><p> <?php echo $this->formSubmit($form->get('submit')); ?></p></dd>
-        <?php echo $this->form()->closeTag(); ?>
+    <div class="form-group">
+        <div class="col-sm-offset-5">
+            <?php echo $this->formSubmit($form->get('submit')); ?>
+        </div>
+    </div>
 
-    </dl>
+    <?php echo $this->form()->closeTag(); ?>
+
 </section>

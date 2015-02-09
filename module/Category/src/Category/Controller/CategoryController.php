@@ -16,15 +16,29 @@ class CategoryController extends AbstractActionController {
 
     public function indexAction() {
 
+        $request = $this->getRequest();
+        $where = array();
+        if ($request->isPost()) {
+            $search = $request->getPost()->get('data');
+            foreach ($search as $key => $query) {
+                    if ($key == 'status')
+                        $where[$key] = (int) $query;
+                    else
+                        $where[$key . ' LIKE ?'] = '%' . $query . '%';
+            }
+        }
+        print_r($where);
+       // die();
         // grab the paginator from the categoryTable
-        $paginator = $this->getCategoryTable()->fetchAll(true);
+        $paginator = $this->getCategoryTable()->fetchAll(true, $where);
         // set the current page to what has been passed in query string, or to 1 if none set
         $paginator->setCurrentPageNumber((int) $this->params()->fromQuery('page', 1));
         // set the number of items per page to 10
         $paginator->setItemCountPerPage(10);
 
         return new ViewModel(array(
-            'paginator' => $paginator
+            'paginator' => $paginator,
+            'search' => $search
         ));
     }
 
@@ -89,9 +103,8 @@ class CategoryController extends AbstractActionController {
             'subcategories' => $subcategories,
         );
     }
-    
-    public function getsubcatAction()
-    {
+
+    public function getsubcatAction() {
         $request = $this->getRequest();
         $id_category = $request->getPost('id_category');
         $subcat = $this->getSubcategoryTable()->getSubcategories($id_category);
@@ -139,30 +152,28 @@ class CategoryController extends AbstractActionController {
     public function addsubcatAction() {
 
         $request = $this->getRequest();
-        
+
         $id_category = $request->getPost('id_cat');
         $id = $request->getPost('id');
         $name = $request->getPost('name');
-        
+
         $data = array(
             'id_category' => $id_category,
             'name' => $name,
             'id' => $id
         );
-        
-        $id=$this->getsubcategoryTable()->saveSubcategory($data);
+
+        $id = $this->getsubcategoryTable()->saveSubcategory($data);
 
         #do something with the data
         $text = $text . "successfully processed";
         $result = new JsonModel(array(
             'id_sub' => (int) $id,
-            'urldel'=>'/admin/category/deletesubcat',
-            'urledit'=>'/admin/category/addsubcat'
+            'urldel' => '/admin/category/deletesubcat',
+            'urledit' => '/admin/category/addsubcat'
         ));
         return $result;
     }
-    
-    
 
     public function getsubcategoryTable() {
 

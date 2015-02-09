@@ -158,6 +158,8 @@ return array(
         'factories' => array(
             'public_navigation' => 'Application\Navigation\Service\PublicNavigationFactory', // <-- add this
             'admin_navigation' => 'ShopModule\Navigation\Service\AdminNavigationFactory', // <-- add this
+            'cat_navigation' => 'Application\Navigation\Service\CategoryNavigationFactory', // <-- add this
+            
         ),
         'aliases' => array(
             'translator' => 'MvcTranslator',
@@ -309,6 +311,12 @@ return array(
                 'route' => 'abouts',
             ),
         ),
+        'cat_navigation' => array(
+            array(
+                'label' => 'Категории',
+                'route' => 'categories',
+            ),
+            ),
     ),
     'translator' => array(
         'locale' => 'en_US',

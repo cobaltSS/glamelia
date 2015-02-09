@@ -11,7 +11,7 @@ print_r($search);
             <input type="text" class="form-control" value="<?php echo $search['name']?>" name="data[name]" placeholder="Наименование товара">
             
             <label for="exampleInputName2">Статус</label>
-            <select name="data[status]">
+            <select class="form-control" name="data[status]">
                 <option >Все</option>
                 <option <?php echo ($search['status']=='1' ? 'selected' : '' )?> value="1">Показывать на сайте</option>
                 <option <?php echo ($search['status']=='0'? 'selected' : '' )?> value="0">Не отображать на сайте</option>
