@@ -24,6 +24,9 @@ class ItemForm extends Form {
             'options' => array(
                 'label' => 'Наименование товара',
             ),
+            'attributes'=>array(
+              'class'=>'form-control',
+            ),
         ));
 
         $this->add(array(
@@ -31,7 +34,8 @@ class ItemForm extends Form {
             'type' => 'Zend\Form\Element\Select',
             'attributes' => array(
                 'id' => 'category_id',
-                'OnChange' => 'ShowSubcat(this)'
+                'OnChange' => 'ShowSubcat(this)',
+                'class'=>'form-control',
             ),
             'options' => array(
                 'label' => 'Категория',
@@ -44,6 +48,7 @@ class ItemForm extends Form {
             'type' => 'Zend\Form\Element\Select',
             'attributes' => array(
                 'id' => 'subcategory_id',
+                'class'=>'form-control',
             ),
             'options' => array(
                 'label' => 'Подкатегория',
@@ -89,6 +94,9 @@ class ItemForm extends Form {
             'options' => array(
                 'label' => 'Процент скидки',
             ),
+            'attributes' => array(
+                'class'=>'form-control',
+            ),
         ));
 
 
@@ -119,6 +127,7 @@ class ItemForm extends Form {
             'attributes' => array(
                 'value' => 'Добавить',
                 'id' => 'submitbutton',
+                'class'=>'btn btn-success',
             ),
         ));
     }

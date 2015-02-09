@@ -16,10 +16,11 @@ class CategoryTable {
         $this->tableGateway = $tableGateway;
     }
 
-    public function fetchAll($paginated = false) {
+    public function fetchAll($paginated = false,$where=array()) {
         if ($paginated) {
             // create a new Select object for the table album
             $select = new Select('category');
+            $select->where($where);
             // create a new result set based on the Album entity
             $resultSetPrototype = new ResultSet();
             $resultSetPrototype->setArrayObjectPrototype(new Category());
@@ -35,7 +36,7 @@ class CategoryTable {
             $paginator = new Paginator($paginatorAdapter);
             return $paginator;
         }
-        $resultSet = $this->tableGateway->select();
+        $resultSet = $this->tableGateway->select($where);
         return $resultSet;
     }
 
@@ -85,6 +86,33 @@ class CategoryTable {
         $select->join('subcategory', "subcategory.id_category = category.id", array('subname' => 'name', 'subcategory_id' => 'id'), 'left');
         $rowset = $this->tableGateway->selectWith($select);
         $result = array();
+        foreach ($rowset->toArray() as $elem) {
+            $key = $elem['id'];
+            if (isset($result[$key])) {
+                $result[$key]['subname'] .= ':' . $elem['subname'];
+                $result[$key]['subcategory_id'] .= ':' . $elem['subcategory_id'];
+            } else {
+                $result[$key] = $elem;
+            }
+        }
+        return $result;
+    }
+    
+    public function getCategory2SubForShop($id_shop) {
+
+        $select = new Select;
+        $select->from('category');
+        $select->quantifier('DISTINCT');
+        $select->join('subcategory', "subcategory.id_category = category.id", array('subname' => 'name', 'subcategory_id' => 'id'), 'left');
+        $select->join('items2shop', "items2shop.id_item", array(), 'left');
+        $select->join('item', "item.id = items2shop.id_item AND item.category_id=category.id", array(), 'inner');
+        $select->where(array('items2shop.id_shop='.$id_shop));
+        
+        $rowset = $this->tableGateway->selectWith($select);
+        $result = array();
+     //   print_r($rowset->getDataSource());
+   // print_r($rowset->toArray());
+     //  die();
         foreach ($rowset->toArray() as $elem) {
             $key = $elem['id'];
             if (isset($result[$key])) {

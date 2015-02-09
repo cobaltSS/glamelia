@@ -1,71 +1,65 @@
 <script type="text/javascript" src="/js/map.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<?php echo $key_map ?>&sensor=false&libraries=places""></script>
-
+?>
 
 <div id="content">
     <div class="center">
         <div class="twoCol">
             <div class="shop_block" style="height: 1000px;">
-            <div class="leftCol">
-                <?php
-                $title = 'Mагазин';
-                $this->headTitle($title);
-                $partial = array('partial/category_menu.phtml', 'default');
-                $catalog = $this->navigation('public_navigation')->findOneByRoute('categories');
-                $options=array(
-                  'ulClass'=>'navigation',
-                    'renderParents'    => false,
-                    'maxDepth'         => 5,
-                );
-                //$this->navigation('public_navigation')->menu()->setPartial($partial);
-                echo $this->navigation('public_navigation')
-                        ->menu()
-                        ->setPartial($partial)
-                        ->renderMenu($catalog);
-                ?>
-  
-                    
-            </div>
-            <div class="rightCol">
-                <div class="shop_title">
-                    <h1><?php echo $this->escapeHtml($title); ?></h1>
+                <div class="leftCol">
+                    <?php
+$partial = array('partial/category_menu.phtml', 'default');
+echo $this->navigation('cat_navigation')
+        ->menu()
+        ->setMinDepth(1)
+        ->setMaxDepth(4)
+        ->setRenderParents(false)
+        ->setOnlyActiveBranch(true)
+        ->setPartial($partial)
+        ->render();
+?>
                 </div>
-                <p class="bigLine"></p>
+                <div class="rightCol">
+                    <div class="shop_title">
+                        <h1><?php echo $this->escapeHtml($title); ?></h1>
+                    </div>
+                    <p class="bigLine"></p>
 
-                <div id="bigSlider">
-                    
+                    <div id="bigSlider">
 
-                    <div class="slider">
-                        <div class="slides">
-                            <?php
-                            foreach ($photos as $patch) {
-                                ?>
-                                <div class="slide">
-                                    <img src ="<?php echo '/images/shop/big_' . trim($patch) ?>">
-                                </div>
+
+                        <div class="slider">
+                            <div class="slides">
                                 <?php
-                            }
-                            ?>
+                                foreach ($photos as $patch) {
+                                    ?>
+                                    <div class="slide">
+                                        <img src ="<?php echo '/images/shop/big_' . trim($patch) ?>">
+                                    </div>
+                                    <?php
+                                }
+                                ?>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-                <p><label>Наш адрес: </label> <?php echo $shop->address ?></p>
-                <div><label>Режим работы: </label>
-                    <?php for ($i=0; $i<7; $i++)
-                    echo '<div class="work_day" title="' . $shop->work_time .'"></div>'
-                    ?>
-                </div>
-                <h3> Схема проезда</h3>
-                <div class="map_block">
-                    <input type="hidden" id="end" value="<?php echo $shop->address ?>">
-                    <div class="map-view-book">
-                        <input id="location"   type="hidden" value="" />
-                        <div id="map_canvas"></div>
+                    <p><label>Наш адрес: </label> <?php echo $shop->address ?></p>
+                    <div><label>Режим работы: </label>
+                        <?php
+                        for ($i = 0; $i < 7; $i++)
+                            echo '<div class="work_day" title="' . $shop->work_time . '"></div>'
+                            ?>
                     </div>
-                </div>
+                    <h3> Схема проезда</h3>
+                    <div class="map_block">
+                        <input type="hidden" id="end" value="<?php echo $shop->address ?>">
+                        <div class="map-view-book">
+                            <input id="location"   type="hidden" value="" />
+                            <div id="map_canvas"></div>
+                        </div>
+                    </div>
 
-            </div>
+                </div>
             </div>
         </div>
 
