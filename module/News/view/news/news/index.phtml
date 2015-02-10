@@ -3,14 +3,30 @@ $title = 'Новости';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<form class="panel form-inline" method="POST" action="<?php echo $this->url('reviews'); ?>">
+    <div class=" panel-body" >
+        <div class="form-group">
+            <label for="exampleInputName2">Название</label>
+            <input type="text" class="form-control" value="<?php echo $search['address'] ?>" name="data[name]" placeholder="Название">
+
+            <label for="exampleInputName2">Статус</label>
+            <select class="form-control" name="data[status]">
+                <option >Все</option>
+                <option <?php echo ($search['status'] == '1' ? 'selected' : '' ) ?> value="1">Опублекована</option>
+                <option <?php echo ($search['status'] == '0' ? 'selected' : '' ) ?> value="0">Не опублекована</option>
+            </select>
+
+        </div>
+        <button type="submit" class="btn btn-default">Поиск</button>
+    </div>
+</form>
+
 <p>
     <a href="<?php echo $this->url('listnews', array('action' => 'add')); ?>">
         Добавить новость</a>
 </p>
-<p>
-    <a href="<?php echo $this->url('listnews', array('action' => 'index','status'=>1)); ?>">
-       Показать неопубликованные</a>
-</p>
+
 <table class="table">
     <tr>
         <th>Название</th>
@@ -22,12 +38,14 @@ $this->headTitle($title);
         <tr>
             <td><?php echo $this->escapeHtml($news->name); ?></td>
             <td><?php echo $this->escapeHtml($news->description); ?></td>
-            <td><?php echo $this->escapeHtml($news->status) ? 'опублекован' :'не обубликован' ?></td>
+            <td><?php echo $this->escapeHtml($news->status) ? 'опублекована' : 'не обубликована' ?></td>
             <td>
-                <a href="<?php echo $this->url('listnews', array('action' => 'edit', 'id' => $news->id));
-        ?>">Редактировать</a>
-                <a href="<?php echo $this->url('listnews', array('action' => 'delete', 'id' => $news->id));
-        ?>">Удалить</a>
+                <a class="btn btn-info" href="<?php echo $this->url('listnews', array('action' => 'edit', 'id' => $news->id)); ?>">
+                    <img alt="Редактировать" src ="<?php echo '/img/ico/edit.png' ?>"/> 
+                </a>
+                <a class="btn btn-info" href="<?php echo $this->url('listnews', array('action' => 'delete', 'id' => $news->id)); ?>">
+                    <img alt="Удалить" src ="<?php echo '/img/ico/del.png' ?>"/>
+                </a>
             </td>
         </tr>
     <?php endforeach; ?>

@@ -20,15 +20,18 @@ class CategoryController extends AbstractActionController {
         $where = array();
         if ($request->isPost()) {
             $search = $request->getPost()->get('data');
+            print_r($search);
             foreach ($search as $key => $query) {
-                    if ($key == 'status')
+                if ($key == 'status')
+                {
+                    if(isset($query))
                         $where[$key] = (int) $query;
-                    else
-                        $where[$key . ' LIKE ?'] = '%' . $query . '%';
+                }
+                else
+                    $where[$key . ' LIKE ?'] = '%' . $query . '%';
             }
         }
         print_r($where);
-       // die();
         // grab the paginator from the categoryTable
         $paginator = $this->getCategoryTable()->fetchAll(true, $where);
         // set the current page to what has been passed in query string, or to 1 if none set

@@ -16,15 +16,28 @@ class ShopController extends AbstractActionController {
 
     public function indexAction() {
 
+        $request = $this->getRequest();
+        $where = array();
+        if ($request->isPost()) {
+            $search = $request->getPost()->get('data');
+            foreach ($search as $key => $query) {
+                    if ($key == 'status' && ($query))
+                        $where[$key] = (int) $query;
+                    else
+                        $where[$key . ' LIKE ?'] = '%' . $query . '%';
+                
+            }
+        }
         // grab the paginator from the ShopTable
-        $paginator = $this->getShopTable()->fetchAll(true);
+        $paginator = $this->getShopTable()->fetchAll(true, $where);
         // set the current page to what has been passed in query string, or to 1 if none set
         $paginator->setCurrentPageNumber((int) $this->params()->fromQuery('page', 1));
         // set the number of items per page to 10
         $paginator->setItemCountPerPage(10);
 
         return new ViewModel(array(
-            'paginator' => $paginator
+            'paginator' => $paginator,
+            'search' => $search
         ));
     }
 
@@ -145,10 +158,9 @@ class ShopController extends AbstractActionController {
                     }
                 }
                 $this->getShopTable()->saveShop($shop);
-                 // Redirect to list of $shops
-            return $this->redirect()->toRoute('shop');
+                // Redirect to list of $shops
+                return $this->redirect()->toRoute('shop');
             }
-           
         }
         if ($shop->patch) {
             $patch = explode(',', $shop->patch);
@@ -263,20 +275,20 @@ class ShopController extends AbstractActionController {
         return $config['module_config']['upload_shop_location'];
     }
 
-     public function resizePhoto($name) {
+    public function resizePhoto($name) {
         $uploadPath = $this->getFileUploadLocation();
         $filename = $uploadPath . '/' . $name;
         $small_filename = $uploadPath . '/small_' . $name;
         $big_filename = $uploadPath . '/big_' . $name;
-        
+
         $cmd = "/usr/bin/convert -resize 200 -gravity center  -crop 140x140+0+0 +repage    {$filename} {$small_filename}";
         exec($cmd . " 2>&1", $out, $retVal);
 
         $cmd = "/usr/bin/convert -resize 700 -gravity center  -crop 700x280+0+0 +repage    {$filename} {$big_filename}";
         exec($cmd . " 2>&1", $out, $retVal);
 
-       /* $cmd = "/usr/bin/convert -resize 500 {$filename} {$filename}";
-        exec($cmd . " 2>&1", $out, $retVal);*/
+        /* $cmd = "/usr/bin/convert -resize 500 {$filename} {$filename}";
+          exec($cmd . " 2>&1", $out, $retVal); */
     }
 
 }

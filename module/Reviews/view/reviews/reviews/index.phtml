@@ -3,13 +3,29 @@ $title = 'Отзывы';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+<form class="panel form-inline" method="POST" action="<?php echo $this->url('reviews'); ?>">
+    <div class=" panel-body" >
+        <div class="form-group">
+            <label for="exampleInputName2">Отзыв</label>
+            <input type="text" class="form-control" value="<?php echo $search['address'] ?>" name="data[name]" placeholder="Отзыв">
+
+            <label for="exampleInputName2">Статус</label>
+            <select class="form-control" name="data[status]">
+                <option >Все</option>
+                <option <?php echo ($search['status'] == '1' ? 'selected' : '' ) ?> value="1">Опублекован</option>
+                <option <?php echo ($search['status'] == '0' ? 'selected' : '' ) ?> value="0">Не опублекован</option>
+            </select>
+
+        </div>
+        <button type="submit" class="btn btn-default">Поиск</button>
+    </div>
+</form>
+
 <p>
-    <a href="<?php echo $this->url('reviews', array('action' => 'add')); ?>">
+    <a class="btn btn-info" href="<?php echo $this->url('reviews', array('action' => 'add')); ?>">
         Добавить отзыв</a>
-</p>
-<p>
-    <a href="<?php echo $this->url('reviews', array('action' => 'index','status'=>1)); ?>">
-       Показать неопубликованные</a>
 </p>
 <table class="table">
     <tr>
@@ -24,12 +40,14 @@ $this->headTitle($title);
             <td><?php echo $this->escapeHtml($reviews->name); ?></td>
             <td><?php echo $this->escapeHtml($reviews->phone); ?></td>
             <td><?php echo $this->escapeHtml($reviews->description); ?></td>
-            <td><?php echo $this->escapeHtml($reviews->status) ? 'опублекован' :'не обубликован' ?></td>
+            <td><?php echo $this->escapeHtml($reviews->status) ? 'опублекован' : 'не обубликован' ?></td>
             <td>
-                <a href="<?php echo $this->url('reviews', array('action' => 'edit', 'id' => $reviews->id));
-        ?>">Редактировать</a>
-                <a href="<?php echo $this->url('reviews', array('action' => 'delete', 'id' => $reviews->id));
-        ?>">Удалить</a>
+                <a class="btn btn-info" href="<?php echo $this->url('reviews', array('action' => 'edit', 'id' => $reviews->id)); ?>">
+                    <img alt="Редактировать" src ="<?php echo '/img/ico/edit.png' ?>"/> 
+                </a>
+                <a class="btn btn-info" href="<?php echo $this->url('reviews', array('action' => 'delete', 'id' => $reviews->id)); ?>">
+                    <img alt="Удалить" src ="<?php echo '/img/ico/del.png' ?>"/>
+                </a>
             </td>
         </tr>
     <?php endforeach; ?>

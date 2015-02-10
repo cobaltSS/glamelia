@@ -31,6 +31,7 @@
                 ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
                 ->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9',))
                 ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+                ->prependFile($this->basePath() . '/js/bootstrap.file-input.js')
                 ->prependFile($this->basePath() . '/js/jquery-1.9.1.min.js')
 
         ;
@@ -60,17 +61,11 @@
                 </div>
             </nav>
 
-            <div class="center">
-                <div id="content" class="center">
-
-                    <div class="admin">
+            <div class="container">
                         <?php echo $this->content; ?>
-                        <hr>
                         <footer>
 
                         </footer>
-                    </div> <!-- /container -->
-                </div>
             </div>
         </div>
         <?php echo $this->inlineScript() ?>

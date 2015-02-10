@@ -2,30 +2,56 @@
 $title = 'Магазины';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
-<p>
-    <a href="<?php echo $this->url('shop', array('action' => 'add')); ?>">Добавить новый магазин</a>
-</p>
-<table class="table">
-    <tr>
-        <th>Адрес</th>
-        <th>Время работы</th>
-        <th>&nbsp;</th>
-    </tr>
-    <?php foreach ($this->paginator as $shop) : ?>
-        <tr>
-            
-            <td><?php echo $this->escapeHtml($shop->address); ?></td>
-            <td><?php echo $this->escapeHtml($shop->work_time); ?></td>
-            <td>
-                <a href="<?php echo $this->url('shop', array('action' => 'edit', 'id' => $shop->id));
-        ?>">Редактировать</a>
-                <a href="<?php echo $this->url('shop', array('action' => 'delete', 'id' => $shop->id));
-        ?>">Удалить</a>
-            </td>
-        </tr>
-    <?php endforeach; ?>
-</table>
+<div class="panel-info">
+
+    <div class="panel-heading"><?php echo $this->escapeHtml($title); ?></div>
+    <div class="panel-body well">
+
+        <form class="panel form-inline" method="POST" action="<?php echo $this->url('shop'); ?>">
+            <div class=" panel-body" >
+                <div class="form-group">
+                    <label for="exampleInputName2">Адрес</label>
+                    <input type="text" class="form-control" value="<?php echo $search['address'] ?>" name="data[address]" placeholder="Адрес магазина">
+
+                    <label for="exampleInputName2">Статус</label>
+                    <select class="form-control" name="data[status]">
+                        <option value="">Все</option>
+                        <option <?php echo ($search['status'] == '1' ? 'selected' : '' ) ?> value="1">Показывать на сайте</option>
+                        <option <?php echo ($search['status'] == '0' ? 'selected' : '' ) ?> value="0">Не отображать на сайте</option>
+                    </select>
+
+                </div>
+                <button type="submit" class="btn btn-default">Поиск</button>
+            </div>
+        </form>
+
+        <p>
+            <a class="btn btn-info" href="<?php echo $this->url('shop', array('action' => 'add')); ?>">Добавить новый магазин</a>
+        </p>
+        <table class="table">
+            <tr>
+                <th>Адрес</th>
+                <th>Время работы</th>
+                <th>&nbsp;</th>
+            </tr>
+            <?php foreach ($this->paginator as $shop) : ?>
+                <tr>
+
+                    <td><?php echo $this->escapeHtml($shop->address); ?></td>
+                    <td><?php echo $this->escapeHtml($shop->work_time); ?></td>
+                    <td>
+                        <a class="btn btn-info" href="<?php echo $this->url('shop', array('action' => 'edit', 'id' => $shop->id)); ?>">
+                            <img alt="Редактировать" src ="<?php echo '/img/ico/edit.png' ?>"/>    
+                        </a>
+                        <a class="btn btn-info" href="<?php echo $this->url('shop', array('action' => 'delete', 'id' => $shop->id)); ?>">
+                            <img alt="Удалить" src ="<?php echo '/img/ico/del.png' ?>"/>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+</div>
 <?php
 echo $this->paginationControl(
 // the paginator object
@@ -35,6 +61,8 @@ echo $this->paginationControl(
 // the partial to use to render the control
         array('partial/paginator.phtml', 'Shop'),
 // the route to link to when a user clicks a control link
-        array(    'route' => 'shop'
+        array('route' => 'shop'
         )
 );
+
+

@@ -2,21 +2,29 @@
 $title = 'Удалить магазин';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
-<p>Вы уверенны что хотите удалить магазин
-    '<?php echo $this->escapeHtml($shop->name); ?>' по адресу
-    '<?php echo $this->escapeHtml($shop->address); ?>'?
-</p>
-<?php
-$url = $this->url('shop', array(
-    'action' => 'delete',
-    'id' => $this->id,
+
+<div class="panel-info">
+
+    <div class="panel-heading"><?php echo $this->escapeHtml($title); ?></div>
+    <div class="well">
+
+        <p>Вы уверенны что хотите удалить магазин
+            '<?php echo $this->escapeHtml($shop->name); ?>' по адресу
+            '<?php echo $this->escapeHtml($shop->address); ?>'?
+        </p>
+        <?php
+        $url = $this->url('shop', array(
+            'action' => 'delete',
+            'id' => $this->id,
         ));
-?>
-<form action="<?php echo $url; ?>" method="post">
-    <div>
-        <input type="hidden" name="id" value="<?php echo (int) $shop->id; ?>" />
-        <input type="submit" name="del" value="Да" />
-        <input type="submit" name="del" value="Нет" />
+        ?>
+        <form action="<?php echo $url; ?>" method="post">
+
+            <input type="hidden" name="id" value="<?php echo (int) $shop->id; ?>" />
+            <input type="submit" name="del" value="Да" />
+            <input type="submit" name="del" value="Нет" />
+
+        </form>
+
     </div>
-</form>
+</div>

@@ -22,7 +22,10 @@ class ShopForm extends Form {
             'name' => 'work_time',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Work Time',
+                'label' => 'Время работы',
+            ),
+            'attributes' => array(
+                'class' => 'form-control',
             ),
         ));
 
@@ -31,6 +34,7 @@ class ShopForm extends Form {
             'type' => 'Zend\Form\Element\Select',
             'attributes' => array(
                 'id' => 'city_id',
+                 'class' => 'form-control',
             ),
             'options' => array(
                     'label' => 'Город',
@@ -46,6 +50,7 @@ class ShopForm extends Form {
             ),
             'attributes' => array(
                 'id' => 'end',
+                 'class' => 'form-control',
             ),
         ));
         
@@ -57,6 +62,7 @@ class ShopForm extends Form {
             ),
             'attributes' => array(
                 'id' => 'start',
+                 'class' => 'form-control',
             ),
         ));
         
@@ -66,7 +72,7 @@ class ShopForm extends Form {
             'name' => 'status',
             'type' => 'Zend\Form\Element\Checkbox',
             'options' => array(
-                'label' => 'Active',
+                'label' => 'Показывать на сайте',
                 'checked_value' => '1',
                 'unchecked_value' => '0',
             ),
@@ -80,6 +86,7 @@ class ShopForm extends Form {
             ),
             'attributes' => array(
                 'id' => 'id_photo',
+                'data-filename-placement'=>"inside",
             ),
         ));
         
@@ -98,6 +105,7 @@ class ShopForm extends Form {
             'attributes' => array(
                 'value' => 'Go',
                 'id' => 'submitbutton',
+                'class'=>'btn btn-success',
             ),
         ));
     }

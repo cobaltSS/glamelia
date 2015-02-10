@@ -1,71 +1,88 @@
 <script type="text/javascript" src="/js/map.js"></script>
- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<?php echo $key_map ?>&sensor=false&libraries=places""></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<?php echo $key_map ?>&sensor=false&libraries=places""></script>
 <?php
 $title = 'Редактирование магазина';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
-<?php
-$form = $this->form;
-$form->setAttribute('action', $this->url('shop', array(
-            'action' => 'edit',
-            'id' => $this->id,
-                )
-));
-$form->prepare();
-?>
-<section>
-    <div class="infoshop">
-    <dl class="zend_form">
 
-        <?php echo $this->form()->openTag($form); ?>
-        <?php echo $this->formHidden($form->get('id')); ?>
+<div class="panel-info">
 
-        <dt><?php echo $this->formLabel($form->get('city_id')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('city_id')); ?>
-            <?php echo $this->formElementErrors($form->get('city_id')); ?>
-        </dd>  
+    <div class="panel-heading"><?php echo $this->escapeHtml($title); ?></div>
+    <div class="panel-body well">
+        <?php
+        $form = $this->form;
+        $form->setAttribute('action', $this->url('shop', array(
+                    'action' => 'edit',
+                    'id' => $this->id,
+                        )
+        ));
+        $form->prepare();
+        ?>
+        <section>
+            <div class="infoshop">
 
-        <dt><?php echo $this->formLabel($form->get('address')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('address')); ?>
-            <?php echo $this->formElementErrors($form->get('address')); ?>
-        </dd>
+                <?php echo $this->form()->openTag($form); ?>
+                <?php echo $this->formHidden($form->get('id')); ?>
 
-        <dt><?php echo $this->formLabel($form->get('work_time')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('work_time')); ?>
-            <?php echo $this->formElementErrors($form->get('work_time')); ?>
-        </dd>
+                <dt><?php echo $this->formLabel($form->get('city_id')); ?></dt>
+                <dd>
+                    <?php echo $this->formElement($form->get('city_id')); ?>
+                    <?php echo $this->formElementErrors($form->get('city_id')); ?>
+                </dd>  
 
-        <dt><?php echo $this->formLabel($form->get('id_photo')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('id_photo')); ?>
-            <?php echo $this->formElementErrors($form->get('id_photo')); ?>
-        </dd>
-        
-        <dt><?php echo $this->formRow($form->get('status')); ?></dt>
-        
-        <?php foreach ($photos as $photo) : ?>
-           <span>
-                <img src ="<?php echo '/images/shop/small_' . $this->escapeHtml(trim($photo)) ?>">  
-                <img  onClick="DelPhoto(this,'<?php echo $this->url('shop', array('controller'=>'shop', 'action'=>'deletephoto')); ?>','<?php echo trim($photo) ?>')" src ="<?php echo '/img/backet.png' ?>">  
-                </span>
-        <?php endforeach ?>
+                <dt><?php echo $this->formLabel($form->get('address')); ?></dt>
+                <dd>
+                    <?php echo $this->formElement($form->get('address')); ?>
+                    <?php echo $this->formElementErrors($form->get('address')); ?>
+                </dd>
+
+                <dt><?php echo $this->formLabel($form->get('work_time')); ?></dt>
+                <dd>
+                    <?php echo $this->formElement($form->get('work_time')); ?>
+                    <?php echo $this->formElementErrors($form->get('work_time')); ?>
+                </dd>
+
+                <dt><?php echo $this->formLabel($form->get('id_photo')); ?></dt>
+                <dd>
+                    <?php echo $this->formElement($form->get('id_photo')); ?>
+                    <?php echo $this->formElementErrors($form->get('id_photo')); ?>
+                </dd>
+
+                <dt><?php echo $this->formRow($form->get('status')); ?></dt>
+                <div class="row">
+                    <?php foreach ($photos as $photo) : ?>
+
+                        <div class="col-sm-6 col-md-4">
+                            <div class="  thumbnail">
+                                <img src="<?php echo '/images/shop/small_' . $this->escapeHtml(trim($photo)) ?>" alt="">
+                                <div class="caption">
+                                    <p><img  onClick="DelPhoto(this, '<?php echo $this->url('shop', array('controller' => 'shop', 'action' => 'deletephoto')); ?>', '<?php echo trim($photo) ?>')" src ="<?php echo '/img/backet.png' ?>">  </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    <?php endforeach ?>
+                </div>
 
 
-        <dd> <?php echo $this->formSubmit($form->get('submit')); ?></dd>
+
+
+            </div>
+
+
+            <!-- MAP -->
+            <div class="map-view-book">
+                <input id="location"   type="hidden" value="" />
+                <div id="map_canvas"></div>
+            </div>
+            <div class="clear"></div>
+
+        </section>
+    </div>  
+
+    <dd>
+        <?php echo $this->formSubmit($form->get('submit')); ?>
+        <a href="/admin/shop" class="btn btn-default">Назад</a> 
+    <dd>
         <?php echo $this->form()->closeTag(); ?>
-
-    </dl>
-    </div>
-
-
-    <!-- MAP -->
-    <div class="map-view-book">
-        <input id="location"   type="hidden" value="" />
-        <div id="map_canvas"></div>
-    </div>
-    <div class="clear"></div>
-</section>
+</div>
