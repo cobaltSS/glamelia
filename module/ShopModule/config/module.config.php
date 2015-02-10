@@ -37,7 +37,7 @@ return array(
   
     
     'module_config' => array(
-        'upload_shop_location' => __DIR__ . '/../../../public/images/shop',
+        'upload_shop_location' => __DIR__ . '/../../../public_html/images/shop',
     ),
     'view_manager' => array(
         'display_not_found_reason' => true,

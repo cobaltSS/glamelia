@@ -2,9 +2,12 @@
 $title = 'Удалить новость';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
+<div class="panel-info">
+
+    <div class="panel-heading"><?php echo $this->escapeHtml($title); ?></div>
+    <div class="panel-body well">
 <p>Вы уверенны что хотите удалить новость -
-    '<?php echo $this->escapeHtml($reviews->description);?>'?
+    '<?php echo $this->escapeHtml($news->name);?>'?
 </p>
 <?php
 $url = $this->url('listnews', array(
@@ -19,3 +22,5 @@ $url = $this->url('listnews', array(
         <input type="submit" name="del" value="Нет" />
     </div>
 </form>
+    </div>
+</div>

@@ -2,85 +2,90 @@
 $title = 'Редактировать информацию';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
-<?php
-$form = $this->form;
-$form->setAttribute('abouts', $this->url('abouts'));
-$form->prepare();
-?>
-<section>
-    <dl class="zend_form">
+<div class="panel-info">
+
+    <div class="panel-heading"><?php echo $this->escapeHtml($title); ?></div>
+    <div class="panel-body well">
         <?php
-        echo $this->form()->openTag($form);
-        echo $this->formHidden($form->get('id'));
+        $form = $this->form;
+        $form->setAttribute('abouts', $this->url('abouts'));
+        $form->prepare();
         ?>
+        <section>
+            <div class="leftblock">
+                <?php
+                echo $this->form()->openTag($form);
+                echo $this->formHidden($form->get('id'));
+                ?>
 
-        <dt><?php echo $this->formLabel($form->get('name')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('name')); ?>
-            <?php echo $this->formElementErrors($form->get('name')); ?>
-        </dd>
-
-
-        <dt><?php echo $this->formLabel($form->get('address')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('address')); ?>
-            <?php echo $this->formElementErrors($form->get('address')); ?>
-        </dd>
-
-        <dt><?php echo $this->formLabel($form->get('current_account')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('current_account')); ?>
-            <?php echo $this->formElementErrors($form->get('current_account')); ?>
-        </dd>
-
-        <dt><?php echo $this->formLabel($form->get('bank_info')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('bank_info')); ?>
-            <?php echo $this->formElementErrors($form->get('bank_info')); ?>
-        </dd>
-
-        <dt><?php echo $this->formLabel($form->get('unp')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('unp')); ?>
-            <?php echo $this->formElementErrors($form->get('unp')); ?>
-        </dd>
-
-        <dt><?php echo $this->formLabel($form->get('okpo')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('okpo')); ?>
-            <?php echo $this->formElementErrors($form->get('okpo')); ?>
-        </dd>
+                <dt><?php echo $this->formLabel($form->get('name')); ?></dt>
+                <dd>
+                    <?php echo $this->formElement($form->get('name')); ?>
+                    <?php echo $this->formElementErrors($form->get('name')); ?>
+                </dd>
 
 
+                <dt><?php echo $this->formLabel($form->get('address')); ?></dt>
+                <dd>
+                    <?php echo $this->formElement($form->get('address')); ?>
+                    <?php echo $this->formElementErrors($form->get('address')); ?>
+                </dd>
+
+                <dt><?php echo $this->formLabel($form->get('current_account')); ?></dt>
+                <dd>
+                    <?php echo $this->formElement($form->get('current_account')); ?>
+                    <?php echo $this->formElementErrors($form->get('current_account')); ?>
+                </dd>
+
+                <dt><?php echo $this->formLabel($form->get('bank_info')); ?></dt>
+                <dd>
+                    <?php echo $this->formElement($form->get('bank_info')); ?>
+                    <?php echo $this->formElementErrors($form->get('bank_info')); ?>
+                </dd>
+
+                <dt><?php echo $this->formLabel($form->get('unp')); ?></dt>
+                <dd>
+                    <?php echo $this->formElement($form->get('unp')); ?>
+                    <?php echo $this->formElementErrors($form->get('unp')); ?>
+                </dd>
+
+                <dt><?php echo $this->formLabel($form->get('okpo')); ?></dt>
+                <dd>
+                    <?php echo $this->formElement($form->get('okpo')); ?>
+                    <?php echo $this->formElementErrors($form->get('okpo')); ?>
+                </dd>
 
 
-        <dt><?php echo $this->formLabel($form->get('tel')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('tel')); ?>
-            <?php echo $this->formElementErrors($form->get('tel')); ?>
-        </dd>
 
-        <dt><?php echo $this->formLabel($form->get('email')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('email')); ?>
-            <?php echo $this->formElementErrors($form->get('email')); ?>
-        </dd>
 
-        <dt><?php echo $this->formLabel($form->get('director')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('director')); ?>
-            <?php echo $this->formElementErrors($form->get('director')); ?>
-        </dd>
+                <dt><?php echo $this->formLabel($form->get('tel')); ?></dt>
+                <dd>
+                    <?php echo $this->formElement($form->get('tel')); ?>
+                    <?php echo $this->formElementErrors($form->get('tel')); ?>
+                </dd>
 
-        <dt><?php echo $this->formLabel($form->get('description')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('description')); ?>
-            <?php echo $this->formElementErrors($form->get('description')); ?>
-        </dd>
+                <dt><?php echo $this->formLabel($form->get('email')); ?></dt>
+                <dd>
+                    <?php echo $this->formElement($form->get('email')); ?>
+                    <?php echo $this->formElementErrors($form->get('email')); ?>
+                </dd>
 
-        <dd> <?php echo $this->formSubmit($form->get('submit')); ?></dd>
-        <?php echo $this->form()->closeTag(); ?>
+                <dt><?php echo $this->formLabel($form->get('director')); ?></dt>
+                <dd>
+                    <?php echo $this->formElement($form->get('director')); ?>
+                    <?php echo $this->formElementErrors($form->get('director')); ?>
+                </dd>
 
-    </dl>
-</section>
+                <dt><?php echo $this->formLabel($form->get('description')); ?></dt>
+                <dd>
+                    <?php echo $this->formElement($form->get('description')); ?>
+                    <?php echo $this->formElementErrors($form->get('description')); ?>
+                </dd>
+
+
+</div>
+        </section>
+    </div></div>
+
+<dd> <?php echo $this->formSubmit($form->get('submit')); ?></dd>
+<?php echo $this->form()->closeTag(); ?>

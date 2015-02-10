@@ -20,12 +20,18 @@ class CategoryForm extends Form {
             'options' => array(
                 'label' => 'Title',
             ),
+            'attributes' => array(
+                'class' => 'form-control',
+            ),
         ));
         $this->add(array(
             'name' => 'description',
             'type' => 'Zend\Form\Element\Textarea',
             'options' => array(
                 'label' => 'Description',
+            ),
+            'attributes' => array(
+                'class' => 'form-control',
             ),
         ));
         $this->add(array(

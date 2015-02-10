@@ -12,14 +12,28 @@ class ReviewsController extends AbstractActionController {
     protected $reviewsTable;
 
     public function indexAction() {
+        
+        $request = $this->getRequest();
+        $where = array();
+        if ($request->isPost()) {
+            $search = $request->getPost()->get('data');
+            foreach ($search as $key => $query) {
+                    if ($key == 'status' && ($query))
+                        $where[$key] = (int) $query;
+                    else
+                        $where[$key . ' LIKE ?'] = '%' . $query . '%';
+                
+            }
+        }
         // grab the paginator from the reviewsTable
-        $paginator = $this->getReviewsTable()->fetchAll(true);
+        $paginator = $this->getReviewsTable()->fetchAll(true,$where);
         // set the current page to what has been passed in query string, or to 1 if none set
         $paginator->setCurrentPageNumber((int) $this->params()->fromQuery('page', 1));
         // set the number of items per page to 10
         $paginator->setItemCountPerPage(10);
         return new ViewModel(array(
-            'paginator' => $paginator
+            'paginator' => $paginator,
+            'search' => $search
         ));
     }
 

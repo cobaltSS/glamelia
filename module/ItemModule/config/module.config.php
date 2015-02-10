@@ -42,7 +42,7 @@ return array(
         ),
     ),
     'module_config' => array(
-        'upload_location' => __DIR__ . '/../../../public/images/item',
+        'upload_location' => __DIR__ . '/../../../public_html/images/item',
     ),
     'view_manager' => array(
         'template_path_stack' => array(

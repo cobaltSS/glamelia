@@ -31,7 +31,7 @@ class CategoryController extends AbstractActionController {
                     $where[$key . ' LIKE ?'] = '%' . $query . '%';
             }
         }
-        print_r($where);
+
         // grab the paginator from the categoryTable
         $paginator = $this->getCategoryTable()->fetchAll(true, $where);
         // set the current page to what has been passed in query string, or to 1 if none set
