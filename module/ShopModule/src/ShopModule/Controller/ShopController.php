@@ -75,14 +75,14 @@ class ShopController extends AbstractActionController {
                         }
                         $form->setMessages(array('fileupload' => $error));
                     } else {
-
+                        $shop->id = $this->getShopTable()->saveShop($shop);
                         $adapter->setDestination($uploadPath);
                         foreach ($uploadFiles as $file) {
                             if ($adapter->receive($file['name'])) {
                                 $ext = split("[/\\.]", $file['name']);
                                 $new_name = md5(microtime()) . '.' . $ext[count($ext) - 1];
                                 $this->resizePhoto($file['name'], $new_name);
-                                $shop->id = $this->getShopTable()->saveShop($shop);
+                             
                                 $data = array(
                                     'id_shop' => $shop->id,
                                     'patch' => $new_name,
