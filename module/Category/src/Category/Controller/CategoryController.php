@@ -20,11 +20,10 @@ class CategoryController extends AbstractActionController {
         $where = array();
         if ($request->isPost()) {
             $search = $request->getPost()->get('data');
-            print_r($search);
             foreach ($search as $key => $query) {
                 if ($key == 'status')
                 {
-                    if(isset($query))
+                    if($query>='0')
                         $where[$key] = (int) $query;
                 }
                 else

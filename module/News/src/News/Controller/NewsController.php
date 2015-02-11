@@ -18,9 +18,10 @@ class NewsController extends AbstractActionController {
         if ($request->isPost()) {
             $search = $request->getPost()->get('data');
             foreach ($search as $key => $query) {
-                if ($key == 'status' && ($query))
-                    $where[$key] = (int) $query;
-                else
+                if ($key == 'status') {
+                    if ($query >= '0')
+                        $where[$key] = (int) $query;
+                } else
                     $where[$key . ' LIKE ?'] = '%' . $query . '%';
             }
         }

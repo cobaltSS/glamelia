@@ -24,8 +24,11 @@ class ItemController extends AbstractActionController {
         if ($request->isPost()) {
             $search = $request->getPost()->get('data');
             foreach ($search as $key => $query) {
-                if ($key == 'status')
-                    $where[$key] = (int) $query;
+                 if ($key == 'status')
+                {
+                    if($query>='0')
+                        $where[$key] = (int) $query;
+                }
                 else
                     $where[$key . ' LIKE ?'] = '%' . $query . '%';
             }

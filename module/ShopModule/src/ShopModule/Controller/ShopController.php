@@ -21,8 +21,11 @@ class ShopController extends AbstractActionController {
         if ($request->isPost()) {
             $search = $request->getPost()->get('data');
             foreach ($search as $key => $query) {
-                if ($key == 'status' && ($query))
-                    $where[$key] = (int) $query;
+                if ($key == 'status')
+                {
+                    if($query>='0')
+                        $where[$key] = (int) $query;
+                }
                 else
                     $where[$key . ' LIKE ?'] = '%' . $query . '%';
             }
@@ -159,7 +162,7 @@ class ShopController extends AbstractActionController {
                                 $data = array(
                                     'id_shop' => $id,
                                     'patch' => $new_name,
-                                    'status' => $shop->status,
+                                    'status' => (int)$shop->status,
                                 );
                                 $this->getPhotoShopTable()->savePhoto($data);
                             }
