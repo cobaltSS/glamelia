@@ -31,7 +31,7 @@ class ItemController extends AbstractActionController {
             }
         }
 
-        // grab the paginator from the ItemTable
+// grab the paginator from the ItemTable
         $paginator = $this->getItemTable()->fetchAll(true, $where);
 // set the current page to what has been passed in query string, or to 1 if none set
         $paginator->setCurrentPageNumber((int) $this->params()->fromQuery('page', 1));
@@ -79,8 +79,8 @@ class ItemController extends AbstractActionController {
             if ($form->isValid()) {
 
                 $item->exchangeArray($form->getData());
-                $uploadFile = $this->params()->fromFiles('id_photo');
-                if ($uploadFile) {
+                $uploadFiles = $this->params()->fromFiles('id_photo');
+                if ($uploadFiles) {
                     $uploadPath = $this->getFileUploadLocation();
 // Сохранение выгруженного файла
                     $adapter = new \Zend\File\Transfer\Adapter\Http();
@@ -96,15 +96,20 @@ class ItemController extends AbstractActionController {
                     } else {
 
                         $adapter->setDestination($uploadPath);
-                        if ($adapter->receive($uploadFile['name'])) {
-                            $this->resizePhoto($uploadFile['name']);
-                            $item->id = $this->getItemTable()->saveItem($item);
-                            $data = array(
-                                'id_item' => $item->id,
-                                'patch' => $uploadFile['name'],
-                                'status' => $item->status,
-                            );
-                            $item->id_photo = $this->getPhotoItemTable()->savePhoto($data);
+                        $item->id = $this->getItemTable()->saveItem($item);
+                        foreach ($uploadFiles as $file) {
+                            if ($adapter->receive($file['name'])) {
+                                $ext = split("[/\\.]", $file['name']);
+                                $new_name = md5(microtime()) . '.' . $ext[count($ext) - 1];
+                                $this->resizePhoto($file['name'], $new_name);
+
+                                $data = array(
+                                    'id_item' => $item->id,
+                                    'patch' => $new_name,
+                                    'status' => $item->status,
+                                );
+                                $item->id_photo = $this->getPhotoItemTable()->savePhoto($data);
+                            }
                         }
                     }
                 }
@@ -159,10 +164,10 @@ class ItemController extends AbstractActionController {
             $form->setData($request->getPost());
 
             if ($form->isValid()) {
-                $uploadFile = $this->params()->fromFiles('id_photo');
+                $uploadFiles = $this->params()->fromFiles('id_photo');
                 $uploadPath = $this->getFileUploadLocation();
 
-                if ($uploadFile) {
+                if ($uploadFiles) {
 // Сохранение выгруженного файла
                     $adapter = new \Zend\File\Transfer\Adapter\Http();
                     $adapter->addValidator('Size', false, array('max' => '15242880'));
@@ -175,14 +180,18 @@ class ItemController extends AbstractActionController {
                         $form->setMessages(array('fileupload' => $error));
                     } else {
                         $adapter->setDestination($uploadPath);
-                        if ($adapter->receive($uploadFile['name'])) {
-                            $this->resizePhoto($uploadFile['name']);
-                            $data = array(
-                                'id_item' => $id,
-                                'patch' => $uploadFile['name'],
-                                'status' => $item->status,
-                            );
-                            $item->id_photo = $this->getPhotoItemTable()->savePhoto($data);
+                        foreach ($uploadFiles as $file) {
+                            if ($adapter->receive($file['name'])) {
+                                $ext = split("[/\\.]", $file['name']);
+                                $new_name = md5(microtime()) . '.' . $ext[count($ext) - 1];
+                                $this->resizePhoto($file['name'], $new_name);
+                                $data = array(
+                                    'id_item' => $id,
+                                    'patch' => $new_name,
+                                    'status' => $item->status,
+                                );
+                                $item->id_photo = $this->getPhotoItemTable()->savePhoto($data);
+                            }
                         }
                     }
                 }
@@ -361,20 +370,32 @@ class ItemController extends AbstractActionController {
         return $config['module_config']['upload_location'];
     }
 
-    public function resizePhoto($name) {
+    public function resizePhoto($name, $new_name) {
         $uploadPath = $this->getFileUploadLocation();
         $filename = $uploadPath . '/' . $name;
-        $small_filename = $uploadPath . '/small_' . $name;
-        $big_filename = $uploadPath . '/big_' . $name;
+        $small_filename = $uploadPath . '/small_' . $new_name;
+        $big_filename = $uploadPath . '/big_' . $new_name;
+        $thumbnailer = $this->getServiceLocator()->get('WebinoImageThumb');
+        $thumb_small = $thumbnailer->create($filename, $options = array());
+        $thumb_big = $thumbnailer->create($filename, $options = array());
+        $thumb_big->resize(700, 700);
+        $thumb_big->cropFromCenter(700, 280);
+        $thumb_big->save($big_filename);
 
-        $cmd = "/usr/bin/convert -resize 200 -gravity center  -crop 140x140+0+0 +repage    {$filename} {$small_filename}";
-        exec($cmd . " 2>&1", $out, $retVal);
+        $thumb_small->resize(200, 200);
+        $thumb_small->cropFromCenter(140, 140);
+        $thumb_small->save($small_filename);
 
-        $cmd = "/usr/bin/convert -resize 700 -gravity center  -crop 700x280+0+0 +repage    {$filename} {$big_filename}";
-        exec($cmd . " 2>&1", $out, $retVal);
+        unlink($uploadPath . '/' . $name);
 
-        $cmd = "/usr/bin/convert -resize 500 {$filename} {$filename}";
-        exec($cmd . " 2>&1", $out, $retVal);
+        /* $cmd = "/usr/bin/convert -resize 200 -gravity center  -crop 140x140+0+0 +repage    {$filename} {$small_filename}";
+          exec($cmd . " 2>&1", $out, $retVal);
+
+          $cmd = "/usr/bin/convert -resize 700 -gravity center  -crop 700x280+0+0 +repage    {$filename} {$big_filename}";
+          exec($cmd . " 2>&1", $out, $retVal);
+
+          $cmd = "/usr/bin/convert -resize 500 {$filename} {$filename}";
+          exec($cmd . " 2>&1", $out, $retVal); */
     }
 
 }

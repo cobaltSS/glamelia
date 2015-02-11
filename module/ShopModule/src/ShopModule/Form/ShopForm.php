@@ -86,7 +86,7 @@ class ShopForm extends Form {
             ),
             'attributes' => array(
                 'id' => 'id_photo',
-                'data-filename-placement'=>"inside",
+                'multiple'=>true,
             ),
         ));
         

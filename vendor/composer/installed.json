@@ -230,57 +230,6 @@
         ]
     },
     {
-        "name": "zf-commons/zfc-twig",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ZF-Commons/ZfcTwig.git",
-            "reference": "0d13b8f981e9baca030b312541203a799f4aefc0"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ZF-Commons/ZfcTwig/zipball/0d13b8f981e9baca030b312541203a799f4aefc0",
-            "reference": "0d13b8f981e9baca030b312541203a799f4aefc0",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3",
-            "twig/twig": "~1.13"
-        },
-        "require-dev": {
-            "zendframework/zend-view": "*"
-        },
-        "time": "2014-08-08 14:05:36",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "ZfcTwig\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "authors": [
-            {
-                "name": "Kyle Spraggs",
-                "email": "theman@spiffyjr.me",
-                "homepage": "http://www.spiffyjr.me/"
-            },
-            {
-                "name": "Cosmin Harangus",
-                "email": "cosmin@zendexperts.com",
-                "homepage": "http://www.zendexperts.com/"
-            }
-        ],
-        "description": "Zend Framework 2 Module that provides a Twig rendering strategy and extensions to render actions or trigger events from your templates",
-        "homepage": "http://www.github.com/ZF-Commons/ZfcTwig/",
-        "keywords": [
-            "module",
-            "twig",
-            "zf2"
-        ]
-    },
-    {
         "name": "doctrine/annotations",
         "version": "v1.2.3",
         "version_normalized": "1.2.3.0",
@@ -1136,123 +1085,6 @@
         ]
     },
     {
-        "name": "zf-commons/zfc-admin",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ZF-Commons/ZfcAdmin.git",
-            "reference": "86794b7c3162516586c2e3e0d5814887bec58e95"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ZF-Commons/ZfcAdmin/zipball/86794b7c3162516586c2e3e0d5814887bec58e95",
-            "reference": "86794b7c3162516586c2e3e0d5814887bec58e95",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3",
-            "zendframework/zend-eventmanager": "2.*",
-            "zendframework/zend-loader": "2.*",
-            "zendframework/zend-modulemanager": "2.*",
-            "zendframework/zend-mvc": "2.*",
-            "zendframework/zend-navigation": "2.*"
-        },
-        "suggest": {
-            "bjyoungblood/bjy-authorize": "Access control to protect ZfcAdmin against unauthorized users"
-        },
-        "time": "2014-10-22 07:57:03",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "ZfcAdmin": "src/"
-            },
-            "classmap": [
-                "./Module.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Martin Shwalbe",
-                "email": "martin.shwalbe@gmail.com"
-            },
-            {
-                "name": "Jurian Sluiman",
-                "email": "jurian@juriansluiman.nl",
-                "homepage": "http://juriansluiman.nl/en/"
-            }
-        ],
-        "description": "A generic Admin module for ZF2.",
-        "homepage": "https://github.com/juriansluiman/ZfcAdmin",
-        "keywords": [
-            "zf2"
-        ]
-    },
-    {
-        "name": "twig/twig",
-        "version": "v1.16.3",
-        "version_normalized": "1.16.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/twigphp/Twig.git",
-            "reference": "6dc11a1e8ecfc30e2c68aaeb218148409d8e68af"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/twigphp/Twig/zipball/6dc11a1e8ecfc30e2c68aaeb218148409d8e68af",
-            "reference": "6dc11a1e8ecfc30e2c68aaeb218148409d8e68af",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2.4"
-        },
-        "time": "2014-12-25 19:58:19",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.16-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Twig_": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com",
-                "homepage": "http://fabien.potencier.org",
-                "role": "Lead Developer"
-            },
-            {
-                "name": "Armin Ronacher",
-                "email": "armin.ronacher@active-4.com",
-                "role": "Project Founder"
-            },
-            {
-                "name": "Twig Team",
-                "homepage": "http://twig.sensiolabs.org/contributors",
-                "role": "Contributors"
-            }
-        ],
-        "description": "Twig, the flexible, fast, and secure template language for PHP",
-        "homepage": "http://twig.sensiolabs.org",
-        "keywords": [
-            "templating"
-        ]
-    },
-    {
         "name": "doctrine/lexer",
         "version": "v1.0.1",
         "version_normalized": "1.0.1.0",
@@ -1309,38 +1141,146 @@
         ]
     },
     {
-        "name": "webino/webino-image-thumb",
-        "version": "1.0.0",
-        "version_normalized": "1.0.0.0",
+        "name": "symfony/filesystem",
+        "version": "v2.2.11",
+        "version_normalized": "2.2.11.0",
+        "target-dir": "Symfony/Component/Filesystem",
         "source": {
             "type": "git",
-            "url": "https://github.com/webino/WebinoImageThumb.git",
-            "reference": "5ae087b04d3ddb49d304ea2bb22851e4b3e291fb"
+            "url": "https://github.com/symfony/Filesystem.git",
+            "reference": "dffe0df31d16718f36ef40e7441f5a8d3e31625a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/webino/WebinoImageThumb/zipball/5ae087b04d3ddb49d304ea2bb22851e4b3e291fb",
-            "reference": "5ae087b04d3ddb49d304ea2bb22851e4b3e291fb",
+            "url": "https://api.github.com/repos/symfony/Filesystem/zipball/dffe0df31d16718f36ef40e7441f5a8d3e31625a",
+            "reference": "dffe0df31d16718f36ef40e7441f5a8d3e31625a",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.3",
+            "php": ">=5.3.3"
+        },
+        "time": "2013-09-18 07:27:26",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\Component\\Filesystem\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            },
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Symfony Filesystem Component",
+        "homepage": "http://symfony.com"
+    },
+    {
+        "name": "masterexploder/phpthumb",
+        "version": "v2.0",
+        "version_normalized": "2.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/masterexploder/PHPThumb.git",
+            "reference": "69fe4dbef9c70915ee16652339395deadb1509cb"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/masterexploder/PHPThumb/zipball/69fe4dbef9c70915ee16652339395deadb1509cb",
+            "reference": "69fe4dbef9c70915ee16652339395deadb1509cb",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0",
+            "symfony/filesystem": "2.2.*"
+        },
+        "time": "2013-07-12 17:57:58",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "PHPThumb": "src",
+                "PHPThumb\\Tests": "tests"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ian Selby",
+                "email": "ian@gxdlabs.com",
+                "homepage": "http://www.gen-x-design.com/",
+                "role": "Developer"
+            },
+            {
+                "name": "Jarrod Nettles",
+                "email": "jarrod.nettles@icloud.com"
+            }
+        ],
+        "description": "A library for manipulating images in PHP.",
+        "homepage": "https://github.com/masterexploder/PHPThumb",
+        "keywords": [
+            "image",
+            "resize",
+            "rotate"
+        ]
+    },
+    {
+        "name": "webino/webino-image-thumb",
+        "version": "2.0.0-RC1",
+        "version_normalized": "2.0.0.0-RC1",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/webino/WebinoImageThumb.git",
+            "reference": "eb23b1253ec45d1cfabadf8dfa2b94215be9923e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/webino/WebinoImageThumb/zipball/eb23b1253ec45d1cfabadf8dfa2b94215be9923e",
+            "reference": "eb23b1253ec45d1cfabadf8dfa2b94215be9923e",
+            "shasum": ""
+        },
+        "require": {
+            "masterexploder/phpthumb": "2.*",
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "apigen/apigen": "2.*",
+            "mayflower/php-codebrowser": "*",
+            "pdepend/pdepend": "1.*",
+            "phploc/phploc": "*",
+            "phpmd/phpmd": "1.*",
+            "phpunit/phpunit": "3.7.*",
+            "sebastian/phpcpd": "*",
+            "squizlabs/php_codesniffer": "1.*",
             "zendframework/zendframework": "2.*"
         },
         "suggest": {
-            "webino/WebinoDraw": "XHTML Layout Renderer for Zend Framework.",
-            "webino/ZF2NetteDebug": "User friendly Exception and Error handler ported from Nette Framework."
+            "zendframework/zend-modulemanager": "To use it as Zend Framework module"
         },
-        "time": "2012-11-03 02:25:11",
+        "time": "2013-12-04 15:39:27",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "psr-0": {
                 "WebinoImageThumb": "src/"
-            },
-            "classmap": [
-                "Module.php"
-            ]
+            }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -1352,15 +1292,9 @@
                 "email": "peter@bacinsky.sk",
                 "homepage": "http://www.bacinsky.sk/",
                 "role": "Developer"
-            },
-            {
-                "name": "Ian Selby",
-                "email": "ian@gxdlabs.com",
-                "homepage": "http://www.gen-x-design.com/",
-                "role": "Developer"
             }
         ],
-        "description": "Image Thumbnailer for Zend Framework.",
+        "description": "Image Thumbnailer for Zend Framework 2",
         "homepage": "https://github.com/webino/WebinoImageThumb",
         "keywords": [
             "framework",
@@ -1368,6 +1302,174 @@
             "thumb",
             "webino",
             "zend",
+            "zf2"
+        ]
+    },
+    {
+        "name": "twig/twig",
+        "version": "v1.18.0",
+        "version_normalized": "1.18.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/twigphp/Twig.git",
+            "reference": "4cf7464348e7f9893a93f7096a90b73722be99cf"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/twigphp/Twig/zipball/4cf7464348e7f9893a93f7096a90b73722be99cf",
+            "reference": "4cf7464348e7f9893a93f7096a90b73722be99cf",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.4"
+        },
+        "time": "2015-01-25 17:32:08",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.18-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Twig_": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com",
+                "homepage": "http://fabien.potencier.org",
+                "role": "Lead Developer"
+            },
+            {
+                "name": "Armin Ronacher",
+                "email": "armin.ronacher@active-4.com",
+                "role": "Project Founder"
+            },
+            {
+                "name": "Twig Team",
+                "homepage": "http://twig.sensiolabs.org/contributors",
+                "role": "Contributors"
+            }
+        ],
+        "description": "Twig, the flexible, fast, and secure template language for PHP",
+        "homepage": "http://twig.sensiolabs.org",
+        "keywords": [
+            "templating"
+        ]
+    },
+    {
+        "name": "zf-commons/zfc-twig",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ZF-Commons/ZfcTwig.git",
+            "reference": "0d13b8f981e9baca030b312541203a799f4aefc0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ZF-Commons/ZfcTwig/zipball/0d13b8f981e9baca030b312541203a799f4aefc0",
+            "reference": "0d13b8f981e9baca030b312541203a799f4aefc0",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "twig/twig": "~1.13"
+        },
+        "require-dev": {
+            "zendframework/zend-view": "*"
+        },
+        "time": "2014-08-08 14:05:36",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "ZfcTwig\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Kyle Spraggs",
+                "email": "theman@spiffyjr.me",
+                "homepage": "http://www.spiffyjr.me/"
+            },
+            {
+                "name": "Cosmin Harangus",
+                "email": "cosmin@zendexperts.com",
+                "homepage": "http://www.zendexperts.com/"
+            }
+        ],
+        "description": "Zend Framework 2 Module that provides a Twig rendering strategy and extensions to render actions or trigger events from your templates",
+        "homepage": "http://www.github.com/ZF-Commons/ZfcTwig/",
+        "keywords": [
+            "module",
+            "twig",
+            "zf2"
+        ]
+    },
+    {
+        "name": "zf-commons/zfc-admin",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ZF-Commons/ZfcAdmin.git",
+            "reference": "86794b7c3162516586c2e3e0d5814887bec58e95"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ZF-Commons/ZfcAdmin/zipball/86794b7c3162516586c2e3e0d5814887bec58e95",
+            "reference": "86794b7c3162516586c2e3e0d5814887bec58e95",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "zendframework/zend-eventmanager": "2.*",
+            "zendframework/zend-loader": "2.*",
+            "zendframework/zend-modulemanager": "2.*",
+            "zendframework/zend-mvc": "2.*",
+            "zendframework/zend-navigation": "2.*"
+        },
+        "suggest": {
+            "bjyoungblood/bjy-authorize": "Access control to protect ZfcAdmin against unauthorized users"
+        },
+        "time": "2014-10-22 07:57:03",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "ZfcAdmin": "src/"
+            },
+            "classmap": [
+                "./Module.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Martin Shwalbe",
+                "email": "martin.shwalbe@gmail.com"
+            },
+            {
+                "name": "Jurian Sluiman",
+                "email": "jurian@juriansluiman.nl",
+                "homepage": "http://juriansluiman.nl/en/"
+            }
+        ],
+        "description": "A generic Admin module for ZF2.",
+        "homepage": "https://github.com/juriansluiman/ZfcAdmin",
+        "keywords": [
             "zf2"
         ]
     }
