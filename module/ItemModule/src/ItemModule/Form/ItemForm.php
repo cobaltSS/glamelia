@@ -109,6 +109,7 @@ class ItemForm extends Form {
             ),
             'attributes' => array(
                 'id' => 'id_photo',
+                'multiple'=>true,
             ),
         ));
 

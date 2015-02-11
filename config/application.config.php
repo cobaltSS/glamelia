@@ -14,6 +14,7 @@ return array(
         'Reviews',
         'About',
         'News',
+        'WebinoImageThumb',
     ),
     'module_listener_options' => array(
         'module_paths' => array(

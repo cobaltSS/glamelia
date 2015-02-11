@@ -21,11 +21,10 @@ class ShopController extends AbstractActionController {
         if ($request->isPost()) {
             $search = $request->getPost()->get('data');
             foreach ($search as $key => $query) {
-                    if ($key == 'status' && ($query))
-                        $where[$key] = (int) $query;
-                    else
-                        $where[$key . ' LIKE ?'] = '%' . $query . '%';
-                
+                if ($key == 'status' && ($query))
+                    $where[$key] = (int) $query;
+                else
+                    $where[$key . ' LIKE ?'] = '%' . $query . '%';
             }
         }
         // grab the paginator from the ShopTable
@@ -51,12 +50,15 @@ class ShopController extends AbstractActionController {
         $request = $this->getRequest();
         if ($request->isPost()) {
             $shop = new Shop();
+
             $form->setInputFilter($shop->getInputFilter());
             $form->setData($request->getPost());
+
             if ($form->isValid()) {
                 $shop->exchangeArray($form->getData());
-                $uploadFile = $this->params()->fromFiles('id_photo');
-                if ($uploadFile) {
+                $uploadFiles = $this->params()->fromFiles('id_photo');
+
+                if ($uploadFiles) {
                     $uploadPath = $this->getFileUploadLocation();
                     // Сохранение выгруженного файла
                     $adapter = new \Zend\File\Transfer\Adapter\Http();
@@ -72,15 +74,19 @@ class ShopController extends AbstractActionController {
                     } else {
 
                         $adapter->setDestination($uploadPath);
-                        if ($adapter->receive($uploadFile['name'])) {
-                            $this->resizePhoto($uploadFile['name']);
-                            $shop->id = $this->getShopTable()->saveShop($shop);
-                            $data = array(
-                                'id_shop' => $shop->id,
-                                'patch' => $uploadFile['name'],
-                                'status' => $shop->status,
-                            );
-                            $shop->id_photo = $this->getPhotoShopTable()->savePhoto($data);
+                        foreach ($uploadFiles as $file) {
+                            if ($adapter->receive($file['name'])) {
+                                $ext = split("[/\\.]", $file['name']);
+                                $new_name = md5(microtime()) . '.' . $ext[count($ext) - 1];
+                                $this->resizePhoto($file['name'], $new_name);
+                                $shop->id = $this->getShopTable()->saveShop($shop);
+                                $data = array(
+                                    'id_shop' => $shop->id,
+                                    'patch' => $new_name,
+                                    'status' => $shop->status,
+                                );
+                                $shop->id_photo = $this->getPhotoShopTable()->savePhoto($data);
+                            }
                         }
                     }
                 }
@@ -127,10 +133,10 @@ class ShopController extends AbstractActionController {
 
             if ($form->isValid()) {
 
-                $uploadFile = $this->params()->fromFiles('id_photo');
+                $uploadFiles = $this->params()->fromFiles('id_photo');
                 $uploadPath = $this->getFileUploadLocation();
 
-                if ($uploadFile['tmp_name']) {
+                if ($uploadFiles) {
 
                     // Сохранение выгруженного файла
                     $adapter = new \Zend\File\Transfer\Adapter\Http();
@@ -144,16 +150,19 @@ class ShopController extends AbstractActionController {
                         $form->setMessages(array('fileupload' => $error));
                     } else {
                         $adapter->setDestination($uploadPath);
+                        foreach ($uploadFiles as $file) {
+                            if ($adapter->receive($file['name'])) {
+                                $ext = split("[/\\.]", $file['name']);
+                                $new_name = md5(microtime()) . '.' . $ext[count($ext) - 1];
+                                $this->resizePhoto($file['name'], $new_name);
 
-                        if ($adapter->receive($uploadFile['name'])) {
-                            $this->resizePhoto($uploadFile['name']);
-
-                            $data = array(
-                                'id_shop' => $id,
-                                'patch' => $uploadFile['name'],
-                                'status' => $shop->status,
-                            );
-                            $this->getPhotoShopTable()->savePhoto($data);
+                                $data = array(
+                                    'id_shop' => $id,
+                                    'patch' => $new_name,
+                                    'status' => $shop->status,
+                                );
+                                $this->getPhotoShopTable()->savePhoto($data);
+                            }
                         }
                     }
                 }
@@ -207,7 +216,7 @@ class ShopController extends AbstractActionController {
         $this->getPhotoShopTable()->deletePhotoWhere($data);
         $uploadPath = $this->getFileUploadLocation();
         try {
-            unlink($uploadPath . '/' . $patch);
+            //  unlink($uploadPath . '/' . $patch);
             unlink($uploadPath . '/small_' . $patch);
             unlink($uploadPath . '/big_' . $patch);
         } catch (Exception $ex) {
@@ -275,19 +284,33 @@ class ShopController extends AbstractActionController {
         return $config['module_config']['upload_shop_location'];
     }
 
-    public function resizePhoto($name) {
+    public function resizePhoto($name, $new_name) {
         $uploadPath = $this->getFileUploadLocation();
         $filename = $uploadPath . '/' . $name;
-        $small_filename = $uploadPath . '/small_' . $name;
-        $big_filename = $uploadPath . '/big_' . $name;
+        $small_filename = $uploadPath . '/small_' . $new_name;
+        $big_filename = $uploadPath . '/big_' . $new_name;
+        $thumbnailer = $this->getServiceLocator()->get('WebinoImageThumb');
+        $thumb_small = $thumbnailer->create($filename, $options = array());
+        $thumb_big = $thumbnailer->create($filename, $options = array());
+        $thumb_big->resize(700, 700);
+        $thumb_big->cropFromCenter(700, 280);
+        $thumb_big->save($big_filename);
 
-        $cmd = "/usr/bin/convert -resize 200 -gravity center  -crop 140x140+0+0 +repage    {$filename} {$small_filename}";
-        exec($cmd . " 2>&1", $out, $retVal);
+        $thumb_small->resize(200, 200);
+        $thumb_small->cropFromCenter(140, 140);
+        $thumb_small->save($small_filename);
 
-        $cmd = "/usr/bin/convert -resize 700 -gravity center  -crop 700x280+0+0 +repage    {$filename} {$big_filename}";
-        exec($cmd . " 2>&1", $out, $retVal);
+        unlink($uploadPath . '/' . $name);
 
-        /* $cmd = "/usr/bin/convert -resize 500 {$filename} {$filename}";
+        /*
+
+          $cmd = "/usr/bin/convert -resize 200 -gravity center  -crop 140x140+0+0 +repage    {$filename} {$small_filename}";
+          exec($cmd . " 2>&1", $out, $retVal);
+
+          $cmd = "/usr/bin/convert -resize 700 -gravity center  -crop 700x280+0+0 +repage    {$filename} {$big_filename}";
+          exec($cmd . " 2>&1", $out, $retVal);
+
+          /* $cmd = "/usr/bin/convert -resize 500 {$filename} {$filename}";
           exec($cmd . " 2>&1", $out, $retVal); */
     }
 

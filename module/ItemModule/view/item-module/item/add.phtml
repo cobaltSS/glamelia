@@ -2,7 +2,10 @@
 $title = 'Добавить новый товар';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
+ <div class="panel-info">
+
+    <div class="panel-heading"><?php echo $this->escapeHtml($title); ?></div>
+    <div class="panel-body well">
 <?php
 $form->setAttribute('action', $this->url('item', array('action' => 'add')));
 $form->prepare();
@@ -54,11 +57,11 @@ $form->prepare();
             <?php echo $this->formElementErrors($form->get('percentage')); ?>
         </dd>
         
-        
+  </div></div>      
         
         <dd> <?php echo $this->formSubmit($form->get('submit')); ?>
         
-        <a href="/admin/item" class="button">Назад</a>
+        <a href="/admin/item"  class="btn btn-default">Назад</a>
         </dd>
 
         <?php echo $this->form()->closeTag(); ?>

@@ -2,7 +2,10 @@
 $title = 'Добавить новую категорию';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
+<div class="panel-info">
+
+    <div class="panel-heading"><?php echo $this->escapeHtml($title); ?></div>
+    <div class="panel-body well">
 <?php
 $form->setAttribute('action', $this->url('category', array('action' => 'add')));
 $form->prepare();?>
@@ -27,8 +30,12 @@ $form->prepare();?>
         </dd>
 
         <dt><?php echo $this->formRow($form->get('status')); ?></dt>
-        <dd> <?php echo $this->formSubmit($form->get('submit')); ?></dd>
-        <?php echo $this->form()->closeTag(); ?>
+        
 
     </dl>
+
+        </div></div>
+        <dd> <?php echo $this->formSubmit($form->get('submit')); ?></dd>
+        <?php echo $this->form()->closeTag(); ?>
 </section>
+        

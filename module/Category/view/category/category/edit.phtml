@@ -2,7 +2,10 @@
 $title = 'Редактировать категорию';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
+<div class="panel-info">
+
+    <div class="panel-heading"><?php echo $this->escapeHtml($title); ?></div>
+    <div class="panel-body well">
 <?php
 $form = $this->form;
 $form->setAttribute('action', $this->url('category', array(
@@ -34,9 +37,7 @@ $form->prepare();
             </dd>
 
             <dt><?php echo $this->formRow($form->get('status')); ?></dt>
-            <dd> <?php echo $this->formSubmit($form->get('submit')); ?></dd>
-            <?php echo $this->form()->closeTag(); ?>
-
+            
 
         </div>   
 
@@ -60,7 +61,11 @@ $form->prepare();
         </div>
         <div class="clear"></div>
     </dl>
+    </div>
+    <dd> <?php echo $this->formSubmit($form->get('submit')); ?></dd>
+            <?php echo $this->form()->closeTag(); ?>
 </section>
+        </div>
 
 <div id="overlay-bg"></div>
 
@@ -69,7 +74,7 @@ $form->prepare();
     <div class="title">Добавить подкатегрию</div>
     <div class="row-1">
         <div class="error"></div>
-        <input  id="sub_val" class=" txtfield" type="text" placeholder="Название подкатегории" value="">
+        <input  id="sub_val" class="form-control" type="text" placeholder="Название подкатегории" value="">
     </div>
     <div class="row-1 text-center">
         <input  OnClick="AddSubcat('<?php echo $this->id ?>', '<?php echo $this->url('category', array('action' => 'addsubcat')); ?>')" class ="roundbox button btn-popup" type="button" value=" Добавить подкатегорию"   />

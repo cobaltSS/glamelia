@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'WebinoImageThumb\\Module' => $vendorDir . '/webino/webino-image-thumb/Module.php',
     'ZendDeveloperTools\\Module' => $vendorDir . '/zendframework/zend-developer-tools/Module.php',
     'ZfcAdmin\\Module' => $vendorDir . '/zf-commons/zfc-admin/Module.php',
 );

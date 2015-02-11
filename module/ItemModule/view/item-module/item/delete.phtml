@@ -2,7 +2,10 @@
 $title = 'Удалить товар';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
+ <div class="panel-info">
+
+    <div class="panel-heading"><?php echo $this->escapeHtml($title); ?></div>
+    <div class="panel-body well">
 <p>Вы уверены что хотите удалить
     '<?php echo $this->escapeHtml($item->name); ?>'?
 </p>

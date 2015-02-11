@@ -2,9 +2,12 @@
 $title = 'Удалить категорию';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
+<div class="panel-info">
+
+    <div class="panel-heading"><?php echo $this->escapeHtml($title); ?></div>
+    <div class="panel-body well">
 <p>Вы уверенны что хотите удалить категорию -
-    '<?php echo $this->escapeHtml($category->name); ?>' ?>'?
+    '<?php echo $this->escapeHtml($category->name); ?>' ?
 </p>
 <?php
 $url = $this->url('category', array(
@@ -19,3 +22,5 @@ $url = $this->url('category', array(
         <input type="submit" name="del" value="Нет" />
     </div>
 </form>
+
+</div></div>

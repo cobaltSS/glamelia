@@ -2,13 +2,16 @@
 $title = 'Добавить новый отзыв';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
+<div class="panel-info">
+
+    <div class="panel-heading"><?php echo $this->escapeHtml($title); ?></div>
+    <div class="panel-body well">
 <?php
 $form->setAttribute('action', $this->url('reviews', array('action' => 'add')));
 $form->prepare();?>
 
 <section>
-    <dl class="zend_form">
+ <div class="infoshop">
         <?php
         echo $this->form()->openTag($form);
         echo $this->formHidden($form->get('id'));
@@ -39,8 +42,14 @@ $form->prepare();?>
         </dd>
 
         <dt><?php echo $this->formRow($form->get('status')); ?></dt>
-        <dd> <?php echo $this->formSubmit($form->get('submit')); ?></dd>
-        <?php echo $this->form()->closeTag(); ?>
 
-    </dl>
+ </div>
+    </div>
+    <dd>
+ <?php echo $this->formSubmit($form->get('submit')); ?>
+           <a href="/admin/reviews" class="btn btn-default">Назад</a> 
+    </dd>
+        <?php echo $this->form()->closeTag(); ?>
+    </div>
 </section>
+        
