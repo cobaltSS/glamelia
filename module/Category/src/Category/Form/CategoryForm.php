@@ -18,7 +18,7 @@ class CategoryForm extends Form {
             'name' => 'name',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Title',
+                'label' => 'Название',
             ),
             'attributes' => array(
                 'class' => 'form-control',
@@ -28,7 +28,7 @@ class CategoryForm extends Form {
             'name' => 'description',
             'type' => 'Zend\Form\Element\Textarea',
             'options' => array(
-                'label' => 'Description',
+                'label' => 'Описание',
             ),
             'attributes' => array(
                 'class' => 'form-control',
@@ -38,7 +38,7 @@ class CategoryForm extends Form {
             'name' => 'status',
             'type' => 'Zend\Form\Element\Checkbox',
             'options' => array(
-                'label' => 'Active',
+                'label' => 'Статус',
                 'checked_value' => '1',
                 'unchecked_value' => '0',
             ),

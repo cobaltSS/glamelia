@@ -64,7 +64,7 @@ class ShopTable {
         $data = array(
             'work_time' => $shop->work_time,
             'address' => $shop->address,
-            'status' => $shop->status,
+            'status' =>(int)$shop->status,
             'city_id' => $shop->city_id,
         );
 

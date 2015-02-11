@@ -15,7 +15,7 @@ $this->headTitle($title);
 
                     <label for="exampleInputName2">Статус</label>
                     <select class="form-control" name="data[status]">
-                        <option >Все</option>
+                        <option value="" >Все</option>
                         <option <?php echo ($search['status'] == '1' ? 'selected' : '' ) ?> value="1">Опублекована</option>
                         <option <?php echo ($search['status'] == '0' ? 'selected' : '' ) ?> value="0">Не опублекована</option>
                     </select>

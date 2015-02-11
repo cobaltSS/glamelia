@@ -11,7 +11,7 @@ $form->setAttribute('action', $this->url('category', array('action' => 'add')));
 $form->prepare();?>
 
 <section>
-    <dl class="zend_form">
+     <div class="leftblock">
         <?php
         echo $this->form()->openTag($form);
         echo $this->formHidden($form->get('id'));
@@ -32,7 +32,7 @@ $form->prepare();?>
         <dt><?php echo $this->formRow($form->get('status')); ?></dt>
         
 
-    </dl>
+    </div>
 
         </div></div>
         <dd> <?php echo $this->formSubmit($form->get('submit')); ?></dd>

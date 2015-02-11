@@ -16,7 +16,6 @@ $form->setAttribute('action', $this->url('category', array(
 $form->prepare();
 ?>
 <section>
-    <dl class="zend_form">
         <div class="leftblock">
 
             <?php
@@ -60,7 +59,7 @@ $form->prepare();
             </div>     
         </div>
         <div class="clear"></div>
-    </dl>
+
     </div>
     <dd> <?php echo $this->formSubmit($form->get('submit')); ?></dd>
             <?php echo $this->form()->closeTag(); ?>
@@ -72,11 +71,11 @@ $form->prepare();
 <div id="subcat" class="popup roundbox">
     <a class="btn-close" href="javascript:void(0)" style="margin-top: 8px;"></a>
     <div class="title">Добавить подкатегрию</div>
-    <div class="row-1">
+    <div class="form-group">
         <div class="error"></div>
         <input  id="sub_val" class="form-control" type="text" placeholder="Название подкатегории" value="">
     </div>
     <div class="row-1 text-center">
-        <input  OnClick="AddSubcat('<?php echo $this->id ?>', '<?php echo $this->url('category', array('action' => 'addsubcat')); ?>')" class ="roundbox button btn-popup" type="button" value=" Добавить подкатегорию"   />
+        <input  OnClick="AddSubcat('<?php echo $this->id ?>', '<?php echo $this->url('category', array('action' => 'addsubcat')); ?>')" class ="btn btn-default" type="button" value=" Добавить подкатегорию"   />
     </div>
 </div>

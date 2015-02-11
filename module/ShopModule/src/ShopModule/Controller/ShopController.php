@@ -21,8 +21,11 @@ class ShopController extends AbstractActionController {
         if ($request->isPost()) {
             $search = $request->getPost()->get('data');
             foreach ($search as $key => $query) {
-                if ($key == 'status' && ($query))
-                    $where[$key] = (int) $query;
+                if ($key == 'status')
+                {
+                    if($query>='0')
+                        $where[$key] = (int) $query;
+                }
                 else
                     $where[$key . ' LIKE ?'] = '%' . $query . '%';
             }
@@ -72,14 +75,14 @@ class ShopController extends AbstractActionController {
                         }
                         $form->setMessages(array('fileupload' => $error));
                     } else {
-
+                        $shop->id = $this->getShopTable()->saveShop($shop);
                         $adapter->setDestination($uploadPath);
                         foreach ($uploadFiles as $file) {
                             if ($adapter->receive($file['name'])) {
                                 $ext = split("[/\\.]", $file['name']);
                                 $new_name = md5(microtime()) . '.' . $ext[count($ext) - 1];
                                 $this->resizePhoto($file['name'], $new_name);
-                                $shop->id = $this->getShopTable()->saveShop($shop);
+                             
                                 $data = array(
                                     'id_shop' => $shop->id,
                                     'patch' => $new_name,
@@ -159,7 +162,7 @@ class ShopController extends AbstractActionController {
                                 $data = array(
                                     'id_shop' => $id,
                                     'patch' => $new_name,
-                                    'status' => $shop->status,
+                                    'status' => (int)$shop->status,
                                 );
                                 $this->getPhotoShopTable()->savePhoto($data);
                             }
