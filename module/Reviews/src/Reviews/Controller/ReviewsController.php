@@ -25,7 +25,6 @@ class ReviewsController extends AbstractActionController {
                     $where[$key . ' LIKE ?'] = '%' . $query . '%';
             }
         }
-        print_r($where);
         // grab the paginator from the reviewsTable
         $paginator = $this->getReviewsTable()->fetchAll(true, $where);
         // set the current page to what has been passed in query string, or to 1 if none set
