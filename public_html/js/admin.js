@@ -1,7 +1,5 @@
 $(document).ready(function (e)
 {
-    
-           
     $('.btn-close').on('click', function ()
     {
         $(this).parents('.popup').hide();
@@ -11,6 +9,11 @@ $(document).ready(function (e)
  
   if ($('#description').length)
        CKEDITOR.replace('description');
+   
+   if($('#category_id').length && $('#category_id').val()>0 && !($('#subcategory_id').val()))
+   {
+        ShowSubcat(('select option:selected'));
+    }
 });
 
 
@@ -78,6 +81,7 @@ function EditSubcat(el, url, id, id_cat)
 function ShowSubcat(el)
 {
     var id_cat = $(el).val();
+    $('#subcategory_id :not(option:first)').remove();
     url = '/admin/category/getsubcat';
     $.ajax(
             {
@@ -129,7 +133,7 @@ function AddSubcat(id, url)
                         $('#subcategory').append(
                                 '<div class="list">' +
                                 '<div class="error"></div>' +
-                                '<input type=text value=' + subname + '>' +
+                                '<input   type=text value="' + subname + '">' +
                                 '<img  onClick="DelSubcat(this, \'' + sub.urldel + '\', \'' + sub.id_sub + '\')" src ="/img/backet.png">' +
                                 '<img  onClick="EditSubcat(this, \'' + sub.urledit + '\', \'' + sub.id_sub + '\',\'' + id + '\')" src ="/img/ico/edit.png">  ' +
                                 '</div>'
@@ -148,6 +152,7 @@ function ShowAddSubcat()
 {
     fadeBG();
     alignPopup('#subcat');
+    $('#sub_val').val('');
     $('#subcat').show();
 
 }

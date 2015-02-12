@@ -14,14 +14,15 @@
         <!-- Le styles -->
         <?php
         echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                
+
                 //->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
-               // ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+                // ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
                 //->prependStylesheet($this->basePath() . '/css/style.css')
                 ->prependStylesheet($this->basePath() . '/css/animate.css')
+            
                 ->prependStylesheet($this->basePath() . '/css/styles.css')
+                    ->prependStylesheet($this->basePath() . '/css/menu_cat.css')
                 ->prependStylesheet($this->basePath() . '/css/ie.css')
-                
         ?>
 
         <!-- Scripts -->
@@ -49,27 +50,27 @@
                       ->setUlClass('menu'); */
 
                     //->renderPartial(null, 'partial/menu.phtml')
-                   
+
 
 
                     $partial = array('partial/menu.phtml', 'default');
                     echo $this->navigation('public_navigation')->menu()
-                    ->setMinDepth(1)
-                    ->setMaxDepth(4)
-                    ->setRenderParents(false)
-                    ->setOnlyActiveBranch(true)
-                    ->setPartial($partial)
-                    ->render();
+                            ->setMinDepth(1)
+                            ->setMaxDepth(4)
+                            ->setRenderParents(false)
+                            ->setOnlyActiveBranch(true)
+                            ->setPartial($partial)
+                            ->render();
                     ?>
-                    </div>
+                </div>
             </div>
-           
-                    <!--<div id="content" class="center">-->
-<?php echo $this->content; ?>
-                        <!-- /container -->
-                    <!--</div>-->
-                
-            
+
+            <!--<div id="content" class="center">-->
+            <?php echo $this->content; ?>
+            <!-- /container -->
+            <!--</div>-->
+
+
         </div>
 
         <footer>
@@ -85,6 +86,6 @@
 
 
 
-<?php echo $this->inlineScript() ?>
+        <?php echo $this->inlineScript() ?>
     </body>
 </html>

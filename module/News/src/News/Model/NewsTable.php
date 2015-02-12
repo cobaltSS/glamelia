@@ -93,4 +93,5 @@ class NewsTable {
         return $resultSet->toArray();
     }
 
+
 }

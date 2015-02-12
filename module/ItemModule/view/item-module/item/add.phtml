@@ -11,7 +11,7 @@ $form->setAttribute('action', $this->url('item', array('action' => 'add')));
 $form->prepare();
 ?>
 <section>
-    <dl class="zend_form">
+<div class="leftblock">
 
         <?php echo $this->form()->openTag($form); ?>
         <?php echo $this->formHidden($form->get('id')); ?>
@@ -66,6 +66,6 @@ $form->prepare();
 
         <?php echo $this->form()->closeTag(); ?>
 
-    </dl>
+    </div>
 </section>
 

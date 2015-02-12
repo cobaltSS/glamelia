@@ -65,10 +65,14 @@ class ItemController extends AbstractActionController {
         $form->get('submit')->setValue('Добавить');
         $options = $this->GetListCategory();
         $form->get('category_id')->setAttribute('options', $options);
-
-
+        
         $options2shop = $this->GetListShop();
         $form->get('shop_id')->setValueOptions($options2shop);
+        
+    
+        $options_sub = $this->GetListSubcategory($item->subcategory_id, $item->category_id);
+        if ($options_sub)
+            $form->get('subcategory_id')->setAttribute('options', $options_sub);
 
         $adapter = new \Zend\File\Transfer\Adapter\Http();
 
@@ -78,7 +82,6 @@ class ItemController extends AbstractActionController {
             $item = new Item();
             $form->setInputFilter($item->getInputFilter());
             $form->setData($request->getPost());
-
             if ($form->isValid()) {
 
                 $item->exchangeArray($form->getData());
@@ -117,7 +120,7 @@ class ItemController extends AbstractActionController {
                     }
                 }
                 $item->id = $this->getItemTable()->saveItem($item);
-                $shop = $form->get('shop_id')->getValueOptions();
+                $shop = $form->get('shop_id')->getValue();
                 $this->getItems2ShopTable()->saveItem2Shop($item->id, $shop);
 
 // Redirect to list of item
@@ -381,12 +384,10 @@ class ItemController extends AbstractActionController {
         $thumbnailer = $this->getServiceLocator()->get('WebinoImageThumb');
         $thumb_small = $thumbnailer->create($filename, $options = array());
         $thumb_big = $thumbnailer->create($filename, $options = array());
-        $thumb_big->resize(700, 700);
-        $thumb_big->cropFromCenter(700, 280);
+        $thumb_big->adaptiveResize(700, 280);
         $thumb_big->save($big_filename);
 
-        $thumb_small->resize(200, 200);
-        $thumb_small->cropFromCenter(140, 140);
+        $thumb_big->adaptiveResize(140, 140);
         $thumb_small->save($small_filename);
 
         unlink($uploadPath . '/' . $name);

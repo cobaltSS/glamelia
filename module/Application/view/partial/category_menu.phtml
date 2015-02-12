@@ -1,4 +1,6 @@
+<div id="menu_catHolder">
     <?php foreach ($this->container as $page): ?>
+<<<<<<< HEAD
             <?php if (!empty($page->pages)): ?>
                 <ul class="navigation">
                     <?php foreach ($page->pages as $subpage): ?>
@@ -21,6 +23,43 @@
                     <?php endforeach; ?>
                 </ul>
             <?php endif; ?>
+=======
+        <?php if (!empty($page->pages)): ?>
+            <?php foreach ($page->pages as $subpage): ?>
+                <ul class="menu_cat">
+                    <li class="sub li3">
+                        <a class="aTop" href="<?php echo $subpage->getHref() ?>">
+                            <span><?php echo $subpage->getLabel(); ?></span><b></b>
+                        </a>
+                        <?php if (!empty($subpage->pages)): ?>
+                            <div class="col3 drop">
+                                <dl>
+                                    <?php foreach ($subpage->pages as $subsubpage): ?>
+                                        <dd>
+                                            <a href="<?php echo $subsubpage->getHref(); ?>"><?php echo $subsubpage->getLabel(); ?></a>
+                                        </dd>
+                                    <?php endforeach; ?>
+                                </dl>
+                                <br class="clear" />
+                                <div class="bottomLine">
+				<p></p>
+				<p></p>
+			</div>
 
+                            </div>
+                        <?php endif; ?>
+                        
+
+                    </li>
+                    <li class="close"><a href="#url"></a></li>
+>>>>>>> 9ec7824d7ffa673f61a9603fd09816c70c8cbcdb
+
+                </ul>
+            <?php endforeach; ?>
+        <?php endif; ?>
     <?php endforeach; ?>
+<<<<<<< HEAD
 
+=======
+</div>
+>>>>>>> 9ec7824d7ffa673f61a9603fd09816c70c8cbcdb
