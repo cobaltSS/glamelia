@@ -30,12 +30,15 @@ class IndexController extends AbstractActionController {
         $action_items = $this->getItemTable()->getActionItemsRandom(array('action' => '1'), $this->limit);
         $items = $this->getItemTable()->getItems('12',array('item.status'=>1));
         $shops = $this->getShopTable()->getShops(array('shop.status'=>'1'));
-
+        $news = $this->getNewsTable()->getNewsRandom($this->limit,array('status'=>'1'));
+//print_R($shops);
+//die();
         return array(
             'reviews' => $reviews,
             'action_items' => $action_items,
             'items' => $items,
             'shops' => $shops,
+            'news'=>$news,
         );
     }
 

@@ -45,6 +45,7 @@ class ItemForm extends Form {
 
         $this->add(array(
             'name' => 'subcategory_id',
+             'required' => false,
             'type' => 'Zend\Form\Element\Select',
             'attributes' => array(
                 'id' => 'subcategory_id',
@@ -52,6 +53,7 @@ class ItemForm extends Form {
             ),
             'options' => array(
                 'label' => 'Подкатегория',
+                 'disable_inarray_validator' => true,
                 'empty_option' => 'Пожалуйста выберите подкатегорию',
             ),
         ));

@@ -47,7 +47,7 @@ li{display: inline-block;}
 .logo{display: block; width: 80px; height: 120px; position: absolute; top: 20px; left: 30px;}
 .center{width: 980px; margin: 0 auto;}
 #content.center{position: relative;}
-#content{background: #DDD870; margin-bottom: 105px;}
+#content{background: #ECD4D4; margin-bottom: 105px;opacity:0.7}
 .index #content{background: none; margin-bottom: 0;}
 .shortPage #content{margin-bottom: 0;}
 .menu{margin: 0 0 0 150px; padding: 0; white-space: nowrap; font-size: 0; border-bottom: 3px solid #da0029; text-align: left; background: #2f2f2f;}
@@ -1404,10 +1404,12 @@ fieldset[disabled] .btn-default.active {
     -moz-border-radius: 100px / 50px;
     -webkit-border-radius: 100px / 50px;
     border-radius: 100px / 50px;
-border:6px solid #f3f3f3;}
+    border:6px solid #f3f3f3;}
 .otziv p		{ padding:0 20px 20px 20px; font:18px Georgia, "Times New Roman", Times, serif; color:#000;}
 .otziv p a		{ font:18px Georgia, "Times New Roman", Times, serif; color:#000; text-decoration:none;}
 .otziv p a:hover		{ color:#da2c2c;}
 .otziv span	{ display:inline-block; font:13px arial; padding:0 20px;}
 .otziv span small	{ font:11px arial; color:#a0a0a0; display:block;}
 .otziv_bot{ background:url(../img/rev_odd.gif) no-repeat 0 0; width:150px; height:100px; overflow:hidden;}
+
+

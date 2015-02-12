@@ -295,12 +295,10 @@ class ShopController extends AbstractActionController {
         $thumbnailer = $this->getServiceLocator()->get('WebinoImageThumb');
         $thumb_small = $thumbnailer->create($filename, $options = array());
         $thumb_big = $thumbnailer->create($filename, $options = array());
-        $thumb_big->resize(700, 700);
-        $thumb_big->cropFromCenter(700, 280);
+        $thumb_big->adaptiveResize(700, 280);
         $thumb_big->save($big_filename);
 
-        $thumb_small->resize(200, 200);
-        $thumb_small->cropFromCenter(140, 140);
+        $thumb_big->adaptiveResize(140, 140);
         $thumb_small->save($small_filename);
 
         unlink($uploadPath . '/' . $name);

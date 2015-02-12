@@ -1,28 +1,36 @@
+<div id="menu_catHolder">
     <?php foreach ($this->container as $page): ?>
-            <?php if (!empty($page->pages)): ?>
-                <ul class="navigation">
-                    <?php foreach ($page->pages as $subpage): ?>
-                        <li>
-                            <span class='main_link'><img src="img/next.png" class="showCategory"></span>
-                                <a href="<?php echo $subpage->getHref()?>" class="mainCategory" ><?php echo $subpage->getLabel(); ?></a>
-                           <?php if (!empty($subpage->pages)): ?>
+        <?php if (!empty($page->pages)): ?>
+            <?php foreach ($page->pages as $subpage): ?>
+                <ul class="menu_cat">
+                    <li class="sub li3">
+                        <a class="aTop" href="<?php echo $subpage->getHref() ?>">
+                            <span><?php echo $subpage->getLabel(); ?></span><b></b>
+                        </a>
+                        <?php if (!empty($subpage->pages)): ?>
+                            <div class="col3 drop">
+                                <dl>
+                                    <?php foreach ($subpage->pages as $subsubpage): ?>
+                                        <dd>
+                                            <a href="<?php echo $subsubpage->getHref(); ?>"><?php echo $subsubpage->getLabel(); ?></a>
+                                        </dd>
+                                    <?php endforeach; ?>
+                                </dl>
+                                <br class="clear" />
+                                <div class="bottomLine">
+				<p></p>
+				<p></p>
+			</div>
 
-                            <ul class="dopMenu" style="display:none;">
-                                                <?php foreach ($subpage->pages as $subsubpage): ?>
-                                                    <li>
-                                                        <a href="<?php echo $subsubpage->getHref(); ?>"<?php echo $page->getLabel() == "КАТАЛОГ" ? 'class="subCategory"': '' ?>><?php echo $subsubpage->getLabel(); ?></a>
-                                                    </li>
-                                                <?php endforeach; ?>
-                                            </ul>
+                            </div>
+                        <?php endif; ?>
+                        
 
-                                        <?php endif; ?>
-                            
-                            
-                        </li>
-                    <?php endforeach; ?>
+                    </li>
+                    <li class="close"><a href="#url"></a></li>
+
                 </ul>
-            <?php endif; ?>
-
+            <?php endforeach; ?>
+        <?php endif; ?>
     <?php endforeach; ?>
-
-</ul>
+</div>
