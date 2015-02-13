@@ -23,7 +23,6 @@ return array(
                     ),
                 ),
             ),
-            
             'search' => array(
                 'type' => 'segment',
                 'options' => array(
@@ -38,7 +37,6 @@ return array(
                     ),
                 ),
             ),
-            
         ),
     ),
     'module_config' => array(

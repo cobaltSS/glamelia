@@ -34,6 +34,7 @@ class Item implements InputFilterAwareInterface {
         $this->id_shop = (!empty($data['id_shop'])) ? $data['id_shop'] : null;
         $this->action = (!empty($data['action'])) ? $data['action'] : null;
         $this->percentage = (!empty($data['percentage'])) ? $data['percentage'] : null;
+        $this->name_cat = (!empty($data['name_cat'])) ? $data['name_cat'] : null;
     }
 
     public function getArrayCopy() {

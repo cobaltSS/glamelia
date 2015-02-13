@@ -2,58 +2,66 @@
 $title = 'Товары';
 $this->headTitle($title);
 ?>
- <div class="panel-info">
+<div class="panel-info">
 
     <div class="panel-heading"><?php echo $this->escapeHtml($title); ?></div>
     <div class="panel-body well">
-<form class="panel form-inline" method="POST" action="<?php echo $this->url('item'); ?>">
-    <div class=" panel-body" >
-        <div class="form-group">
-            <label for="exampleInputName2">Наименование</label>
-            <input type="text" class="form-control" value="<?php echo $search['name']?>" name="data[name]" placeholder="Наименование товара">
-            
-            <label for="exampleInputName2">Статус</label>
-            <select class="form-control" name="data[status]">
-                <option value="">Все</option>
-                <option <?php echo ($search['status']=='1' ? 'selected' : '' )?> value="1">Показывать на сайте</option>
-                <option <?php echo ($search['status']=='0'? 'selected' : '' )?> value="0">Не отображать на сайте</option>
-            </select>
-            
-        </div>
-        <button type="submit" class="btn btn-default">Поиск</button>
-    </div>
-</form>
+        <form class="panel form-inline" method="POST" action="<?php echo $this->url('item'); ?>">
+
+            <div class=" panel-body" >
+                <div class="form-group">
+                    <div id="orderlist"></div>         
+                    <label>Наименование</label>
+                    <input id="s_item" type="text" class="form-control" value="<?php echo $search['name'] ?>" name="data[name]" placeholder="Наименование товара">
+                    <label>Категория</label>
+                    <select class="form-control" name="data[category_id]">
+                        <option value="">Все</option>
+                        <?php foreach ($this->categorys as $category) : ?>
+                                <option <?php echo ($search['category_id'] == $category->id ? 'selected' : '' ) ?>  value="<?php echo $category->id?>"><?php echo $category->name?></option>
+                         <?php endforeach; ?>
+                    </select>
+                    <label for="exampleInputName2">Статус</label>
+                    <select class="form-control" name="data[status]">
+                        <option value="">Все</option>
+                        <option <?php echo ($search['status'] == '1' ? 'selected' : '' ) ?> value="1">Показывать на сайте</option>
+                        <option <?php echo ($search['status'] == '0' ? 'selected' : '' ) ?> value="0">Не отображать на сайте</option>
+                    </select>
+
+                </div>
+                <button type="submit" class="btn btn-default">Поиск</button>
+            </div>
+        </form>
 
 
 
-<p>
-    <a class="btn btn-info" href="<?php echo $this->url('item', array('action' => 'add')); ?>">Добавить новый товар</a>
-</p>
-<table class="table">
-    <tr>
-        <th>Наименование</th>
-        <th></th>
-        <th>&nbsp;</th>
-    </tr>
-    <?php foreach ($this->paginator as $item) : ?>
-        <tr>
+        <p>
+            <a class="btn btn-info" href="<?php echo $this->url('item', array('action' => 'add')); ?>">Добавить новый товар</a>
+        </p>
+        <table class="table">
+            <tr>
+                <th>Наименование</th>
+                <th>Категория</th>
+                <th>&nbsp;</th>
+            </tr>
+            <?php foreach ($this->paginator as $item) : ?>
+                <tr>
 
-            <td><?php echo $this->escapeHtml($item->name); ?></td>
-            <td></td>
-            <td>
-                <a class="btn btn-info" href="<?php echo $this->url('item', array('action' => 'edit', 'id' => $item->id));
-        ?>">
-                    <img alt="Редактировать" src ="<?php echo '/img/ico/edit.png' ?>"/>    
-                </a>
-                <a class="btn btn-info" href="<?php echo $this->url('item', array('action' => 'delete', 'id' => $item->id)); ?>">
-                    <img alt="Удалить" src ="<?php echo '/img/ico/del.png' ?>"/>
-                </a>
-            </td>
-        </tr>
-    <?php endforeach; ?>
-</table>
+                    <td><?php echo $this->escapeHtml($item->name); ?></td>
+                    <td><?php echo $this->escapeHtml($item->name_cat); ?></td>
+                    <td>
+                        <a class="btn btn-info" href="<?php echo $this->url('item', array('action' => 'edit', 'id' => $item->id));
+                ?>">
+                            <img alt="Редактировать" src ="<?php echo '/img/ico/edit.png' ?>"/>    
+                        </a>
+                        <a class="btn btn-info" href="<?php echo $this->url('item', array('action' => 'delete', 'id' => $item->id)); ?>">
+                            <img alt="Удалить" src ="<?php echo '/img/ico/del.png' ?>"/>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
 
-</div></div>
+    </div></div>
 
 <?php
 echo $this->paginationControl(
