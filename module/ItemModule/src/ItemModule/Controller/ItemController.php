@@ -24,25 +24,27 @@ class ItemController extends AbstractActionController {
         if ($request->isPost()) {
             $search = $request->getPost()->get('data');
             foreach ($search as $key => $query) {
-                 if ($key == 'status')
-                {
-                    if($query>='0')
-                        $where[$key] = (int) $query;
+                if ($query) {
+                    if ($key == 'status') {
+                        if ($query >= '0')
+                            $where['item.'.$key] = (int) $query;
+                    } else
+                        $where['item.'.$key . ' LIKE ?'] = '%' . $query . '%';
                 }
-                else
-                    $where[$key . ' LIKE ?'] = '%' . $query . '%';
             }
         }
 
 // grab the paginator from the ItemTable
         $paginator = $this->getItemTable()->fetchAll(true, $where);
+        
 // set the current page to what has been passed in query string, or to 1 if none set
         $paginator->setCurrentPageNumber((int) $this->params()->fromQuery('page', 1));
-// set the number of items per page to 10
+  // set the number of items per page to 10
         $paginator->setItemCountPerPage(10);
-
+        $category = $this->getCategoryTable()->fetchAll();
         return new ViewModel(array(
             'paginator' => $paginator,
+            'categorys' => $category,
             'search' => $search
         ));
     }
@@ -65,11 +67,11 @@ class ItemController extends AbstractActionController {
         $form->get('submit')->setValue('Добавить');
         $options = $this->GetListCategory();
         $form->get('category_id')->setAttribute('options', $options);
-        
+
         $options2shop = $this->GetListShop();
         $form->get('shop_id')->setValueOptions($options2shop);
-        
-    
+
+
         $options_sub = $this->GetListSubcategory($item->subcategory_id, $item->category_id);
         if ($options_sub)
             $form->get('subcategory_id')->setAttribute('options', $options_sub);
@@ -402,4 +404,36 @@ class ItemController extends AbstractActionController {
           exec($cmd . " 2>&1", $out, $retVal); */
     }
 
+    function additionsearchAction() {
+
+        $request = $this->getRequest();
+        $key = $request->getQuery('key');
+        $query = $request->getQuery('term');
+        $where = array();
+        $where[$key . ' LIKE ?'] = '%' . $query . '%';
+        $info = $this->getItemTable()->fetchAll(false, $where);
+        foreach ($info as $val) {
+            $results[] = array('label' => $val->$key);
+        }
+        echo json_encode($results);
+        exit();
+        /* $result = new JsonModel(array(
+          'results' => $results
+          ));
+          return $result;)
+         * 
+         */
+    }
+
+    /* $info_val = mysql_escape_string($_GET['term']);
+      $key = $_GET['key'];
+      $where = array(
+      $key => 'LIKE "%' . $info_val . '%"',
+      );
+      $info = $dbOrder->getAdditionSearch($key, $where);
+      foreach ($info as $val)
+      $results[] = array('label' => $val[$key]);
+      echo json_encode($results);
+      exit();
+      } */
 }
