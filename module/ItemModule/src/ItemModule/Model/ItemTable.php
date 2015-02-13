@@ -20,12 +20,10 @@ class ItemTable {
     }
 
     public function fetchAll($paginated = false,$where=array()) {
-        if ($paginated) {
-            // create a new Select object for the table item
-            $select = new Select('item');
-            $select->where($where);
+        $select = new Select('item');
             $select->join('category', "category.id = item.category_id", array('name_cat' =>'name'), 'left');
-           
+                        $select->where($where);
+        if ($paginated) {
 
             // create a new result set based on the Item entity
             $resultSetPrototype = new ResultSet();
