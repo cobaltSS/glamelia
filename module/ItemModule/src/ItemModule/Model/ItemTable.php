@@ -23,8 +23,9 @@ class ItemTable {
         if ($paginated) {
             // create a new Select object for the table item
             $select = new Select('item');
-            $select->join('category', "category.id = item.category_id", array('name_cat' =>'name'), 'left');
             $select->where($where);
+            $select->join('category', "category.id = item.category_id", array('name_cat' =>'name'), 'left');
+           
 
             // create a new result set based on the Item entity
             $resultSetPrototype = new ResultSet();
@@ -41,7 +42,6 @@ class ItemTable {
             $paginator = new Paginator($paginatorAdapter);
             return $paginator;
         }
-        
         $resultSet = $this->tableGateway->selectWith($select);
         return $resultSet;
     }

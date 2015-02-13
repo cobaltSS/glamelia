@@ -410,7 +410,7 @@ class ItemController extends AbstractActionController {
         $key = $request->getQuery('key');
         $query = $request->getQuery('term');
         $where = array();
-        $where[$key . ' LIKE ?'] = '%' . $query . '%';
+        $where['item.'.$key . ' LIKE ?'] = '%' . $query . '%';
         $info = $this->getItemTable()->fetchAll(false, $where);
         foreach ($info as $val) {
             $results[] = array('label' => $val->$key);
@@ -424,16 +424,4 @@ class ItemController extends AbstractActionController {
          * 
          */
     }
-
-    /* $info_val = mysql_escape_string($_GET['term']);
-      $key = $_GET['key'];
-      $where = array(
-      $key => 'LIKE "%' . $info_val . '%"',
-      );
-      $info = $dbOrder->getAdditionSearch($key, $where);
-      foreach ($info as $val)
-      $results[] = array('label' => $val[$key]);
-      echo json_encode($results);
-      exit();
-      } */
 }
