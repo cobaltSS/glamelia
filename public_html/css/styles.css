@@ -1,47 +1,14 @@
 @font-face {
-    font-family: 'helvetica-bold';
-    src: url('../fonts/helv-7-bold.eot');
-    src: url('../fonts/helv-7-bold.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/helv-7-bold.svg#helvetica-7-boldregular') format('svg'),
-        url('../fonts/helv-7-bold.woff') format('woff'),
-        url('../fonts/helv-7-bold.ttf') format('truetype');
-    font-weight: normal;
+    font-family: 'Pudelina';
+    src: 
+        url('../fonts/Pudelina.ttf') format('truetype');
+        font-weight: bold;
     font-style: normal;
-}
-@font-face {
-    font-family: 'helvetica-normal';
-    src: url('../fonts/helv-5-normal.eot');
-    src: url('../fonts/helv-5-normal.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/helv-5-normal.svg#helvetica-5-normalregular') format('svg'),
-        url('../fonts/helv-5-normal.woff') format('woff'),
-        url('../fonts/helv-5-normal.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'helveticaneuecyr-heavy';
-    src: url('../fonts/helveticaneuecyr-heavy.eot');
-    src: url('../fonts/helveticaneuecyr-heavy.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/helveticaneuecyr-heavy.svg#helveticaneuecyrheavy') format('svg'),
-        url('../fonts/helveticaneuecyr-heavy.woff') format('woff'),
-        url('../fonts/helveticaneuecyr-heavy.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'BebasNeueRegular';
-    src: url('../fonts/BebasNeue-webfont.eot');
-    src: url('../fonts/BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/BebasNeue-webfont.woff') format('woff'),
-        url('../fonts/BebasNeue-webfont.ttf') format('truetype'),
-        url('../fonts/BebasNeue-webfont.svg#BebasNeueRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+     font-size: 18px;
 }
 
 html{height: 100%;min-width: 1000px;}
-body{margin: 0; font: 12px BebasNeueRegular,Arial,Tahoma,Verdana,sans-serif; height: 100%; width: 100%; min-width: 1000px; background: #2d2d2d url("../img/back2.jpg") no-repeat center top;}
+body{margin: 0; font: 12px Pudelina,Arial,Tahoma,Verdana,sans-serif; height: 100%; width: 100%; min-width: 1000px; background: #2d2d2d url("../img/back2.jpg") no-repeat center top;}
 body.index{background: #2d2d2d url("../img/back2.jpg") no-repeat center top;}
 img{border: none;}
 a{border: none; outline:none; text-decoration: underline; color: #c2c2c2;}
@@ -56,8 +23,8 @@ h1 {
 }
 
 div .title {
-width: 730px;
-margin: 10px auto;
+    width: 730px;
+    margin: 10px auto;
 }
 
 ul{list-style: none; padding: 0;}
@@ -78,7 +45,7 @@ li{display: inline-block;}
 .menu{margin: 0 0 0 150px; padding: 0; white-space: nowrap; font-size: 0; border-bottom: 3px solid #da0029; text-align: left; background: #2f2f2f;}
 .menu li li ul{display: block; padding-left: 10px;}
 .menu li li li{font-size: 10px; display: block;}
-.menu a{display: inline-block; color: #a2a2a2; text-decoration: none; padding: 15px 15px 13px; font: normal 12px 'helvetica-bold'; text-transform: uppercase; height: 14px; -webkit-transition: background .3s linear; -moz-transition: background .3s linear; -o-transition: background .3s linear;}
+.menu a{display: inline-block; color: #a2a2a2; text-decoration: none; padding: 15px 15px 13px; font: bold 18px 'Pudelina'; text-transform: uppercase; height: 14px; -webkit-transition: background .3s linear; -moz-transition: background .3s linear; -o-transition: background .3s linear;}
 .menu a:hover,.menu a.active_main,.menu a.active,.menu a.activeSection{background: #da0029; color: #fff;}
 
 .reviewsTitle{height: 0px;padding-top: 65px;}
@@ -117,16 +84,16 @@ img.transform{-webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -
 span.main_link{width: 10px; display: inline-block; margin-left: 7px;margin-right: 0px;}
 .redLine{border-bottom: 3px solid #DA0029; height: 42px; left: 50%; position: absolute; top: 0; width: 50%; background: #2f2f2f;}
 .logIn{float: right; padding: 30px 15px 0 0;}
-.logIn a{display: inline-block; font: normal 12px 'helvetica-bold'; color: #fff; text-transform: uppercase; text-decoration: none; margin-right: 50px;}
+.logIn a{display: inline-block; font: normal 12px 'Pudelina'; color: #fff; text-transform: uppercase; text-decoration: none; margin-right: 50px;}
 .logIn a span{border-bottom: 2px solid #595959; display: inline-block; line-height: .9em;}
 .logIn a:hover span{border-color: #222222; -webkit-transition: border .5s linear; -moz-transition: border .5s linear; -o-transition: border .5s linear;}
 .ico-login{display: inline-block; height: 15px; width: 15px; vertical-align: middle; background: url("../img/ico/play.png") no-repeat 0 0; margin-top: -3px;}
-.dateEvent span{font: normal 30px 'helveticaneuecyr-heavy'; color: #fff; height: 55px;display: inline-block; vertical-align: middle;}
+.dateEvent span{font: normal 30px 'Pudelina'; color: #fff; height: 55px;display: inline-block; vertical-align: middle;}
 .dateEvent{padding: 34px 0 0 175px}
 #timer{display: inline-block; vertical-align: middle; margin-left: 30px;}
-#timer div{display: inline-block; margin: 0 -2px 0 0; font: normal 11px 'helvetica-normal'; color: #a2a2a2; text-align: center;}
+#timer div{display: inline-block; margin: 0 -2px 0 0; font: normal 11px 'Pudelina'; color: #a2a2a2; text-align: center;}
 #timer div:last-child{padding-right: 15px;}
-#timer span{background: none repeat scroll 0 0 #222222; color: #FFFFFF; display: block; font: 30px/35px 'helvetica-bold'; height: 35px; padding: 8px 12px; text-align: center; margin-bottom: 3px;}
+#timer span{background: none repeat scroll 0 0 #222222; color: #FFFFFF; display: block; font: 30px/35px 'Pudelina'; height: 35px; padding: 8px 12px; text-align: center; margin-bottom: 3px;}
 
 #bigSlider{position: relative;}
 .slider{margin: 0 auto;}
@@ -135,14 +102,14 @@ span.main_link{width: 10px; display: inline-block; margin-left: 7px;margin-right
 .slide img{position: absolute;}
 .slideText{display: block; width: 100%; height: 100%; position: relative;}
 .slideText > span{width: 300px; height: 150px; position: absolute; left: 0; bottom: 0; padding: 25px;}
-.slideText > span span{display: table-cell; vertical-align: bottom; text-align: left;width: 300px; height: 150px; color: #fff; font: normal 24px 'helvetica-bold';}
+.slideText > span span{display: table-cell; vertical-align: bottom; text-align: left;width: 300px; height: 150px; color: #fff; font: normal 24px 'Pudelina';}
 
 .slideNext{width: 140px; height: 140px; position: relative; overflow: hidden; cursor: pointer; float: right;}
 .previewPhoto,.slideNext .smallMask{width: 140px; height: 140px; position: absolute; top: 0; left: 0;}
 .slideNext .smallMask{background: url("../img/opac08.png") repeat;}
 .slideNext .next{width: 23px; height: 40px; position: absolute; background: url("../img/next.png") no-repeat; top: 17px; left: 100px;}
 .nextText{width: 100px; height: 75px; position: absolute; left: 15px; bottom: 13px;}
-.nextText span{display: table-cell; width: 100px; height: 75px; vertical-align: bottom; text-align: left; text-decoration: underline; color: #fff; font: normal 11px 'helvetica-bold';}
+.nextText span{display: table-cell; width: 100px; height: 75px; vertical-align: bottom; text-align: left; text-decoration: underline; color: #fff; font: normal 11px 'Pudelina';}
 .slideNext:hover .nextText span{text-decoration: none;}
 .slideBack{position: absolute; margin-left: 70px; cursor: pointer; background: #222222 url("../img/prev.png") no-repeat center center; width: 70px; height: 70px; z-index: 12;}
 
@@ -150,13 +117,13 @@ span.main_link{width: 10px; display: inline-block; margin-left: 7px;margin-right
 .indexContent{width: 840px; margin-left: 140px; min-height: 280px}
 .indexContent > div{float: left; height: 140px; width: 140px;}
 .indexContent > div.hits,.indexContent > div.apply{width: 280px;}
-.indexContent > div.hits{background: #2f2f2f; color: #a2a2a2; text-transform: uppercase; font: normal 18px 'helvetica-bold'; padding: 20px; box-sizing: border-box; -moz-box-sizing: border-box;}
+.indexContent > div.hits{background: #2f2f2f; color: #a2a2a2; text-transform: uppercase; font: normal 18px 'Pudelina'; padding: 20px; box-sizing: border-box; -moz-box-sizing: border-box;}
 .indexContent > div.apply{background: url("../img/apply.gif") no-repeat;}
-.indexContent > div.apply a{display: block; color: #fff; text-decoration: none; text-transform: uppercase; font: normal 18px/33px 'helvetica-bold'; width: 100%; height: 100%; padding: 11px 20px; box-sizing: border-box; -moz-box-sizing: border-box;}
+.indexContent > div.apply a{display: block; color: #fff; text-decoration: none; text-transform: uppercase; font: normal 18px/33px 'Pudelina'; width: 100%; height: 100%; padding: 11px 20px; box-sizing: border-box; -moz-box-sizing: border-box;}
 .indexContent > div.apply a span{font-size: 40px; display: inline-block; border-bottom: 2px solid #fff; line-height: 0.95em; margin-top: -4px;}
 .indexContent > div.apply a:hover span{border-bottom: none;}
 .indexContent > div.flowers{position: relative;}
-.indexContent > div.flowers a{background: #df0029; display: table-cell; vertical-align: bottom; color: #fff; font: normal 11px 'helvetica-bold'; text-decoration: none; text-align: center; padding: 15px 10px; position: relative; width: 140px; height: 140px; box-sizing: border-box; -moz-box-sizing: border-box; opacity: 0;  -webkit-transition: opacity .5s linear; -moz-transition: opacity .5s linear; -o-transition: opacity .5s linear;}
+.indexContent > div.flowers a{background: #df0029; display: table-cell; vertical-align: bottom; color: #fff; font: normal 11px 'Pudelina'; text-decoration: none; text-align: center; padding: 15px 10px; position: relative; width: 140px; height: 140px; box-sizing: border-box; -moz-box-sizing: border-box; opacity: 0;  -webkit-transition: opacity .5s linear; -moz-transition: opacity .5s linear; -o-transition: opacity .5s linear;}
 .indexContent > div.flowers:hover a{opacity: .8;}
 .indexContent > div.flowers img{width: 140px; height: 140px; position: absolute;}
 
@@ -177,9 +144,9 @@ span.main_link{width: 10px; display: inline-block; margin-left: 7px;margin-right
 .scheduleSlide{float: left;}
 .scheduleSmall{background: #da0029; width: 140px; height: 140px; padding: 10px 15px; box-sizing: border-box; -moz-box-sizing: border-box; border-bottom: 1px solid #e3405f; overflow: hidden;}
 .scheduleSlide .scheduleSmall:last-child{border: none;}
-.scheduleSmall p{color: #fff; font: normal 36px 'helvetica-bold'; margin: 4px 0;}
+.scheduleSmall p{color: #fff; font: normal 36px 'Pudelina'; margin: 4px 0;}
 .scheduleSmall p span{color: #ffb8c5;}
-.scheduleSmall a{color: #fff; font: normal 11px 'helvetica-bold'; text-decoration-color: #ed8094;}
+.scheduleSmall a{color: #fff; font: normal 11px 'Pudelina'; text-decoration-color: #ed8094;}
 .scheduleRight,.scheduleLeft{float: right;}
 
 #footer{width: 980px; height: 62px; margin: 0 auto; padding: 43px 0 0;}
@@ -187,7 +154,7 @@ span.main_link{width: 10px; display: inline-block; margin-left: 7px;margin-right
 .copyrightAuthor a{color: #828282;}
 .copyrightAuthor a img{vertical-align: middle; margin: -2px 7px 0 0;}
 .copyright{margin: 0; color: #919191;}
-.copyright span{display: block; color: #4e4e4e; font: normal 12px 'helvetica-bold'; text-transform: uppercase; margin-bottom: 5px;}
+.copyright span{display: block; color: #4e4e4e; font: normal 12px 'Pudelina'; text-transform: uppercase; margin-bottom: 5px;}
 .index #footer{margin-top: 95px; padding: 0;}
 
 #enter{z-index: 22; position: relative;}
@@ -214,10 +181,10 @@ input[type="submit"]:disabled{background: #a8a7a8;}
 .crumbs a:first-child{margin-left: 0;}
 .crumbs a span{display: inline-block; line-height: 1em; border-bottom: 1px solid #929294; -webkit-transition: border .5s linear; -moz-transition: border .5s linear; -o-transition: border .5s linear;}
 .crumbs a:hover span{border-color: #f1eff0;}
-//h1{color: #da0029; text-transform: uppercase; font: normal 30px/23px 'helvetica-bold'; margin: 20px 0 30px;}
+//h1{color: #da0029; text-transform: uppercase; font: normal 30px/23px 'Pudelina'; margin: 20px 0 30px;}
 
 .regSteps{background: #da0029; border-top: 4px solid #000; padding: 13px 18px 15px 140px;}
-.regSteps span{color: #e6788d; font: normal 18px 'helvetica-bold';}
+.regSteps span{color: #e6788d; font: normal 18px 'Pudelina';}
 .regSteps span.active{color: #fff;}
 .regSteps img{vertical-align: middle; margin: 0 113px;}
 
@@ -253,7 +220,7 @@ input.error{border-color: #da0029 !important;}
 .bigLine{width: 100%; height: 4px; background: #000; margin: 7px 0 35px;}
 .padding100{padding-left: 100px;}
 /*.rightCol h1{margin: 20px 0;}*/
-h2{font: normal 24px/20px 'helvetica-bold'; margin: 26px 0 15px;}
+h2{font: normal 24px/20px 'Pudelina'; margin: 26px 0 15px;}
 
 .works{border-spacing: 0; border-collapse: collapse; width: 800px; margin: 0 0 35px -100px;}
 .works tr{padding-left: 100px;}
@@ -290,7 +257,7 @@ h2{font: normal 24px/20px 'helvetica-bold'; margin: 26px 0 15px;}
 .navigation > li{background: #da0029; border-bottom: 1px solid #dd8083; -webkit-transition: background .5s linear; -moz-transition: background .5s linear; -o-transition: background .5s linear;}
 .navigation > li:hover,.navigation > li.opened,.navigation > li.active{background: #ba0007;}
 .navigation > li:last-child{border-bottom: none;}
-.navigation > li > a{font: normal 12px 'helvetica-bold'; color: #fff; text-transform: uppercase; padding: 14px 20px 13px; text-decoration: none;}
+.navigation > li > a{font: normal 12px 'Pudelina'; color: #fff; text-transform: uppercase; padding: 14px 20px 13px; text-decoration: none;}
 .navigation ul > li > a{padding: 0 10px 13px 20px; font-size: 11px; color: #f1eff0;}
 .navigation ul > li > a.active{color: #f3a4b3; font-weight: bold; text-decoration: none;}
 .navigation ul > li > a.withSymbol{padding-left: 32px;}
@@ -341,7 +308,7 @@ h2{font: normal 24px/20px 'helvetica-bold'; margin: 26px 0 15px;}
 .requirements h2{margin: 10px 0 24px;}
 .requirements p{margin: 9px 0 10px;}
 
-h3{font: 18px/14px 'helvetica-bold';}
+h3{font: 18px/14px 'Pudelina';}
 .numverEditWork{float: right;}
 .addWork textarea{width: 400px; min-height: 66px; resize: vertical;}
 .addWork .line{width: 800px; margin: 30px 0 30px -170px;}
@@ -357,7 +324,7 @@ h3{font: 18px/14px 'helvetica-bold';}
 
 .costRequest{background: #fff; border: 1px solid #c8c6c7; border-style: solid none; width: 635px; margin: 40px 0 30px -165px; padding: 13px 0 16px 165px;}
 .costRequest p{color: #da0029; font-size: 18px; margin: 10px 0;}
-.costRequest p span{font: 36px/27px 'helvetica-bold';}
+.costRequest p span{font: 36px/27px 'Pudelina';}
 
 .repairPas{padding: 0 0 200px;}
 .repairPas p.withLabel{padding-left: 85px;}
@@ -367,7 +334,7 @@ h3{font: 18px/14px 'helvetica-bold';}
 .notFound{background: #f1eff0;}
 .notFoundBlock{text-align: center; position: relative; top: 30%;}
 .notFoundBlock .logo{position: relative; left: auto; top: auto; display: inline-block;}
-.notFoundBlock p{color: #222222; font: 30px 'helvetica-bold'; margin: 30px 0 8px;}
+.notFoundBlock p{color: #222222; font: 30px 'Pudelina'; margin: 30px 0 8px;}
 .notFoundBlock a{color: #df0029; font-size: 14px;}
 
 h1.aboutTitle{line-height: normal;}
@@ -408,11 +375,11 @@ h1.aboutTitle{line-height: normal;}
 
 .costAndSrok{background: #fff; border: 1px solid #c8c6c7; border-style: solid none; width: 700px; margin: 40px 0 30px -100px; padding: 11px 0 16px 100px;}
 .costAndSrok > div{display: inline-block; vertical-align: top; width: 280px;}
-.costAndSrok > div span{float: left; margin-right: 10px; color: #909090; font: 36px/36px 'helvetica-bold';}
+.costAndSrok > div span{float: left; margin-right: 10px; color: #909090; font: 36px/36px 'Pudelina';}
 .costAndSrok > div:last-child p{padding-top: 17px;}
 
 .languageToggle{float: right; margin: 10px 0 0;}
-.languageToggle a{display: inline-block; padding: 6px 5px; color: #919191; background: #222; font: 8px 'helvetica-bold'; text-decoration: none;}
+.languageToggle a{display: inline-block; padding: 6px 5px; color: #919191; background: #222; font: 8px 'Pudelina'; text-decoration: none;}
 .languageToggle a:hover{text-decoration: underline;}
 .languageToggle a.active{background: none; color: #fff; padding: 6px 2px; cursor: default;}
 .languageToggle a.active:hover{text-decoration: none;}
