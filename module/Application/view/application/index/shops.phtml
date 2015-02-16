@@ -1,5 +1,8 @@
 <script type="text/javascript" src="/js/map.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<?php echo $key_map ?>&sensor=false&libraries=places""></script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<?php echo $key_map ?>&sensor=false&libraries=places"></script>
+
+
 
 <div id="content">
     <div class="center">
@@ -7,6 +10,7 @@
             <div class="shop_block" style="height: 1000px;">
                 <div class="leftCol">
                     <?php
+
                     $partial = array('partial/category_menu.phtml', 'default');
                     echo $this->navigation('cat_navigation')
                             ->menu()
