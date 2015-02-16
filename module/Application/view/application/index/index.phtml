@@ -1,123 +1,81 @@
+<script id="barTmpl" type="text/x-jquery-tmpl">
+            <div class="cn-bar">
+                <div class="cn-nav">
+                                        <a href="#" class="cn-nav-prev">
+                        <span>Previous</span>
+                                                <div style="background-image:url(${prevSource});"></div> 
+                                        </a>
+                                        <a href="#" class="cn-nav-next">
+                        <span>Next</span>
+                                                <div style="background-image:url(${nextSource});"></div>
+                                        </a>
+                </div><!-- cn-nav -->
+                <div class="cn-nav-content">
+                    <div class="cn-nav-content-prev">
+                        <span>Previous image</span>
+                        <h3>${prevTitle}</h3>
+                    </div>
+                    <div class="cn-nav-content-current">
+                        <span>Currently viewing</span>
+                        <h2>${currentTitle}</h2>
+                    </div>
+                    <div class="cn-nav-content-next">
+                        <span>Next image</span>
+                        <h3>${nextTitle}</h3>
+                    </div>
+                </div><!-- cn-nav-content -->
+            </div><!-- cn-bar -->
+
+</script>
 <div id="content">
     <div class="center">
         <div class="shop_block" style="height: 1000px;">
-        <div class="schedule">
 
-             <div class="scheduleSlide">
-    <!--news -->
-            <div class="scheduleSlide">
+            <div class="wrapper">
+                <div id="cn-slideshow" class="cn-slideshow">
+                    <div class="cn-images">
+                        <?php foreach ($shops as $shop) : ?>
+
+                            <?php
+                            $patchs = explode(',', $shop['patch']);
+                            foreach ($patchs as $patch) :
+                                ?>
+                                <img src ="<?php echo '/images/shop/big_' . trim($patch) ?>"  data-thumb="<?php echo '/images/shop/big_' . trim($patch) ?>"  title=" <?php echo $shop['address'] ?>">
+                            <?php endforeach; ?>
+
+<?php endforeach; ?>
+                    </div><!-- cn-images -->
+                </div><!-- cn-slideshow -->
+            </div>
+
+
+            <div class="indexContent clear">
+                <!--     <div class="hits">
+                      хиты продах
+                  </div>-->
                 <?php
-                foreach ($news as $new) {
+                foreach ($items as $item) {
                     ?>
-                    <div class="scheduleSmall">
-                        <p><?php echo $new['name'] ?></p>
-                        <a href="#"><?php echo $new['description'] ?></a>
+                    <div class="flowers">
+                        <?php
+                        if ($item['patch']) {
+                            ?>
+                            <img src ="<?php echo '/images/item/small_' . trim($item['patch']) ?>">
+                        <?php } else { ?>
+                            <img src ="<?php echo '/img/small_item.png' ?>">
+    <?php } ?>
+                        <a href="<?php echo $this->url('items', array('action' => 'items', 'id' => $item['id'])); ?>"><?php echo $item['name'] ?></a>
                     </div>
                     <?php
                 }
                 ?>
+                <!--  <div class="apply">
+                      <a href="#">
+                          Наши <br/><span>Акции</span>
+                      </a>
+                  </div>
+                -->
             </div>
-
-                <!--отзывы -->
-                <div class="scheduleSlide">
-                    <?php
-                    foreach ($reviews as $review) {
-                        ?>
-                        <div class="scheduleSmall">
-                            <p><?php echo $review['name'] ?></p>
-                            <a href="#"><?php echo $review['description'] ?></a>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                </div>
-                <!--акции-->
-                <div class="scheduleSlide">
-                    <?php
-                    foreach ($action_items as $item) {
-                        ?>
-                        <div class="scheduleSmall">
-                            <p><span>-<?php echo $item['percentage'] ?></span></p>
-                            <a href="<?php echo $this->url('items', array('action'=>'items','id' => $item['id'])); ?>"><?php echo $item['name'] ?></a>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="right scheduleRight"></div>
-            <div class="left scheduleLeft"></div>
-        </div>
-
-<div class="clear"></div>
-        <div id="bigSlider">
-            <div class="slideBack"></div>
-            <div class="slideNext">
-                <img class="previewPhoto" src="" alt="" />
-                <div class="smallMask"></div>
-                <span class="next"></span>
-                <div class="nextText">
-                    <span>Наши магазины</span>
-                </div>
-            </div>
-
-            <div class="slider">
-                <div class="slides">
-                    <?php
-                    foreach ($shops as $shop) {
-                        ?>
-                        <div class="slide">
-                            <?php
-                            $patchs = explode(',', $shop['patch']);
-                            foreach ($patchs as $patch) {
-                                ?>
-                                <img src ="<?php echo '/images/shop/big_' . trim($patch) ?>">
-                                <a href="<?php echo $this->url('shops', array('action'=>'shops','id' => $shop['id'])); ?>" class="slideText">
-                                    <span>
-                                        <span>
-                                            <?php echo $shop['address'] ?>
-                                        </span>
-                                    </span>
-                                </a>
-                                <?php
-                            }
-                            ?>
-                        </div>
-                        <?php
-                    }
-                    ?>
-
-                </div>
-            </div>
-        </div>
-        <div class="indexContent clear">
-            <!--     <div class="hits">
-                  хиты продах
-              </div>-->
-            <?php
-            foreach ($items as $item) {
-                ?>
-                <div class="flowers">
-                    <?php
-                    if ($item['patch']) {
-                        ?>
-                        <img src ="<?php echo '/images/item/small_' . trim($item['patch']) ?>">
-                    <?php } else { ?>
-                        <img src ="<?php echo '/img/small_item.png' ?>">
-                    <?php } ?>
-                    <a href="<?php echo $this->url('items', array('action'=>'items','id' => $item['id'])); ?>"><?php echo $item['name'] ?></a>
-                </div>
-                <?php
-            }
-            ?>
-            <!--  <div class="apply">
-                  <a href="#">
-                      Наши <br/><span>Акции</span>
-                  </a>
-              </div>
-            -->
         </div>
     </div>
-    </div>
-      </div>
-
+</div>

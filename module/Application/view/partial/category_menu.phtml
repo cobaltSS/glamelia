@@ -1,35 +1,24 @@
-<div id="menu_catHolder">
+<div id="navbox">
     <?php foreach ($this->container as $page): ?>
-        <?php if (!empty($page->pages)):?>
+        <?php if (!empty($page->pages)): ?>
             <?php foreach ($page->pages as $subpage): ?>
-                <ul class="menu_cat">
-                    <li class="sub li3">
-                        <a class="aTop" href="<?php echo $subpage->getHref() ?>">
-                            <span><?php echo $subpage->getLabel(); ?></span><b></b>
-                        </a>
-                        <?php if (!empty($subpage->pages)): ?>
-                            <div class="col3 drop">
-                                <dl>
-                                    <?php foreach ($subpage->pages as $subsubpage): ?>
-                                        <dd>
-                                            <a href="<?php echo $subsubpage->getHref(); ?>"><?php echo $subsubpage->getLabel(); ?></a>
-                                        </dd>
-                                    <?php endforeach; ?>
-                                </dl>
-                                <br class="clear" />
-                                <div class="bottomLine">
-				<p></p>
-				<p></p>
-			</div>
-
-                            </div>
-                        <?php endif; ?>
-                        
-
-                    </li>
-                    <li class="close"><a href="#url"></a></li>
+                <ul class="nav_cat">
+                    <li>
+                        <a href="<?php echo $subpage->getHref() ?>">
+                            <?php echo $subpage->getLabel(); ?>
+                        </a> </li>
+                    <?php if (!empty($subpage->pages)): ?>
+                        <ul class="nav_sub">
+                            <?php foreach ($subpage->pages as $subsubpage): ?>
+                                <li>
+                                    <a href="<?php echo $subsubpage->getHref(); ?>"><?php echo $subsubpage->getLabel(); ?></a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
 
                 </ul>
+
             <?php endforeach; ?>
         <?php endif; ?>
     <?php endforeach; ?>

@@ -4,7 +4,7 @@ function c(obj){
 
 $(document).ready(function(){
 
-
+$('#cn-slideshow').slideshow();
 
     //Таймер
 

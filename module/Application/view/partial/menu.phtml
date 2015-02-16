@@ -1,40 +1,30 @@
-<?php $ids = array("КАТАЛОГ" => "catalog", "НАШИ МАГАЗИНЫ" => "shops"); ?>
-<ul class="menu">
-    <?php foreach ($this->container as $page): ?>
+<div id="nav">
+    <ul>
+        <?php foreach ($this->container as $page): ?>
+            <li>
+                <a href="<?php echo $page->getHref(); ?>" <?php echo ($page->isActive(true) ? 'class="active_main"' : ''); ?>>
+                    <?php echo $page->getLabel(); ?>
+                </a>
+                <?php if (!empty($page->pages)): ?>
+                    <ul>
+                        <?php foreach ($page->pages as $subpage): ?>
+                            <li>
+                                <a href="javascript:void(0)" ><?php echo $subpage->getLabel(); ?></a>
+                                <?php if (!empty($subpage->pages)): ?>
+                                    <ul >
+                                        <?php foreach ($subpage->pages as $subsubpage): ?>
+                                            <li>
+                                                <a href="<?php echo $subsubpage->getHref(); ?>"><?php echo $subsubpage->getLabel(); ?></a>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
 
-        <li <?php if (array_key_exists($page->getLabel(), $ids)): ?> id="<?php echo $ids[$page->getLabel()] ?>" <?php endif; ?>>
-            <a href="<?php echo $page->getHref(); ?>" <?php echo ($page->isActive(true) ? 'class="active_main"' : ''); ?>>
-                <?php echo $page->getLabel(); ?>
-            </a>
-            <?php if (!empty($page->pages)): ?>
-                <ul class="dopMenu">
-                    <?php foreach ($page->pages as $subpage): ?>
-                        <li>
-                            <?php if ($page->getLabel() == "КАТАЛОГ"): ?>
-                                <span class='main_link'><img src="img/next.png" class="showCategory"></span>
-                                <a href="<?php echo $subpage->getHref() ?>" class="mainCategory" ><?php echo $subpage->getLabel(); ?></a>
-                            <?php else: ?>
-                                <a href="javascript:void(0)" class="main_link"><?php echo $subpage->getLabel(); ?></a>
-                            <?php endif ?>
-                            <?php if (!empty($subpage->pages)): ?>
-
-                                <ul class="dopMenuUl" style="display:none;">
-                                    <?php foreach ($subpage->pages as $subsubpage): ?>
-                                        <li>
-                                            <a href="<?php echo $subsubpage->getHref(); ?>"<?php echo $page->getLabel() == "КАТАЛОГ" ? 'class="subCategory"' : '' ?>><?php echo $subsubpage->getLabel(); ?></a>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-
-                            <?php endif; ?>
-
-
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-
-            <?php endif; ?>
-        </li>
-    <?php endforeach; ?>
-
-</ul>
+    </ul>
+</div>
