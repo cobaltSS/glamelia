@@ -97,6 +97,7 @@ $patch=array();
     }
     
     public function newAction() {
+       
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
             return $this->redirect()->toRoute('home', array(
@@ -104,12 +105,11 @@ $patch=array();
         }
 
         try {
-            $new = $this->getNewsTable()->getNew($id);
+            $new = $this->getNewsTable()->getNews($id);
         } catch (\Exception $ex) {
             return $this->redirect()->toRoute('home', array(
             ));
         }
-
         return array(
             'new' => $new,
         );

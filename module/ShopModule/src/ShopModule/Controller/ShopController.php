@@ -298,7 +298,7 @@ class ShopController extends AbstractActionController {
         $thumb_big->adaptiveResize(700, 280);
         $thumb_big->save($big_filename);
 
-        $thumb_big->adaptiveResize(140, 140);
+        $thumb_small->adaptiveResize(140, 140);
         $thumb_small->save($small_filename);
 
         unlink($uploadPath . '/' . $name);

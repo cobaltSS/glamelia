@@ -6,28 +6,20 @@ $this->headTitle($title);
     <div class="center">               
         <div class="twoCol">
             <div class="rightCol">
+                <div class="shop_title">
+                    <h1><?php echo $this->escapeHtml($title); ?></h1>
+                </div>
                 <div class="publick_reviews">
-
                     <?php foreach ($this->paginator as $news) : ?>
-                        <div class="hentry otzivi">
-                            <div class="otziv">
-                                <h3>
-                                    <p><?php echo $this->escapeHtml($news->name); ?></p>
-                                </h3>
-                                <?php echo substr($news->description,0,500).'...' ?>
-                            </div>
-
-
-                        </div>      
+                        <blockquote class="oval-speech-border">
+                            <a href="<?php echo $this->url('news', array('action' => 'new', 'id' => $news->id)); ?>">
+                                <p><?php echo $this->escapeHtml($news->name); ?></p>
+                                </a>
+                                <p><?php echo substr($news->description, 0, 500) . '...' ?></p>
+                        </blockquote>
                     <?php endforeach; ?>
                 </div>
             </div>
         </div>
-
-
     </div>
-
-
-
-</div>
 </div>
