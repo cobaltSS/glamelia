@@ -16,14 +16,16 @@
                     ?>
                 </div>
                 <div class="rightCol">
-                    <?php
-                    $title = 'Товары';
-                    $this->headTitle($title);
-                    ?>
-                    <h1><?php
-                        echo $this->escapeHtml($title);
-                        $i = 0
-                        ?></h1>
+                    <div class=title>
+                        <?php
+                        $title = 'Товары';
+                        $this->headTitle($title);
+                        ?>
+                        <h1><?php
+                            echo $this->escapeHtml($title);
+                            $i = 0
+                            ?></h1>
+                    </div>
                     <section>
                         <ul class="lb-album">
                             <?php
@@ -38,7 +40,7 @@
                                             <img src ="<?php echo '/img/small_item.png' ?>" alt="image0<?php echo $i ?>">
                                         <?php endif ?>
 
-                                        <span> <?php echo $this->escapehtml($item['name'])?></span>
+                                        <span> <?php echo $this->escapehtml($item['name']) ?></span>
                                     </a>
 
                                     <div class="lb-overlay" id="image-<?php echo $i ?>">
