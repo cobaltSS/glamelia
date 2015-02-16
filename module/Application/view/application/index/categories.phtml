@@ -1,29 +1,69 @@
-<div class="index">
-    <div id="content" class="center ">
-
-<?php
-
-$title = 'Товары';
-$this->headTitle($title);
-?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
-<div class="indexContent clear">
- <?php
-        foreach ($items as $item) {
-            ?>
-            <div class="flowers">
-                <?php
-                if ($item['patch']) {
+<div id="content">
+    <div class="center">   
+        <div class="twoCol">
+            <div class="shop_block" style="height: 1000px;">
+                <div class="leftCol">
+                    <?php
+                    $partial = array('partial/category_menu.phtml', 'default');
+                    echo $this->navigation('cat_navigation')
+                            ->menu()
+                            ->setMinDepth(1)
+                            ->setMaxDepth(4)
+                            ->setRenderParents(false)
+                            ->setOnlyActiveBranch(true)
+                            ->setPartial($partial)
+                            ->render();
                     ?>
-                    <img src ="<?php echo '/images/item/small_' . trim($item['patch']) ?>">
-                <?php } else { ?>
-                    <img src ="<?php echo '/img/small_item.png' ?>">
-                <?php } ?>
-                <a href="<?php echo $this->url('items', array('action'=>'items','id' => $item['id'])); ?>"><?php echo $item['name'] ?></a>
+                </div>
+                <div class="rightCol">
+                    <?php
+                    $title = 'Товары';
+                    $this->headTitle($title);
+                    ?>
+                    <h1><?php
+                        echo $this->escapeHtml($title);
+                        $i = 0
+                        ?></h1>
+                    <section>
+                        <ul class="lb-album">
+                            <?php
+                            foreach ($items as $item) {
+                                $i++;
+                                ?>
+                                <li>
+                                    <a href="#image-<?php echo $i ?>">
+                                        <?php if ($item['patch']) : ?>
+                                            <img src ="<?php echo '/images/item/small_' . trim($item['patch']) ?>" alt="image0<?php echo $i ?>">
+                                        <?php else: ?>
+                                            <img src ="<?php echo '/img/small_item.png' ?>" alt="image0<?php echo $i ?>">
+                                        <?php endif ?>
+
+                                        <span> <?php echo $this->escapehtml($item['name'])?></span>
+                                    </a>
+
+                                    <div class="lb-overlay" id="image-<?php echo $i ?>">
+
+                                        <?php
+                                        if ($item['patch']) {
+                                            ?>
+                                            <img src ="<?php echo '/images/item/big_' . trim($item['patch']) ?>" alt="image0<?php echo $i ?>">
+                                        <?php } else { ?>
+                                            <img src ="<?php echo '/img/big_item.png' ?>" alt="image0<?php echo $i ?>">
+                                        <?php } ?>
+                                        <div>
+                                            <h3><?php echo $item['name'] ?></h3>
+                                            <p><?php echo $item['description'] ?></p>
+                                        </div>
+                                        <a href="#page" class="lb-close">x Close</a>
+                                    </div>
+                                </li>
+                                <?php
+                            }
+                            ?>
+                        </ul>
+                    </section>
+                </div>
             </div>
-            <?php
-        }
-        ?>
- </div>
+        </div>
     </div>
 </div>

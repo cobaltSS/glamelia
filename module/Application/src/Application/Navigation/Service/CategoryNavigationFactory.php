@@ -4,8 +4,6 @@ namespace Application\Navigation\Service;
 
 use Zend\Navigation\Service\DefaultNavigationFactory;
 use Zend\ServiceManager\ServiceLocatorInterface;
-
-
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\Sql\Select;
@@ -30,8 +28,11 @@ class CategoryNavigationFactory extends DefaultNavigationFactory {
                 switch ($row['route']) {
                     case 'categories':
                         $request = $serviceLocator->get('Application')->getMvcEvent()->getRouteMatch()->getParams();
-                        $id_shop=$request['id'];
-                        $categories = $serviceLocator->get('Category\Model\CategoryTable')->getCategory2SubForShop($id_shop);
+                        $id_shop = $request['id'];
+                        if ($request['action'] == 'shops')
+                            $categories = $serviceLocator->get('Category\Model\CategoryTable')->getCategory2SubForShop($id_shop);
+                        else
+                            $categories = $serviceLocator->get('Category\Model\CategoryTable')->getCategory2Sub();
                         foreach ($categories as $category) {
                             $configuration['navigation'][$this->getName()][$i]['pages'][$k] = array(
                                 'label' => $category['name'],
@@ -49,15 +50,14 @@ class CategoryNavigationFactory extends DefaultNavigationFactory {
                                         'label' => $sub,
                                         'route' => $row['route'],
                                         'action' => $row['route'],
-                                        'params' => array('id' => $category['id'],'id_sub' => $subcategory_id[$key]),
+                                        'params' => array('id' => $category['id'], 'id_sub' => $subcategory_id[$key]),
                                     );
                                 }
                             }
                             $k++;
                         }
                         break;
-
-
+                   
                     default:
                         break;
                 }

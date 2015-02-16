@@ -31,7 +31,7 @@
                 //   ->prependFile($this->basePath() . '/js/bootstrap.min.js')
                 //   ->prependFile($this->basePath() . '/js/jquery.min.js')
                 ->prependFile($this->basePath() . '/js/scripts.js')
-                ->prependFile($this->basePath() . '/js/jquery.jcountdown-1.4.3.js')
+                //->prependFile($this->basePath() . '/js/jquery.jcountdown-1.4.3.js')
                 ->prependFile($this->basePath() . '/js/jquery.carouFredSel-6.2.1-packed.js')
                 ->prependFile($this->basePath() . '/js/jquery-1.9.1.min.js')
         ;
@@ -45,14 +45,6 @@
                 <div class="redLine"></div>
                 <div class="center">               
                     <?php
-                    /*  echo $this->navigation('public_navigation')->menu()->setMinDepth(0)
-                      ->setMaxDepth(50)
-                      ->setUlClass('menu'); */
-
-                    //->renderPartial(null, 'partial/menu.phtml')
-
-
-
                     $partial = array('partial/menu.phtml', 'default');
                     echo $this->navigation('public_navigation')->menu()
                             ->setMinDepth(1)
@@ -64,19 +56,15 @@
                     ?>
                 </div>
             </div>
-
-            <!--<div id="content" class="center">-->
             <?php echo $this->content; ?>
-            <!-- /container -->
-            <!--</div>-->
-
-
         </div>
 
         <footer>
             <div id="footer">
                 <p class="copyright">
-                    <span></span>
+                    <span>
+                        <img src="/img/vk.png">
+                    </span>
                     © 2015 «Glamelia»
                 </p>
             </div>

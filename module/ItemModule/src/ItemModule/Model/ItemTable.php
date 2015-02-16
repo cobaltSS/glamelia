@@ -19,10 +19,10 @@ class ItemTable {
         $this->tableGateway = $tableGateway;
     }
 
-    public function fetchAll($paginated = false,$where=array()) {
+    public function fetchAll($paginated = false, $where = array()) {
         $select = new Select('item');
-            $select->join('category', "category.id = item.category_id", array('name_cat' =>'name'), 'left');
-                        $select->where($where);
+        $select->join('category', "category.id = item.category_id", array('name_cat' => 'name'), 'left');
+        $select->where($where);
         if ($paginated) {
 
             // create a new result set based on the Item entity
@@ -102,7 +102,7 @@ class ItemTable {
         $rowset = $this->tableGateway->selectWith($select);
         return $rowset->toArray();
     }
-    
+
     public function getItems2SubCategory($id) {
         $id = (int) $id;
         $select = new Select;
@@ -113,7 +113,7 @@ class ItemTable {
         $select->group("item.id");
         $select->having("item.subcategory_id = " . $id);
         $rowset = $this->tableGateway->selectWith($select);
-        
+
         return $rowset->toArray();
     }
 
@@ -122,21 +122,21 @@ class ItemTable {
         $select = new Select;
         $select->from($this->table);
         $select->where($where);
-        $select->limit((int)$limit);
+        $select->limit((int) $limit);
         $select->order($rand);
-        
+
         $resultSet = $this->tableGateway->selectWith($select);
 
         return $resultSet->toArray();
     }
 
-    public function getItems($limit,$where=array()) {
+    public function getItems($limit, $where = array()) {
         $rand = new \Zend\Db\Sql\Expression('RAND()');
         $select = new Select;
         $select->from('item');
         $select->where($where);
         $select->quantifier('DISTINCT');
-        $select->limit((int)$limit);
+        $select->limit((int) $limit);
         $select->join('item_photo', "item_photo.id_item = item.id", array('patch'), 'left');
         $select->order($rand);
         $rowset = $this->tableGateway->selectWith($select);
