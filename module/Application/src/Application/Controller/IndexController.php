@@ -133,20 +133,24 @@ $patch=array();
     public function categoriesAction() {
         $id_cat = (int) $this->params()->fromRoute('id', 0);
         $id_sub = (int) $this->params()->fromRoute('id_sub', 0);
-        if (!$id_cat && !$id_sub) {
+        $action= (int) $this->params()->fromQuery('action');
+
+        if (!$id_cat && !$id_sub&& !$action) {
             return $this->redirect()->toRoute('home', array(
             ));
         }
+
         try {
             if ($id_cat && !$id_sub)
                 $items = $this->getItemTable()->getItems2Category($id_cat);
             else if ($id_sub)
                 $items = $this->getItemTable()->getItems2SubCategory($id_sub);
+            else if ($action)
+                $items = $this->getItemTable()->getItems(false,array('action'=>1));
         } catch (\Exception $ex) {
             return $this->redirect()->toRoute('home', array(
             ));
         }
-
         /*  foreach ($items as $item) {
           if ($item['patch']) {
           $item['patch'] = explode(',', $item['patch']);
@@ -267,8 +271,6 @@ $patch=array();
             'paginator' => $paginator,
             'form' => $form
         ));
-        
-        //return array('form' => $form);
     }
 
     // connect Reviews table

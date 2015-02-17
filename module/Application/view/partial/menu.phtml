@@ -2,19 +2,19 @@
     <ul>
         <?php foreach ($this->container as $page): ?>
             <li>
-                <a href="<?php echo ($page->getHref())? $page->getHref() :'javascript:void(0)'; ?>" <?php echo ($page->isActive(true) ? 'class="active_main"' : ''); ?>>
+                <a href="<?php echo ($page->getHref()) ? $page->getHref() : 'javascript:void(0)'; ?>" <?php echo ($page->isActive(true) ? 'class="active_menu"' : ''); ?>>
                     <?php echo $page->getLabel(); ?>
                 </a>
                 <?php if (!empty($page->pages)): ?>
                     <ul>
                         <?php foreach ($page->pages as $subpage): ?>
                             <li>
-                                <a href="<?php echo ($subpage->getHref())? $subpage->getHref() :'javascript:void(0)'; ?>" ><?php echo $subpage->getLabel(); ?></a>
+                                <a href="<?php echo ($subpage->getHref()) ? $this->escapehtml($subpage->getHref()) : 'javascript:void(0)'; ?>" <?php echo ($subpage->isActive(true) ? 'class="active_menu"' : ''); ?> ><?php echo $subpage->getLabel(); ?></a>
                                 <?php if (!empty($subpage->pages)): ?>
                                     <ul >
                                         <?php foreach ($subpage->pages as $subsubpage): ?>
                                             <li>
-                                                <a href="<?php echo $subsubpage->getHref(); ?>"><?php echo $subsubpage->getLabel(); ?></a>
+                                                <a href="<?php echo $this->escapehtml($subsubpage->getHref()); ?>" <?php echo ($subsubpage->isActive(true) ? 'class="active_menu"' : ''); ?>><?php echo $subsubpage->getLabel(); ?></a>
                                             </li>
                                         <?php endforeach; ?>
                                     </ul>
@@ -25,6 +25,9 @@
                 <?php endif; ?>
             </li>
         <?php endforeach; ?>
-
+        
     </ul>
+
+
+
 </div>

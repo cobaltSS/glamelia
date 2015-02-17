@@ -1,15 +1,31 @@
 <div id="content">
     <div class="center">               
         <div class="twoCol">
-            <div class="rightCol">
-                <div class="shop_title">
-                    <h1><?php echo $this->escapeHtml($new->name); ?></h1>
+            <div class="shop_block" style="height: 1000px;">
+                <div class="leftCol">
+                    <?php
+                    $partial = array('partial/category_menu.phtml', 'default');
+                    echo $this->navigation('cat_navigation')
+                            ->menu()
+                            ->setMinDepth(1)
+                            ->setMaxDepth(4)
+                            ->setRenderParents(false)
+                            ->setOnlyActiveBranch(true)
+                            ->setPartial($partial)
+                            ->render();
+                    ?>
                 </div>
-                <p class="bigLine"></p>
-                <?php echo $new->description ?>
+                <div class="rightCol">
+                    <div class="title">
+                        <h1><?php echo $this->escapeHtml($new->name); ?></h1>
+                    </div>
+                    <div class="note taupe">
+                        <p><?php echo $new->description ?>
+                            </p>
+                    </div>
+                </div>
+
             </div>
         </div>
-
-
     </div>
 </div>

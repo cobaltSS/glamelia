@@ -63,15 +63,19 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
                                         'label' => $sub,
                                         'route' => $row['route'],
                                         'action' => $row['route'],
-                                        'params' => array('id' => $category['id'],'id_sub' => $subcategory_id[$key]),
+                                        'params' => array('id' => $category['id'], 'id_sub' => $subcategory_id[$key]),
                                     );
                                 }
                             }
                             $k++;
                         }
+                        $configuration['navigation'][$this->getName()][$i]['pages'][$k] = array(
+                            'label' => 'Акции',
+                            'route' => 'categories',
+                            'action' => "categories",
+                            'params' => array('action_p'=>'action=1'),
+                        );
                         break;
-
-
                     default:
                         break;
                 }

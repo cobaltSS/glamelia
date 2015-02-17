@@ -39,9 +39,12 @@
                                         <?php else: ?>
                                             <img src ="<?php echo '/img/small_item.png' ?>" alt="image0<?php echo $i ?>">
                                         <?php endif ?>
-
+                                        <?php if ($item['percentage']): ?>
+                                            <div class="action">СКИДКА -<?php echo $this->escapehtml($item['percentage']) ?></div>
+                                        <?php endif ?>
                                         <span> <?php echo $this->escapehtml($item['name']) ?></span>
                                     </a>
+
 
                                     <div class="lb-overlay" id="image-<?php echo $i ?>">
 

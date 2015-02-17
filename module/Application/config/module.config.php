@@ -23,7 +23,7 @@ return array(
             'shops' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/[:action][/:id]',
+                    'route' => '[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
@@ -37,7 +37,7 @@ return array(
             'items' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/[:action][/:id]',
+                    'route' => '[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
@@ -51,7 +51,7 @@ return array(
             'news' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/[:action][/:id]',
+                    'route' => '[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
@@ -65,10 +65,9 @@ return array(
             'about' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/[:action]',
+                    'route' => '[/:action]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9]+',
                     ),
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
@@ -79,10 +78,12 @@ return array(
             'categories' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/[:action][/:id][/:id_sub]',
+                    'route' => '[/:action][/:id][/:id_sub][?:action_p]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
+                        'id_sub' => '[0-9]+',
+                        'action_p' => '[0-9]+',
                     ),
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
@@ -93,7 +94,7 @@ return array(
             'item' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/[:action][/:id]',
+                    'route' => '[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
@@ -107,10 +108,9 @@ return array(
             'review' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/[:action]',
+                    'route' => '[/:action]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9]+',
                     ),
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
@@ -173,7 +173,7 @@ return array(
             array(
                 'label' => 'НАШИ МАГАЗИНЫ',
                 'route' => 'shops',
-                'action' => 'shops',
+                //'action' => 'shops',
             ),
             array(
                 'label' => 'КАТАЛОГ',

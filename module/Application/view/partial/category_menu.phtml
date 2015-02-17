@@ -4,14 +4,14 @@
             <?php foreach ($page->pages as $subpage): ?>
                 <ul class="nav_cat">
                     <li>
-                        <a href="<?php echo $subpage->getHref() ?>">
+                        <a <?php echo ($subpage->isActive(true)) ? 'class="active_menu"' : ''?>  href="<?php echo $subpage->getHref() ?>">
                             <?php echo $subpage->getLabel(); ?>
                         </a> </li>
                     <?php if (!empty($subpage->pages)): ?>
                         <ul class="nav_sub">
                             <?php foreach ($subpage->pages as $subsubpage): ?>
                                 <li>
-                                    <a href="<?php echo $subsubpage->getHref(); ?>"><?php echo $subsubpage->getLabel(); ?></a>
+                                    <a <?php echo ($subsubpage->isActive(true)) ? 'class="active_menu"' : ''?> href="<?php echo $subsubpage->getHref(); ?>"><?php echo $subsubpage->getLabel(); ?></a>
                                 </li>
                             <?php endforeach; ?>
                         </ul>
@@ -24,7 +24,12 @@
         <?php endif; ?>
     <?php endforeach; ?>
 
-
+    <ul class="nav_cat">
+        <li>
+            <a href="/categories?action=1">
+                Акция
+            </a> </li>
+    </ul>
 
 </div>
 

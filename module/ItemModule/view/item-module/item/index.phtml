@@ -17,17 +17,26 @@ $this->headTitle($title);
                     <select class="form-control" name="data[category_id]">
                         <option value="">Все</option>
                         <?php foreach ($this->categorys as $category) : ?>
-                                <option <?php echo ($search['category_id'] == $category->id ? 'selected' : '' ) ?>  value="<?php echo $category->id?>"><?php echo $category->name?></option>
-                         <?php endforeach; ?>
+                            <option <?php echo ($search['category_id'] == $category->id ? 'selected' : '' ) ?>  value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
+                        <?php endforeach; ?>
                     </select>
-                    <label for="exampleInputName2">Статус</label>
+                    <label >Статус</label>
                     <select class="form-control" name="data[status]">
                         <option value="">Все</option>
                         <option <?php echo ($search['status'] == '1' ? 'selected' : '' ) ?> value="1">Показывать на сайте</option>
                         <option <?php echo ($search['status'] == '0' ? 'selected' : '' ) ?> value="0">Не отображать на сайте</option>
                     </select>
-
+                </div> 
+                <div class="paddind10"></div>
+                <div class="form-group">
+                    <label >Товары на акции</label>
+                    <select class="form-control" name="data[action]">
+                        <option value="">Все</option>
+                        <option <?php echo ($search['action'] == '1' ? 'selected' : '' ) ?> value="1">Товар на акции</option>
+                        <option <?php echo ($search['action'] == '0' ? 'selected' : '' ) ?> value="0">Товар не на акции</option>
+                    </select>
                 </div>
+
                 <button type="submit" class="btn btn-default">Поиск</button>
             </div>
         </form>

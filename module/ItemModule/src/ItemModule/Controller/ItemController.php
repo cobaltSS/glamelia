@@ -24,22 +24,21 @@ class ItemController extends AbstractActionController {
         if ($request->isPost()) {
             $search = $request->getPost()->get('data');
             foreach ($search as $key => $query) {
-                if ($query) {
-                    if ($key == 'status') {
-                        if ($query >= '0')
-                            $where['item.'.$key] = (int) $query;
-                    } else
-                        $where['item.'.$key . ' LIKE ?'] = '%' . $query . '%';
-                }
+
+                if ($key == 'status' || $key == 'action') {
+                    if ($query >= '0')
+                        $where['item.' . $key] = (int) $query;
+                } else
+                    $where['item.' . $key . ' LIKE ?'] = '%' . $query . '%';
             }
         }
 
 // grab the paginator from the ItemTable
         $paginator = $this->getItemTable()->fetchAll(true, $where);
-        
+
 // set the current page to what has been passed in query string, or to 1 if none set
         $paginator->setCurrentPageNumber((int) $this->params()->fromQuery('page', 1));
-  // set the number of items per page to 10
+        // set the number of items per page to 10
         $paginator->setItemCountPerPage(10);
         $category = $this->getCategoryTable()->fetchAll();
         return new ViewModel(array(
@@ -410,7 +409,7 @@ class ItemController extends AbstractActionController {
         $key = $request->getQuery('key');
         $query = $request->getQuery('term');
         $where = array();
-        $where['item.'.$key . ' LIKE ?'] = '%' . $query . '%';
+        $where['item.' . $key . ' LIKE ?'] = '%' . $query . '%';
         $info = $this->getItemTable()->fetchAll(false, $where);
         foreach ($info as $val) {
             $results[] = array('label' => $val->$key);
@@ -424,4 +423,5 @@ class ItemController extends AbstractActionController {
          * 
          */
     }
+
 }
