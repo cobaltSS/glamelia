@@ -1,30 +1,30 @@
 <script id="barTmpl" type="text/x-jquery-tmpl">
-            <div class="cn-bar">
-                <div class="cn-nav">
-                                        <a href="#" class="cn-nav-prev">
-                        <span>Previous</span>
-                                                <div style="background-image:url(${prevSource});"></div> 
-                                        </a>
-                                        <a href="#" class="cn-nav-next">
-                        <span>Next</span>
-                                                <div style="background-image:url(${nextSource});"></div>
-                                        </a>
-                </div><!-- cn-nav -->
-                <div class="cn-nav-content">
-                    <div class="cn-nav-content-prev">
-                        <span>Previous image</span>
-                        <h3>${prevTitle}</h3>
-                    </div>
-                    <div class="cn-nav-content-current">
-                        <span>Currently viewing</span>
-                        <h2>${currentTitle}</h2>
-                    </div>
-                    <div class="cn-nav-content-next">
-                        <span>Next image</span>
-                        <h3>${nextTitle}</h3>
-                    </div>
-                </div><!-- cn-nav-content -->
-            </div><!-- cn-bar -->
+    <div class="cn-bar">
+    <div class="cn-nav">
+    <a href="#" class="cn-nav-prev">
+    <span>Previous</span>
+    <div style="background-image:url(${prevSource});"></div> 
+    </a>
+    <a href="#" class="cn-nav-next">
+    <span>Next</span>
+    <div style="background-image:url(${nextSource});"></div>
+    </a>
+    </div><!-- cn-nav -->
+    <div class="cn-nav-content">
+    <div class="cn-nav-content-prev">
+    <span>Previous image</span>
+    <h3>${prevTitle}</h3>
+    </div>
+    <div class="cn-nav-content-current">
+    <span>Currently viewing</span>
+    <h2>${currentTitle}</h2>
+    </div>
+    <div class="cn-nav-content-next">
+    <span>Next image</span>
+    <h3>${nextTitle}</h3>
+    </div>
+    </div><!-- cn-nav-content -->
+    </div><!-- cn-bar -->
 
 </script>
 <div id="content">
@@ -43,39 +43,84 @@
                                 <img src ="<?php echo '/images/shop/big_' . trim($patch) ?>"  data-thumb="<?php echo '/images/shop/big_' . trim($patch) ?>"  title=" <?php echo $shop['address'] ?>">
                             <?php endforeach; ?>
 
-<?php endforeach; ?>
+                        <?php endforeach; ?>
                     </div><!-- cn-images -->
                 </div><!-- cn-slideshow -->
             </div>
+            <div id="transformers-rule">
+                <div class="container block_one">
+                        <h1>Товар</h1>
+                    <?php foreach ($items as $item) : ?>
+                        <div class="card">
+                            <div class="face front">
+                                <?php
+                                if ($item['patch']) {
+                                    ?>
+                                    <img src ="<?php echo '/images/item/small_' . trim($item['patch']) ?>">
+                                <?php } else { ?>
+                                    <img src ="<?php echo '/img/small_item.png' ?>">
+                                <?php } ?>
 
+                            </div>
 
-            <div class="indexContent clear">
-                <!--     <div class="hits">
-                      хиты продах
-                  </div>-->
-                <?php
-                foreach ($items as $item) {
-                    ?>
-                    <div class="flowers">
-                        <?php
-                        if ($item['patch']) {
-                            ?>
-                            <img src ="<?php echo '/images/item/small_' . trim($item['patch']) ?>">
-                        <?php } else { ?>
-                            <img src ="<?php echo '/img/small_item.png' ?>">
-    <?php } ?>
-                        <a href="<?php echo $this->url('items', array('action' => 'items', 'id' => $item['id'])); ?>"><?php echo $item['name'] ?></a>
-                    </div>
-                    <?php
-                }
-                ?>
-                <!--  <div class="apply">
-                      <a href="#">
-                          Наши <br/><span>Акции</span>
-                      </a>
-                  </div>
-                -->
+                            <div class="face back">
+                                <h2><a href="<?php echo $this->url('items', array('action' => 'categories', 'id' => $item['category_id'])); ?>">
+                                        <p> <?php echo $item['name'] ?></p>
+                                    </a></h2>
+                                <p><?php echo $item['description'] ?></p>
+                                </dl>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
+
+                </div>
+                
+                
+                <div class="container block_three">
+                    <h1 >Отзывы</h1>
+                    <?php foreach ($reviews as $review) : ?>
+                        <div class="card">
+                            <div class="face back">
+                                <a href="<?php echo $this->url('reviews'); ?>">
+                                    <p><?php echo $review['name'] ?></p>
+                                    <dl>
+                                        <dd><?php echo substr($review['description'], 0, 100) . '...' ?></dd>
+                                            </a>
+                                    </dl>     
+                            </div>
+                        </div>
+                    <?php endforeach ?>
+
+                </div>
+
+                <div class="container block_two">
+                    <h1>Акции</h1>
+                    <?php foreach ($action_items as $item) : ?>
+                        <div class="card">
+                            <div class="face front">
+                                <?php if ($item['patch']) : ?>
+                                    <img src ="<?php echo '/images/item/small_' . trim($item['patch']) ?>">
+                                <?php else: ?>
+                                    <img src ="<?php echo '/img/small_item.png' ?>">
+                                <?php endif ?>
+                            </div>
+                            <div class="face back">
+                                <a href="<?php echo $this->url('items', array('action' => 'categories', 'id' => $item['category_id'])); ?>">
+                                    
+                                    <p><?php echo $item['name'] ?></p>
+                                    <dl>
+                                        <dt>АКЦИЯ!</dt>
+                                        <dd>-<?php echo $item['percentage'] ?></dd>
+
+                                            </a>
+                                    </dl>     
+                            </div>
+                        </div>
+                    <?php endforeach ?>
+
+                </div>
             </div>
         </div>
     </div>
 </div>
+

@@ -2,14 +2,14 @@
     <ul>
         <?php foreach ($this->container as $page): ?>
             <li>
-                <a href="<?php echo $page->getHref(); ?>" <?php echo ($page->isActive(true) ? 'class="active_main"' : ''); ?>>
+                <a href="<?php echo ($page->getHref())? $page->getHref() :'javascript:void(0)'; ?>" <?php echo ($page->isActive(true) ? 'class="active_main"' : ''); ?>>
                     <?php echo $page->getLabel(); ?>
                 </a>
                 <?php if (!empty($page->pages)): ?>
                     <ul>
                         <?php foreach ($page->pages as $subpage): ?>
                             <li>
-                                <a href="javascript:void(0)" ><?php echo $subpage->getLabel(); ?></a>
+                                <a href="<?php echo ($subpage->getHref())? $subpage->getHref() :'javascript:void(0)'; ?>" ><?php echo $subpage->getLabel(); ?></a>
                                 <?php if (!empty($subpage->pages)): ?>
                                     <ul >
                                         <?php foreach ($subpage->pages as $subsubpage): ?>

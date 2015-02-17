@@ -130,7 +130,7 @@ $('#cn-slideshow').slideshow();
         }
     })
     //Отзывы
-    $('button.showReviewsForm').click(function(){
+    $('.showReviewsForm').click(function(){
         var $this = $(this)
         if($('.review_form_add').hasClass('bounceIn')){
             $('.review_form_add').removeClass('bounceIn').addClass('bounceOut')

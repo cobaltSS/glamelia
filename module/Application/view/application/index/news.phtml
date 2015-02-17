@@ -5,20 +5,35 @@ $this->headTitle($title);
 <div id="content">
     <div class="center">               
         <div class="twoCol">
+            <div class="leftCol">
+                    <?php
+                    $partial = array('partial/category_menu.phtml', 'default');
+                    echo $this->navigation('cat_navigation')
+                            ->menu()
+                            ->setMinDepth(1)
+                            ->setMaxDepth(4)
+                            ->setRenderParents(false)
+                            ->setOnlyActiveBranch(true)
+                            ->setPartial($partial)
+                            ->render();
+                    ?>
+                </div>
             <div class="rightCol">
                 <div class="shop_title">
                     <h1><?php echo $this->escapeHtml($title); ?></h1>
                 </div>
-                <div class="publick_reviews">
+                <ul class="polaroids">
                     <?php foreach ($this->paginator as $news) : ?>
-                        <blockquote class="oval-speech-border">
+                        <li>
                             <a href="<?php echo $this->url('news', array('action' => 'new', 'id' => $news->id)); ?>">
-                                <p><?php echo $this->escapeHtml($news->name); ?></p>
-                                </a>
-                                <p><?php echo substr($news->description, 0, 500) . '...' ?></p>
-                        </blockquote>
+                                <h2><?php echo $this->escapeHtml($news->name); ?></h2>
+                                <p><?php echo substr($news->description, 0, 300) . '...' ?></p>
+                            </a>
+                        </li>
                     <?php endforeach; ?>
-                </div>
+                </ul>
+                <br class="clear">
+
             </div>
         </div>
     </div>

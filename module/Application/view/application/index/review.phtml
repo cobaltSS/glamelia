@@ -9,49 +9,69 @@ $form->prepare();
 <div id="content">
     <div class="center">               
         <div class="twoCol">
-            <div class="rightCol">
-                <div class="row" >
-                    <div class="col-lg-2 col-md-2 col-sm-2 reviewsTitle"><h1><?php echo $this->escapeHtml($title); ?></h1></div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-md-offset-5 col-sm-offset-2 col-lg-offset-7"><button class="btn btn-default showReviewsForm">Добавить +</button></div>
+            <div class="shop_block" style="height: 1000px;">
+                <div class="leftCol">
+                    <?php
+                    $partial = array('partial/category_menu.phtml', 'default');
+                    echo $this->navigation('cat_navigation')
+                            ->menu()
+                            ->setMinDepth(1)
+                            ->setMaxDepth(4)
+                            ->setRenderParents(false)
+                            ->setOnlyActiveBranch(true)
+                            ->setPartial($partial)
+                            ->render();
+                    ?>
                 </div>
-                <p class="bigLine"></p>
-                <div class="review_form_add animated" style="position: absolute;">
-                    <section>
 
-                        <?php
-                        echo $this->form()->openTag($form);
-                        echo $this->formHidden($form->get('id'));
-                        ?>
-                        <div class="form-group">
-                            <?php echo $this->formLabel($form->get('name')); ?>
-                            <?php echo $this->formElement($form->get('name')); ?>
-                            <?php echo $this->formElementErrors($form->get('name')); ?>
+                <div class="rightCol">
 
-                        </div>
-                        <div class="form-group">
-                            <?php echo $this->formLabel($form->get('phone')); ?>
-                            <?php echo $this->formElement($form->get('phone')); ?>
-                            <?php echo $this->formElementErrors($form->get('phone')); ?>
+                    <div class="title">
+                        <h1><?php echo $this->escapeHtml($title); ?></h1>
+                                              
+                    </div>
+                    <blockquote class="oval-quotes">
+				<p class="showReviewsForm">Нажмите сюда что бы оставить свои пожелания и благодарности!</p>
+			</blockquote>
 
-                        </div>
-                        <div class="form-group">
-                            <?php echo $this->formLabel($form->get('email')); ?>
-                            <?php echo $this->formElement($form->get('email')); ?>
-                            <?php echo $this->formElementErrors($form->get('email')); ?>
+                    
+                    <div class="review_form_add animated" style="position: absolute;">
+                        <section>
 
-                        </div>
-                        <div class="form-group">
-                            <?php echo $this->formLabel($form->get('description')); ?>
-                            <?php echo $this->formElement($form->get('description')); ?>
-                            <?php echo $this->formElementErrors($form->get('description')); ?>
-                        </div>
-                        <?php echo $this->formSubmit($form->get('submit')); ?>
-                        <?php echo $this->form()->closeTag(); ?>
+                            <?php
+                            echo $this->form()->openTag($form);
+                            echo $this->formHidden($form->get('id'));
+                            ?>
+                            <div class="form-group">
+                                <?php echo $this->formLabel($form->get('name')); ?>
+                                <?php echo $this->formElement($form->get('name')); ?>
+                                <?php echo $this->formElementErrors($form->get('name')); ?>
+
+                            </div>
+                            <div class="form-group">
+                                <?php echo $this->formLabel($form->get('phone')); ?>
+                                <?php echo $this->formElement($form->get('phone')); ?>
+                                <?php echo $this->formElementErrors($form->get('phone')); ?>
+
+                            </div>
+                            <div class="form-group">
+                                <?php echo $this->formLabel($form->get('email')); ?>
+                                <?php echo $this->formElement($form->get('email')); ?>
+                                <?php echo $this->formElementErrors($form->get('email')); ?>
+
+                            </div>
+                            <div class="form-group">
+                                <?php echo $this->formLabel($form->get('description')); ?>
+                                <?php echo $this->formElement($form->get('description')); ?>
+                                <?php echo $this->formElementErrors($form->get('description')); ?>
+                            </div>
+                            <?php echo $this->formSubmit($form->get('submit')); ?>
+                            <?php echo $this->form()->closeTag(); ?>
 
 
-                    </section>  
-                </div>
-                <div class="publick_reviews">
+                        </section>  
+                    </div>
+
                     <?php foreach ($this->paginator as $reviews) : ?>
                         <blockquote class="example-obtuse">
                             <p> 
@@ -59,16 +79,9 @@ $form->prepare();
                             </p>
                         </blockquote>
                         <p><?php echo $this->escapeHtml($reviews->name); ?></p>
-
                     <?php endforeach; ?>
-                </div>      
+                </div>
             </div>
         </div>
-
-
     </div>
-
-
-
-</div>
 </div>

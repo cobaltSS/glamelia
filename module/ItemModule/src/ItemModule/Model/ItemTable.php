@@ -123,6 +123,7 @@ class ItemTable {
         $select->from($this->table);
         $select->where($where);
         $select->limit((int) $limit);
+        $select->join('item_photo', "item_photo.id_item = item.id", array('patch'), 'left');
         $select->order($rand);
 
         $resultSet = $this->tableGateway->selectWith($select);

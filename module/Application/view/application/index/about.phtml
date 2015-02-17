@@ -1,82 +1,57 @@
 <div id="content">
     <div class="center">               
         <div class="twoCol">
-            <div class="rightCol">
-                <h1 class="reviewsTitle"><?php echo $this->escapeHtml($title); ?></h1>
-                <section>
-                    <dl class="zend_form">
-                        <?php
-                        echo $this->form()->openTag($form);
-                        echo $this->formHidden($form->get('id'));
-                        ?>
+            <div class="shop_block" style="height: 1000px;">
+                <div class="leftCol">
+                    <?php
+                    $partial = array('partial/category_menu.phtml', 'default');
+                    echo $this->navigation('cat_navigation')
+                            ->menu()
+                            ->setMinDepth(1)
+                            ->setMaxDepth(4)
+                            ->setRenderParents(false)
+                            ->setOnlyActiveBranch(true)
+                            ->setPartial($partial)
+                            ->render();
+                    ?>
+                </div>
+                <div class="rightCol">
+                    <div class="title">
+                        <h1>Наши координаты</h1>
+                    </div>
+                    <div class="note taupe">
+                        <p> <span>Наименование предприятия:</span>
+                        <?php echo $about->name ?> </p>
 
-                        <dt><?php echo $this->formLabel($form->get('name')); ?></dt>
-                        <dd>
-                            <?php echo $this->formElement($form->get('name')); ?>
-                            <?php echo $this->formElementErrors($form->get('name')); ?>
-                        </dd>
+                         <p><span>Адрес:</span>
+                        <?php echo $about->address ?> </p>
 
+                        <p> <span>Расчетный счет:</span>
+                        <?php echo $about->current_account ?> </p>
 
-                        <dt><?php echo $this->formLabel($form->get('address')); ?></dt>
-                        <dd>
-                            <?php echo $this->formElement($form->get('address')); ?>
-                            <?php echo $this->formElementErrors($form->get('address')); ?>
-                        </dd>
+                        <p><span>Информация о банке:</span>
+                        <?php echo $about->bank_info ?></p>
 
-                        <dt><?php echo $this->formLabel($form->get('current_account')); ?></dt>
-                        <dd>
-                            <?php echo $this->formElement($form->get('current_account')); ?>
-                            <?php echo $this->formElementErrors($form->get('current_account')); ?>
-                        </dd>
+                        <p><span>УНП:</span>
+                        <?php echo $about->unp ?></p>
 
-                        <dt><?php echo $this->formLabel($form->get('bank_info')); ?></dt>
-                        <dd>
-                            <?php echo $this->formElement($form->get('bank_info')); ?>
-                            <?php echo $this->formElementErrors($form->get('bank_info')); ?>
-                        </dd>
+                        <p><span>ОКПО:</span>
+                        <?php echo $about->okpo ?></p>
 
-                        <dt><?php echo $this->formLabel($form->get('unp')); ?></dt>
-                        <dd>
-                            <?php echo $this->formElement($form->get('unp')); ?>
-                            <?php echo $this->formElementErrors($form->get('unp')); ?>
-                        </dd>
+                        <p><span>Телефон:</span>
+                        <?php echo $about->tel ?></p>
 
-                        <dt><?php echo $this->formLabel($form->get('okpo')); ?></dt>
-                        <dd>
-                            <?php echo $this->formElement($form->get('okpo')); ?>
-                            <?php echo $this->formElementErrors($form->get('okpo')); ?>
-                        </dd>
+                        <p><span>Email:</span>
+                        <?php echo $about->email ?></p>
 
+                        <p><span>Директор:</span>
+                        <?php echo $about->director ?></p>
 
+                        <h2>О предприятии:</h2>
+                        <p><?php echo $about->description ?></p>
 
-
-                        <dt><?php echo $this->formLabel($form->get('tel')); ?></dt>
-                        <dd>
-                            <?php echo $this->formElement($form->get('tel')); ?>
-                            <?php echo $this->formElementErrors($form->get('tel')); ?>
-                        </dd>
-
-                        <dt><?php echo $this->formLabel($form->get('email')); ?></dt>
-                        <dd>
-                            <?php echo $this->formElement($form->get('email')); ?>
-                            <?php echo $this->formElementErrors($form->get('email')); ?>
-                        </dd>
-
-                        <dt><?php echo $this->formLabel($form->get('director')); ?></dt>
-                        <dd>
-                            <?php echo $this->formElement($form->get('director')); ?>
-                            <?php echo $this->formElementErrors($form->get('director')); ?>
-                        </dd>
-
-                        <dt><?php echo $this->formLabel($form->get('description')); ?></dt>
-                        <dd>
-                            <?php echo $this->formElement($form->get('description')); ?>
-                            <?php echo $this->formElementErrors($form->get('description')); ?>
-                        </dd>
-                        <?php echo $this->form()->closeTag(); ?>
-
-                    </dl>
-                </section>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

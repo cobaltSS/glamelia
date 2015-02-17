@@ -23,12 +23,12 @@ class IndexController extends AbstractActionController {
     
     
     protected $photoItemTable;
-    public $limit = '5';
+    public $limit = '4';
 
     public function indexAction() {
-        $reviews = $this->getReviewsTable()->getReviewsRandom($this->limit,array('status'=>1));
+        $reviews = $this->getReviewsTable()->getReviewsRandom('3',array('status'=>1));
         $action_items = $this->getItemTable()->getActionItemsRandom(array('action' => '1'), $this->limit);
-        $items = $this->getItemTable()->getItems('12',array('item.status'=>1));
+        $items = $this->getItemTable()->getItems($this->limit,array('item.status'=>1,'item.action'=>0));
         $shops = $this->getShopTable()->getShops(array('shop.status'=>'1'));
         $news = $this->getNewsTable()->getNewsRandom($this->limit,array('status'=>'1'));
 //print_R($shops);
@@ -283,10 +283,8 @@ $patch=array();
     public function aboutAction() {
 
         $about = $this->getAboutTable()->getAbout();
-        $form = new AboutForm();
-        $form->bind($about);
         return array(
-            'form' => $form,
+            'about' => $about,
         );
     }
 
