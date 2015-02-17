@@ -56,8 +56,14 @@
                                             <img src ="<?php echo '/img/big_item.png' ?>" alt="image0<?php echo $i ?>">
                                         <?php } ?>
                                         <div>
-                                            <h3><?php echo $item['name'] ?></h3>
-                                            <p><?php echo $item['description'] ?></p>
+                                            <h3>
+                                                <?php echo $this->escapeHtml($item['name']) ?>
+                                            </h3>
+
+                                                <?php if ($item['action']): ?>
+                                                    <p>(Скидка - <?php echo $item['percentage'] ?>%)</p>
+                                                <?php endif ?>
+
                                         </div>
                                         <a href="#page" class="lb-close">x Close</a>
                                     </div>

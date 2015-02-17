@@ -61,7 +61,7 @@ form#reviews{}
 
 .shop_title{padding-top: 50px}
 .shop_block{height: 1000px;}
-.shop_block h3{margin: 30px 0 10px 65px;}
+//.shop_block h3{margin: 30px 0 10px 65px;}
 .map_block{margin: 10px 50px 50px 50px;}
 
 #map_canvas { height: 100% }
@@ -73,12 +73,12 @@ form#reviews{}
     float:left;
 }
 .work_day{background-color:#E43960; 
-         width: 30px;
-         height: 15px;
-         padding:10px;
-         cursor:pointer;
-         display: inline-block; 
-         margin-left: 5px; }
+          width: 30px;
+          height: 15px;
+          padding:10px;
+          cursor:pointer;
+          display: inline-block; 
+          margin-left: 5px; }
 
 form#reviews textarea{width: 97%;}
 form#reviews label{font-weight: bold}
@@ -92,8 +92,8 @@ form#reviews input[type="submit"], form#reviews input[type="button"]{width: 39%;
                  margin: 10px;
 }
 .showReviewsForm{
-                 font-size: 60px;
-                 cursor:pointer;
+    font-size: 60px;
+    cursor:pointer;
 
 }
 .dopMenuUl{}
@@ -333,7 +333,7 @@ h2{font: normal 24px/20px 'Pudelina'; margin: 26px 0 15px;}
 .requirements h2{margin: 10px 0 24px;}
 .requirements p{margin: 9px 0 10px;}
 
-h3{font: 18px/14px 'Pudelina';}
+//h3{font: 18px/14px 'Pudelina';}
 .numverEditWork{float: right;}
 .addWork textarea{width: 400px; min-height: 66px; resize: vertical;}
 .addWork .line{width: 800px; margin: 30px 0 30px -170px;}
@@ -1621,8 +1621,8 @@ fieldset[disabled] .btn-default.active {
     font-size: 30px;
     -webkit-box-shadow: 2px 2px 4px #3C1313;
     background:#E43960;
-     position: absolute;
-     text-align: center;
+    position: absolute;
+    text-align: center;
 }
 
 .lb-album li > a,
@@ -1631,6 +1631,7 @@ fieldset[disabled] .btn-default.active {
 }
 .lb-album li > a{
     width: 150px;
+    overflow: hidden; 
     height: 150px;
     position: relative;
     padding: 10px 10px 60px 10px;
@@ -1707,22 +1708,23 @@ fieldset[disabled] .btn-default.active {
     -ms-transition: opacity 0.3s linear 1.3s;
     transition: opacity 0.3s linear 1.3s;
 }
-.lb-overlay div h3,
+
 .lb-overlay div p{
-    padding: 0px 20px;
-    width: 200px;
-    height: 60px;
+    color: #E43960;
+    font-size: 30px;
+
+
 }
 .lb-overlay div h3{
     font-size: 36px;
     float: left;
     text-align: right;
-    border-right: 1px solid rgba(27,54,81,0.4);
+  //  border-right: 1px solid rgba(27,54,81,0.4);
 }
 .lb-overlay div h3 span,
 .lb-overlay div p{
     font-size: 16px;
-    font-family: Constantia, Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+    
     font-style: italic;
 }
 .lb-overlay div h3 span{
@@ -1909,7 +1911,7 @@ ul.nav_cat li a:hover,ul.nav_sub li a:hover {
     text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.6);
 }
 #nav ul li a.active_menu{
-   color: #252525;
+    color: #252525;
     background:#3C4042;
     background: -webkit-gradient( linear, left bottom, left top, color-stop(0.09, rgb(77,79,79)), color-stop(0.55, rgb(67,70,71)), color-stop(0.78, rgb(69,70,71)) );
     background: -moz-linear-gradient( center bottom, rgb(77,79,79) 9%, rgb(67,70,71) 55%, rgb(69,70,71) 78% );
@@ -2104,7 +2106,7 @@ h1 span{
     position: relative;
     margin: 0 auto;
     background: #fff;
-    border-top: 5px solid #d0ab47;
+    // border-top: 5px solid #d0ab47;
     -webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
@@ -2138,7 +2140,7 @@ h1 span{
 }
 .cn-bar{
     background: transparent url(../img/bar.png) repeat top left;
-    height: 74px;
+    height: 20%;
     position: absolute;
     bottom: 0px;
     right: 50px;
@@ -2794,61 +2796,61 @@ ol.code code { background: none; }
 
 
 //about
- /* == FOLDED CORNERS */
+/* == FOLDED CORNERS */
 
-      .note {
-          position:relative;
-          width:480px;
-          padding:1em 1.5em;
-          margin:2em auto;
-          color:#fff;
-          background:#97C02F;
-          overflow:hidden;
-      }
+.note {
+    position:relative;
+    width:480px;
+    padding:1em 1.5em;
+    margin:2em auto;
+    color:#fff;
+    background:#97C02F;
+    overflow:hidden;
+}
 
-      .note:before {
-          content:"";
-          position:absolute;
-          top:0;
-          right:0;
-          border-width:0 16px 16px 0; /* This trick side-steps a webkit bug */
-          border-style:solid;
-          border-color:#fff #fff #ebebeb #ebebeb; /* A bit more verbose to work with .rounded too */
-          background:#ebebeb; /* For when also applying a border-radius */
-          display:block; width:0; /* Only for Firefox 3.0 damage limitation */
-          /* Optional: shadow */
-          -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
-          -moz-box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
-          box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
-      }
+.note:before {
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    border-width:0 16px 16px 0; /* This trick side-steps a webkit bug */
+    border-style:solid;
+    border-color:#fff #fff #ebebeb #ebebeb; /* A bit more verbose to work with .rounded too */
+    background:#ebebeb; /* For when also applying a border-radius */
+    display:block; width:0; /* Only for Firefox 3.0 damage limitation */
+    /* Optional: shadow */
+    -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+    -moz-box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+    box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+}
 
-      
 
-      .note.taupe {background:#ebebeb;}
-      .note.taupe:before {border-color:#fff #fff #ebebeb #ebebeb; background:#ebebeb;}
 
-      /* ROUNDED CORNERS VERSION
-       * All modern browsers can produce this effect with a single pseudo-element.
-       * However, they all have bugs (mainly to do with border-radius) that make this a bit tricky.
-       * As far as I can tell, this is the only cross-browser method for the moment.
-       * Can't use this method for the simple effect because Opera 11 will only show backgrounds
-       * through transparent borders if there is a border-radius applied.
-       */
+.note.taupe {background:#ebebeb;}
+.note.taupe:before {border-color:#fff #fff #ebebeb #ebebeb; background:#ebebeb;}
 
-      .note.rounded {
-          -webkit-border-radius:5px 0 5px 5px;
-          -moz-border-radius:5px 0 5px 5px;
-          border-radius:5px 0 5px 5px;
-      }
+/* ROUNDED CORNERS VERSION
+ * All modern browsers can produce this effect with a single pseudo-element.
+ * However, they all have bugs (mainly to do with border-radius) that make this a bit tricky.
+ * As far as I can tell, this is the only cross-browser method for the moment.
+ * Can't use this method for the simple effect because Opera 11 will only show backgrounds
+ * through transparent borders if there is a border-radius applied.
+ */
 
-      .note.rounded:before {
-          border-width:8px; /* Triggers a 1px 'step' along the diagonal in Safari 5 (and Chrome 10) */
-          border-color:#fff #fff transparent transparent; /* Avoids the 1px 'step' in webkit. Background colour shows through */
-          -webkit-border-bottom-left-radius:5px;
-          -moz-border-radius:0 0 0 5px;
-          border-radius:0 0 0 5px;
-      }
+.note.rounded {
+    -webkit-border-radius:5px 0 5px 5px;
+    -moz-border-radius:5px 0 5px 5px;
+    border-radius:5px 0 5px 5px;
+}
 
-      .note p {margin:0;}
-      .note p span {color:#7B0C0C}
-      .note p + p {margin:1.5em 0 0;}
+.note.rounded:before {
+    border-width:8px; /* Triggers a 1px 'step' along the diagonal in Safari 5 (and Chrome 10) */
+    border-color:#fff #fff transparent transparent; /* Avoids the 1px 'step' in webkit. Background colour shows through */
+    -webkit-border-bottom-left-radius:5px;
+    -moz-border-radius:0 0 0 5px;
+    border-radius:0 0 0 5px;
+}
+
+.note p {margin:0;}
+.note p span {color:#7B0C0C}
+.note p + p {margin:1.5em 0 0;}
