@@ -26,7 +26,7 @@ h1 {
     font-size: 50px;
     line-height: 80px;
     text-transform: uppercase;
-   // text-shadow: 4px 4px 0 #566074, 7px 7px 0 ;
+    // text-shadow: 4px 4px 0 #566074, 7px 7px 0 ;
     color: #7B0C0C;
 }
 
@@ -240,8 +240,8 @@ input.error{border-color: #da0029 !important;}
 .serviceMessage > div{display: table-cell; font-size: 14px; color: #222222; width: 980px; height: 400px; text-align: center; vertical-align: middle;}
 
 .twoCol{clear: both;}
-.leftCol{float: left; width: 140px; height: 100%; background: #E43960; padding: 0 0 6px; margin: -6px 0;}
-.rightCol{width: 800px; margin-left: 180px; color: #222222; min-height: 500px;}
+.leftCol{float: left; width: 160px; height: 100%; background: #E43960; padding: 0 0 6px; margin: -6px 0;}
+.rightCol{width: 800px; margin-left: 200px; color: #222222; min-height: 500px;}
 .bigLine{width: 100%; height: 4px; background: #000; margin: 7px 0 35px;}
 .padding100{padding-left: 100px;}
 /*.rightCol h1{margin: 20px 0;}*/
@@ -1719,12 +1719,12 @@ fieldset[disabled] .btn-default.active {
     font-size: 36px;
     float: left;
     text-align: right;
-  //  border-right: 1px solid rgba(27,54,81,0.4);
+    //  border-right: 1px solid rgba(27,54,81,0.4);
 }
 .lb-overlay div h3 span,
 .lb-overlay div p{
     font-size: 16px;
-    
+
     font-style: italic;
 }
 .lb-overlay div h3 span{
@@ -2388,7 +2388,7 @@ a.cn-nav-next{
     -webkit-border-radius: 5%;
     -moz-border-radius: 5%;
     border-radius: 5%;
-   // text-shadow: 0 1px 1px #f5f5f5;
+    // text-shadow: 0 1px 1px #f5f5f5;
 }
 .block_two dl dt {
     float: left; clear: both;
@@ -2452,7 +2452,7 @@ a.cn-nav-next{
 .block_three p {
     float: left; width: 300px; 
     font-size: 20px; color: #910505; 
-    
+
 }
 .block_three dl {
     font-size: 23px;
@@ -2462,12 +2462,12 @@ a.cn-nav-next{
     height: 80%;
     overflow: hidden; 
     background: #D5435E repeat-y;
-        
+
     -webkit-border-radius: 5%;
     -moz-border-radius: 5%;
     border-radius: 5%;
 
-   
+
     // text-shadow: 0 1px 1px #f5f5f5;
 }
 .block_three dl dt {
@@ -2478,30 +2478,11 @@ a.cn-nav-next{
     //float: right;
 }
 
-////
-///
+
 //shop slider//
-
-.sp-slideshow {
-    position: relative;
-    margin: 10px auto;
-    width: 80%;
-    max-width: 1000px;
-    min-width: 260px;
-    height: 460px;
-    border: 10px solid #fff;
-    border: 10px solid rgba(255,255,255,0.9);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+.sp-arrow:hover{
+    opacity: 1;
 }
-
-.sp-content {
-    //background: #7d7f72 url(images/grid.png) repeat scroll 0 0;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
 .sp-parallax-bg {
     //background: url(images/map.png) repeat-x scroll 0 0;
     -webkit-background-size: cover;
@@ -2510,6 +2491,25 @@ a.cn-nav-next{
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.sp-slideshow {
+    position: relative;
+    margin: 10px auto;
+  //  width: 80%;
+   // max-width: 1000px;
+  //  min-width: 260px;
+    //height: 460px;
+    border: 10px solid #fff;
+    border: 10px solid rgba(255,255,255,0.9);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.sp-content {
+    //background: #7d7f72 url(images/grid.png) repeat scroll 0 0;
+    position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -2571,7 +2571,7 @@ a.cn-nav-next{
 .sp-arrow {
     position: absolute;
     top: 50%;
-    width: 28px;
+    width: 24px;
     height: 38px;
     margin-top: -19px;
     display: none;
@@ -2693,7 +2693,7 @@ input.sp-selector-5:checked ~ .sp-content .sp-parallax-bg {
     -ms-box-sizing: border-box;
     box-sizing: border-box;
     height: 100%;
-    padding: 0 60px;
+    //padding: 0 60px;
     float: left;
     text-align: center;
     opacity: 0.4;
@@ -2711,7 +2711,7 @@ input.sp-selector-5:checked ~ .sp-content .sp-parallax-bg {
     box-sizing: border-box;
     display: block;
     margin: 0 auto;
-    padding: 40px 0 50px 0;
+   // padding: 40px 0 50px 0;
     max-height: 100%;
     max-width: 100%;
 }
@@ -2824,17 +2824,6 @@ ol.code code { background: none; }
 
 //about
 /* == FOLDED CORNERS */
-
-.note {
-    position:relative;
-    width:480px;
-    padding:1em 1.5em;
-    margin:2em auto;
-    color:#fff;
-    background:#97C02F;
-    overflow:hidden;
-}
-
 .note:before {
     content:"";
     position:absolute;
@@ -2851,10 +2840,37 @@ ol.code code { background: none; }
     box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
 }
 
+.note {
+    position:relative;
+    //width:480px;
+    padding: 20px;
+    margin:2em auto;
+    font-size:25px;
+    height: 700px;
+    overflow: auto;
+    background:#ebebeb;
+    text-align: center;
+
+}
+
+.note h2{
+    font: 30px font2;
+}
 
 
 .note.taupe {background:#ebebeb;}
-.note.taupe:before {border-color:#fff #fff #ebebeb #ebebeb; background:#ebebeb;}
+.note.taupe:before {border-color:#ECD4D4 #ECD4D4 #ebebeb #ebebeb; 
+                    background:#ebebeb;content:"";
+                    position:absolute;
+                    top:0;
+                    right:0;
+                    border-width:0 16px 16px 0; /* This trick side-steps a webkit bug */
+                    border-style:solid;
+                    display:block; width:0; /* Only for Firefox 3.0 damage limitation */
+                    /* Optional: shadow */
+                    -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+                    -moz-box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+                    box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);}
 
 /* ROUNDED CORNERS VERSION
  * All modern browsers can produce this effect with a single pseudo-element.

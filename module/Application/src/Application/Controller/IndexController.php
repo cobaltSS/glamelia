@@ -20,25 +20,22 @@ class IndexController extends AbstractActionController {
     protected $itemTable;
     protected $aboutTable;
     protected $newsTable;
-    
-    
     protected $photoItemTable;
     public $limit = '4';
 
     public function indexAction() {
-        $reviews = $this->getReviewsTable()->getReviewsRandom('3',array('status'=>1));
+        $reviews = $this->getReviewsTable()->getReviewsRandom('3', array('status' => 1));
         $action_items = $this->getItemTable()->getActionItemsRandom(array('action' => '1'), $this->limit);
-        $items = $this->getItemTable()->getItems($this->limit,array('item.status'=>1,'item.action'=>0));
-        $shops = $this->getShopTable()->getShops(array('shop.status'=>'1'));
-        $news = $this->getNewsTable()->getNewsRandom($this->limit,array('status'=>'1'));
-//print_R($shops);
-//die();
+        $items = $this->getItemTable()->getItems($this->limit, array('item.status' => 1, 'item.action' => 0));
+        $shops = $this->getShopTable()->getShops(array('shop.status' => '1'));
+        $news = $this->getNewsTable()->getNewsRandom($this->limit, array('status' => '1'));
+
         return array(
             'reviews' => $reviews,
             'action_items' => $action_items,
             'items' => $items,
             'shops' => $shops,
-            'news'=>$news,
+            'news' => $news,
         );
     }
 
@@ -60,17 +57,16 @@ class IndexController extends AbstractActionController {
         }
 
 
-$patch=array();
+        $patch = array();
         if ($shop->patch) {
             $patch = explode(',', $shop->patch);
         }
-        
+
         return array(
             'id' => $id,
             'shop' => $shop,
             'photos' => $patch,
             'key_map' => $this->getkeyApiLocation(),
-
         );
     }
 
@@ -95,9 +91,9 @@ $patch=array();
             'item' => $item,
         );
     }
-    
+
     public function newAction() {
-       
+
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
             return $this->redirect()->toRoute('home', array(
@@ -114,10 +110,10 @@ $patch=array();
             'new' => $new,
         );
     }
-    
-     public function newsAction() {
-       $where=array('status'=>1);
-       $paginator = $this->getNewsTable()->fetchAll(true,$where);
+
+    public function newsAction() {
+        $where = array('status' => 1);
+        $paginator = $this->getNewsTable()->fetchAll(true, $where);
         // set the current page to what has been passed in query string, or to 1 if none set
         $paginator->setCurrentPageNumber((int) $this->params()->fromQuery('page', 1));
         // set the number of items per page to 10
@@ -133,9 +129,9 @@ $patch=array();
     public function categoriesAction() {
         $id_cat = (int) $this->params()->fromRoute('id', 0);
         $id_sub = (int) $this->params()->fromRoute('id_sub', 0);
-        $action= (int) $this->params()->fromQuery('action');
+        $action = (int) $this->params()->fromQuery('action');
 
-        if (!$id_cat && !$id_sub&& !$action) {
+        if (!$id_cat && !$id_sub && !$action) {
             return $this->redirect()->toRoute('home', array(
             ));
         }
@@ -146,7 +142,7 @@ $patch=array();
             else if ($id_sub)
                 $items = $this->getItemTable()->getItems2SubCategory($id_sub);
             else if ($action)
-                $items = $this->getItemTable()->getItems(false,array('action'=>1));
+                $items = $this->getItemTable()->getItems(false, array('action' => 1));
         } catch (\Exception $ex) {
             return $this->redirect()->toRoute('home', array(
             ));
@@ -261,8 +257,8 @@ $patch=array();
                 return $this->redirect()->toRoute('review');
             }
         }
-        $where=array('status'=>1);
-        $paginator = $this->getReviewsTable()->fetchAll(true,$where);
+        $where = array('status' => 1);
+        $paginator = $this->getReviewsTable()->fetchAll(true, $where);
         // set the current page to what has been passed in query string, or to 1 if none set
         $paginator->setCurrentPageNumber((int) $this->params()->fromQuery('page', 1));
         // set the number of items per page to 10
@@ -298,7 +294,7 @@ $patch=array();
         }
         return $this->aboutTable;
     }
-    
+
     // connect Reviews table
     public function getNewsTable() {
         if (!$this->newsTable) {
@@ -307,7 +303,5 @@ $patch=array();
         }
         return $this->newsTable;
     }
-    
-    
 
 }
