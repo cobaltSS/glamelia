@@ -29,7 +29,7 @@
 </script>
 <div id="content">
     <div class="center">
-        <div class="shop_block" style="height: 1000px;">
+        <div class="shop_block" style="height: 1300px;">
 
             <div class="wrapper">
                 <div id="cn-slideshow" class="cn-slideshow">
@@ -82,7 +82,7 @@
 <?php foreach ($reviews as $review) : ?>
                         <div class="card">
                             <div class="face back">
-                                <a href="<?php echo $this->url('reviews'); ?>">
+                                <a href="<?php echo $this->url('review',array('action' => 'review')); ?>">
                                     <p><?php echo $review['name'] ?></p>
                                     <dl>
                                         <dd><?php echo substr($review['description'], 0, 100) . '...' ?></dd>
