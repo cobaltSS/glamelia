@@ -28,6 +28,7 @@ return array(
                     ),
                 ),
             ),
+            
             'shops' => array(
                 'type' => 'segment',
                 'options' => array(
@@ -42,6 +43,7 @@ return array(
                     ),
                 ),
             ),
+            
             'items' => array(
                 'type' => 'segment',
                 'options' => array(

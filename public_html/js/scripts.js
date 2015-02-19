@@ -50,14 +50,25 @@ function alignPopup(selector)
 }
 
 $(document).ready(function () {
-    $('#cn-slideshow').slideshow();
-    $('.btn-close').click(function () {
-         $('.review_form_add').removeClass('bounceIn').addClass('bounceOut');
-    } );
     
-
-
+     //Active menu
+    var url= window.location.pathname.split('/');
+    var find=false;
+     $('div#nav .head_menu').each(function(){
+        if (this.href.indexOf('/'+url[1]) != -1 || $(this).parent('li').find('a[href*="'+url[1]+'"]').length>0) {
+            $(this).addClass('active_menu');
+            find=true;
+        }
+        if(find) return false;
+  });
+  
+   
+    $('#cn-slideshow').slideshow();
+      
     //Отзывы
+     $('.btn-close').click(function () {
+        $('.review_form_add').removeClass('bounceIn').addClass('bounceOut');
+    });
     $('.showReviewsForm').click(function () {
         var $this = $(this)
         if ($('.review_form_add').hasClass('bounceIn')) {
@@ -66,18 +77,19 @@ $(document).ready(function () {
         else {
 
             $('.review_form_add').removeClass('bounceOut').addClass('bounceIn').show().focus();
-            
+
             $("#reviews :input[type='text'],input[type='email'],textarea").each(function () {
                 $(this).val('');
             });
-            
+
             alignPopup('.review_form_add');
 
             if ($('.review_form_add').is(":visible"))
                 $('.review_form_add').click();
         }
     });
-
+    
+       
     //Переключение типа поля
     $('.eye').click(function () {
         if ($(this).hasClass('active')) {
