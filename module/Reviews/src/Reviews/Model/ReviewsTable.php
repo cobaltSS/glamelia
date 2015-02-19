@@ -56,7 +56,7 @@ class ReviewsTable {
             'phone' => $reviews->phone,
             'email' => $reviews->email,
             'description' => $reviews->description,
-            'status' => $reviews->status,
+            'status' => (int)$reviews->status,
             'date' => date("Y-m-d H:i:s"),
         );
 
@@ -82,11 +82,12 @@ class ReviewsTable {
         return $resultSet->toArray();
     }
 
-    public function getReviewsRandom($limit) {
+    public function getReviewsRandom($limit,$where) {
         $rand = new \Zend\Db\Sql\Expression('RAND()');
 
         $select = new Select;
         $select->from('reviews');
+        $select->where($where);
         $select->limit((int)$limit);
         $select->order($rand);
         

@@ -22,6 +22,9 @@ img{border: none;}
 a{border: none; outline:none; text-decoration: none; color: #c2c2c2;}
 a:hover{text-decoration: none;}
 
+.error403 {color: #84473F; font: 40px font2,Arial,Tahoma,Verdana,sans-serif;}
+.error {color: #84473F; font: 18px font2,Arial,Tahoma,Verdana,sans-serif;}
+
 h1 {
     font-size: 50px;
     line-height: 80px;
@@ -40,7 +43,7 @@ li{display: inline-block;}
 #body{min-width: 1000px; display: block; min-height: 100%; padding-top: 0;  color: #969696; margin-bottom: -105px;}
 .index #body{padding-bottom: 0; margin-bottom: 0;}
 .blackSquad{position: absolute;z-index: -1;top: 45px;left: 60%;width: 40%;height: 700px;background: #2d2d2d;}
-#header{height: 168px; padding: 0; width: 100%;}
+#header{height: 60px; padding: 0; width: 100%;}
 .index #header{height: 180px;}
 #header .center{position: relative; height: 100%;}
 .index #header .center{background: none;}
@@ -58,6 +61,22 @@ a .active_main{background: #da0029; color: #fff;}
 
 .reviewsTitle{height: 0px;padding-top: 65px;}
 form#reviews{}
+
+.review_form_add .btn-close
+{
+    width: 17px;
+    height: 16px;
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    color: black;
+    font-size: 15px;
+    background: url('../img/popup-close.png') 50% 0% no-repeat;
+}
+.review_form_add .btn-close:hover
+{
+    background: url('../img/popup-close.png') 50% 100% no-repeat;
+}
 
 .shop_title{padding-top: 50px}
 .shop_block{height: 1000px;}
@@ -1723,8 +1742,7 @@ fieldset[disabled] .btn-default.active {
 }
 .lb-overlay div h3 span,
 .lb-overlay div p{
-    font-size: 16px;
-
+    font-size: 20px;
     font-style: italic;
 }
 .lb-overlay div h3 span{

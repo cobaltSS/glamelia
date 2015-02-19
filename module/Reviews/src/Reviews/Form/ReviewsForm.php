@@ -47,6 +47,7 @@ class ReviewsForm extends Form {
             ),
             'attributes' => array(
                 'class' => 'form-control',
+                 'id' => 'email',
                 'placeholder' => 'Электронный адрес',
             ),
         ));
@@ -59,6 +60,7 @@ class ReviewsForm extends Form {
             ),
             'attributes' => array(
                 'class' => 'form-control',
+                'id' => 'rew',
                 'placeholder' => 'Оставьте здесь ваш отзыв',
             ),
         ));

@@ -3,10 +3,9 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
 use Reviews\Model\Reviews;
 use Reviews\Form\ReviewsForm;
-use About\Form\AboutForm;
-use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController {
 
@@ -24,7 +23,7 @@ class IndexController extends AbstractActionController {
     public $limit = '4';
 
     public function indexAction() {
-        $reviews = $this->getReviewsTable()->getReviewsRandom('3', array('status' => 1));
+        $reviews = $this->getReviewsTable()->getReviewsRandom('2', array('status' => '1'));
         $action_items = $this->getItemTable()->getActionItemsRandom(array('action' => '1'), $this->limit);
         $items = $this->getItemTable()->getItems($this->limit, array('item.status' => 1, 'item.action' => 0));
         $shops = $this->getShopTable()->getShops(array('shop.status' => '1'));
@@ -247,15 +246,13 @@ class IndexController extends AbstractActionController {
 
         $request = $this->getRequest();
         if ($request->isPost()) {
-            $reviews = new Reviews();
-            $form->setInputFilter($reviews->getInputFilter());
-            $form->setData($request->getPost());
-            if ($form->isValid()) {
+             $reviews = new Reviews();
+           $form->setInputFilter($reviews->getInputFilter());
+           $form->setData($request->getPost());
+           if ($form->isValid()) {
                 $reviews->exchangeArray($form->getData());
-                $this->getReviewsTable()->saveReviews($reviews);
-                // Redirect to  review
-                return $this->redirect()->toRoute('review');
-            }
+            $this->getReviewsTable()->saveReviews($reviews);
+           }
         }
         $where = array('status' => 1);
         $paginator = $this->getReviewsTable()->fetchAll(true, $where);

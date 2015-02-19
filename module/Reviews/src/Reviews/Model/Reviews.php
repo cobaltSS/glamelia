@@ -93,7 +93,7 @@ class Reviews implements InputFilterAwareInterface {
 
             $inputFilter->add(array(
                 'name' => 'status',
-                'required' => true,
+                'required' => false,
                 'filters' => array(
                     array('name' => 'Int'),
                 ),

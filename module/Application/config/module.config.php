@@ -8,6 +8,14 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 return array(
+    
+    'controllers' => array(
+        'invokables' => array(
+            'Application\Controller\Index' => 'Application\Controller\IndexController'
+        ),
+    ),
+    
+    
     'router' => array(
         'routes' => array(
             'home' => array(
@@ -65,12 +73,13 @@ return array(
             'about' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '[/:action]',
+                    'route' => '/about',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                     ),
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
                         'action' => 'index',
                     ),
                 ),
@@ -327,11 +336,7 @@ return array(
             ),
         ),
     ),
-    'controllers' => array(
-        'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
-        ),
-    ),
+    
     'module_config' => array(
         'key_map' => 'AIzaSyBzkHsMvKJuoRI_bfNnWqb070Gr30WNbOY',
     //'key_map' => 'AIzaSyB60oeZayvUJM36_ygEfnKLybrTSrKUv0o',

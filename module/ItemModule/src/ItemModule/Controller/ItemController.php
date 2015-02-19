@@ -385,7 +385,7 @@ class ItemController extends AbstractActionController {
         $thumbnailer = $this->getServiceLocator()->get('WebinoImageThumb');
         $thumb_small = $thumbnailer->create($filename, $options = array());
         $thumb_big = $thumbnailer->create($filename, $options = array());
-        $thumb_big->adaptiveResize(700, 280);
+        $thumb_big->adaptiveResize(600, 600);
         $thumb_big->save($big_filename);
 
         $thumb_small->adaptiveResize(140, 140);

@@ -36,6 +36,7 @@ $form->prepare();
 
                     
                     <div class="review_form_add animated" style="position: absolute;">
+                         <a class="btn-close" href="javascript:void(0)" style="margin-top: 8px;"></a>
                         <section>
 
                             <?php
@@ -44,28 +45,33 @@ $form->prepare();
                             ?>
                             <div class="form-group">
                                 <?php echo $this->formLabel($form->get('name')); ?>
+                                <div class="error"></div>
                                 <?php echo $this->formElement($form->get('name')); ?>
-                                <?php echo $this->formElementErrors($form->get('name')); ?>
+                                
 
                             </div>
                             <div class="form-group">
                                 <?php echo $this->formLabel($form->get('phone')); ?>
+                                <div class="error"></div>
                                 <?php echo $this->formElement($form->get('phone')); ?>
-                                <?php echo $this->formElementErrors($form->get('phone')); ?>
+                                
 
                             </div>
                             <div class="form-group">
                                 <?php echo $this->formLabel($form->get('email')); ?>
+                                <div class="error"></div>
                                 <?php echo $this->formElement($form->get('email')); ?>
-                                <?php echo $this->formElementErrors($form->get('email')); ?>
+                                
 
                             </div>
                             <div class="form-group">
                                 <?php echo $this->formLabel($form->get('description')); ?>
+                                <div class="error"></div>
                                 <?php echo $this->formElement($form->get('description')); ?>
-                                <?php echo $this->formElementErrors($form->get('description')); ?>
+                                
                             </div>
-                            <?php echo $this->formSubmit($form->get('submit')); ?>
+                            <input type="hidden" name="status" value="hidden">
+                            <input type="button" class="btn btn-danger" onClick="ValidateRew()" value="Добавить">
                             <?php echo $this->form()->closeTag(); ?>
 
 

@@ -65,7 +65,7 @@
                             </div>
 
                             <div class="face back">
-                                <h2><a href="<?php echo $this->url('items', array('action' => 'categories', 'id' => $item['category_id'])); ?>">
+                                <h2><a href="<?php echo $this->url('categories', array('action' => 'categories', 'id' => $item['category_id'])); ?>">
                                         <p> <?php echo $item['name'] ?></p>
                                     </a></h2>
                                 <p><?php echo $item['description'] ?></p>
@@ -106,7 +106,7 @@
     <?php endif ?>
                             </div>
                             <div class="face back">
-                                <a href="<?php echo $this->url('items', array('action' => 'categories', 'id' => $item['category_id'])); ?>">
+                                <a href="<?php echo $this->url('categories', array('action' => 'categories', 'id' => $item['category_id'])); ?>">
 
                                     <p><?php echo $item['name'] ?></p>
                                     <dl>

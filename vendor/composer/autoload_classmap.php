@@ -8,4 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'ZendDeveloperTools\\Module' => $vendorDir . '/zendframework/zend-developer-tools/Module.php',
     'ZfcAdmin\\Module' => $vendorDir . '/zf-commons/zfc-admin/Module.php',
+    'ZfcBase\\Module' => $vendorDir . '/zf-commons/zfc-base/Module.php',
+    'ZfcUser\\Module' => $vendorDir . '/zf-commons/zfc-user/Module.php',
 );

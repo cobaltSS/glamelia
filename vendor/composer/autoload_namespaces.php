@@ -6,7 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'ZfcUser' => array($vendorDir . '/zf-commons/zfc-user/src'),
     'ZfcTwig\\' => array($vendorDir . '/zf-commons/zfc-twig/src'),
+    'ZfcBase' => array($vendorDir . '/zf-commons/zfc-base/src'),
     'ZfcAdmin' => array($vendorDir . '/zf-commons/zfc-admin/src'),
     'Zend\\' => array($vendorDir . '/zendframework/zendframework/library'),
     'ZendXml' => array($vendorDir . '/zendframework/zendxml/library'),
@@ -31,4 +33,5 @@ return array(
     'DoctrineORMModule\\' => array($vendorDir . '/doctrine/doctrine-orm-module/src'),
     'DoctrineModule\\' => array($vendorDir . '/doctrine/doctrine-module/src'),
     'DoctrineModuleTest\\' => array($vendorDir . '/doctrine/doctrine-module/tests'),
+    'BjyAuthorize\\' => array($vendorDir . '/bjyoungblood/bjy-authorize/src'),
 );

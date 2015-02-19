@@ -2,7 +2,7 @@
     <ul>
         <?php foreach ($this->container as $page): ?>
             <li>
-                <a href="<?php echo ($page->getHref()) ? $page->getHref() : 'javascript:void(0)'; ?>" <?php echo ($page->isActive(true) ? 'class="active_menu"' : ''); ?>>
+                <a href="<?php echo ($page->getHref()) ? $page->getHref() : 'javascript:void(0)'; ?>" <?php echo ($page->isActive() ? 'class="active_menu"' : ''); ?>>
                     <?php echo $page->getLabel(); ?>
                 </a>
                 <?php if (!empty($page->pages)): ?>

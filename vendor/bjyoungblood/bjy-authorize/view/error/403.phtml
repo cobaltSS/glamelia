@@ -1,0 +1,19 @@
+<div id="content">
+    <div class="center"> 
+        <div class="shop_block" style="height: 500px;">
+<h1>Пожалуйста пройдите авторизацию </h1>
+<p>
+    <?php if (\BjyAuthorize\Guard\Controller::ERROR === $error) : ?>
+    <a class="error403" href="/admin">Войти</a>
+
+    <?php elseif (\BjyAuthorize\Guard\Route::ERROR === $error)  : ?>
+        You are not authorized to access <?php echo $route;?>.
+    <?php elseif ($error == 'error-unauthorized') : ?>
+        You are not authorized <?php echo $reason; ?>.
+    <?php else : ?>
+    An unknown error occurred.
+    <?php endif;?>
+</p>
+    </div>
+</div>
+    </div>

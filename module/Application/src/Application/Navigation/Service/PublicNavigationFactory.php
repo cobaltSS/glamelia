@@ -19,6 +19,7 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
             $i = 0;
             $j = 0;
             $k = 0;
+            
             foreach ($fetchMenu['navigation'][$this->getName()] as $key => $row) {
                 switch ($row['route']) {
                     case 'shops':
@@ -83,14 +84,14 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
                 $i++;
             }
         }
-        if (!isset($configuration['navigation'])) {
+       /*  if (!isset($configuration['navigation'])) {
             throw new Exception\InvalidArgumentException('Could not find navigation configuration key');
         }
-        if (!isset($configuration['navigation'][$this->getName()])) {
+       if (!isset($configuration['navigation'][$this->getName()])) {
             throw new Exception\InvalidArgumentException(sprintf(
                     'Failed to find a navigation container by the name "%s"', $this->getName()
             ));
-        }
+        }*/
 
         $application = $serviceLocator->get('Application');
         $routeMatch = $application->getMvcEvent()->getRouteMatch();
