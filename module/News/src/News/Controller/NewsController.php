@@ -12,7 +12,6 @@ class NewsController extends AbstractActionController {
     protected $newsTable;
 
     public function indexAction() {
-
         $request = $this->getRequest();
         $where = array();
         if ($request->isPost()) {

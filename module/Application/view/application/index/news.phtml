@@ -27,7 +27,7 @@ $this->headTitle($title);
                         <li>
                             <a href="<?php echo $this->url('news', array('action' => 'new', 'id' => $news->id)); ?>">
                                 <h2><?php echo $this->escapeHtml($news->name); ?></h2>
-                                <p><?php echo substr($news->description, 0, 300) . '...' ?></p>
+                                <p><?php echo  mb_substr($news->description, 0, 200,'utf-8') . '...' ?></p>
                             </a>
                         </li>
                     <?php endforeach; ?>
