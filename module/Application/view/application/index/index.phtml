@@ -38,9 +38,10 @@
 
                             <?php
                             $patchs = explode(',', $shop['patch']);
+                            $address = explode(',', $shop['address']);
                             foreach ($patchs as $patch) :
                                 ?>
-                                    <img src ="<?php echo '/images/shop/big_' . trim($patch) ?>"  data-thumb="<?php echo '/images/shop/big_' . trim($patch) ?>"  title=" <?php echo $shop['address'] ?>">
+                                    <img src ="<?php echo '/images/shop/big_' . trim($patch) ?>" alt="<?php echo $shop['address']?>"  data-thumb="<?php echo '/images/shop/big_' . trim($patch) ?>"  title=" <?php echo $address[0].','.$address[1] ?>">
                           
                             <?php endforeach; ?>
 
@@ -57,9 +58,9 @@
                                 <?php
                                 if ($item['patch']) {
                                     ?>
-                                    <img src ="<?php echo '/images/item/small_' . trim($item['patch']) ?>">
+                                    <img src ="<?php echo '/images/item/small_' . trim($item['patch']) ?>" alt="<?php echo $item['name']?>">
                                 <?php } else { ?>
-                                    <img src ="<?php echo '/img/small_item.png' ?>">
+                                    <img src ="<?php echo '/img/small_item.png' ?>" alt="<?php echo $item['name']?>>
     <?php } ?>
 
                             </div>

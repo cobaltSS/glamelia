@@ -32,10 +32,10 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
                             );
                             $address = explode(':', $city['address']);
                             $shop_id = explode(':', $city['shop_id']);
-
                             foreach ($address as $key => $shop) {
+                                $shop_short=explode(',',$shop);
                                 $configuration['navigation'][$this->getName()][$i]['pages'][$j]['pages'][] = array(
-                                    'label' => $shop,
+                                    'label' => $shop_short[0],
                                     'route' => $row['route'],
                                     'action' => $row['route'],
                                     'params' => array('id' => $shop_id[$key]),
