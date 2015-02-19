@@ -15,6 +15,10 @@ return array(
         'About',
         'News',
         'WebinoImageThumb',
+        'ZfcUser',
+        'ZfcBase',
+        'BjyAuthorize',
+
     ),
     'module_listener_options' => array(
         'module_paths' => array(
