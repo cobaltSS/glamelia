@@ -76,12 +76,12 @@ return array(
                     'roles' => array('user'),
                 ),
                 
-               
                  array(
                     'controller' => 'Category\Controller\Category',
-                    'action' => array('add', 'edit', 'delete','index'),
+                   // 'action' => array('add', 'edit', 'delete','index'),
                     'roles' => array('user'),
                 ),
+               
 
             ),
         ),

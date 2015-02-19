@@ -62,6 +62,7 @@ class ItemController extends AbstractActionController {
     }
 
     public function addAction() {
+        set_time_limit(0);
         $form = new ItemForm();
         $form->get('submit')->setValue('Добавить');
         $options = $this->GetListCategory();
