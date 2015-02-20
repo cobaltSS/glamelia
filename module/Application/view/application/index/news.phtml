@@ -5,7 +5,8 @@ $this->headTitle($title);
 <div id="content">
     <div class="center">               
         <div class="twoCol">
-            <div class="leftCol">
+            <div class="shop_block" >
+                <div class="leftCol raised">
                     <?php
                     $partial = array('partial/category_menu.phtml', 'default');
                     echo $this->navigation('cat_navigation')
@@ -18,22 +19,23 @@ $this->headTitle($title);
                             ->render();
                     ?>
                 </div>
-            <div class="rightCol">
-                <div class="title">
-                    <h1><?php echo $this->escapeHtml($title); ?></h1>
-                </div>
-                <ul class="polaroids">
-                    <?php foreach ($this->paginator as $news) : ?>
-                        <li>
-                            <a href="<?php echo $this->url('news', array('action' => 'new', 'id' => $news->id)); ?>">
-                                <h2><?php echo $this->escapeHtml($news->name); ?></h2>
-                                <p><?php echo  mb_substr($news->description, 0, 200,'utf-8') . '...' ?></p>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-                <br class="clear">
+                <div class="rightCol">
+                    <div class="title">
+                        <h1><?php echo $this->escapeHtml($title); ?></h1>
+                    </div>
+                    <ul class="polaroids">
+                        <?php foreach ($this->paginator as $news) : ?>
+                            <li>
+                                <a href="<?php echo $this->url('news', array('action' => 'new', 'id' => $news->id)); ?>">
+                                    <h2><?php echo $this->escapeHtml($news->name); ?></h2>
+                                    <p><?php echo mb_substr($news->description, 0, 200, 'utf-8') . '...' ?></p>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <br class="clear">
 
+                </div>
             </div>
         </div>
     </div>
