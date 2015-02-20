@@ -30,13 +30,12 @@ $this->headTitle($title);
         <table class="table">
             <tr>
                 <th>Наименование</th>
-                <th>Описание</th>
                 <th>&nbsp;</th>
             </tr>
             <?php foreach ($this->paginator as $category) : ?>
                 <tr>
                     <td><?php echo $this->escapeHtml($category->name); ?></td>
-                    <td><?php echo $this->escapeHtml($category->description); ?></td>
+                   
                     <td>
                         <a class="btn btn-info" href="<?php echo $this->url('category', array('action' => 'edit', 'id' => $category->id)); ?>">
                             <img alt="Редактировать" src ="<?php echo '/img/ico/edit.png' ?>"/>   
