@@ -7,6 +7,14 @@
     font-size: 18px;
 }
 @font-face {
+    font-family: 'Adventure';
+    src: 
+        url('../fonts/Adventure.ttf') format('truetype');
+    font-weight: bold;
+    font-style: bold;
+    font-size: 18px;
+}
+@font-face {
     font-family: 'font2';
     src: 
         url('../fonts/font2.ttf') format('truetype');
@@ -2415,22 +2423,21 @@ a.cn-nav-next{
 .block_two img {
     float: right;
 }
-.block_two p {
-    float: left; width: 120px; 
-    font-size: 20px; color: #910505; 
+.block_two a  {
+    color:  #D5435E !important; 
 }
 .block_two dl {
-    font-size: 30px;
     font-weight: bold; 
-    color: #717171;
     width: 200px;
-    height:60%;
-    overflow: hidden; 
-    background: #D5435E repeat-y;
-    -webkit-border-radius: 5%;
-    -moz-border-radius: 5%;
-    border-radius: 5%;
-    // text-shadow: 0 1px 1px #f5f5f5;
+    padding: 5px;
+    overflow: hidden;
+    font: 35px Adventure;
+    -webkit-transform: rotate(-30deg); /*Chrome, Safari 3.1 и новее*/
+    -ms-transform: rotate(-30deg);     /*IE 9*/
+    -moz-transform: rotate(-30deg);    /*Firefox от 3.5 до 15*/
+    -o-transform: rotate(-30deg);      /*Opera от 10.50 до 12.00*/
+    transform: rotate(-30deg);         /*Firefox 16 и новее, Opera 12.50 и новее, IE 10 и новее */
+    text-shadow: 0 1px 1px #f5f5f5;
 }
 .block_two dl dt {
     float: left; clear: both;
