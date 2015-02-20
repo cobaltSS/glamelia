@@ -42,7 +42,7 @@ $this->headTitle($title);
                 <tr>
                     <td><?php echo $this->escapeHtml($reviews->name); ?></td>
                     <td><?php echo $this->escapeHtml($reviews->phone); ?></td>
-                    <td><?php echo $this->escapeHtml($reviews->description); ?></td>
+                    <td><?php echo mb_substr($reviews->description,0,500,'utf-8').'...' ?></td>
                     <td><?php echo $this->escapeHtml($reviews->status) ? 'опубликован' : 'не опубликован' ?></td>
                     <td>
                         <a class="btn btn-info" href="<?php echo $this->url('reviews', array('action' => 'edit', 'id' => $reviews->id)); ?>">

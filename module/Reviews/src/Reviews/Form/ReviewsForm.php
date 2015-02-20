@@ -18,7 +18,7 @@ class ReviewsForm extends Form {
             'name' => 'name',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Имя',
+                'label' => 'Имя*',
             ),
             'attributes' => array(
                 'class' => 'form-control',
@@ -43,7 +43,7 @@ class ReviewsForm extends Form {
             'name' => 'email',
             'type' => 'Email',
             'options' => array(
-                'label' => 'Email',
+                'label' => 'Электронный адрес*',
             ),
             'attributes' => array(
                 'class' => 'form-control',
@@ -56,7 +56,7 @@ class ReviewsForm extends Form {
             'name' => 'description',
             'type' => 'Zend\Form\Element\Textarea',
             'options' => array(
-                'label' => 'Отзыв',
+                'label' => 'Отзыв*',
             ),
             'attributes' => array(
                 'class' => 'form-control',

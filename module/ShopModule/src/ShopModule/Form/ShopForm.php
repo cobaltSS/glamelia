@@ -22,7 +22,7 @@ class ShopForm extends Form {
             'name' => 'work_time',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Время работы',
+                'label' => 'Время работы*',
             ),
             'attributes' => array(
                 'class' => 'form-control',
@@ -37,7 +37,7 @@ class ShopForm extends Form {
                  'class' => 'form-control',
             ),
             'options' => array(
-                    'label' => 'Город',
+                    'label' => 'Город*',
                     'empty_option' => 'Пожалуйста выберите город',
                 ),
         ));
@@ -46,7 +46,7 @@ class ShopForm extends Form {
             'name' => 'address',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Адрес',
+                'label' => 'Адрес*',
             ),
             'attributes' => array(
                 'id' => 'end',

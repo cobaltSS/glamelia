@@ -18,7 +18,7 @@ class CategoryForm extends Form {
             'name' => 'name',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Название',
+                'label' => 'Название*',
             ),
             'attributes' => array(
                 'class' => 'form-control',

@@ -18,7 +18,7 @@ class NewsForm extends Form {
             'name' => 'name',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Название статьи',
+                'label' => 'Название статьи*',
             ),
             'attributes' => array(
                 'class' => 'form-control',
@@ -33,7 +33,7 @@ class NewsForm extends Form {
             'name' => 'description',
             'type' => 'Zend\Form\Element\Textarea',
             'options' => array(
-                'label' => 'Текст',
+                'label' => 'Текст*',
             ),
             'attributes' => array(
                 'id'=>'description',

@@ -28,16 +28,17 @@ $form->prepare();
             <?php echo $this->formElementErrors($form->get('name')); ?>
         </dd>
         
-        <dt><?php echo $this->formLabel($form->get('phone')); ?></dt>
-        <dd>
-            <?php echo $this->formElement($form->get('phone')); ?>
-            <?php echo $this->formElementErrors($form->get('phone')); ?>
-        </dd>
-        
+              
         <dt><?php echo $this->formLabel($form->get('email')); ?></dt>
         <dd>
             <?php echo $this->formElement($form->get('email')); ?>
             <?php echo $this->formElementErrors($form->get('email')); ?>
+        </dd>
+        
+         <dt><?php echo $this->formLabel($form->get('phone')); ?></dt>
+        <dd>
+            <?php echo $this->formElement($form->get('phone')); ?>
+            <?php echo $this->formElementErrors($form->get('phone')); ?>
         </dd>
 
         <dt><?php echo $this->formLabel($form->get('description')); ?></dt>

@@ -22,7 +22,7 @@ class ItemForm extends Form {
             'name' => 'name',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Наименование товара',
+                'label' => 'Наименование товара*',
             ),
             'attributes'=>array(
               'class'=>'form-control',
@@ -38,8 +38,8 @@ class ItemForm extends Form {
                 'class'=>'form-control',
             ),
             'options' => array(
-                'label' => 'Категория',
-                'empty_option' => 'Пожалуйста выберите категорию',
+                'label' => 'Категория*',
+                'empty_option' => 'Пожалуйста выберите категорию*',
             ),
         ));
         
@@ -76,7 +76,7 @@ class ItemForm extends Form {
                 'id' => 'shop_id',
             ),
             'options' => array(
-                'label' => 'Магазин',
+                'label' => 'Магазин*',
             ),
         ));
 
