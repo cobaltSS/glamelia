@@ -30,9 +30,9 @@ class CategoryNavigationFactory extends DefaultNavigationFactory {
                         $request = $serviceLocator->get('Application')->getMvcEvent()->getRouteMatch()->getParams();
                         $id_shop = $request['id'];
                         if ($request['action'] == 'shops')
-                            $categories = $serviceLocator->get('Category\Model\CategoryTable')->getCategory2SubForShop($id_shop);
+                            $categories = $serviceLocator->get('Category\Model\CategoryTable')->getCategory2SubForShop($id_shop,array('category.status'=>1));
                         else
-                            $categories = $serviceLocator->get('Category\Model\CategoryTable')->getCategory2Sub();
+                            $categories = $serviceLocator->get('Category\Model\CategoryTable')->getCategory2Sub(array('category.status'=>1));
                         foreach ($categories as $category) {
                             $configuration['navigation'][$this->getName()][$i]['pages'][$k] = array(
                                 'label' => $category['name'],

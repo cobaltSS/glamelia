@@ -46,7 +46,7 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
                         break;
 
                     case 'categories':
-                        $categories = $serviceLocator->get('Category\Model\CategoryTable')->getCategory2Sub();
+                        $categories = $serviceLocator->get('Category\Model\CategoryTable')->getCategory2Sub(array('category.status'=>1));
                         foreach ($categories as $category) {
                             $configuration['navigation'][$this->getName()][$i]['pages'][$k] = array(
                                 'label' => $category['name'],

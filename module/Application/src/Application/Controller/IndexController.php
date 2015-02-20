@@ -24,8 +24,8 @@ class IndexController extends AbstractActionController {
 
     public function indexAction() {
         $reviews = $this->getReviewsTable()->getReviewsRandom('2', array('status' => '1'));
-        $action_items = $this->getItemTable()->getActionItemsRandom(array('action' => '1'), $this->limit);
-        $items = $this->getItemTable()->getItems($this->limit, array('item.status' => 1, 'item.action' => 0));
+        $action_items = $this->getItemTable()->getActionItemsRandom(array('action' => '1','category.status'=>1,'item.status'=>1), $this->limit);
+        $items = $this->getItemTable()->getItems($this->limit, array('item.status' => 1, 'item.action' => 0,'category.status'=>1));
         $shops = $this->getShopTable()->getShops(array('shop.status' => '1'));
         $news = $this->getNewsTable()->getNewsRandom($this->limit, array('status' => '1'));
 

@@ -54,7 +54,7 @@ class NewsTable {
         $data = array(
             'name' => $news->name,
             'description' => $news->description,
-            'status' => $news->status,
+            'status' =>(int) $news->status,
             'date' => date("Y-m-d H:i:s"),
         );
 

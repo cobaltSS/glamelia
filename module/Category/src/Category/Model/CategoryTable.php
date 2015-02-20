@@ -54,7 +54,7 @@ class CategoryTable {
         $data = array(
             'name' => $category->name,
             'description' => $category->description,
-            'status' => $category->status,
+            'status' => (int) $category->status,
         );
 
 
@@ -79,10 +79,11 @@ class CategoryTable {
         return $resultSet->toArray();
     }
 
-    public function getCategory2Sub() {
+    public function getCategory2Sub($where=array()) {
 
         $select = new Select;
         $select->from('category');
+        $select->where($where);
         $select->join('subcategory', "subcategory.id_category = category.id", array('subname' => 'name', 'subcategory_id' => 'id'), 'left');
         $rowset = $this->tableGateway->selectWith($select);
         $result = array();
@@ -98,7 +99,7 @@ class CategoryTable {
         return $result;
     }
     
-    public function getCategory2SubForShop($id_shop) {
+    public function getCategory2SubForShop($id_shop,$where=array()) {
 
         $select = new Select;
         $select->from('category');
@@ -107,6 +108,7 @@ class CategoryTable {
         $select->join('items2shop', "items2shop.id_item", array(), 'left');
         $select->join('item', "item.id = items2shop.id_item AND item.category_id=category.id", array(), 'inner');
         $select->where(array('items2shop.id_shop='.$id_shop));
+        $select->where($where);
         
         $rowset = $this->tableGateway->selectWith($select);
         $result = array();

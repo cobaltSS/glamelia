@@ -66,7 +66,7 @@ class ItemTable {
             'name' => $item->name,
             'category_id' => $item->category_id,
             'subcategory_id' => $item->subcategory_id,
-            'status' => $item->status,
+            'status' => (int)$item->status,
             'cost' => $item->cost,
             'id_photo' => $item->id_photo,
             'action' => $item->action,
@@ -124,6 +124,7 @@ class ItemTable {
         $select->where($where);
         $select->limit((int) $limit);
         $select->join('item_photo', "item_photo.id_item = item.id", array('patch'), 'left');
+        $select->join('category', "category.id = item.category_id", array(), 'left');
         $select->order($rand);
 
         $resultSet = $this->tableGateway->selectWith($select);
@@ -140,6 +141,7 @@ class ItemTable {
         if($limit)
         $select->limit((int) $limit);
         $select->join('item_photo', "item_photo.id_item = item.id", array('patch'), 'left');
+        $select->join('category', "category.id = item.category_id", array(), 'left');
         $select->order($rand);
         $rowset = $this->tableGateway->selectWith($select);
 
