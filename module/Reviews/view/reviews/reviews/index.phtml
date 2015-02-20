@@ -17,8 +17,8 @@ $this->headTitle($title);
                     <label for="exampleInputName2">Статус</label>
                     <select class="form-control" name="data[status]">
                         <option value="" >Все</option>
-                        <option <?php echo ($search['status'] == '1' ? 'selected' : '' ) ?> value="1">Опублекован</option>
-                        <option <?php echo ($search['status'] == '0' ? 'selected' : '' ) ?> value="0">Не опублекован</option>
+                        <option <?php echo ($search['status'] == '1' ? 'selected' : '' ) ?> value="1">Опубликован</option>
+                        <option <?php echo ($search['status'] == '0' ? 'selected' : '' ) ?> value="0">Не опубликован</option>
                     </select>
 
                 </div>
@@ -43,7 +43,7 @@ $this->headTitle($title);
                     <td><?php echo $this->escapeHtml($reviews->name); ?></td>
                     <td><?php echo $this->escapeHtml($reviews->phone); ?></td>
                     <td><?php echo $this->escapeHtml($reviews->description); ?></td>
-                    <td><?php echo $this->escapeHtml($reviews->status) ? 'опублекован' : 'не обубликован' ?></td>
+                    <td><?php echo $this->escapeHtml($reviews->status) ? 'опубликован' : 'не опубликован' ?></td>
                     <td>
                         <a class="btn btn-info" href="<?php echo $this->url('reviews', array('action' => 'edit', 'id' => $reviews->id)); ?>">
                             <img alt="Редактировать" src ="<?php echo '/img/ico/edit.png' ?>"/> 
