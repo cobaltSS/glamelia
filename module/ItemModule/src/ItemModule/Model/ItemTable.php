@@ -69,7 +69,7 @@ class ItemTable {
             'status' => (int)$item->status,
             'cost' => $item->cost,
             'id_photo' => $item->id_photo,
-            'action' => $item->action,
+            'action' => (int)$item->action,
             'percentage' => $item->percentage,
             'description' => $item->description,
         );
