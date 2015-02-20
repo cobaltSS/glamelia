@@ -1659,7 +1659,7 @@ fieldset[disabled] .btn-default.active {
 }
 .lb-album a .action{
     color:#174867;
-    font-size: 30px;
+    font-size: 33px;
     -webkit-box-shadow: 2px 2px 4px #3C1313;
     background:#E43960;
     position: absolute;
@@ -1671,9 +1671,9 @@ fieldset[disabled] .btn-default.active {
     display: block;
 }
 .lb-album li > a{
-    width: 150px;
+    width: 210px;
     overflow: hidden; 
-    height: 150px;
+    height: 210px;
     position: relative;
     padding: 10px 10px 60px 10px;
     background: #f1d2c2;
@@ -1687,8 +1687,8 @@ fieldset[disabled] .btn-default.active {
 .lb-album li > a span{
     position: absolute;
     padding-top:50%;
-    width: 160px;
-    height: 210px;
+    width: 210px;
+    height: 270px;
     top: 10px;
     left: 10px;
     text-align: center;
