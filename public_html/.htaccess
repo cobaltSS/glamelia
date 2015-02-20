@@ -1,3 +1,11 @@
+php_value max_execution_time 1200
+php_value memory_limit 6G
+php_value post_max_size 1000M
+php_value upload_max_filesize 1000M
+
+php_flag implicit_flush on
+php_value output_buffering off
+php_value mbstring.internal_encoding UTF-8
 RewriteEngine On
 # The following rule tells Apache that if the requested filename
 # exists, simply serve it.
