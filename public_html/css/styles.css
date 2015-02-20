@@ -159,8 +159,8 @@ span.main_link{width: 10px; display: inline-block; margin-left: 7px;margin-right
 .slideText > span{width: 300px; height: 150px; position: absolute; left: 0; bottom: 0; padding: 25px;}
 .slideText > span span{display: table-cell; vertical-align: bottom; text-align: left;width: 300px; height: 150px; color: #fff; font: normal 24px 'Pudelina';}
 
-.slideNext{width: 140px; height: 140px; position: relative; overflow: hidden; cursor: pointer; float: right;}
-.previewPhoto,.slideNext .smallMask{width: 140px; height: 140px; position: absolute; top: 0; left: 0;}
+.slideNext{width: 200px; height: 200px; position: relative; overflow: hidden; cursor: pointer; float: right;}
+.previewPhoto,.slideNext .smallMask{width: 200px; height: 200px; position: absolute; top: 0; left: 0;}
 .slideNext .smallMask{background: url("../img/opac08.png") repeat;}
 .slideNext .next{width: 23px; height: 40px; position: absolute; background: url("../img/next.png") no-repeat; top: 17px; left: 100px;}
 .nextText{width: 100px; height: 75px; position: absolute; left: 15px; bottom: 13px;}
@@ -169,8 +169,8 @@ span.main_link{width: 10px; display: inline-block; margin-left: 7px;margin-right
 .slideBack{position: absolute; margin-left: 70px; cursor: pointer; background: #222222 url("../img/prev.png") no-repeat center center; width: 70px; height: 70px; z-index: 12;}
 
 .clear{clear: both;}
-.indexContent{width: 840px; margin-left: 140px; min-height: 280px}
-.indexContent > div{float: left; height: 140px; width: 140px;}
+.indexContent{width: 840px; margin-left: 200px; min-height: 280px}
+.indexContent > div{float: left; height: 200px; width: 200px;}
 .indexContent > div.hits,.indexContent > div.apply{width: 280px;}
 .indexContent > div.hits{background: #2f2f2f; color: #a2a2a2; text-transform: uppercase; font: normal 18px 'Pudelina'; padding: 20px; box-sizing: border-box; -moz-box-sizing: border-box;}
 .indexContent > div.apply{background: url("../img/apply.gif") no-repeat;}
@@ -178,26 +178,26 @@ span.main_link{width: 10px; display: inline-block; margin-left: 7px;margin-right
 .indexContent > div.apply a span{font-size: 40px; display: inline-block; border-bottom: 2px solid #fff; line-height: 0.95em; margin-top: -4px;}
 .indexContent > div.apply a:hover span{border-bottom: none;}
 .indexContent > div.flowers{position: relative;}
-.indexContent > div.flowers a{background: #df0029; display: table-cell; vertical-align: bottom; color: #fff; font: normal 11px 'Pudelina'; text-decoration: none; text-align: center; padding: 15px 10px; position: relative; width: 140px; height: 140px; box-sizing: border-box; -moz-box-sizing: border-box; opacity: 0;  -webkit-transition: opacity .5s linear; -moz-transition: opacity .5s linear; -o-transition: opacity .5s linear;}
+.indexContent > div.flowers a{background: #df0029; display: table-cell; vertical-align: bottom; color: #fff; font: normal 11px 'Pudelina'; text-decoration: none; text-align: center; padding: 15px 10px; position: relative; width: 200px; height: 200px; box-sizing: border-box; -moz-box-sizing: border-box; opacity: 0;  -webkit-transition: opacity .5s linear; -moz-transition: opacity .5s linear; -o-transition: opacity .5s linear;}
 .indexContent > div.flowers:hover a{opacity: .8;}
-.indexContent > div.flowers img{width: 140px; height: 140px; position: absolute;}
+.indexContent > div.flowers img{width: 200px; height: 200px; position: absolute;}
 
-#partners{height: 140px; width: 100%; background: #fff; overflow: hidden;}
+#partners{height: 200px; width: 100%; background: #fff; overflow: hidden;}
 
-.partners{width: 100%; height: 140px;}
-.partnersMask{width: 960px; height: 140px; position: absolute; background: #fff; z-index: 1; margin-left: -960px;}
-.partner{float: left; width: 120px; height: 140px;}
-.partner a{display: table-cell; width: 120px; height: 140px; vertical-align: middle; text-align: center;}
-#partners .caroufredsel_wrapper{overflow: visible !important; margin-left: 140px !important;}
+.partners{width: 100%; height: 200px;}
+.partnersMask{width: 960px; height: 200px; position: absolute; background: #fff; z-index: 1; margin-left: -960px;}
+.partner{float: left; width: 120px; height: 200px;}
+.partner a{display: table-cell; width: 120px; height: 200px; vertical-align: middle; text-align: center;}
+#partners .caroufredsel_wrapper{overflow: visible !important; margin-left: 200px !important;}
 .left,.right{width: 35px; height: 35px; cursor: pointer;}
 .left{background: #000000 url("../img/left.png") no-repeat center center;}
 .right{background: #000000 url("../img/right.png") no-repeat center center;}
 .partnerLeft,.partnerRoght{float: right;}
 .forPartners{width: 980px; height: 35px; margin: 0 auto;;}
 
-.schedule{position: absolute; width: 140px; height: 735px; padding-top: 70px; z-index: 11; overflow: hidden;}
+.schedule{position: absolute; width: 200px; height: 735px; padding-top: 70px; z-index: 11; overflow: hidden;}
 .scheduleSlide{float: left;}
-.scheduleSmall{background: #da0029; width: 140px; height: 140px; padding: 10px 15px; box-sizing: border-box; -moz-box-sizing: border-box; border-bottom: 1px solid #e3405f; overflow: hidden;}
+.scheduleSmall{background: #da0029; width: 200px; height: 200px; padding: 10px 15px; box-sizing: border-box; -moz-box-sizing: border-box; border-bottom: 1px solid #e3405f; overflow: hidden;}
 .scheduleSlide .scheduleSmall:last-child{border: none;}
 .scheduleSmall p{color: #fff; font: normal 36px 'Pudelina'; margin: 4px 0;}
 .scheduleSmall p span{color: #ffb8c5;}
@@ -238,7 +238,7 @@ input[type="submit"]:disabled{background: #a8a7a8;}
 .crumbs a:hover span{border-color: #f1eff0;}
 //h1{color: #da0029; text-transform: uppercase; font: normal 30px/23px 'Pudelina'; margin: 20px 0 30px;}
 
-.regSteps{background: #da0029; border-top: 4px solid #000; padding: 13px 18px 15px 140px;}
+.regSteps{background: #da0029; border-top: 4px solid #000; padding: 13px 18px 15px 200px;}
 .regSteps span{color: #e6788d; font: normal 18px 'Pudelina';}
 .regSteps span.active{color: #fff;}
 .regSteps img{vertical-align: middle; margin: 0 113px;}
@@ -2212,7 +2212,7 @@ h1 span{
     position:absolute;
     top:0px;
     left:50%;
-    margin-left:-140px;
+    margin-left:-200px;
 }
 .cn-nav-content h2,
 .cn-nav-content h3{
@@ -2342,16 +2342,17 @@ a.cn-nav-next{
 }
 
 .container {
-    width: 140px; height: 140px;
+    width: 200px; height: 200px;
     -webkit-perspective: 1000;
 }
 
 .block_one {
-    float: left; position: absolute; left: 20px;
+    float: left; position: absolute;
+    left: 0px;
     -webkit-transform: rotate(5deg);
 }
 .card {
-    width: 140px; height: 140px;
+    width: 200px; height: 200px;
     border: 8px solid #fff;	
     -webkit-transform-style: preserve-3d;
     -webkit-transition: 0.5s;
@@ -2368,7 +2369,7 @@ a.cn-nav-next{
 }
 
 .block_one .back {
-    width: 140px; height: 140px; 
+    width: 200px; height: 200px; 
     -webkit-transform: rotateY(180deg);
     background: #E8DFDF; 
     overflow: hidden;
@@ -2378,13 +2379,13 @@ a.cn-nav-next{
     float: right;
 }
 .block_one p {
-    float:left;width: 120px; 
+    float:left;width: 180px; 
     font-size: 30px; color: #910505; 
 }
 .block_one dl {
     font-size: 30px; font-weight: bold; 
     line-height: 40px; color: #717171;
-    width: 140px; overflow: hidden; 
+    width: 200px; overflow: hidden; 
     background: #cfcfcf repeat-y;
     -webkit-box-shadow: 0 1px 5px #888;
     text-shadow: 0 1px 1px #f5f5f5;
@@ -2397,18 +2398,18 @@ a.cn-nav-next{
 }
 
 .block_two {
-    float: left; position: absolute; right: 20px;
+    float: left; position: absolute; right: 0px;
     -webkit-transform: rotate(-3deg);
 }
 
 .block_two .back {
-    width: 140px; height: 140px;
+    width: 200px; height: 200px;
     -webkit-transform: rotateY(180deg);
     background: #E8DFDF; 
     overflow: hidden;
 }
 /*.block_two .back h2 {
-        width: 140px; height: 33px; margin: 0 auto 20px auto;
+        width: 200px; height: 33px; margin: 0 auto 20px auto;
         background: url(block_two-title.png); text-indent: -9999px; 
 }*/
 .block_two img {
@@ -2422,7 +2423,7 @@ a.cn-nav-next{
     font-size: 30px;
     font-weight: bold; 
     color: #717171;
-    width: 140px;
+    width: 200px;
     height:60%;
     overflow: hidden; 
     background: #D5435E repeat-y;
@@ -2460,7 +2461,7 @@ a.cn-nav-next{
 .block_three {
     float: left; 
     position: absolute; 
-    right: 380px;
+    right: 330px;
     //-webkit-transform: rotate(-3deg);
 }
 
