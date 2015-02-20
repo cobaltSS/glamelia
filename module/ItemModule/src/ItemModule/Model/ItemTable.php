@@ -91,30 +91,29 @@ class ItemTable {
         $this->tableGateway->delete(array('id' => (int) $id));
     }
 
-    public function getItems2Category($id,$where=array()) {
+    public function getItems2Category($id) {
         $id = (int) $id;
         $select = new Select;
         $select->from('item');
         $select->quantifier('DISTINCT');
         $select->join('item_photo', "item_photo.id_item = item.id", array('patch'), 'left');
         $select->join('items2shop', "items2shop.id_item = item.id", array('id_shop' => new Expression("GROUP_CONCAT(DISTINCT `items2shop`.`id_shop` SEPARATOR ', ')")), 'left');
-        $select-where($where);
+       
         $select->group("item.id");
-        $select->having("item.category_id = " . $id);
+        $select->having("item.category_id = " . $id.' AND item.status=1');
         $rowset = $this->tableGateway->selectWith($select);
         return $rowset->toArray();
     }
 
-    public function getItems2SubCategory($id,$where=array()) {
+    public function getItems2SubCategory($id) {
         $id = (int) $id;
         $select = new Select;
         $select->from('item');
         $select->quantifier('DISTINCT');
         $select->join('item_photo', "item_photo.id_item = item.id", array('patch'), 'left');
         $select->join('items2shop', "items2shop.id_item = item.id", array('id_shop' => new Expression("GROUP_CONCAT(DISTINCT `items2shop`.`id_shop` SEPARATOR ', ')")), 'left');
-        $select->where($where);
         $select->group("item.id");
-        $select->having("item.subcategory_id = " . $id);
+        $select->having("item.subcategory_id = " . $id.' AND item.status=1');
         $rowset = $this->tableGateway->selectWith($select);
 
         return $rowset->toArray();

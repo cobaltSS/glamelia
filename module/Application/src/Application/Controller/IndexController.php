@@ -145,9 +145,11 @@ class IndexController extends AbstractActionController {
 
         try {
             if ($id_cat && !$id_sub)
-                $items = $this->getItemTable()->getItems2Category($id_cat,array('item.status' => 1));
+                $items = $this->getItemTable()->getItems2Category($id_cat);
             else if ($id_sub)
-                $items = $this->getItemTable()->getItems2SubCategory($id_sub,array('item.status' => 1));
+            {
+                $items = $this->getItemTable()->getItems2SubCategory($id_sub);
+            }
             else if ($action)
                 $items = $this->getItemTable()->getItems(false, array('action' => 1));
             else
