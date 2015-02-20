@@ -16,7 +16,13 @@
 }
 
 html{height: 100%;min-width: 1000px;}
-body{margin: 0; font-weight: bold; font: 18px font2,Arial,Tahoma,Verdana,sans-serif; height: 100%; width: 100%; min-width: 1000px; background: #2d2d2d url("../img/back2.jpg") no-repeat center top;}
+body{margin: 0; font-weight:
+         bold; 
+     font: 18px font2,Arial,Tahoma,Verdana,sans-serif;
+     height: 100%;
+     width: 100%; 
+     min-width: 1000px;
+     background: #2d2d2d  no-repeat center top;}
 body.index{background: #2d2d2d url("../img/back2.jpg") no-repeat center top;}
 img{border: none;}
 a{border: none; outline:none; text-decoration: none; color: #c2c2c2;}
