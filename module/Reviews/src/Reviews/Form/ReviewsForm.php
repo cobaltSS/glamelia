@@ -68,7 +68,7 @@ class ReviewsForm extends Form {
             'name' => 'status',
             'type' => 'Zend\Form\Element\Checkbox',
             'options' => array(
-                'label' => 'Статус',
+                'label' => 'Опубликовать',
                 'checked_value' => '1',
                 'unchecked_value' => '0',
             ),

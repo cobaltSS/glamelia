@@ -41,70 +41,70 @@
                             $address = explode(',', $shop['address']);
                             foreach ($patchs as $patch) :
                                 ?>
-                                    <img src ="<?php echo '/images/shop/big_' . trim($patch) ?>" alt="<?php echo $shop['address']?>"  data-thumb="<?php echo '/images/shop/big_' . trim($patch) ?>"  title=" <?php echo $address[0].','.$address[1] ?>">
-                          
+                                <img src ="<?php echo '/images/shop/big_' . trim($patch) ?>" alt="<?php echo $shop['address'] ?>"  data-thumb="<?php echo '/images/shop/big_' . trim($patch) ?>"  title=" <?php echo $address[0] . ',' . $address[1] ?>">
+
                             <?php endforeach; ?>
 
-<?php endforeach; ?>
+                        <?php endforeach; ?>
                     </div><!-- cn-images -->
                 </div><!-- cn-slideshow -->
             </div>
             <div id="transformers-rule">
                 <div class="container block_one">
                     <h1>Товар</h1>
-<?php foreach ($items as $item) : ?>
+                    <?php foreach ($items as $item) : ?>
                         <div class="card">
                             <div class="face front">
                                 <?php
                                 if ($item['patch']) {
                                     ?>
-                                    <img src ="<?php echo '/images/item/small_' . trim($item['patch']) ?>" alt="<?php echo $item['name']?>">
+                                    <img src ="<?php echo '/images/item/small_' . trim($item['patch']) ?>" alt="<?php echo $item['name'] ?>">
                                 <?php } else { ?>
-                                    <img src ="<?php echo '/img/small_item.png' ?>" alt="<?php echo $item['name']?>>
-    <?php } ?>
+                                    <img src ="<?php echo '/img/small_item.png' ?>" alt="<?php echo $item['name'] ?>>
+                                <?php } ?>
 
-                            </div>
+                                     </div>
 
-                            <div class="face back">
-                                <h2><a href="<?php echo $this->url('categories', array('action' => 'categories', 'id' => $item['category_id'])); ?>">
+                                     <div class="face back">
+                                     <h2><a href="<?php echo $this->url('categories', array('action' => 'categories', 'id' => $item['category_id'])); ?>">
                                         <p> <?php echo $item['name'] ?></p>
                                     </a></h2>
                                 <p><?php echo $item['description'] ?></p>
                                 </dl>
                             </div>
                         </div>
-<?php endforeach ?>
+                    <?php endforeach ?>
 
                 </div>
 
 
                 <div class="container block_three">
                     <h1 >Отзывы</h1>
-<?php foreach ($reviews as $review) : ?>
+                    <?php foreach ($reviews as $review) : ?>
                         <div class="card">
                             <div class="face back">
-                                <a href="<?php echo $this->url('review',array('action' => 'review')); ?>">
+                                <a href="<?php echo $this->url('review', array('action' => 'review')); ?>">
                                     <p><?php echo $review['name'] ?></p>
                                     <dl>
-                                        <dd><?php echo mb_substr($review['description'], 0, 500,'utf-8') . '...' ?></dd>
+                                        <dd><?php echo mb_substr($review['description'], 0, 500, 'utf-8') . '...' ?></dd>
                                 </a>
                                 </dl>     
                             </div>
                         </div>
-<?php endforeach ?>
+                    <?php endforeach ?>
 
                 </div>
 
                 <div class="container block_two">
                     <h1>Акции</h1>
-<?php foreach ($action_items as $item) : ?>
+                    <?php foreach ($action_items as $item) : ?>
                         <div class="card">
                             <div class="face front">
                                 <?php if ($item['patch']) : ?>
                                     <img src ="<?php echo '/images/item/small_' . trim($item['patch']) ?>">
                                 <?php else: ?>
                                     <img src ="<?php echo '/img/small_item.png' ?>">
-    <?php endif ?>
+                                <?php endif ?>
                             </div>
                             <div class="face back">
                                 <a href="<?php echo $this->url('categories', array('action' => 'categories', 'id' => $item['category_id'])); ?>">
@@ -118,7 +118,7 @@
                                 </dl>     
                             </div>
                         </div>
-<?php endforeach ?>
+                    <?php endforeach ?>
 
                 </div>
             </div>

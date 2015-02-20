@@ -1,0 +1,70 @@
+<script type="text/javascript" src="/js/map.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<?php echo $key_map ?>&sensor=false&libraries=places"></script>
+<?php 
+$i = 1; 
+$workday=array(
+    'ПН','Вт','СР','Чт','ПТ','Сб','Вс'
+);
+?>
+<div id="content">
+    <div class="center">
+        <div class="twoCol">
+            <div class="shop_block" style="height:1000px">
+                <div class="leftCol raised">
+                    <?php
+                    $partial = array('partial/category_menu.phtml', 'default');
+                    echo $this->navigation('cat_navigation')
+                            ->menu()
+                            ->setMinDepth(1)
+                            ->setMaxDepth(4)
+                            ->setRenderParents(false)
+                            ->setOnlyActiveBranch(true)
+                            ->setPartial($partial)
+                            ->render();
+                    ?>
+                </div>
+                <div class="rightCol">
+                    <div class="sp-slideshow">
+                        <?php foreach ($photos as $patch) : ?>
+                            <input id="button-<?php echo $i ?>" type="radio" name="radio-set" class="sp-selector-<?php echo $i ?>" <?php echo ($i == 1) ? 'checked="checked"' : '' ?> />
+                            <label for="button-<?php echo $i ?>" class="button-label-<?php echo $i ?>"></label>
+                            <?php $i++ ?>
+                        <?php endforeach ?>
+                        <?php $i = 1 ?>
+                        <?php foreach ($photos as $patch) : ?>
+                            <label for="button-<?php echo $i ?>" class="sp-arrow sp-a<?php echo $i ?>"></label>
+                            <?php $i++ ?>
+                        <?php endforeach ?>
+                        <div class="sp-content">
+                            <div class="sp-parallax-bg"></div>
+                            <ul class="sp-slider clearfix">
+                                <?php foreach ($photos as $patch) : ?>
+                                    <li><img src ="<?php echo '/images/shop/big_' . trim($patch) ?>"></li>	
+                                <?php endforeach ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <p><label>Наш адрес: </label> <?php echo $shop->address ?></p>
+                    <div><label>Режим работы: </label>
+                        <?php
+                        for ($i = 0; $i < 7; $i++)
+                            echo '<div class="work_day" title="' . $shop->work_time . '">'. $workday[$i].'</div>'
+                            ?>
+                    </div>
+                    <h3> Схема проезда</h3>
+                    <div class="map_block">
+                        <input type="hidden" id="end" value="<?php echo $shop->address ?>">
+                        <div class="map-view-book">
+                            <input id="location"   type="hidden" value="" />
+                            <div id="map_canvas"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -41,7 +41,7 @@ class IndexController extends AbstractActionController {
     // Show Shop
     // return array
 
-    public function shopsAction() {
+    public function shopAction() {
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
             return $this->redirect()->toRoute('home', array(
@@ -67,6 +67,19 @@ class IndexController extends AbstractActionController {
             'photos' => $patch,
             'key_map' => $this->getkeyApiLocation(),
         );
+    }
+    
+    // Show Shop
+    // return array
+
+    public function shopsAction() {
+         $where = array('status' => 1);
+        $paginator = $this->getShopTable()->getShops(true, $where);
+        // set the current page to what has been passed in query string, or to 1 if none set
+                
+        return new ViewModel(array(
+            'paginator' => $paginator,
+        ));
     }
 
     // Show Item
@@ -130,18 +143,15 @@ class IndexController extends AbstractActionController {
         $id_sub = (int) $this->params()->fromRoute('id_sub', 0);
         $action = (int) $this->params()->fromQuery('action');
 
-        if (!$id_cat && !$id_sub && !$action) {
-            return $this->redirect()->toRoute('home', array(
-            ));
-        }
-
         try {
             if ($id_cat && !$id_sub)
-                $items = $this->getItemTable()->getItems2Category($id_cat);
+                $items = $this->getItemTable()->getItems2Category($id_cat,array('item.status' => 1));
             else if ($id_sub)
-                $items = $this->getItemTable()->getItems2SubCategory($id_sub);
+                $items = $this->getItemTable()->getItems2SubCategory($id_sub,array('item.status' => 1));
             else if ($action)
                 $items = $this->getItemTable()->getItems(false, array('action' => 1));
+            else
+                 $items = $this->getItemTable()->getItems('50',array('item.status' => 1));
         } catch (\Exception $ex) {
             return $this->redirect()->toRoute('home', array(
             ));

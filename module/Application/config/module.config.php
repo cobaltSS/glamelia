@@ -184,11 +184,12 @@ return array(
             array(
                 'label' => 'НАШИ МАГАЗИНЫ',
                 'route' => 'shops',
-                //'action' => 'shops',
+                'action' => 'shops',
             ),
             array(
                 'label' => 'КАТАЛОГ',
                 'route' => 'categories',
+                'action' => 'categories',
             ),
             array(
                 'label' => 'НОВОСТИ',

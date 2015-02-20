@@ -29,7 +29,7 @@ class CategoryNavigationFactory extends DefaultNavigationFactory {
                     case 'categories':
                         $request = $serviceLocator->get('Application')->getMvcEvent()->getRouteMatch()->getParams();
                         $id_shop = $request['id'];
-                        if ($request['action'] == 'shops')
+                        if ($request['action'] == 'shops' && $id_shop)
                             $categories = $serviceLocator->get('Category\Model\CategoryTable')->getCategory2SubForShop($id_shop,array('category.status'=>1));
                         else
                             $categories = $serviceLocator->get('Category\Model\CategoryTable')->getCategory2Sub(array('category.status'=>1));
