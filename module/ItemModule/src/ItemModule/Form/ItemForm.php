@@ -42,6 +42,17 @@ class ItemForm extends Form {
                 'empty_option' => 'Пожалуйста выберите категорию',
             ),
         ));
+        
+         $this->add(array(
+            'name' => 'description',
+            'type' => 'Zend\Form\Element\Textarea',
+            'options' => array(
+                'label' => 'Описание',
+            ),
+            'attributes' => array(
+                'class' => 'form-control',
+            ),
+        ));
 
         $this->add(array(
             'name' => 'subcategory_id',

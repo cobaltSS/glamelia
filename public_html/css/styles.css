@@ -1738,7 +1738,8 @@ fieldset[disabled] .btn-default.active {
     font-size: 36px;
     float: left;
     text-align: right;
-    //  border-right: 1px solid rgba(27,54,81,0.4);
+    margin: 15px;
+    //border-right: 1px solid rgba(27,54,81,0.4);
 }
 .lb-overlay div h3 span,
 .lb-overlay div p{

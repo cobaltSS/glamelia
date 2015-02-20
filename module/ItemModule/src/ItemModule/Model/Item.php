@@ -17,6 +17,7 @@ class Item implements InputFilterAwareInterface {
     public $status;
     public $id_photo;
     public $patch;
+     public $description;
     
     public $action;
     public $percentage;
@@ -31,6 +32,7 @@ class Item implements InputFilterAwareInterface {
         $this->status = (!empty($data['status'])) ? $data['status'] : null;
         $this->id_photo = (!empty($data['id_photo'])) ? $data['id_photo'] : null;
         $this->patch = (!empty($data['patch'])) ? $data['patch'] : null;
+        $this->description = (!empty($data['description'])) ? $data['description'] : null;
         $this->id_shop = (!empty($data['id_shop'])) ? $data['id_shop'] : null;
         $this->action = (!empty($data['action'])) ? $data['action'] : null;
         $this->percentage = (!empty($data['percentage'])) ? $data['percentage'] : null;
@@ -67,6 +69,10 @@ class Item implements InputFilterAwareInterface {
            
            $inputFilter->add(array(
                 'name' => 'subcategory_id',
+                'required' => false,
+            ));
+           $inputFilter->add(array(
+                'name' => 'description',
                 'required' => false,
             ));
            

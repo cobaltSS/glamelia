@@ -52,6 +52,11 @@ class Category implements InputFilterAwareInterface {
                     array('name' => 'Int'),
                 ),
             ));
+             
+              $inputFilter->add(array(
+                'name' => 'description',
+                'required' => false,
+            ));
 
 
             $inputFilter->add(array(

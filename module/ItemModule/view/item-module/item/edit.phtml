@@ -56,6 +56,15 @@ $this->headTitle($title);
                 <div class="col-xs-6"><?php echo $this->formElementErrors($form->get('name')); ?>
                 </div>
             </div> 
+    
+     <div class="row">
+                <div class="col-xs-3"><?php echo $this->formLabel($form->get('description')); ?>
+                </div>
+                <div class="col-xs-6"><?php echo $this->formElement($form->get('description')); ?>
+                </div>
+                <div class="col-xs-6"><?php echo $this->formElementErrors($form->get('description')); ?>
+                </div>
+            </div> 
 
             <div class="row">
                 <div class="col-xs-3"><?php echo $this->formLabel($form->get('id_photo')); ?>

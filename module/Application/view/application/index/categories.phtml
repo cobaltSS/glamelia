@@ -43,6 +43,7 @@
                                             <div class="action">СКИДКА -<?php echo $this->escapehtml($item['percentage']) ?></div>
                                         <?php endif ?>
                                         <span> <?php echo $this->escapehtml($item['name']) ?></span>
+                                        
                                     </a>
 
 
@@ -59,10 +60,11 @@
                                             <h3>
                                                 <?php echo $this->escapeHtml($item['name']) ?>
                                             </h3>
-
+<p>
                                                 <?php if ($item['action']): ?>
-                                                    <p>(Скидка - <?php echo $item['percentage'] ?>%)</p>
+                                                    (Скидка - <?php echo $item['percentage'] ?>%)</br>
                                                 <?php endif ?>
+                                                    <?php echo $this->escapehtml($item['description']) ?></p>
 
                                         </div>
                                         <a href="#page" class="lb-close">Закрыть</a>

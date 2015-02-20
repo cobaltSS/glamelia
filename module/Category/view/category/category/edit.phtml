@@ -28,13 +28,13 @@ $this->headTitle($title);
                     <?php echo $this->formElement($form->get('name')); ?>
                     <?php echo $this->formElementErrors($form->get('name')); ?>
                 </dd>
-
+<!--
                 <dt><?php echo $this->formLabel($form->get('description')); ?></dt>
                 <dd>
                     <?php echo $this->formElement($form->get('description')); ?>
                     <?php echo $this->formElementErrors($form->get('description')); ?>
                 </dd>
-
+-->
                 <dt><?php echo $this->formRow($form->get('status')); ?></dt>
 
 
@@ -71,7 +71,7 @@ $this->headTitle($title);
     <a class="btn-close" href="javascript:void(0)" style="margin-top: 8px;"></a>
     <div class="title">Добавить подкатегрию</div>
     
-    <div class="row">
+    <div class="list">
         <div class="error"></div>
         <div class="col-xs-6">
             <input  id="sub_val" class="form-control" type="text" placeholder="Название подкатегории" value="">

@@ -71,6 +71,7 @@ class ItemTable {
             'id_photo' => $item->id_photo,
             'action' => $item->action,
             'percentage' => $item->percentage,
+            'description' => $item->description,
         );
         $id = (int) $item->id;
         if ($id == 0) {
