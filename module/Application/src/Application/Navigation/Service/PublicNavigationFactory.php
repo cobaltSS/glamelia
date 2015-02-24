@@ -24,11 +24,13 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
                 switch ($row['route']) {
                     case 'shops':
                         // $cities = $serviceLocator->get('ShopModule\Model\CityTable')->fetchAll();
-                        $cities = $serviceLocator->get('ShopModule\Model\CityTable')->getCity2Shop();
+                        $cities = $serviceLocator->get('ShopModule\Model\CityTable')->getCity2Shop(array('shop.status'=>'1'));
                         foreach ($cities as $city) {
                             $configuration['navigation'][$this->getName()][$i]['pages'][$j] = array(
                                 'label' => $city['name'],
                                 'route' => $row['route'],
+                                'action' => $row['route'],
+                                'params' => array('id' => $city['id']),
                             );
                             $address = explode(':', $city['address']);
                             $shop_id = explode(':', $city['shop_id']);
@@ -37,7 +39,7 @@ class PublicNavigationFactory extends DefaultNavigationFactory {
                                 $configuration['navigation'][$this->getName()][$i]['pages'][$j]['pages'][] = array(
                                     'label' => $shop_short[0],
                                     'route' => $row['route'],
-                                    'action' => $row['route'],
+                                    'action' => 'shop',
                                     'params' => array('id' => $shop_id[$key]),
                                 );
                             }

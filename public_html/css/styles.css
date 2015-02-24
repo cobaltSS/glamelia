@@ -2872,7 +2872,21 @@ ul.polaroids li a:hover { -webkit-transform: scale(1.25); -moz-transform: scale(
 
 ul.shopslist { width: 970px; margin: 0 0 18px -30px; }
 ul.shopslist li { display: inline; }
-ul.shopslist a { background: #fff; display: inline; float: left; margin: 0 0 27px 30px; width: auto; padding: 10px 10px 15px; text-align: center; font-family: "Marker Felt", sans-serif; text-decoration: none; color: #333; font-size: 18px; -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25); -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25); -webkit-transform: rotate(-2deg); -webkit-transition: -webkit-transform .15s linear; -moz-transform: rotate(-2deg); }
+ul.shopslist a { background: #fff;
+                 display: inline; 
+                 float: left;
+                 margin: 0 0 27px 30px;
+                 width: auto;
+                 padding: 10px 10px 15px;
+                 text-align: center;
+                 font-family: "font2",sans-serif;
+                 text-decoration: none; 
+                 color: #333; font-size: 18px; 
+                 -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+                 -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25); 
+                 -webkit-transform: rotate(-2deg); 
+                 -webkit-transition: -webkit-transform .15s linear;
+                 -moz-transform: rotate(-2deg); }
 ul.shopslist img { display: block; width: 200px; margin-bottom: 12px; }
 ul.shopslist a:after { content: attr(title); width: 200px;display: block}
 
@@ -2882,9 +2896,20 @@ ul.shopslist li:nth-child(5n) a { -webkit-transform: rotate(5deg); position: rel
 ul.shopslist li:nth-child(8n) a { position: relative; right: 5px; top: 8px; }
 ul.shopslist li:nth-child(11n) a { position: relative; left: -5px; top: 3px; }
 
-ul.shopslist li.messy a { margin-top: -375px; margin-left: 160px; -webkit-transform: rotate(-5deg); -moz-transform: rotate(-5deg); }
+ul.shopslist li.messy a { 
+    margin-top: -375px;
+    margin-left: 160px; 
+    -webkit-transform: rotate(-5deg);
+    -moz-transform: rotate(-5deg); }
 
-ul.polaroids li a:hover { -webkit-transform: scale(1.25); -moz-transform: scale(1.25); -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5); -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5); position: relative; z-index: 5; }
+ul.shopslist li a:hover {
+    -webkit-transform: scale(1.25); 
+    -moz-transform: scale(1.25);
+    -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5); 
+    -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5); 
+    position: relative;
+    z-index: 5; 
+}
 
 
 

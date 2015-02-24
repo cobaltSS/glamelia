@@ -45,11 +45,12 @@ class CityTable {
         return $resultSet->toArray();
     }
 
-    public function getCity2Shop() {
+    public function getCity2Shop($where=array()) {
 
         $select = new Select;
         $select->from('city');
         $select->join('shop', "shop.city_id = city.id", array('address', 'shop_id' => 'id'));
+        $select->where($where);
         $rowset = $this->tableGateway->selectWith($select);
         $result = array();
         foreach ($rowset->toArray() as $elem) {

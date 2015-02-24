@@ -100,7 +100,7 @@ class ShopTable {
         $select->where($where);
         $select->group("shop.id");
         $select->order($rand);
-
+        
         $rowset = $this->tableGateway->selectWith($select);
         return $rowset->toArray();
     }

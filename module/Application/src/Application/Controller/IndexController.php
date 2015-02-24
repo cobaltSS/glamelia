@@ -24,8 +24,8 @@ class IndexController extends AbstractActionController {
 
     public function indexAction() {
         $reviews = $this->getReviewsTable()->getReviewsRandom('2', array('status' => '1'));
-        $action_items = $this->getItemTable()->getActionItemsRandom(array('action' => '1','category.status'=>1,'item.status'=>1), $this->limit);
-        $items = $this->getItemTable()->getItems($this->limit, array('item.status' => 1, 'item.action' => 0,'category.status'=>1));
+        $action_items = $this->getItemTable()->getActionItemsRandom(array('action' => '1', 'category.status' => 1, 'item.status' => 1), $this->limit);
+        $items = $this->getItemTable()->getItems($this->limit, array('item.status' => 1, 'item.action' => 0, 'category.status' => 1));
         $shops = $this->getShopTable()->getShops(array('shop.status' => '1'));
         $news = $this->getNewsTable()->getNewsRandom($this->limit, array('status' => '1'));
 
@@ -68,15 +68,18 @@ class IndexController extends AbstractActionController {
             'key_map' => $this->getkeyApiLocation(),
         );
     }
-    
+
     // Show Shop
     // return array
 
     public function shopsAction() {
-         $where = array('status' => 1);
-        $paginator = $this->getShopTable()->getShops(true, $where);
-        // set the current page to what has been passed in query string, or to 1 if none set
-                
+        $where = array('shop.status' => 1);
+        $city_id = (int) $this->params()->fromRoute('id', 0);
+        if ($city_id) {
+            $where['shop.city_id'] = $city_id;
+        }
+        $paginator = $this->getShopTable()->getShops($where);
+        
         return new ViewModel(array(
             'paginator' => $paginator,
         ));
@@ -146,14 +149,12 @@ class IndexController extends AbstractActionController {
         try {
             if ($id_cat && !$id_sub)
                 $items = $this->getItemTable()->getItems2Category($id_cat);
-            else if ($id_sub)
-            {
+            else if ($id_sub) {
                 $items = $this->getItemTable()->getItems2SubCategory($id_sub);
-            }
-            else if ($action)
+            } else if ($action)
                 $items = $this->getItemTable()->getItems(false, array('action' => 1));
             else
-                 $items = $this->getItemTable()->getItems('50',array('item.status' => 1));
+                $items = $this->getItemTable()->getItems('50', array('item.status' => 1));
         } catch (\Exception $ex) {
             return $this->redirect()->toRoute('home', array(
             ));
@@ -258,13 +259,13 @@ class IndexController extends AbstractActionController {
 
         $request = $this->getRequest();
         if ($request->isPost()) {
-             $reviews = new Reviews();
-           $form->setInputFilter($reviews->getInputFilter());
-           $form->setData($request->getPost());
-           if ($form->isValid()) {
+            $reviews = new Reviews();
+            $form->setInputFilter($reviews->getInputFilter());
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
                 $reviews->exchangeArray($form->getData());
-            $this->getReviewsTable()->saveReviews($reviews);
-           }
+                $this->getReviewsTable()->saveReviews($reviews);
+            }
         }
         $where = array('status' => 1);
         $paginator = $this->getReviewsTable()->fetchAll(true, $where);

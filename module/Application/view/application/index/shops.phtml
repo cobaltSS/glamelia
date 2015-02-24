@@ -28,7 +28,6 @@ $this->headTitle($title);
                         <?php $patchs = explode(',', $shop['patch']);
                         $address = explode(',', $shop['address']);
                         ?>
-                        
                             <li>
                                 <a href="<?php echo $this->url('shops', array('action' => 'shop', 'id' => $shop['id'])); ?>" title="<?php echo $address[0] . ',' . $address[1] ?>">
                                    <img src ="<?php echo '/images/shop/small_' . trim($patchs[0]) ?>" alt="<?php echo $shop['address'] ?>"  >
