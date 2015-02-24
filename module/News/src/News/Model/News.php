@@ -69,17 +69,13 @@ class News implements InputFilterAwareInterface {
             $inputFilter->add(array(
                 'name' => 'description',
                 'required' => true,
-                'filters' => array(
-                    array('name' => 'StripTags'),
-                    array('name' => 'StringTrim'),
-                ),
                 'validators' => array(
                     array(
                         'name' => 'StringLength',
                         'options' => array(
                             'encoding' => 'UTF-8',
                             'min' => 1,
-                            'max' => 100000,
+                            'max' => 1000000,
                         ),
                     ),
                 ),
