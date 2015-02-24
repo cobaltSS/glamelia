@@ -66,6 +66,7 @@ class ShopTable {
             'address' => $shop->address,
             'status' =>(int)$shop->status,
             'city_id' => $shop->city_id,
+            'phone' => $shop->phone,
         );
 
 

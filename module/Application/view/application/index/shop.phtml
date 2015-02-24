@@ -44,7 +44,8 @@ $workday=array(
                             </ul>
                         </div>
                     </div>
-                    <p><label>Наш адрес: </label> <?php echo $shop->address ?></p>
+                    <p><label>Наш адрес: </label> <?php echo $this->escapeHtml($shop->address) ?></p>
+                    <p><label>Телефон: </label> <?php echo $this->escapeHtml($shop->phone) ?></p>
                     <div><label>Режим работы: </label>
                         <?php
                         for ($i = 0; $i < 7; $i++)

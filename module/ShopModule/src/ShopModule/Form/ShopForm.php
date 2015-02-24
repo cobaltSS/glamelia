@@ -28,6 +28,17 @@ class ShopForm extends Form {
                 'class' => 'form-control',
             ),
         ));
+        
+        $this->add(array(
+            'name' => 'phone',
+            'type' => 'Text',
+            'options' => array(
+                'label' => 'Телефон',
+            ),
+            'attributes' => array(
+                'class' => 'form-control',
+            ),
+        ));
 
         $this->add(array(
             'name' => 'city_id',

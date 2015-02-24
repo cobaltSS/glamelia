@@ -32,6 +32,12 @@ $this->headTitle($title);
                     <?php echo $this->formElement($form->get('address')); ?>
                     <?php echo $this->formElementErrors($form->get('address')); ?>
                 </dd>
+                
+                <dt><?php echo $this->formLabel($form->get('phone')); ?></dt>
+                <dd>
+                    <?php echo $this->formElement($form->get('phone')); ?>
+                    <?php echo $this->formElementErrors($form->get('phone')); ?>
+                </dd>
 
                 <dt><?php echo $this->formLabel($form->get('work_time')); ?></dt>
                 <dd>
