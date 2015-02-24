@@ -62,6 +62,12 @@ $(document).ready(function () {
         if(find) return false;
   });
   
+  if($('.pluso-more').length)
+  {
+      alert('e');
+      $('.pluso-more').css('display','none');
+  }
+  
    
     $('#cn-slideshow').slideshow();
       
