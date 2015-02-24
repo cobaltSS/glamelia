@@ -16,16 +16,15 @@ if ($_FILES['upload']) {
     } else {
         $name = rand(1, 1000) . '-' . md5($_FILES['upload']['name']) . '.' . getex($_FILES['upload']['name']);
         move_uploaded_file($_FILES['upload']['tmp_name'], "images/news/" . $name);
-      //  $full_path = 'http://youon.ru/images/' . $name;
         $full_path = '/images/news/' . $name;
         $message = "Файл " . $_FILES['upload']['name'] . " загружен";
         $size = @getimagesize('images/news/' . $name);
         if ($size[0] < 50 OR $size[1] < 50) {
-            unlink('images/news' . $name);
+            unlink('images/news/' . $name);
             $message = "Файл не является допустимым изображением";
             $full_path = "";
         }
     }
     $callback = $_REQUEST['CKEditorFuncNum'];
-    echo '<script type="text/javascript">window.parent.CKEDITOR.tools.callFunction("' . $callback . '", "' . $full_path . '", "' . $message . '" );</script>';
+    echo '<script type="text/javascript">window.parent.CKEDITOR.tools.callFunction("' . $callback . '", "' . $full_path . '", "' . $message . '");</script>';
 }
