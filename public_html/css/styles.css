@@ -2010,7 +2010,7 @@ ul.nav_cat li a:hover,ul.nav_sub li a:hover {
     left: -999em;
     margin: 35px 0 0;
     position: absolute;
-    width: 160px;
+    width: 180px;
     z-index: 9999;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.4) inset; 
     -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.4) inset; 
@@ -2026,7 +2026,7 @@ ul.nav_cat li a:hover,ul.nav_sub li a:hover {
     background: none;
     border: 0 none;
     margin-right: 0;
-    width: 120px;
+    width: 140px;
     box-shadow: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
@@ -2035,7 +2035,7 @@ ul.nav_cat li a:hover,ul.nav_sub li a:hover {
 }
 
 #nav li li ul {
-    margin: -1px 0 0 160px;
+    margin: -1px 0 0 180px;
     -webkit-border-radius: 0 10px 10px 10px;
     -moz-border-radius: 0 10px 10px 10px;
     border-radius: 0 10px 10px 10px;
